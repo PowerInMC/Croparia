@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Croparia",
+  "name": "Croparia",
+  "description": "Croparia 1.16.2: The big update",
+  "version": "1.16.3",
+  "mcversion": "1.12",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Defacto34"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

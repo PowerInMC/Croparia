@@ -1,0 +1,665 @@
+item.cheese.name=Cheese
+item.raclette.name=Raclette
+item.cherry.name=Cherry
+item.lemon.name=Lemon
+item.apricot.name=Apricot
+item.kiwi.name=Kiwi
+item.orange.name=Orange
+item.pear.name=Pear
+item.banana.name=Banana
+item.cherry_pie.name=Cherry Pie
+item.lemon_pie.name=Lemon Pie
+item.apricot_pie.name=Apricot Pie
+item.kiwi_pie.name=Kiwi Pie
+item.orange_pie.name=Orange Pie
+item.pear_pie.name=Pear Pie
+item.banana_pie.name=Banana Pie
+item.flour.name=Flour
+item.chicken_leg.name=Raw Chicken Leg
+item.roast_beef.name=Raw Roast Beef
+item.roast_porc.name=Raw Roast Porc
+item.horse_meat.name=Raw Horse
+item.squid_meat.name=Raw Squid
+item.cooked_chicken_leg.name=Cooked Chicken Leg
+item.cooked_roast_beef.name=Cooked Roast Beef
+item.cooked_roast_porc.name=Cooked Roast Porc
+item.cooked_horse_meat.name=Cooked Horse
+item.cooked_squid_meat.name=Cooked Squid
+
+item.GuideBook.name=Welcome to Croparia
+
+item.waterdim_trigger.name=Water Dimension Opener
+item.earthdim_trigger.name=Earth Dimension Opener
+item.firedim_trigger.name=Fire Dimension Opener
+item.airdim_trigger.name=Air Dimension Opener
+
+item.obsidian_axe.name=Obsidian Axe
+item.obsidian_pickaxe.name=Obsidian Pickaxe
+item.obsidian_shovel.name=Obsidian Shovel
+item.obsidian_hoe.name=Obsidian Hoe
+item.obsidian_sword.name=Obsidian Sword
+item.renforced_axe.name=Renforced Axe
+item.renforced_pickaxe.name=Renforced Pickaxe
+item.renforced_shovel.name=Renforced Shovel
+item.renforced_hoe.name=Renforced Hoe
+item.renforced_sword.name=Renforced Sword
+item.fire_axe.name=Elemental Fire Axe
+item.fire_pickaxe.name=Elemental Fire Pickaxe
+item.fire_shovel.name=Elemental Fire Shovel
+item.fire_hoe.name=Elemental Fire Hoe
+item.fire_sword.name=Elemental Fire Sword
+item.water_axe.name=Elemental Water Axe
+item.water_pickaxe.name=Elemental Water Pickaxe 
+item.water_shovel.name=Elemental Water Shovel
+item.water_hoe.name=Elemental Water Hoe
+item.water_sword.name=Elemental Water Sword
+item.air_axe.name=Elemental Air Axe
+item.air_pickaxe.name=Elemental Air Pickaxe 
+item.air_shovel.name=Elemental Air Shovel
+item.air_hoe.name=Elemental Air Hoe
+item.air_sword.name=Elemental Air Sword
+item.earth_axe.name=Elemental Earth Axe
+item.earth_pickaxe.name=Elemental Earth Pickaxe 
+item.earth_shovel.name=Elemental Earth Shovel
+item.earth_hoe.name=Elemental Earth Hoe
+item.earth_sword.name=Elemental Earth Sword
+item.wood_multitool.name=Wooden Multitool
+item.stone_multitool.name=Stone Multitool
+item.iron_multitool.name=Iron Multitool
+item.gold_multitool.name=Gold Multitool
+item.diamond_multitool.name=Diamond Multitool
+item.obsidian_multitool.name=Obsidian Multitool
+item.renforced_multitool.name=Renforced Multitool
+item.wood_pestle.name=Wooden Pestle
+item.stone_pestle.name=Stone Pestle
+item.iron_pestle.name=Iron Pestle
+item.gold_pestle.name=Gold Pestle
+item.diamond_pestle.name=Diamond Pestle
+item.obsidian_pestle.name=Obsidian Pestle
+item.renforced_pestle.name=Renforced Pestle
+item.elemental_pestle.name=Elemental Pestle
+item.fire_multitool.name=Elemental Fire Multitool
+item.water_multitool.name=Elemental Water Multitool
+item.air_multitool.name=Elemental Air Multitool
+item.earth_multitool.name=Elemental Earth Multitool
+
+
+
+item.obsidian_helmet.name=Obsidian Helmet
+item.obsidian_chestplate.name=Obsidian Chestplate
+item.obsidian_leggings.name=Obsidian Leggings
+item.obsidian_boots.name=Obsidian Boots
+item.renforced_helmet.name=Renforced Helmet
+item.renforced_chestplate.name=Renforced Chestplate
+item.renforced_leggings.name=Renforced Leggings
+item.renforced_boots.name=Renforced Boots
+item.elemental_fire_helmet.name=Elemental Helmet of Fire
+item.elemental_fire_chestplate.name=Elemental Chestplate of Fire
+item.elemental_fire_leggings.name=Elemental Leggings of Fire
+item.elemental_fire_boots.name=Elemental Boots of Fire
+item.elemental_water_helmet.name=Elemental Helmet of Water
+item.elemental_water_chestplate.name=Elemental Chestplate of Water
+item.elemental_water_leggings.name=Elemental Leggings of Water
+item.elemental_water_boots.name=Elemental Boots of Water
+item.elemental_air_helmet.name=Elemental Helmet of Air
+item.elemental_air_chestplate.name=Elemental Chestplate of Air
+item.elemental_air_leggings.name=Elemental Leggings of Air
+item.elemental_air_boots.name=Elemental Boots of Air
+item.elemental_earth_helmet.name=Elemental Helmet of Earth
+item.elemental_earth_chestplate.name=Elemental Chestplate of Earth
+item.elemental_earth_leggings.name=Elemental Leggings of Earth
+item.elemental_earth_boots.name=Elemental Boots of Earth
+
+
+item.seed_crop_coal.name=Coara Seed
+item.seed_crop_iron.name=Ironias Seed
+item.seed_crop_gold.name=Goldius Seed
+item.seed_crop_redstone.name=Redstos Seed
+item.seed_crop_lapis.name=Lapius Seed
+item.seed_crop_diamond.name=Diamoniad Seed
+item.seed_crop_clay.name=Claya Seed
+item.seed_crop_glowstone.name=Glowyas Seed
+item.seed_crop_emerald.name=Emeraldia Seed
+item.seed_crop_quartz.name=Quartzesus Seed
+item.seed_crop_shard.name=Prismaria Seed
+item.seed_crop_cristal.name=Lanteos Seed
+item.seed_crop_ender.name=Endeus Seed
+item.seed_crop_bone.name=Boneus Seed
+item.seed_crop_eye.name=Eyas Seed
+item.seed_crop_powder.name=GunaPowdio Seed
+item.seed_crop_paper.name=Paperius Seed
+item.seed_crop_sugar.name=Sugas Seed
+item.seed_crop_charcoal.name=Charcoara Seed
+item.seed_crop_flint.name=Flintos Seed
+item.seed_crop_snowball.name=Snoballus Seed
+item.seed_crop_firework.name=Fireworkosus Seed
+item.seed_crop_nether.name=Nether Brickias Seed
+item.seed_crop_bottle.name=Bottleis Seed
+item.seed_crop_foot.name=Rabius Footios Seed
+item.seed_crop_hide.name=Rabius Hidos Seed
+item.seed_crop_leather.name=Leatheris Seed
+item.seed_crop_feather.name=Featheris Seed
+item.seed_crop_blaze.name=Blazous Seed
+item.seed_crop_ghast.name=Tearas Seed
+item.seed_crop_magma.name=Magmos Creama Seed
+item.seed_crop_shell.name=Shellius Seed
+item.seed_crop_star.name=Nether Stareios Seed
+item.seed_crop_string.name=Stringio Seed
+item.seed_crop_slime.name=Slimiu Seed
+item.seed_crop_zombie.name=Rottenias Seed
+item.seed_crop_vine.name=Vineis Seed
+item.seed_crop_lilypad.name=Lilypas Seed
+item.seed_crop_bush.name=Bushios Seed
+item.seed_crop_grass1.name=Grassos Seed
+item.seed_crop_largefern.name=Large Fernias Seed
+item.seed_crop_tallgrass.name=Tall Grassos Seed
+item.seed_crop_fern.name=Fernias Seed
+item.seed_crop_oak.name=Oakius  Seed
+item.seed_crop_spruce.name=Sprucius Seed
+item.seed_crop_birch.name=Birchius Seed
+item.seed_crop_jungle.name=Junglius Seed
+item.seed_crop_acacia.name=Acacius Seed
+item.seed_crop_darkoak.name=Dark Oakius Seed
+item.seed_crop_apple.name=Applius Seed
+item.seed_crop_goldenapple.name=Goldius Applius Seed
+item.seed_crop_bread.name=Breadias Seed
+item.seed_crop_egg.name=Eggros Seed
+item.seed_crop_clownfish.name=Clownfishias Seed
+item.seed_crop_pufferfish.name=Pufferfishias Seed
+item.seed_crop_cookie.name=Cookieus Seed
+item.seed_crop_chorus.name=Choros Seed
+item.seed_crop_rawbeef.name=Beefieus Seed
+item.seed_crop_rawporc.name=Porcios Seed
+item.seed_crop_fish.name=Fishias Seed
+item.seed_crop_salmon.name=Salmonias Seed
+item.seed_crop_rawchicken.name=Chickeius Seed
+item.seed_crop_rawrabbit.name=Rabbis Seed
+item.seed_crop_rawmutton.name=Muttos Seed
+item.seed_crop_orange.name=Orange Dyius Seed
+item.seed_crop_magenta.name=Magenta Dyius Seed
+item.seed_crop_lightblue.name=Light Blue Dyius Seed
+item.seed_crop_yellow.name=Yellow Dyius Seed
+item.seed_crop_lime.name=Lime Dyius Seed
+item.seed_crop_pink.name=Pink Dyius Seed
+item.seed_crop_gray.name=Gray Dyius Seed
+item.seed_crop_silver.name=Light Gray Dyius Seed
+item.seed_crop_cyan.name=Cyan Dyius Seed
+item.seed_crop_purple.name=Purple Dyius Seed
+item.seed_crop_brown.name=Brown Dyius Seed
+item.seed_crop_green.name=Green Dyius Seed
+item.seed_crop_red.name=Red Dyius Seed
+item.seed_crop_black.name=Black Dyius Seed
+item.seed_crop_death.name=Death Seed
+item.seed_crop_totem.name=Totemes Seed
+
+item.fruit_coal.name=Coara Fruit
+item.fruit_iron.name=Ironias Fruit
+item.fruit_gold.name=Goldius Fruit
+item.fruit_redstone.name=Redstos Fruit
+item.fruit_lapis.name=Lapius Fruit
+item.fruit_diamond.name=Diamoniad Fruit
+item.fruit_clay.name=Claya Fruit
+item.fruit_glowstone.name=Glowyas Fruit
+item.fruit_emerald.name=Emeraldia Fruit
+item.fruit_quartz.name=Quartzesus Fruit
+item.fruit_shard.name=Prismaria Fruit
+item.fruit_cristal.name=Lanteos Fruit
+item.fruit_ender.name=Endeus Fruit
+item.fruit_start.name=Defacto's Fruit
+item.fruit_start_monster.name=Monster Fruit
+item.fruit_start_mob.name=Mob Fruit
+item.fruit_start_natural.name=Natural Fruit
+item.fruit_bone.name=Boneus Fruit
+item.fruit_eye.name=Eyas Fruit
+item.fruit_powder.name=GunaPowdio Fruit
+item.fruit_paper.name=Paperius Fruit
+item.fruit_sugar.name=Sugas Fruit
+item.fruit_charcoal.name=Charcoara Fruit
+item.fruit_flint.name=Flintos Fruit
+item.fruit_snowball.name=Snoballus Fruit
+item.fruit_firework.name=Fireworkosus Fruit
+item.fruit_nether.name=Nether Brickias Fruit
+item.fruit_bottle.name=Bottleis Fruit
+item.fruit_foot.name=Rabius Footios Fruit
+item.fruit_hide.name=Rabius Hidos Fruit
+item.fruit_leather.name=Leatheris Fruit
+item.fruit_feather.name=Featheris Fruit
+item.fruit_blaze.name=Blazous Fruit
+item.fruit_ghast.name=Tearas Fruit
+item.fruit_magma.name=Magmos Creama Fruit
+item.fruit_shell.name=Shellius Fruit
+item.fruit_star.name=Nether Stareios Fruit
+item.fruit_string.name=Stringio Fruit
+item.fruit_slime.name=Slimiu Fruit
+item.fruit_zombie.name=Rottenias Fruit
+item.fruit_orange.name=Orange Dyius Fruit
+item.fruit_magenta.name=Magenta Dyius Fruit
+item.fruit_lightblue.name=Light Blue Dyius Fruit
+item.fruit_yellow.name=Yellow Dyius Fruit
+item.fruit_lime.name=Lime Dyius Fruit
+item.fruit_pink.name=Pink Dyius Fruit
+item.fruit_gray.name=Gray Dyius Fruit
+item.fruit_silver.name=Light Gray Dyius Fruit
+item.fruit_cyan.name=Cyan Dyius Fruit
+item.fruit_purple.name=Purple Dyius Fruit
+item.fruit_brown.name=Brown Dyius Fruit
+item.fruit_green.name=Green Dyius Fruit
+item.fruit_red.name=Red Dyius Fruit
+item.fruit_black.name=Black Dyius Fruit
+item.fruit_vine.name=Vineis Fruit
+item.fruit_lilypad.name=Lilypas Fruit
+item.fruit_bush.name=Bushios Fruit
+item.fruit_grass1.name=Grassos Fruit
+item.fruit_largefern.name=Large Fernias Fruit
+item.fruit_tallgrass.name=Tall Grassos Fruit
+item.fruit_fern.name=Fernias Fruit
+item.fruit_oak.name=Oakius  Fruit
+item.fruit_spruce.name=Sprucius Fruit
+item.fruit_birch.name=Birchius Fruit
+item.fruit_jungle.name=Junglius Fruit
+item.fruit_acacia.name=Acacius Fruit
+item.fruit_darkoak.name=Dark Oakius Fruit
+item.fruit_apple.name=Applius Fruit
+item.fruit_gapple.name=Goldius Applius Fruit
+item.fruit_bread.name=Breadias Fruit
+item.fruit_egg.name=Eggros Fruit
+item.fruit_clownfish.name=Clownfishias Fruit
+item.fruit_pufferfish.name=Pufferfishias Fruit
+item.fruit_cookie.name=Cookieus Fruit
+item.fruit_chorus.name=Choros Fruit
+item.fruit_rawbeef.name=Beefieus Fruit
+item.fruit_rawporc.name=Porcios Fruit
+item.fruit_fish.name=Fishias Fruit
+item.fruit_salmon.name=Salmonias Fruit
+item.fruit_rawchicken.name=Chickeius Fruit
+item.fruit_rawrabbit.name=Rabbis Fruit
+item.fruit_rawmutton.name=Muttos Fruit
+item.fruit_death.name=Death Fruit
+item.fruit_totem.name=Totemes Fruit
+
+
+
+
+item.seed_crop_aluminium.name=Aluminius Seed
+item.seed_crop_brass.name=Brassios Seed
+item.seed_crop_bronze.name=Bronzeus Seed
+item.seed_crop_chrome.name=Chromas Seed
+item.seed_crop_copper.name=Copperis Seed
+item.seed_crop_electrum.name=Electrus Seed
+item.seed_crop_invar.name=Invarius Seed
+item.seed_crop_iridium.name=Iridius Seed
+item.seed_crop_lead.name=Leadus Seed
+item.seed_crop_nickel.name=Nickelis Seed
+item.seed_crop_platinium.name=Platinius Seed
+item.seed_crop_silveringot.name=Silverias Seed
+item.seed_crop_steel.name=Steelisius Seed
+item.seed_crop_tin.name=Tinais Seed
+item.seed_crop_titanium.name=Titanius Seed
+item.seed_crop_tungsten.name=Tungstenos Seed
+item.seed_crop_zinc.name=Zincisus Seed
+item.seed_crop_manasteel.name=Manasteeus Seed
+item.seed_crop_terrasteel.name=Terrasteeus Seed
+item.seed_crop_manadiamond.name=Manadiamoniad Seed
+item.seed_crop_manapearl.name=Manapearios Seed
+item.seed_crop_elementium.name=Elementaya Seed
+item.seed_crop_dragonstone.name=Dragonstos Seed
+item.seed_crop_gearwood.name=Geas Woodos Seed
+item.seed_crop_gearstone.name=Geas Stonias Seed
+item.seed_crop_geariron.name=Geas Ironias Seed
+item.seed_crop_geargold.name=Geas Goldius Seed
+item.seed_crop_geardiamond.name=Geas Diamoniad Seed
+item.seed_crop_yellorium.name=Yellorius Seed
+item.seed_crop_blutonium.name=Blutonius Seed
+item.seed_crop_cyanite.name=Cyanis Seed
+item.seed_crop_graphite.name=Grpahis Seed
+item.seed_crop_ludicrite.name=Ludicris Seed
+item.seed_crop_enderium.name=Enderius Seed
+item.seed_crop_signalum.name=Signalus Seed
+item.seed_crop_lumium.name=Lumius Seed
+item.seed_crop_constantan.name=Constantas Seed
+item.seed_crop_mithril.name=Mithrilis Seed
+item.seed_crop_uranium.name=Uranius Seed
+item.seed_crop_apatite.name=Apatis Seed
+item.seed_crop_silicon.name=Silicos Seed
+item.seed_crop_draconium.name=Draconius Seed
+item.seed_crop_draconium_awakened.name=Awakened Draconius Seed
+
+item.fruit_aluminium.name=Aluminius Fruit
+item.fruit_brass.name=Brassios Fruit
+item.fruit_bronze.name=Bronzeus Fruit
+item.fruit_chrome.name=Chromas Fruit
+item.fruit_copper.name=Copperis Fruit
+item.fruit_electrum.name=Electrus Fruit
+item.fruit_invar.name=Invarius Fruit
+item.fruit_iridium.name=Iridius Fruit
+item.fruit_lead.name=Leadus Fruit
+item.fruit_nickel.name=Nickelis Fruit
+item.fruit_platinium.name=Platinius Fruit
+item.fruit_silveringot.name=Silverias Fruit
+item.fruit_steel.name=Steelisius Fruit
+item.fruit_tin.name=Tinais Fruit
+item.fruit_titanium.name=Titanius Fruit
+item.fruit_tungsten.name=Tungstenos Fruit
+item.fruit_zinc.name=Zincisus Fruit
+item.fruit_manasteel.name=Manasteeus Fruit
+item.fruit_terrasteel.name=Terrasteeus Fruit
+item.fruit_elementium.name=Elementaya Fruit
+item.fruit_dragonstone.name=Dragonstos Fruit
+item.fruit_manadiamond.name=Manadiamoniad Fruit
+item.fruit_manapearl.name=Manapearios Fruit
+item.fruit_gearwood.name=Geas Woodos Fruit
+item.fruit_gearstone.name=Geas Stonias Fruit
+item.fruit_geariron.name=Geas Ironias Fruit
+item.fruit_geargold.name=Geas Goldius Fruit
+item.fruit_geardiamond.name=Geas Diamoniad Fruit
+item.fruit_yellorium.name=Yellorius Fruit
+item.fruit_blutonium.name=Blutonius Fruit
+item.fruit_cyanite.name=Cyanis Fruit
+item.fruit_graphite.name=Grpahis Fruit
+item.fruit_ludicrite.name=Ludicris Fruit
+item.fruit_enderium.name=Enderius Fruit
+item.fruit_signalum.name=Signalus Fruit
+item.fruit_lumium.name=Lumius Fruit
+item.fruit_constantan.name=Constantas Fruit
+item.fruit_mithril.name=Mithrilis Fruit
+item.fruit_uranium.name=Uranius Fruit
+item.fruit_apatite.name=Apatis Fruit
+item.fruit_silicon.name=Silicos Fruit
+item.fruit_draconium.name=Draconius Fruit
+item.fruit_draconium_awakened.name=Awakened Draconius Fruit
+
+item.copper_ingot.name=Copper Ingot
+item.aluminium_ingot.name=Aluminium Ingot
+item.brass_ingot.name=Brass Ingot
+item.bronze_ingot.name=Bronze Ingot
+item.chrome_ingot.name=Chrome Ingot
+item.electrum_ingot.name=Electrum Ingot
+item.invar_ingot.name=Invar Ingot
+item.iridium_ingot.name=Iridium Ingot
+item.lead_ingot.name=Lead Ingot
+item.nickel_ingot.name=Nickel Ingot
+item.platinium_ingot.name=Platinium Ingot
+item.silveringot_ingot.name=Silver Ingot
+item.steel_ingot.name=Steel Ingot
+item.tin_ingot.name=Tin Ingot
+item.tungsten_ingot.name=Tungsten Ingot
+item.titanium_ingot.name=Titanium Ingot
+item.zinc_ingot.name=Zinc Ingot
+item.mana_pearl.name=Mana Pearl
+item.mana_diamond.name=Mana Diamond
+item.dragonstone.name=Dragonstone
+item.ingot_manasteel.name=Manasteel Ingot
+item.ingot_terrasteel.name=Terrasteel Ingot
+item.ingot_elementium.name=Elementium Ingot
+item.gearwood.name=Wood Gear
+item.gearstone.name=Stone Gear
+item.geariron.name=Iron Gear
+item.geargold.name=Gold Gear
+item.geardiamond.name=Diamond Gear
+item.ingot_yellorium.name=Yellorium Ingot
+item.ingot_blutonium.name=Blutonium Ingot
+item.ingot_cyanite.name=Cyanite Ingot
+item.ingot_graphite.name=Grpahite Ingot
+item.ingot_enderium.name=Enderium Ingot
+item.ingot_signalum.name=Signalum Ingot
+item.ingot_lumium.name=Lumium Ingot
+item.ingot_constantan.name=Constantan Ingot
+item.ingot_mithril.name=Mithril Ingot
+item.ingot_uranium.name=Uranium Ingot
+item.gem_apatite.name=Apatite
+item.silicon.name=Silicon
+item.ingot_draconium.name=Draconium Ingot
+item.ingot_draconium_awakened.name=Awakened Draconium Ingot
+
+
+
+item.powder_acacia.name=Acacia Powder
+item.powder_darkoak.name=Dark Oak Powder
+item.powder_oak.name=Oak Powder
+item.powder_spruce.name=Spruce Powder
+item.powder_birch.name=Birch Powder
+item.powder_jungle.name=Jungle Powder
+item.powder_grass.name=Grass Powder
+item.powder_sand.name=Sand Powder
+item.powder_cobble.name=Cobblestone Powder
+
+
+tile.reward.name=Daily Reward Block
+
+tile.block_cane_acacia.name=Acacia Cane
+tile.block_cane_darkoak.name=Dark Oak Cane
+tile.block_cane_oak.name=Oak Cane
+tile.block_cane_spruce.name=Spruce Cane
+tile.block_cane_birch.name=Birch Cane
+tile.block_cane_jungle.name=Jungle Cane
+tile.block_cane_grass.name=Grass Cane
+tile.block_cane_sand.name=Sand Cane
+tile.block_cane_cobble.name=Cobblestone Cane
+tile.block_cane_black.name=Black Cane
+tile.block_cane_blue.name=Blue Cane
+tile.block_cane_brown.name=Brown Cane
+tile.block_cane_cyan.name=Cyan Cane
+tile.block_cane_gray.name=Gray Cane
+tile.block_cane_green.name=Green Cane
+tile.block_cane_lightblue.name=Light Blue Cane
+tile.block_cane_lime.name=Lime Cane
+tile.block_cane_magenta.name=Magenta Cane
+tile.block_cane_orange.name=Orange Cane
+tile.block_cane_pink.name=Pink Cane
+tile.block_cane_purple.name=Purple Cane
+tile.block_cane_red.name=Red Cane
+tile.block_cane_silver.name=Light Gray Cane
+tile.block_cane_white.name=White Cane
+tile.block_cane_yellow.name=Yellow Cane
+
+item.special.name=Right Click On A Block
+
+item.elemental_seed.name=Elematilius Seed
+item.elemental_seed_stem.name=Elematiliustacio Seed
+item.elemental_fragment.name=Elematilius
+item.elemental_water.name=Elemental Water
+item.elemental_fire.name=Elemental Fire
+item.elemental_air.name=Elemental Air
+item.elemental_earth.name=Elemental Earth
+
+item.element_eternity.name=Elematilius Eternalis
+item.eternal_time.name=Eternal Time
+item.eternal_fire.name=Eternal Fire
+item.eternal_water.name=Eternal Water
+item.eternal_earth.name=Eternal Earth
+item.eternal_air.name=Eternal Air
+
+
+
+item.seed_stem_coal.name=Coarastacio Seed
+item.seed_stem_iron.name=Ironiastacio Seed
+item.seed_stem_gold.name=Goldiustacio Seed
+item.seed_stem_redstone.name=Redstostacio Seed
+item.seed_stem_lapis.name=Lapiustacio Seed
+item.seed_stem_diamond.name=Diamoniastacio Seed
+item.seed_stem_clay.name=Clayastacio Seed
+item.seed_stem_emerald.name=Emeraldiastacio Seed
+item.seed_stem_glowstone.name=Glowyastacio Seed
+item.seed_stem_quartz.name=Quartzesustacio Seed
+item.seed_stem_shard.name=Prismariastacio Seed
+item.seed_stem_cristal.name=Lanteostacio Seed
+item.seed_stem_bone.name=Boneustacio Seed
+item.seed_stem_snow.name=Snoballustacio Seed
+item.seed_stem_obsidian.name=Obsidiastacio Seed
+item.seed_stem_magma.name=Magmostacio Seed
+item.seed_stem_nether.name=Nether Brickiastacio Seed
+item.seed_stem_shell.name=Shelliustacio Seed
+item.seed_stem_glass.name=Glastacio Seed
+
+item.midas_hand.name=Midas Hand
+item.horn_plenty.name=Horn of Plenty
+item.golden_egg.name=Golden Egg
+item.infinite_apple.name=Infinite Apple
+item.scythe.name=Scythe
+item.water_can.name=Boning Can
+
+
+
+
+item.seed_crop_dm.name=Darmatterios Seed
+item.seed_crop_rm.name=Rematterios Seed
+item.seed_crop_ac.name=Alchemicalis Coara Seed
+item.seed_crop_mb.name=Mobius Fuos Seed
+item.seed_crop_af.name=Aeternalis Fuos Seed
+item.dm_fruit.name=Darmatterios Fruit
+item.rm_fruit.name=Rematterios Fruit
+item.ac_fruit.name=Alchemicalis Coara Fruit
+item.mb_fruit.name=Mobius Fuos Fruit
+item.af_fruit.name=Aeternalis Fuos Fruit
+
+
+
+
+itemGroup.MOD_BLOCK=Croparia
+itemGroup.MOD_COMPAT=Croparia Compatibility
+itemGroup.WIP=Croparia [WIP] 
+
+
+
+tile.cobble_former.name=Cobblestone Former
+
+
+tile.debug_ritual.name=Ritual Helper
+
+
+tile.coal_furnace.name=Coal Furnace
+tile.iron_furnace.name=Iron Furnace
+tile.gold_furnace.name=Gold Furnace
+tile.redstone_furnace.name=Redstone Furnace
+tile.lapis_furnace.name=Lapis Furnace
+tile.diamond_furnace.name=Diamond Furnace
+tile.obsidian_furnace.name=Obsidian Furnace
+tile.renforced_furnace.name=Renforced Furnace
+tile.fire_furnace.name=Elemental Fire Furnace
+
+
+
+tile.block_crop_coal.name=Coal Crop
+tile.block_crop_iron.name=Iron Crop
+tile.block_crop_gold.name=Gold Crop
+tile.block_crop_redstone.name=Redstone Crop
+tile.block_crop_lapis.name=Lapis Crop
+tile.block_crop_diamond.name=Diamond Crop
+tile.block_crop_clay.name=Clay Crop
+tile.block_crop_glowstone.name=Glowstone Crop
+tile.block_crop_emerald.name=Emerald Crop
+tile.block_crop_quartz.name=Quartz Crop
+tile.block_crop_shard.name=Prismarine Crop
+tile.block_crop_cristal.name=Sea Lantern Crop
+tile.block_crop_ender.name=Ender Pearl Crop
+tile.block_crop_paper.name=Paper Crop
+tile.block_crop_sugar.name=Sugar Crop
+tile.block_crop_charcoal.name=Charcoal Crop
+tile.block_crop_flint.name=Flint Crop
+tile.block_crop_snowball.name=Snowball Crop
+tile.block_crop_firework.name=Firework Charge Crop
+tile.block_crop_nether.name=Nether Brick Crop
+tile.block_crop_bottle.name=Bottle Crop
+
+
+
+tile.stem_iron.name=Iron Block Crop
+tile.stem_coal.name=Coal Block Crop
+tile.stem_gold.name=Gold Block Crop
+tile.stem_redstone.name=Redstone Block Crop
+tile.stem_lapis.name=Lapis Block Crop
+tile.stem_diamond.name=Diamond Block Crop
+tile.stem_clay.name=Clay Block Crop
+tile.stem_emeral.name=Emerald Block Crop
+tile.stem_glowstone.name=Glowstone Block Crop
+tile.stem_quartz.name=Quartz Block Crop
+tile.stem_shard.name=Prismarine Block Crop
+tile.stem_cristal.name=Sea Lantern Block Crop
+tile.stem_elemental.name=Elemental Block Crop
+
+
+
+tile.block_plant_coal.name=Block Plant Coal
+tile.block_plant_iron.name=Block Plant Iron
+tile.block_plant_gold.name=Block Plant Gold
+tile.block_plant_redstone.name=Block Plant Redstone
+tile.block_plant_lapis.name=Block Plant Lapis
+tile.block_plant_diamond.name=Block Plant Diamond
+tile.block_plant_clay.name=Block Plant Clay
+tile.block_plant_emerald.name=Block Plant Emerald
+tile.block_plant_glowstone.name=Block Plant Glowstone
+tile.block_plant_quartz.name=Block Plant Quartz
+tile.block_plant_shard.name=Block Plant Prismarine
+tile.block_plant_cristal.name=Block Plant Crystal 
+tile.block_plant_elemental.name=Block Plant Elemental
+tile.block_plant_bone.name=Block Plant Bone
+tile.block_plant_snow.name=Block Plant Snow
+tile.block_plant_obsidian.name=Block Plant Obsidian
+tile.block_plant_magma.name=Block Plant Magma
+tile.block_plant_nether.name=Block Plant Netherbrick
+tile.block_plant_shell.name=Block Plant Shulker Shell
+tile.block_plant_glass.name=Block Plant Glass
+
+
+
+tile.coal_jar.name=Jar of Coal
+tile.iron_jar.name=Jar of Iron
+tile.gold_jar.name=Jar of Gold
+tile.redstone_jar.name=Jar of Redstone
+tile.lapis_jar.name=Jar of Lapis
+tile.diamond_jar.name=Jar of Diamond
+
+
+
+tile.runic_coal.name=Coal Runic
+tile.runic_iron.name=Iron Runic
+tile.runic_gold.name=Gold Runic
+tile.runic_redstone.name=Redstone Runic
+tile.runic_lapis.name=Lapis Runic
+tile.runic_diamond.name=Diamond Runic
+
+
+
+tile.elemental_stone.name=Elemental Stone
+tile.elemental_cobblestone.name=Elemental Cobblestone
+tile.elemental_crop.name=Elemental Crop
+tile.seafarer_spawn.name=Seafarer Spawn
+tile.centaur_spawn.name=Centaur Spawn
+tile.minotaur_spawn.name=Minotaur Spawn
+tile.flyingbeast_spawn.name=Flying Beast Spawn
+tile.reaper_spawn.name=Reaper Spawn
+tile.water_block.name=Elemental Water Block
+tile.fire_block.name=Elemental Fire Block
+tile.air_block.name=Elemental Air Block
+tile.earth_block.name=Elemental Earth Block
+tile.ice_water_ore.name=Elemental Ice Water Ore
+tile.dirt_earth_ore.name=Elemental Dirt Earth Ore
+tile.magma_fire_ore.name=Elemental Magma Fire Ore
+tile.cloud_air_ore.name=Elemental Cloud Air Ore
+
+tile.cloud.name=Cloud
+
+
+
+tile.fruit_grass.name=Fruit Grass
+
+container.coal_furnace=Coal Furnace
+container.iron_furnace=Iron Furnace
+container.gold_furnace=Gold Furnace
+container.redstone_furnace=Redstone Furnace
+container.lapis_furnace=Lapis Furnace
+container.diamond_furnace=Diamond Furnace
+container.obsidian_furnace=Obsidian Furnace
+container.renforced_furnace=Renforced Furnace
+container.fire_furnace=Elemental Fire Furnace
+
+
+entity.Seafarer.name=Seafarer
+entity.SeafarerXL.name=Seafarer XL
+entity.SeafarerXS.name=Seafarer XS
+
+entity.Minotaur.name=Minautor
+entity.Centaur.name=Centaur
+entity.Flying.name=Flying Beast
+entity.GoldenChicken.name=Golden Chicken
+entity.Reaper.name=Reaper
