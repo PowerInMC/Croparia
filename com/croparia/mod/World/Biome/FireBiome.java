@@ -19,8 +19,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import net.minecraft.world.biome.Biome.SpawnListEntry;
-
 public class FireBiome {
 
 	static Biome.BiomeProperties customProps = null;
@@ -28,10 +26,10 @@ public class FireBiome {
 
 	static {
 		customProps = new Biome.BiomeProperties("firebiome");
-		customProps.func_185395_b(0.90F);
-		customProps.func_185398_c(0.1F);
-		customProps.func_185400_d(0.4F);
-		customProps.func_185402_a(0x000099);
+		customProps.setRainfall(0.90F);
+		customProps.setBaseHeight(0.1F);
+		customProps.setHeightVariation(0.4F);
+		customProps.setWaterColor(0x000099);
 		biome = new BiomeGenfirebiome(customProps);
 	}
 
@@ -71,40 +69,40 @@ public class FireBiome {
 		public BiomeGenfirebiome(Biome.BiomeProperties mycustomProps) {
 			super(mycustomProps);
 			setRegistryName("firebiome");
-			field_76752_A = Blocks.field_189877_df.func_176223_P();
-			field_76753_B = Blocks.field_150357_h.func_176223_P();
-			field_76760_I.field_76808_K = false;
-			field_76760_I.field_76832_z = 0;
-			field_76760_I.field_76802_A = 0;
-			field_76760_I.field_76803_B = 0;
-			field_76760_I.field_76804_C = 0;
-			field_76760_I.field_76798_D = 0;
-			field_76760_I.field_76799_E = 0;
-			field_76760_I.field_76800_F = 0;
+			topBlock = Blocks.MAGMA.getDefaultState();
+			fillerBlock = Blocks.BEDROCK.getDefaultState();
+			decorator.generateFalls = false;
+			decorator.treesPerChunk = 0;
+			decorator.flowersPerChunk = 0;
+			decorator.grassPerChunk = 0;
+			decorator.deadBushPerChunk = 0;
+			decorator.mushroomsPerChunk = 0;
+			decorator.reedsPerChunk = 0;
+			decorator.cactiPerChunk = 0;
 
-			this.field_76761_J.clear();
-			this.field_76762_K.clear();
-			this.field_76755_L.clear();
-			this.field_82914_M.clear();
+			this.spawnableMonsterList.clear();
+			this.spawnableCreatureList.clear();
+			this.spawnableWaterCreatureList.clear();
+			this.spawnableCaveCreatureList.clear();
 			
-			this.field_76761_J.add(new SpawnListEntry(EntityMinotaur.class, 10, 5, 8));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityMinotaur.class, 10, 5, 8));
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public int func_180627_b(BlockPos pos) {
+		public int getGrassColorAtPos(BlockPos pos) {
 			return 0xB8400A;
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public int func_180625_c(BlockPos pos) {
+		public int getFoliageColorAtPos(BlockPos pos) {
 			return 0xB8400A;
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public int func_76731_a(float currentTemperature) {
+		public int getSkyColorByTemp(float currentTemperature) {
 			return 0xE06666;
 		}
 

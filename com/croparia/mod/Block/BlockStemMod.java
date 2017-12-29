@@ -28,11 +28,11 @@ public class BlockStemMod extends BlockStem
 	{
 		super(crop);
 		this.crop = crop;
-		func_149663_c(name);
+		setUnlocalizedName(name);
 	}
 	
 	@Override
-	protected Item func_176481_j() 
+	protected Item getSeedItem() 
 	{
 		if (this.crop == BlockMod.block_plant_coal)
 	    {
@@ -64,10 +64,10 @@ public class BlockStemMod extends BlockStem
 
 	
 	@Override
-	public boolean func_149744_f(IBlockState state) 
+	public boolean canProvidePower(IBlockState state) 
 	{
 		for(int i = 0; i<8; i++)
-		if(state == BlockMod.stem_redstone.func_176203_a(i))
+		if(state == BlockMod.stem_redstone.getStateFromMeta(i))
 		{
 			return true;
 		}

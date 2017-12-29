@@ -25,50 +25,50 @@ public class EntityMinotaur extends EntityMob
     public EntityMinotaur(World world)
     {
         super(world);
-        this.func_70105_a(1, 2);
+        this.setSize(1, 2);
     }
 
-    protected void func_184651_r()
+    protected void initEntityAI()
     {
-        this.field_70714_bg.func_75776_a(0, new EntityAISwimming(this));
-        this.field_70714_bg.func_75776_a(6, new EntityAIWander(this, 1.0D));
-        this.field_70714_bg.func_75776_a(6, new EntityAIMoveTowardsTarget(this, 1, 20F));
-        this.field_70714_bg.func_75776_a(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        this.field_70714_bg.func_75776_a(1, new EntityAIBaseAttack(this, 1.0D, false));
-        this.field_70715_bh.func_75776_a(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.field_70714_bg.func_75776_a(8, new EntityAILookIdle(this));
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIMoveTowardsTarget(this, 1, 20F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(1, new EntityAIBaseAttack(this, 1.0D, false));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
 
 
     }
 
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(600.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.30D);
-        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(80.0D / 2);
-        this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(30.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111266_c).func_111128_a(1.0D);
-        this.field_70178_ae = true;
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(600.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(80.0D / 2);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
+        this.isImmuneToFire = true;
 
     }
 
     @Override
-    public void func_70645_a(DamageSource cause)
+    public void onDeath(DamageSource cause)
     {
-        super.func_70645_a(cause);
+        super.onDeath(cause);
                 
-    	if(cause.func_76346_g() instanceof EntityPlayer)
+    	if(cause.getTrueSource() instanceof EntityPlayer)
         {
-    	    if(this.func_95999_t() == "Minotaur")
+    	    if(this.getCustomNameTag() == "Minotaur")
     		{
-    			this.func_145779_a(FireDim.block, 1);
+    			this.dropItem(FireDim.block, 1);
     		}
     	    else
     	    {
-	    	    this.func_145779_a(ItemMod.elemental_fire, 8);
-	    	    this.func_145779_a(ItemMod.elemental_fire_chestplate, 1);
-	    	    this.func_145779_a(ItemMod.fire_sword, 1);
+	    	    this.dropItem(ItemMod.elemental_fire, 8);
+	    	    this.dropItem(ItemMod.elemental_fire_chestplate, 1);
+	    	    this.dropItem(ItemMod.fire_sword, 1);
     	    }
         
         }
@@ -76,26 +76,26 @@ public class EntityMinotaur extends EntityMob
     
     @Override
 
-    protected void func_70619_bc()
+    protected void updateAITasks()
 
     {
 
-     super.func_70619_bc();
+     super.updateAITasks();
 
 
     }
 
-    public void func_184178_b(EntityPlayerMP player)
+    public void addTrackingPlayer(EntityPlayerMP player)
 
     {
 
-        super.func_184178_b(player);
+        super.addTrackingPlayer(player);
 
 
     }
     
-    public void func_184203_c(EntityPlayerMP player)
+    public void removeTrackingPlayer(EntityPlayerMP player)
     {
-        super.func_184203_c(player);
+        super.removeTrackingPlayer(player);
     }
 }

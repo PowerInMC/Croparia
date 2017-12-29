@@ -16,7 +16,7 @@ public class WorldGenReg implements IWorldGenerator
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) 
 	{
-		switch (world.field_73011_w.getDimension()) {
+		switch (world.provider.getDimension()) {
 		case -1:
 			GenerateNether(world, chunkX * 16, chunkZ * 16, random);
 			break;
@@ -56,7 +56,7 @@ public class WorldGenReg implements IWorldGenerator
 		int Zpos = j + random.nextInt(16);
 
 		for (int x = 0; x < 500; x++) {
-			new seafarer_house().func_180709_b(world, random, new BlockPos(Xpos, Ypos, Zpos));
+			new seafarer_house().generate(world, random, new BlockPos(Xpos, Ypos, Zpos));
 		}
 	}
 }

@@ -43,10 +43,10 @@ public class RecipeOreDictionaryRegistry
 	    seedDic("manaDiamond", ItemMod.seed_crop_manadiamond, ItemMod.fruit_diamond, ItemMod.seed_crop_diamond);
 	    seedDic("manaPearl", ItemMod.seed_crop_manapearl, ItemMod.fruit_ender, ItemMod.seed_crop_ender);	
 	    seedDic("elvenDragonstone", ItemMod.seed_crop_dragonstone, ItemMod.fruit_manadiamond, ItemMod.seed_crop_manadiamond);
-		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.field_151014_N);
-		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.field_185163_cU);
-		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.field_151081_bc);
-		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.field_151080_bb);	
+		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.WHEAT_SEEDS);
+		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.BEETROOT_SEEDS);
+		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.MELON_SEEDS);
+		seedDic("gearWood", ItemMod.seed_crop_gearwood, ItemMod.fruit_start, Items.PUMPKIN_SEEDS);	
 		seedDic("gearStone", ItemMod.seed_crop_gearstone, ItemMod.fruit_gearwood, ItemMod.seed_crop_gearwood);	
 		seedDic("gearIron", ItemMod.seed_crop_geariron, ItemMod.fruit_gearstone, ItemMod.seed_crop_gearstone);	
 		seedDic("gearGold", ItemMod.seed_crop_geargold, ItemMod.fruit_geariron, ItemMod.seed_crop_geariron);	
@@ -149,13 +149,13 @@ public class RecipeOreDictionaryRegistry
 	
 	public static ResourceLocation getLocation(ItemStack output){
     	String modid = Reference.MOD_ID;
-        ResourceLocation resourceLocation = new ResourceLocation(modid, output.func_77973_b().getRegistryName().func_110623_a());
+        ResourceLocation resourceLocation = new ResourceLocation(modid, output.getItem().getRegistryName().getResourcePath());
         ResourceLocation location = resourceLocation;
         int i = 0;
 
-        while(CraftingManager.field_193380_a.func_148741_d(location)){
+        while(CraftingManager.REGISTRY.containsKey(location)){
             i++;
-            location = new ResourceLocation(modid, resourceLocation.func_110623_a() + "_" + i);
+            location = new ResourceLocation(modid, resourceLocation.getResourcePath() + "_" + i);
         }
         
         return location;

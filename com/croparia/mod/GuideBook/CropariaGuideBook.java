@@ -64,33 +64,33 @@ public class CropariaGuideBook implements IGuideBook {
         List<IPage> pages1 = new ArrayList<IPage>();
         pages1.add(new PageText("ADVERTISING : This guide was written by a french, so if they are mistakes, please report then on Curse. All the craft are not listed here, to see them, use JEI"));
         pages1.add(new PageText("To start in Croparia, you need some seeds and diamonds: with 5 Diamonds and 4 Seeds you need to make the Defacto's fruit. Without it, you can't do anything"));
-        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedStart"), ItemMod.fruit_start, new Object[] { "iIi", "IiI", "iIi", 'i', Items.field_151045_i, 'I', Items.field_151014_N})));   
+        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedStart"), ItemMod.fruit_start, new Object[] { "iIi", "IiI", "iIi", 'i', Items.DIAMOND, 'I', Items.WHEAT_SEEDS})));   
         pages1.add(new PageText("But there is 3 other fruit to start other type of crops : the Natural Fruit, the Mob Fruit and the Monster Fruit..."));  
-        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedNatural"), ItemMod.fruit_start_natural, new Object[] { "OIS", "IPI", "BIJ", 'P', ItemMod.fruit_start, 'I', Items.field_151014_N, 'O', new ItemStack(Blocks.field_150345_g, 1, 0), 'S', new ItemStack(Blocks.field_150345_g, 1, 1), 'B', new ItemStack(Blocks.field_150345_g, 1, 2), 'J', new ItemStack(Blocks.field_150345_g, 1, 3)})));   
-        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedMob"), ItemMod.fruit_start_mob, new Object[] { "FIL", "IPI", "HIF", 'P', ItemMod.fruit_start, 'I', Items.field_151014_N, 'F', Items.field_151008_G, 'L', Items.field_151116_aA, 'H', Items.field_179555_bs})));   
-        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedMonster"), ItemMod.fruit_start_monster, new Object[] { "RIE", "IiI", "GIB", 'i', Items.field_151045_i, 'I', Items.field_151014_N, 'R', Items.field_151078_bh, 'E', Items.field_151070_bp, 'G', Items.field_151016_H, 'B', Items.field_151103_aS})));     
+        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedNatural"), ItemMod.fruit_start_natural, new Object[] { "OIS", "IPI", "BIJ", 'P', ItemMod.fruit_start, 'I', Items.WHEAT_SEEDS, 'O', new ItemStack(Blocks.SAPLING, 1, 0), 'S', new ItemStack(Blocks.SAPLING, 1, 1), 'B', new ItemStack(Blocks.SAPLING, 1, 2), 'J', new ItemStack(Blocks.SAPLING, 1, 3)})));   
+        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedMob"), ItemMod.fruit_start_mob, new Object[] { "FIL", "IPI", "HIF", 'P', ItemMod.fruit_start, 'I', Items.WHEAT_SEEDS, 'F', Items.FEATHER, 'L', Items.LEATHER, 'H', Items.RABBIT_HIDE})));   
+        pages1.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedMonster"), ItemMod.fruit_start_monster, new Object[] { "RIE", "IiI", "GIB", 'i', Items.DIAMOND, 'I', Items.WHEAT_SEEDS, 'R', Items.ROTTEN_FLESH, 'E', Items.SPIDER_EYE, 'G', Items.GUNPOWDER, 'B', Items.BONE})));     
         entries1.put(new ResourceLocation(Reference.MOD_ID, "entry1"), new EntryItemStack(pages1, "First Fruit", new ItemStack(ItemMod.fruit_start)));
 
         // Creation of our 2nd page.
         List<IPage> pages2 = new ArrayList<IPage>();
         pages2.add(new PageText("To make the diamond crop (because I know you want the diamond crop) you must have the coal crop (=coara crop). You can find it in the world or make it"));
-        pages2.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedCoal"), ItemMod.seed_crop_coal, new Object[] {  "ISI","SPS",  "ISI",  'P', ItemMod.fruit_start, 'S', Items.field_151014_N, 'I', new ItemStack(Items.field_151044_h, 1, 0)})));     
+        pages2.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedCoal"), ItemMod.seed_crop_coal, new Object[] {  "ISI","SPS",  "ISI",  'P', ItemMod.fruit_start, 'S', Items.WHEAT_SEEDS, 'I', new ItemStack(Items.COAL, 1, 0)})));     
         pages2.add(new PageText("Now you can see your fabulous plant grow and give you some Coara Fruit ! Wait... Coara Fruit... what is that ...?"));
         entries1.put(new ResourceLocation(Reference.MOD_ID, "entry2"), new EntryItemStack(pages2, "Resource Crop", new ItemStack(ItemMod.seed_crop_coal)));
 
         // Creation of our 3rd page.
         List<IPage> pages3 = new ArrayList<IPage>();
         pages3.add(new PageText("All the crop will give you two fings : Some plant's seed, and some plant's fruit. Fruits give you the resource and allow  you to upgrade your crops"));
-        pages3.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("fruitCoal"), new ItemStack(Items.field_151044_h, 1, 0), new Object[] {  "   "," F ",  "   ",  'F', ItemMod.fruit_coal})));     
-        pages3.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedIron"), ItemMod.seed_crop_iron, new Object[] {  "ISI","SPS",  "ISI",  'P', ItemMod.fruit_coal, 'S', ItemMod.seed_crop_coal, 'I', Items.field_151042_j})));     
+        pages3.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("fruitCoal"), new ItemStack(Items.COAL, 1, 0), new Object[] {  "   "," F ",  "   ",  'F', ItemMod.fruit_coal})));     
+        pages3.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("seedIron"), ItemMod.seed_crop_iron, new Object[] {  "ISI","SPS",  "ISI",  'P', ItemMod.fruit_coal, 'S', ItemMod.seed_crop_coal, 'I', Items.IRON_INGOT})));     
         entries1.put(new ResourceLocation(Reference.MOD_ID, "entry3"), new EntryItemStack(pages3, "Fruits", new ItemStack(ItemMod.fruit_coal)));
         
         // Creation of our 4th page.
         List<IPage> pages4 = new ArrayList<IPage>();
         pages4.add(new PageTextImage("Some fruit are dropped by grass like banana, cherry, pear... With them, you can craft some pies.", loc("banana"), true));
         pages4.add(new PageText("An other thing, if you place a milk bucket in a furnace, it will give you a cheese. With it you can craft a -raclette- (a french dish that we eat during winter)"));
-        pages4.add(new PageFurnaceRecipe(Items.field_151117_aB));
-        pages4.add(new PageIRecipe(new ShapelessOreRecipe(new ResourceLocation("raclette"), ItemMod.raclette, new Object[] {ItemMod.cheese, Items.field_151168_bH, Items.field_151147_al, Items.field_151054_z})));     
+        pages4.add(new PageFurnaceRecipe(Items.MILK_BUCKET));
+        pages4.add(new PageIRecipe(new ShapelessOreRecipe(new ResourceLocation("raclette"), ItemMod.raclette, new Object[] {ItemMod.cheese, Items.BAKED_POTATO, Items.PORKCHOP, Items.BOWL})));     
         entries1.put(new ResourceLocation(Reference.MOD_ID, "entry4"), new EntryItemStack(pages4, "Foods", new ItemStack(ItemMod.raclette)));
 
         /**2nd Entrie */
@@ -99,10 +99,10 @@ public class CropariaGuideBook implements IGuideBook {
         pages5.add(new PageText("In Croparia you can play with Elements (Air, Water, Fire, Earth). But first of all, you need to make the Elematilius Seed !"));
         pages5.add(new PageIRecipe(new ShapelessOreRecipe(new ResourceLocation("seedElemental"), ItemMod.elemental_seed, new Object[] {ItemMod.seed_crop_coal, ItemMod.seed_crop_iron, ItemMod.seed_crop_gold, ItemMod.seed_crop_redstone, ItemMod.seed_crop_lapis, ItemMod.seed_crop_diamond, ItemMod.seed_crop_diamond, ItemMod.seed_crop_emerald, ItemMod.seed_crop_emerald})));     
         pages5.add(new PageText("And then, craft some elements to make armor, tools, elemental stone and elemental block. Yes, craft some of them..."));
-        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("water"), ItemMod.elemental_water, new Object[] {"X#X", "###", "X#X", 'X', Items.field_151131_as, '#', ItemMod.elemental_fragment})));     
-        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("earth"), ItemMod.elemental_earth, new Object[] {"X#X", "###", "X#X", 'X', new ItemStack(Blocks.field_150362_t, 1, 0), '#', ItemMod.elemental_fragment}))); 
-        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("fire"), ItemMod.elemental_fire, new Object[] {"X#X", "###", "X#X", 'X', Items.field_151033_d, '#', ItemMod.elemental_fragment}))); 
-        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("air"), ItemMod.elemental_air, new Object[] {"X#X", "###", "X#X", 'X', Items.field_151069_bo, '#', ItemMod.elemental_fragment}))); 
+        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("water"), ItemMod.elemental_water, new Object[] {"X#X", "###", "X#X", 'X', Items.WATER_BUCKET, '#', ItemMod.elemental_fragment})));     
+        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("earth"), ItemMod.elemental_earth, new Object[] {"X#X", "###", "X#X", 'X', new ItemStack(Blocks.LEAVES, 1, 0), '#', ItemMod.elemental_fragment}))); 
+        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("fire"), ItemMod.elemental_fire, new Object[] {"X#X", "###", "X#X", 'X', Items.FLINT_AND_STEEL, '#', ItemMod.elemental_fragment}))); 
+        pages5.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("air"), ItemMod.elemental_air, new Object[] {"X#X", "###", "X#X", 'X', Items.GLASS_BOTTLE, '#', ItemMod.elemental_fragment}))); 
         
         entries2.put(new ResourceLocation(Reference.MOD_ID, "entry5"), new EntryItemStack(pages5, "Elemental Items", new ItemStack(ItemMod.elemental_seed)));
 
@@ -168,19 +168,19 @@ public class CropariaGuideBook implements IGuideBook {
         List<IPage> pages11 = new ArrayList<IPage>(); 
         pages11.add(new PageText("You want more resources ? Go make some Stem ! They are like melon or pumpkin, you make seeds, you see them grow, and they will give you the block of your resource ! It's a good investment"));  
         pages11.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("stem_coal"), ItemMod.seed_stem_coal, new Object[] {"XXX", "XXX", "XXX", 'X', ItemMod.seed_crop_coal}))); 
-        pages11.add(new PageIRecipe(new ShapelessOreRecipe(new ResourceLocation("stem_coal2"), ItemMod.seed_stem_coal, new Object[] {Items.field_151081_bc, Blocks.field_150402_ci})));     
+        pages11.add(new PageIRecipe(new ShapelessOreRecipe(new ResourceLocation("stem_coal2"), ItemMod.seed_stem_coal, new Object[] {Items.MELON_SEEDS, Blocks.COAL_BLOCK})));     
         entries3.put(new ResourceLocation(Reference.MOD_ID, "entry11"), new EntryItemStack(pages11, "Stem", new ItemStack(ItemMod.seed_stem_diamond)));
      
         // Creation of our 12th page.
         List<IPage> pages12 = new ArrayList<IPage>();
         pages12.add(new PageText("Some resources are not available in crop or stem, like cobble, sand, ... But Canes exist so make them to have other resource LIKE cobble, logs and more")); 
-        pages12.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("cane_cobble"), BlockMod.block_cane_cobble, new Object[] {"CcC", "cFc", "CcC", 'C', Blocks.field_150347_e, 'c', Blocks.field_150436_aH, 'F', ItemMod.fruit_start})));     
+        pages12.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("cane_cobble"), BlockMod.block_cane_cobble, new Object[] {"CcC", "cFc", "CcC", 'C', Blocks.COBBLESTONE, 'c', Blocks.REEDS, 'F', ItemMod.fruit_start})));     
         entries3.put(new ResourceLocation(Reference.MOD_ID, "entry12"), new EntryItemStack(pages12, "Cane", new ItemStack(BlockMod.block_cane_cobble)));
      
         // Creation of our 13th page.
         List<IPage> pages13 = new ArrayList<IPage>();
         pages13.add(new PageText("In Minecraft, furnaces are not really fast. So it's why you can updgrade them thank's to fruits and make Coal Furnace, Iron Furnace... and the Fire Furnace..."));  
-        pages13.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("coal_furnace"), BlockMod.coal_furnace, new Object[] {"CFC", "CfC", "CFC", 'C', new ItemStack(Items.field_151044_h, 1, 0), 'F', ItemMod.fruit_coal, 'f', Blocks.field_150460_al})));    
+        pages13.add(new PageIRecipe(new ShapedOreRecipe(new ResourceLocation("coal_furnace"), BlockMod.coal_furnace, new Object[] {"CFC", "CfC", "CFC", 'C', new ItemStack(Items.COAL, 1, 0), 'F', ItemMod.fruit_coal, 'f', Blocks.FURNACE})));    
         entries3.put(new ResourceLocation(Reference.MOD_ID, "entry13"), new EntryItemStack(pages13, "Furnace", new ItemStack(BlockMod.fire_furnace)));
 
         // Creation of our 14th page.
@@ -259,7 +259,7 @@ public class CropariaGuideBook implements IGuideBook {
         
         // Setup the list of categories and add our entries to it.
         List<CategoryAbstract> categories = new ArrayList<CategoryAbstract>();
-        categories.add(new CategoryItemStack(entries1, "First Step", new ItemStack(Items.field_151014_N)));
+        categories.add(new CategoryItemStack(entries1, "First Step", new ItemStack(Items.WHEAT_SEEDS)));
         categories.add(new CategoryItemStack(entries2, "Elemental Way", new ItemStack(ItemMod.elemental_fragment)));
         categories.add(new CategoryItemStack(entries3, "Other Stuff", new ItemStack(BlockMod.fire_furnace)));
         categories.add(new CategoryItemStack(entries5, "Water Dimension [WIP]", new ItemStack(BlockMod.water_block)));
@@ -290,7 +290,7 @@ public class CropariaGuideBook implements IGuideBook {
     @Override
     public void handlePost(ItemStack bookStack) {
         // Register a recipe so player's can obtain the book
-        RecipeOreDictionaryRegistry.ShapedOreRecipe(bookStack, new Object[] { " f ", "fbf", " f ", 'f', Items.field_151014_N, 'b', Items.field_151122_aG});
+        RecipeOreDictionaryRegistry.ShapedOreRecipe(bookStack, new Object[] { " f ", "fbf", " f ", 'f', Items.WHEAT_SEEDS, 'b', Items.BOOK});
     }
      
     public ResourceLocation loc(String loc)

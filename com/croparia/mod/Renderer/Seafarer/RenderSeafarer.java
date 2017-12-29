@@ -19,7 +19,7 @@ public class RenderSeafarer extends RenderLiving<EntitySeafarer>
     }   
     
     @Override
-    protected ResourceLocation func_110775_a(EntitySeafarer entity) 
+    protected ResourceLocation getEntityTexture(EntitySeafarer entity) 
     {
         return ENTITY_TEXTURE;
     }

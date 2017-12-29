@@ -79,33 +79,33 @@ public class GuiDayGiver {
 			this.j = j;
 			this.k = k;
 
-			TileEntity ent = world.func_175625_s(new BlockPos(i, j, k));
+			TileEntity ent = world.getTileEntity(new BlockPos(i, j, k));
 			if (ent != null && (ent instanceof TileEntityDayGiver))
 				inherited = (IInventory) ent;
 			else
 				inherited = new InventoryBasic("", true, 9);
 
 			day = new InventoryBasic("day", true, 1);
-			this.func_75146_a(new Slot(day, 0, 83, 31) {
-				public void func_75218_e() {
-					super.func_75218_e();
-					if (func_75216_d()) {
-						EntityPlayer entity = Minecraft.func_71410_x().field_71439_g;
-						int i = (int) entity.field_70165_t;
-						int j = (int) entity.field_70163_u;
-						int k = (int) entity.field_70161_v;
+			this.addSlotToContainer(new Slot(day, 0, 83, 31) {
+				public void onSlotChanged() {
+					super.onSlotChanged();
+					if (getHasStack()) {
+						EntityPlayer entity = Minecraft.getMinecraft().player;
+						int i = (int) entity.posX;
+						int j = (int) entity.posY;
+						int k = (int) entity.posZ;
 						MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-						World world = server.field_71305_c[0];
+						World world = server.worlds[0];
 
 					}
 				}
 			});
-			bindPlayerInventory(player.field_71071_by);
+			bindPlayerInventory(player.inventory);
 
 		}
 
 		@Override
-		public boolean func_75145_c(EntityPlayer player) {
+		public boolean canInteractWith(EntityPlayer player) {
 			return true;
 		}
 
@@ -115,52 +115,52 @@ public class GuiDayGiver {
 
 			for (i = 0; i < 3; ++i) {
 				for (j = 0; j < 9; ++j) {
-					this.func_75146_a(new Slot(inventoryPlayer, j + (i + 1) * 9, 3 + 8 + j * 18, 0 + 84 + i * 18));
+					this.addSlotToContainer(new Slot(inventoryPlayer, j + (i + 1) * 9, 3 + 8 + j * 18, 0 + 84 + i * 18));
 				}
 			}
 
 			for (i = 0; i < 9; ++i) {
-				this.func_75146_a(new Slot(inventoryPlayer, i, 3 + 8 + i * 18, 0 + 142));
+				this.addSlotToContainer(new Slot(inventoryPlayer, i, 3 + 8 + i * 18, 0 + 142));
 			}
 		}
 
 		@Override
-		public ItemStack func_82846_b(EntityPlayer playerIn, int index) {
+		public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 			ItemStack itemstack = null;
-			Slot slot = (Slot) this.field_75151_b.get(index);
+			Slot slot = (Slot) this.inventorySlots.get(index);
 
-			if (slot != null && slot.func_75216_d()) {
-				ItemStack itemstack1 = slot.func_75211_c();
-				itemstack = itemstack1.func_77946_l();
+			if (slot != null && slot.getHasStack()) {
+				ItemStack itemstack1 = slot.getStack();
+				itemstack = itemstack1.copy();
 
 				if (index < 9) {
-					if (!this.func_75135_a(itemstack1, 9, (45 - 9), true)) {// fixes
+					if (!this.mergeItemStack(itemstack1, 9, (45 - 9), true)) {// fixes
 																				// shiftclick
 																				// error
 						return null;
 					}
-				} else if (!this.func_75135_a(itemstack1, 0, 9, false)) {
+				} else if (!this.mergeItemStack(itemstack1, 0, 9, false)) {
 					return null;
 				}
 
-				if (itemstack1.func_190916_E() == 0) {
-					slot.func_75215_d((ItemStack) null);
+				if (itemstack1.getCount() == 0) {
+					slot.putStack((ItemStack) null);
 				} else {
-					slot.func_75218_e();
+					slot.onSlotChanged();
 				}
 
-				if (itemstack1.func_190916_E() == itemstack.func_190916_E()) {
+				if (itemstack1.getCount() == itemstack.getCount()) {
 					return null;
 				}
 
-				slot.func_190901_a(playerIn, itemstack1);
+				slot.onTake(playerIn, itemstack1);
 			}
 
 			return itemstack;
 		}
 
-		public void func_75134_a(EntityPlayer playerIn) {
-			super.func_75134_a(playerIn);
+		public void onContainerClosed(EntityPlayer playerIn) {
+			super.onContainerClosed(playerIn);
 
 		}
 	}
@@ -178,83 +178,83 @@ public class GuiDayGiver {
 			this.j = j;
 			this.k = k;
 			this.entity = entity;
-			this.field_146999_f = 182;
-			this.field_147000_g = 166;
+			this.xSize = 182;
+			this.ySize = 166;
 		}
 
 		private static final ResourceLocation texture = new ResourceLocation("gui.png");
 
 		@Override
-		protected void func_146976_a(float par1, int par2, int par3) {
-			int posX = (this.field_146294_l) / 2;
-			int posY = (this.field_146295_m) / 2;
+		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			this.func_146276_q_();
+			this.drawDefaultBackground();
 
-			this.field_146297_k.field_71446_o.func_110577_a(texture);
-			int k = (this.field_146294_l - this.field_146999_f) / 2;
-			int l = (this.field_146295_m - this.field_147000_g) / 2;
-			this.func_73729_b(k, l, 0, 0, this.field_146999_f, this.field_147000_g);
+			this.mc.renderEngine.bindTexture(texture);
+			int k = (this.width - this.xSize) / 2;
+			int l = (this.height - this.ySize) / 2;
+			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 
-			field_73735_i = 100.0F;
-
-		}
-
-		@Override
-		protected void func_73864_a(int par1, int par2, int par3) throws java.io.IOException {
-			super.func_73864_a(par1, par2, par3);
+			zLevel = 100.0F;
 
 		}
 
 		@Override
-		public void func_73876_c() {
-			super.func_73876_c();
-			int posX = (this.field_146294_l) / 2;
-			int posY = (this.field_146295_m) / 2;
+		protected void mouseClicked(int par1, int par2, int par3) throws java.io.IOException {
+			super.mouseClicked(par1, par2, par3);
 
 		}
 
 		@Override
-		protected void func_73869_a(char par1, int par2) throws java.io.IOException {
-
-			super.func_73869_a(par1, par2);
-
-		}
-
-		@Override
-		protected void func_146979_b(int par1, int par2) {
-			int posX = (this.field_146294_l) / 2;
-			int posY = (this.field_146295_m) / 2;
+		public void updateScreen() {
+			super.updateScreen();
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
 
 		}
 
 		@Override
-		public void func_146281_b() {
-			super.func_146281_b();
+		protected void keyTyped(char par1, int par2) throws java.io.IOException {
+
+			super.keyTyped(par1, par2);
+
+		}
+
+		@Override
+		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
+
+		}
+
+		@Override
+		public void onGuiClosed() {
+			super.onGuiClosed();
 			Keyboard.enableRepeatEvents(false);
 		}
 
 		@Override
-		public void func_73866_w_() {
-			super.func_73866_w_();
-			this.field_147003_i = (this.field_146294_l - 182) / 2;
-			this.field_147009_r = (this.field_146295_m - 166) / 2;
+		public void initGui() {
+			super.initGui();
+			this.guiLeft = (this.width - 182) / 2;
+			this.guiTop = (this.height - 166) / 2;
 			Keyboard.enableRepeatEvents(true);
-			this.field_146292_n.clear();
-			int posX = (this.field_146294_l) / 2;
-			int posY = (this.field_146295_m) / 2;
+			this.buttonList.clear();
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
 
 		}
 
 		@Override
-		protected void func_146284_a(GuiButton button) {
+		protected void actionPerformed(GuiButton button) {
 			MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-			World world = server.field_71305_c[0];
+			World world = server.worlds[0];
 
 		}
 
 		@Override
-		public boolean func_73868_f() {
+		public boolean doesGuiPauseGame() {
 			return false;
 		}
 

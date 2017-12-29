@@ -17,7 +17,7 @@ public class AddGrassSeed {
 		MinecraftForge.addGrassSeed(new ItemStack(ItemMod.orange), 15);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemMod.pear), 15);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemMod.banana), 15);
-		MinecraftForge.addGrassSeed(new ItemStack(Items.field_151014_N), 30);
+		MinecraftForge.addGrassSeed(new ItemStack(Items.WHEAT_SEEDS), 30);
 
 		MinecraftForge.addGrassSeed(new ItemStack(ItemMod.seed_crop_coal), 10);
 	}

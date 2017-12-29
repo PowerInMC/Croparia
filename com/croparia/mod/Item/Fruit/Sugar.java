@@ -16,11 +16,11 @@ public class Sugar extends ItemModFood{
 		super(amount, saturation, isWolfFood);
 	}
 	
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        if (!worldIn.field_72995_K)
+        if (!worldIn.isRemote)
         {           
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76424_c, Reference.longtempsmoins, 4));
+        	player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Reference.longtempsmoins, 4));
         }
     }
 

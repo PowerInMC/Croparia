@@ -15,11 +15,11 @@ public class Natural extends ItemModFood{
 		super(amount, saturation, isWolfFood);
 	}
 	
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        if (!worldIn.field_72995_K)
+        if (!worldIn.isRemote)
         {           
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76441_p, Reference.normal, 1));
+        	player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, Reference.normal, 1));
         }
     }
 

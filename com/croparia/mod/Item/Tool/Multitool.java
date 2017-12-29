@@ -6,8 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemTool;
 
-import net.minecraft.item.Item.ToolMaterial;
-
 public class Multitool extends ItemTool{
 
 

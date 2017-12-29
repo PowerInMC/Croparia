@@ -11,9 +11,9 @@ public class BlockModBasique extends Block
 
 	public BlockModBasique(Material blockMaterialIn, String name) {
 		super(blockMaterialIn);
-		this.func_149663_c(name);
+		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
-		this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
+		this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 	}
 
 

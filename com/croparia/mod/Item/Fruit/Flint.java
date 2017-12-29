@@ -17,16 +17,16 @@ public class Flint extends ItemModFood{
 	public Flint(String name, CreativeTabs tabs) {
 		super(0, 0, false);
 		setRegistryName(name);
-		func_77655_b(name);
-		func_77637_a(tabs);
-		func_77848_i();
+		setUnlocalizedName(name);
+		setCreativeTab(tabs);
+		setAlwaysEdible();
 	}
 	
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        if (!worldIn.field_72995_K)
+        if (!worldIn.isRemote)
         {           
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76431_k, Reference.normal, 1));
+        	player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, Reference.normal, 1));
         }
     }
 

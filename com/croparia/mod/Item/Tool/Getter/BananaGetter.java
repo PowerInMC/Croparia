@@ -30,9 +30,9 @@ public class BananaGetter extends ItemTool {
     public BananaGetter(Item.ToolMaterial material)
     {
         super(material, EFFECTIVE_ON);
-        this.func_77655_b("banana_getter");
+        this.setUnlocalizedName("banana_getter");
         this.setRegistryName("banana_getter");
-        this.func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+        this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
     }
 
     public BananaGetter(float damage, float speed, Item.ToolMaterial material)
@@ -40,17 +40,17 @@ public class BananaGetter extends ItemTool {
         super(material, EFFECTIVE_ON);
         damage = 0;
         speed = 0;
-        this.func_77655_b("banana_getter");
+        this.setUnlocalizedName("banana_getter");
         this.setRegistryName("banana_getter");
-        this.func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+        this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
     }
     
     @Override
-    public EnumActionResult func_180614_a(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
     {
-    	ItemStack stack = player.func_184586_b(hand);
+    	ItemStack stack = player.getHeldItem(hand);
     			
-    	if(worldIn.func_180495_p(pos).func_177230_c() == Blocks.field_150362_t)
+    	if(worldIn.getBlockState(pos).getBlock() == Blocks.LEAVES)
     	{
     		
     	}
@@ -58,11 +58,11 @@ public class BananaGetter extends ItemTool {
     }
     
     protected void setBlock(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.func_184133_a(player, pos, SoundEvents.field_187693_cj, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		worldIn.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
-		if (!worldIn.field_72995_K) {
-			worldIn.func_180501_a(pos, state, 11);
-			stack.func_77972_a(1, player);
+		if (!worldIn.isRemote) {
+			worldIn.setBlockState(pos, state, 11);
+			stack.damageItem(1, player);
 		}
 	}
 }

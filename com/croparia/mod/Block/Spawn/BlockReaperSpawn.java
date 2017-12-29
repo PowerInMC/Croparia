@@ -20,34 +20,34 @@ public class BlockReaperSpawn  extends Block{
 
 
 	public BlockReaperSpawn(String name) {
-		super(Material.field_151576_e);
-		func_149663_c(name);
-		func_149672_a(SoundType.field_185858_k);
+		super(Material.ROCK);
+		setUnlocalizedName(name);
+		setSoundType(SoundType.ANVIL);
 		
 	}
 
 	
 	@Override
-	public void func_176206_d(World worldIn, BlockPos pos, IBlockState state) {
-		if(!worldIn.field_72995_K)
+	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+		if(!worldIn.isRemote)
 		{
 			EntityReaper e = new EntityReaper(worldIn);
 
-			e.func_70107_b(pos.func_177958_n(), pos.func_177956_o(), pos.func_177952_p());
-			e.func_174805_g(true);
-			e.func_96094_a("The Reaper");
-			Minecraft.func_71410_x().field_71439_g.func_71165_d("The Reaper appears !");
-			worldIn.func_72838_d(e);
+			e.setPosition(pos.getX(), pos.getY(), pos.getZ());
+			e.setAlwaysRenderNameTag(true);
+			e.setCustomNameTag("The Reaper");
+			Minecraft.getMinecraft().player.sendChatMessage("The Reaper appears !");
+			worldIn.spawnEntity(e);
 		
 		}
 	}
 	
 	@Override
-	public boolean func_149686_d(IBlockState state) {
+	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 	
-	public boolean func_149662_c(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 }

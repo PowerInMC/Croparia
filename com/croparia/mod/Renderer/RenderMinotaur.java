@@ -19,7 +19,7 @@ public class RenderMinotaur extends RenderLiving<EntityMinotaur>
     }   
     
     @Override
-    protected ResourceLocation func_110775_a(EntityMinotaur entity) 
+    protected ResourceLocation getEntityTexture(EntityMinotaur entity) 
     {
         return ENTITY_TEXTURE;
     }

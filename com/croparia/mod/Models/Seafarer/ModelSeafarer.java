@@ -21,68 +21,68 @@ public class ModelSeafarer extends ModelBase
   
   public ModelSeafarer()
   {
-    field_78090_t = 128;
-    field_78089_u = 64;
+    textureWidth = 128;
+    textureHeight = 64;
     
       HeadTop = new ModelRenderer(this, 30, 0);
-      HeadTop.func_78789_a(-3F, -7F, -4.8F, 6, 2, 7);
-      HeadTop.func_78793_a(0F, 0F, 0F);
-      HeadTop.func_78787_b(128, 64);
-      HeadTop.field_78809_i = true;
+      HeadTop.addBox(-3F, -7F, -4.8F, 6, 2, 7);
+      HeadTop.setRotationPoint(0F, 0F, 0F);
+      HeadTop.setTextureSize(128, 64);
+      HeadTop.mirror = true;
       setRotation(HeadTop, 0.1850049F, 0F, 0F);
       Head1 = new ModelRenderer(this, 0, 0);
-      Head1.func_78789_a(-3F, -6F, -6F, 6, 6, 7);
-      Head1.func_78793_a(0F, 0F, 0F);
-      Head1.func_78787_b(128, 64);
-      Head1.field_78809_i = true;
+      Head1.addBox(-3F, -6F, -6F, 6, 6, 7);
+      Head1.setRotationPoint(0F, 0F, 0F);
+      Head1.setTextureSize(128, 64);
+      Head1.mirror = true;
       setRotation(Head1, 0F, 0F, 0F);
       body = new ModelRenderer(this, 16, 16);
-      body.func_78789_a(-4F, 0F, -2F, 8, 12, 4);
-      body.func_78793_a(0F, 0F, 0F);
-      body.func_78787_b(128, 64);
-      body.field_78809_i = true;
+      body.addBox(-4F, 0F, -2F, 8, 12, 4);
+      body.setRotationPoint(0F, 0F, 0F);
+      body.setTextureSize(128, 64);
+      body.mirror = true;
       setRotation(body, 0F, 0F, 0F);
       RA = new ModelRenderer(this, 40, 16);
-      RA.func_78789_a(-3F, -2F, -2F, 4, 12, 4);
-      RA.func_78793_a(-5F, 2F, 0F);
-      RA.func_78787_b(128, 64);
-      RA.field_78809_i = true;
+      RA.addBox(-3F, -2F, -2F, 4, 12, 4);
+      RA.setRotationPoint(-5F, 2F, 0F);
+      RA.setTextureSize(128, 64);
+      RA.mirror = true;
       setRotation(RA, 0F, 0F, 0F);
       LA = new ModelRenderer(this, 40, 16);
-      LA.func_78789_a(-1F, -2F, -2F, 4, 12, 4);
-      LA.func_78793_a(5F, 2F, 0F);
-      LA.func_78787_b(128, 64);
-      LA.field_78809_i = true;
+      LA.addBox(-1F, -2F, -2F, 4, 12, 4);
+      LA.setRotationPoint(5F, 2F, 0F);
+      LA.setTextureSize(128, 64);
+      LA.mirror = true;
       setRotation(LA, 0F, 0F, 0F);
       RL = new ModelRenderer(this, 0, 16);
-      RL.func_78789_a(-2F, 0F, -2F, 4, 12, 4);
-      RL.func_78793_a(-2F, 12F, 0F);
-      RL.func_78787_b(128, 64);
-      RL.field_78809_i = true;
+      RL.addBox(-2F, 0F, -2F, 4, 12, 4);
+      RL.setRotationPoint(-2F, 12F, 0F);
+      RL.setTextureSize(128, 64);
+      RL.mirror = true;
       setRotation(RL, 0F, 0F, 0F);
       LL = new ModelRenderer(this, 0, 16);
-      LL.func_78789_a(-2F, 0F, -2F, 4, 12, 4);
-      LL.func_78793_a(2F, 12F, 0F);
-      LL.func_78787_b(128, 64);
-      LL.field_78809_i = true;
+      LL.addBox(-2F, 0F, -2F, 4, 12, 4);
+      LL.setRotationPoint(2F, 12F, 0F);
+      LL.setTextureSize(128, 64);
+      LL.mirror = true;
       setRotation(LL, 0F, 0F, 0F);
       LL2 = new ModelRenderer(this, 1, 36);
-      LL2.func_78789_a(2F, 3F, 0F, 3, 7, 0);
-      LL2.func_78793_a(2F, 12F, 0F);
-      LL2.func_78787_b(128, 64);
-      LL2.field_78809_i = true;
+      LL2.addBox(2F, 3F, 0F, 3, 7, 0);
+      LL2.setRotationPoint(2F, 12F, 0F);
+      LL2.setTextureSize(128, 64);
+      LL2.mirror = true;
       setRotation(LL2, 0F, 0F, 0F);
       RL2 = new ModelRenderer(this, 10, 36);
-      RL2.func_78789_a(-5F, 3F, 0F, 3, 7, 0);
-      RL2.func_78793_a(-2F, 12F, 0F);
-      RL2.func_78787_b(128, 64);
-      RL2.field_78809_i = true;
+      RL2.addBox(-5F, 3F, 0F, 3, 7, 0);
+      RL2.setRotationPoint(-2F, 12F, 0F);
+      RL2.setTextureSize(128, 64);
+      RL2.mirror = true;
       setRotation(RL2, 0F, 0F, 0F);
       headBase = new ModelRenderer(this, 60, 0);
-      headBase.func_78789_a(-3F, -7.26F, 0.8F, 6, 11, 2);
-      headBase.func_78793_a(0F, 0F, 0F);
-      headBase.func_78787_b(128, 64);
-      headBase.field_78809_i = true;
+      headBase.addBox(-3F, -7.26F, 0.8F, 6, 11, 2);
+      headBase.setRotationPoint(0F, 0F, 0F);
+      headBase.setTextureSize(128, 64);
+      headBase.mirror = true;
       setRotation(headBase, 0F, 0F, 0F);
       
       convertToChild(Head1, headBase);
@@ -101,31 +101,31 @@ public class ModelSeafarer extends ModelBase
   protected void convertToChild(ModelRenderer parent, ModelRenderer child)
   {
     // move child rotation point to be relative to parent
-      child.field_78800_c -= parent.field_78800_c;
-      child.field_78797_d -= parent.field_78797_d;
-      child.field_78798_e -= parent.field_78798_e;
+      child.rotationPointX -= parent.rotationPointX;
+      child.rotationPointY -= parent.rotationPointY;
+      child.rotationPointZ -= parent.rotationPointZ;
       
     // make rotations relative to parent
-      child.field_78795_f -= parent.field_78795_f;
-      child.field_78796_g -= parent.field_78796_g;
-      child.field_78808_h -= parent.field_78808_h;
+      child.rotateAngleX -= parent.rotateAngleX;
+      child.rotateAngleY -= parent.rotateAngleY;
+      child.rotateAngleZ -= parent.rotateAngleZ;
       
     //create relationship
-      parent.func_78792_a(child);
+      parent.addChild(child);
       
   }
   
-  public void func_78088_a(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor)
+  public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor)
   {
-    super.func_78088_a(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
-    func_78087_a(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+    super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
+    setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
     //HeadTop.render(scaleFactor);
-    Head1.func_78785_a(scaleFactor);
-    body.func_78785_a(scaleFactor);
-    RA.func_78785_a(scaleFactor);
-    LA.func_78785_a(scaleFactor);
-    RL.func_78785_a(scaleFactor);
-    LL.func_78785_a(scaleFactor);
+    Head1.render(scaleFactor);
+    body.render(scaleFactor);
+    RA.render(scaleFactor);
+    LA.render(scaleFactor);
+    RL.render(scaleFactor);
+    LL.render(scaleFactor);
     //LL.render(scaleFactor);
     //RL.render(scaleFactor);
     //headBase.render(scaleFactor);
@@ -134,23 +134,23 @@ public class ModelSeafarer extends ModelBase
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
   {
-    model.field_78795_f = x;
-    model.field_78796_g = y;
-    model.field_78808_h = z;
+    model.rotateAngleX = x;
+    model.rotateAngleY = y;
+    model.rotateAngleZ = z;
   }
   
-  public void func_78087_a(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity)
+  public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity)
   {
       float XAngle = headPitch / 57.29578F;
       float YAngle = netHeadYaw / 57.29578F;
       
-      this.Head1.field_78795_f = (0.2617794F + XAngle);
-      this.Head1.field_78796_g = YAngle;
+      this.Head1.rotateAngleX = (0.2617794F + XAngle);
+      this.Head1.rotateAngleY = YAngle;
       
-      this.LL.field_78795_f = MathHelper.func_76134_b(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-      this.RL.field_78795_f = MathHelper.func_76134_b(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-      this.LA.field_78795_f = MathHelper.func_76134_b(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-      this.RA.field_78795_f = MathHelper.func_76134_b(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+      this.LL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+      this.RL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+      this.LA.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+      this.RA.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
   }
 
 }

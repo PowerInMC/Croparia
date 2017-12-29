@@ -18,46 +18,46 @@ public class ItemModShovel extends ItemSpade
         super(material);
     }
     
-    public boolean func_82789_a(ItemStack input, ItemStack repair)
+    public boolean getIsRepairable(ItemStack input, ItemStack repair)
     {
-        if(input.func_77973_b() == ItemMod.air_shovel)
+        if(input.getItem() == ItemMod.air_shovel)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_air)
+            if(repair.getItem() == ItemMod.elemental_air)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.fire_shovel)
+        else if(input.getItem() == ItemMod.fire_shovel)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_fire)
+            if(repair.getItem() == ItemMod.elemental_fire)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.water_shovel)
+        else if(input.getItem() == ItemMod.water_shovel)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_water)
+            if(repair.getItem() == ItemMod.elemental_water)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.earth_shovel)
+        else if(input.getItem() == ItemMod.earth_shovel)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_earth)
+            if(repair.getItem() == ItemMod.elemental_earth)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.obsidian_shovel)
+        else if(input.getItem() == ItemMod.obsidian_shovel)
         {
-            if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+            if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.renforced_shovel)
+        else if(input.getItem() == ItemMod.renforced_shovel)
         {
-            if(repair.func_77973_b() == Items.field_151045_i)
+            if(repair.getItem() == Items.DIAMOND)
             {
                 return true;
             }

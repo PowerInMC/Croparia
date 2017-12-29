@@ -29,27 +29,27 @@ public class ItemEternalFire extends Item
 	public ItemEternalFire(String name)
 	{
 		super();
-		func_77655_b(name);
-		func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+		setUnlocalizedName(name);
+		setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 		setRegistryName(name);
-        func_77625_d(1);
-        func_77642_a(this);
+        setMaxStackSize(1);
+        setContainerItem(this);
 	}
 	
 	@Override
-	public void func_77663_a(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
 	{
-		entityIn.func_70015_d(10);
-		entityIn.func_70031_b(true);
+		entityIn.setFire(10);
+		entityIn.setSprinting(true);
 	}	
 	
-	public EnumActionResult func_180614_a(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) 
+	public EnumActionResult onItemUse(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) 
 	{
-		ItemStack itemstack = stack.func_184586_b(pos);
+		ItemStack itemstack = stack.getHeldItem(pos);
 		
-		if(stack.func_70093_af() == true)
+		if(stack.isSneaking() == true)
 		{
-			if (!stack.func_175151_a(worldIn.func_177972_a(hand), hand, itemstack))
+			if (!stack.canPlayerEdit(worldIn.offset(hand), hand, itemstack))
 	        {
 	            return EnumActionResult.FAIL;
 	        }
@@ -58,22 +58,22 @@ public class ItemEternalFire extends Item
 	            int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(itemstack, stack, playerIn, worldIn);
 	            if (hook != 0) return hook > 0 ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
  
-	            IBlockState iblockstate = playerIn.func_180495_p(worldIn);
-	            Block block = iblockstate.func_177230_c();
+	            IBlockState iblockstate = playerIn.getBlockState(worldIn);
+	            Block block = iblockstate.getBlock();
 
 	            if (hand != EnumFacing.DOWN)
 	            {
-	            	if(playerIn.func_180495_p(worldIn).func_177230_c() != Blocks.field_150357_h || playerIn.func_180495_p(worldIn).func_177230_c() != Blocks.field_150343_Z ||playerIn.func_180495_p(worldIn).func_177230_c() != Blocks.field_150424_aL)
+	            	if(playerIn.getBlockState(worldIn).getBlock() != Blocks.BEDROCK || playerIn.getBlockState(worldIn).getBlock() != Blocks.OBSIDIAN ||playerIn.getBlockState(worldIn).getBlock() != Blocks.NETHERRACK)
 	            	{
 
-	            			this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150353_l.func_176223_P());
+	            			this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.LAVA.getDefaultState());
 	            			return EnumActionResult.SUCCESS;          
 	            		
 	                }
-	            	if(playerIn.func_180495_p(worldIn).func_177230_c() == Blocks.field_150343_Z ||playerIn.func_180495_p(worldIn).func_177230_c() == Blocks.field_150424_aL)
+	            	if(playerIn.getBlockState(worldIn).getBlock() == Blocks.OBSIDIAN ||playerIn.getBlockState(worldIn).getBlock() == Blocks.NETHERRACK)
 	            	{
 	            		{
-	            			this.setBlock(itemstack, stack, playerIn, worldIn.func_177984_a(), Blocks.field_150480_ab.func_176223_P());
+	            			this.setBlock(itemstack, stack, playerIn, worldIn.up(), Blocks.FIRE.getDefaultState());
 	            			return EnumActionResult.SUCCESS;
 	            		}
 	            	}
@@ -87,12 +87,12 @@ public class ItemEternalFire extends Item
 	
     protected void setBlock(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, IBlockState state)
     {
-        worldIn.func_184133_a(player, pos, SoundEvents.field_187662_cZ, SoundCategory.BLOCKS, 2.0F, 2.0F);
+        worldIn.playSound(player, pos, SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 2.0F, 2.0F);
 
-        if (!worldIn.field_72995_K)
+        if (!worldIn.isRemote)
         {
-            worldIn.func_180501_a(pos, state, 11);
-            stack.func_77972_a(1, player);
+            worldIn.setBlockState(pos, state, 11);
+            stack.damageItem(1, player);
         }
     }
 

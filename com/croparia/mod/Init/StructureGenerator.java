@@ -19,7 +19,7 @@ public class StructureGenerator implements IWorldGenerator
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) 
 	{
-		switch (world.field_73011_w.getDimension())
+		switch (world.provider.getDimension())
 		{
 			case -1:
 				generateNether(world, random, chunkX * 16, chunkZ * 16);
@@ -57,9 +57,9 @@ public class StructureGenerator implements IWorldGenerator
 		int y1 = random.nextInt(128); 
 		int z1 = j + random.nextInt(16); 
 		BlockPos pos = new BlockPos(x1, y1, z1);
-		if(world.func_180495_p(pos.func_177977_b()) == Blocks.field_150432_aD.func_176223_P() && world.func_175623_d(pos.func_177984_a()))
+		if(world.getBlockState(pos.down()) == Blocks.ICE.getDefaultState() && world.isAirBlock(pos.up()))
 		{
-			new seafarer_house().func_180709_b(world, random, pos);
+			new seafarer_house().generate(world, random, pos);
 		}
 	}
 	

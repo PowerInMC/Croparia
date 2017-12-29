@@ -23,22 +23,22 @@ public class ItemEternalSpace extends Item
 	public ItemEternalSpace(String name)
 	{
 		super();
-		func_77655_b(name);
-		func_77637_a(CreativeTabsRegistry.WIP);
+		setUnlocalizedName(name);
+		setCreativeTab(CreativeTabsRegistry.WIP);
 		setRegistryName(name);
-		func_77625_d(1);
-		func_77642_a(this);
+		setMaxStackSize(1);
+		setContainerItem(this);
 	}
 	
 	@Override
-	public void func_77663_a(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
-		((EntityLivingBase) entityIn).func_70690_d(new PotionEffect(MobEffects.field_76424_c, 10, 4));
-		((EntityLivingBase) entityIn).func_70690_d(new PotionEffect(MobEffects.field_76430_j, 10, 4));
-		((EntityLivingBase) entityIn).func_70690_d(new PotionEffect(MobEffects.field_76429_m, 10, 4));
-		if(entityIn.func_70093_af())
+		((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 4));
+		((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 10, 4));
+		((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 10, 4));
+		if(entityIn.isSneaking())
 		{
-			entityIn.func_70016_h(0,	1, 0);
+			entityIn.setVelocity(0,	1, 0);
 			
 			
 			

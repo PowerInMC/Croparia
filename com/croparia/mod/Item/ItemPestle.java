@@ -13,8 +13,8 @@ public class ItemPestle extends Item
     public ItemPestle()
     {
         super();
-        this.func_77637_a(tab);
-        this.func_77625_d(1);
-        this.func_77642_a(this);
+        this.setCreativeTab(tab);
+        this.setMaxStackSize(1);
+        this.setContainerItem(this);
     }
 }

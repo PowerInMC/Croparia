@@ -19,7 +19,7 @@ public class WorldgenMod implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
-		switch (world.field_73011_w.getDimension()) {
+		switch (world.provider.getDimension()) {
 		case -1:
 			genNether(world, random, chunkX * 16, chunkZ * 16);
 			break;
@@ -44,7 +44,7 @@ public class WorldgenMod implements IWorldGenerator {
 	private void genFireDim(World world, Random rand, int chunkX, int chunkZ) {
 		for(int i = 0;i < 10; i++)
 		{
-			addWorldGenMinable(BlockMod.magma_fire_ore.func_176223_P(), 9, 128, world, rand, chunkX, chunkZ);
+			addWorldGenMinable(BlockMod.magma_fire_ore.getDefaultState(), 9, 128, world, rand, chunkX, chunkZ);
 		}
 	}
 	
@@ -79,7 +79,7 @@ public class WorldgenMod implements IWorldGenerator {
 		int randPosX = chunkX + rand.nextInt(16);
 		int randPosY = rand.nextInt(MaxY);
 		int randPosZ = chunkZ + rand.nextInt(16);
-		new WorldGenMinable(BlocID, MaxMinerai).func_180709_b(world, rand, new BlockPos(randPosX, randPosY, randPosZ));
+		new WorldGenMinable(BlocID, MaxMinerai).generate(world, rand, new BlockPos(randPosX, randPosY, randPosZ));
 	}
 
 }

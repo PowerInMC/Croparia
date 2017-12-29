@@ -28,14 +28,14 @@ public class BlockElementalStone extends Block {
 	
 	public BlockElementalStone(Material blockMaterialIn, MapColor blockMapColorIn) {
 		super(blockMaterialIn, blockMapColorIn);
-		this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
-		this.func_149711_c(1.5F);
-		this.func_149752_b(10.0F);
-		this.func_149672_a(SoundType.field_185851_d);
+		this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
+		this.setHardness(1.5F);
+		this.setResistance(10.0F);
+		this.setSoundType(SoundType.STONE);
 	}
 
-	public Item func_180660_a(IBlockState state, Random rand, int fortune) {
-		return Item.func_150898_a(BlockMod.elemental_cobblestone);
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(BlockMod.elemental_cobblestone);
 	}
 	
 	@Override
@@ -44,87 +44,87 @@ public class BlockElementalStone extends Block {
 	}
 
 	@Override
-	public void func_180633_a(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) 
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) 
 	{		
 		//Second Ritual
-			if(worldIn.func_180495_p(pos.func_177977_b()) == BlockMod.elemental_cobblestone.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177978_c()) == BlockMod.elemental_stone.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177968_d()) == BlockMod.elemental_stone.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177974_f())  == BlockMod.elemental_stone.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177976_e())  == BlockMod.elemental_stone.func_176223_P())						
+			if(worldIn.getBlockState(pos.down()) == BlockMod.elemental_cobblestone.getDefaultState() && worldIn.getBlockState(pos.down().north()) == BlockMod.elemental_stone.getDefaultState() &&worldIn.getBlockState(pos.down().south()) == BlockMod.elemental_stone.getDefaultState() &&worldIn.getBlockState(pos.down().east())  == BlockMod.elemental_stone.getDefaultState() &&worldIn.getBlockState(pos.down().west())  == BlockMod.elemental_stone.getDefaultState())						
 				{
-				if(worldIn.func_180495_p(pos.func_177964_d(5)) == BlockMod.block_crop_redstone.func_176203_a(7) &&worldIn.func_180495_p(pos.func_177970_e(5)) == BlockMod.block_crop_redstone.func_176203_a(7) &&worldIn.func_180495_p(pos.func_177965_g(5))  == BlockMod.block_crop_redstone.func_176203_a(7) &&worldIn.func_180495_p(pos.func_177985_f(5))  == BlockMod.block_crop_redstone.func_176203_a(7))	
+				if(worldIn.getBlockState(pos.north(5)) == BlockMod.block_crop_redstone.getStateFromMeta(7) &&worldIn.getBlockState(pos.south(5)) == BlockMod.block_crop_redstone.getStateFromMeta(7) &&worldIn.getBlockState(pos.east(5))  == BlockMod.block_crop_redstone.getStateFromMeta(7) &&worldIn.getBlockState(pos.west(5))  == BlockMod.block_crop_redstone.getStateFromMeta(7))	
 				{
-					if(worldIn.func_180495_p(pos.func_177964_d(3).func_177985_f(3)) == BlockMod.elemental_crop.func_176203_a(7) &&worldIn.func_180495_p(pos.func_177964_d(3).func_177965_g(3)) == BlockMod.elemental_crop.func_176203_a(7) &&worldIn.func_180495_p(pos.func_177970_e(3).func_177985_f(3))  == BlockMod.elemental_crop.func_176203_a(7) &&worldIn.func_180495_p(pos.func_177970_e(3).func_177965_g(3))  == BlockMod.elemental_crop.func_176203_a(7))
+					if(worldIn.getBlockState(pos.north(3).west(3)) == BlockMod.elemental_crop.getStateFromMeta(7) &&worldIn.getBlockState(pos.north(3).east(3)) == BlockMod.elemental_crop.getStateFromMeta(7) &&worldIn.getBlockState(pos.south(3).west(3))  == BlockMod.elemental_crop.getStateFromMeta(7) &&worldIn.getBlockState(pos.south(3).east(3))  == BlockMod.elemental_crop.getStateFromMeta(7))
 						{
-						if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177976_e()) == Blocks.field_150355_j.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177974_f()) == Blocks.field_150355_j.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177976_e())  == Blocks.field_150355_j.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177974_f())  == Blocks.field_150355_j.func_176223_P())
+						if(worldIn.getBlockState(pos.down().north(4).west()) == Blocks.WATER.getDefaultState() &&worldIn.getBlockState(pos.down().north(4).east()) == Blocks.WATER.getDefaultState() &&worldIn.getBlockState(pos.down().south(4).west())  == Blocks.WATER.getDefaultState() &&worldIn.getBlockState(pos.down().south(4).east())  == Blocks.WATER.getDefaultState())
 						
 							{
-							if(worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177978_c()) == Blocks.field_150355_j.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177968_d()) == Blocks.field_150355_j.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177978_c())  == Blocks.field_150355_j.func_176223_P() &&worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177968_d())  == Blocks.field_150355_j.func_176223_P())
+							if(worldIn.getBlockState(pos.down().west(4).north()) == Blocks.WATER.getDefaultState() &&worldIn.getBlockState(pos.down().west(4).south()) == Blocks.WATER.getDefaultState() &&worldIn.getBlockState(pos.down().east(4).north())  == Blocks.WATER.getDefaultState() &&worldIn.getBlockState(pos.down().east(4).south())  == Blocks.WATER.getDefaultState())
 							
 								{
-								if(worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4)) == Blocks.field_150348_b.func_176203_a(6) && worldIn.func_180495_p(pos.func_177984_a().func_177964_d(4).func_177985_f(4)) == BlockMod.elemental_stone.func_176223_P() && worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(4).func_177985_f(4)) == Blocks.field_150348_b.func_176203_a(6))
+								if(worldIn.getBlockState(pos.north(4).west(4)) == Blocks.STONE.getStateFromMeta(6) && worldIn.getBlockState(pos.up().north(4).west(4)) == BlockMod.elemental_stone.getDefaultState() && worldIn.getBlockState(pos.up(2).north(4).west(4)) == Blocks.STONE.getStateFromMeta(6))
 							
 									{
-									if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4)) == Blocks.field_150348_b.func_176203_a(6) && worldIn.func_180495_p(pos.func_177984_a().func_177964_d(4).func_177965_g(4)) == BlockMod.elemental_stone.func_176223_P() && worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(4).func_177965_g(4)) == Blocks.field_150348_b.func_176203_a(6))
+									if(worldIn.getBlockState(pos.north(4).east(4)) == Blocks.STONE.getStateFromMeta(6) && worldIn.getBlockState(pos.up().north(4).east(4)) == BlockMod.elemental_stone.getDefaultState() && worldIn.getBlockState(pos.up(2).north(4).east(4)) == Blocks.STONE.getStateFromMeta(6))
 									
 										{
-										if(worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4)) == Blocks.field_150348_b.func_176203_a(6) && worldIn.func_180495_p(pos.func_177984_a().func_177970_e(4).func_177985_f(4)) == BlockMod.elemental_stone.func_176223_P() && worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(4).func_177985_f(4)) == Blocks.field_150348_b.func_176203_a(6))
+										if(worldIn.getBlockState(pos.south(4).west(4)) == Blocks.STONE.getStateFromMeta(6) && worldIn.getBlockState(pos.up().south(4).west(4)) == BlockMod.elemental_stone.getDefaultState() && worldIn.getBlockState(pos.up(2).south(4).west(4)) == Blocks.STONE.getStateFromMeta(6))
 										
 											{
-											if(worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4)) == Blocks.field_150348_b.func_176203_a(6) && worldIn.func_180495_p(pos.func_177984_a().func_177970_e(4).func_177965_g(4)) == BlockMod.elemental_stone.func_176223_P() && worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(4).func_177965_g(4)) == Blocks.field_150348_b.func_176203_a(6))
+											if(worldIn.getBlockState(pos.south(4).east(4)) == Blocks.STONE.getStateFromMeta(6) && worldIn.getBlockState(pos.up().south(4).east(4)) == BlockMod.elemental_stone.getDefaultState() && worldIn.getBlockState(pos.up(2).south(4).east(4)) == Blocks.STONE.getStateFromMeta(6))
 											
 												{
-												if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177964_d(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177964_d(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177974_f()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177976_e()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5)) == BlockMod.water_block.func_176223_P())
+												if(worldIn.getBlockState(pos.north(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.north(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().north(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().north(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).north(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).north(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).north(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).north(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).north(5).east()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).north(5).west()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).north(5)) == BlockMod.water_block.getDefaultState())
 												
 													{
-													if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177970_e(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177970_e(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177965_g(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177985_f(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177974_f()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177976_e()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5)) == BlockMod.fire_block.func_176223_P())
+													if(worldIn.getBlockState(pos.south(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.south(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().south(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().south(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).south(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).south(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).south(5).east(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).south(5).west(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).south(5).east()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).south(5).west()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).south(5)) == BlockMod.fire_block.getDefaultState())
 													
 														{
-														if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177985_f(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177985_f(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177985_f(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177985_f(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177978_c()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177968_d()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5)) == BlockMod.earth_block.func_176223_P())
+														if(worldIn.getBlockState(pos.west(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.west(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().west(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().west(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).west(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).west(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).west(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).west(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).west(5).north()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).west(5).south()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).west(5)) == BlockMod.earth_block.getDefaultState())
 														
 															{
-															if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177965_g(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177965_g(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177965_g(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(2).func_177965_g(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177964_d(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177970_e(2)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177978_c()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177968_d()) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5)) == BlockMod.air_block.func_176223_P())
+															if(worldIn.getBlockState(pos.east(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.east(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().east(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().east(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).east(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(2).east(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).east(5).north(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).east(5).south(2)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).east(5).north()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).east(5).south()) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up(3).east(5)) == BlockMod.air_block.getDefaultState())
 															
 																{
-																if(worldIn.func_180495_p(pos.func_177964_d(2).func_177965_g(2)) == BlockMod.fire_block.func_176223_P() && worldIn.func_180495_p(pos.func_177964_d(2).func_177985_f(2)) == BlockMod.fire_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177985_f(2)) == BlockMod.fire_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177965_g(2)) == BlockMod.fire_block.func_176223_P())
+																if(worldIn.getBlockState(pos.north(2).east(2)) == BlockMod.fire_block.getDefaultState() && worldIn.getBlockState(pos.north(2).west(2)) == BlockMod.fire_block.getDefaultState() && worldIn.getBlockState(pos.south(2).west(2)) == BlockMod.fire_block.getDefaultState() && worldIn.getBlockState(pos.south(2).east(2)) == BlockMod.fire_block.getDefaultState())
 																	{
-																		worldIn.func_175656_a(pos.func_177981_b(2), BlockMod.minotaur_spawn.func_176223_P());
-																		worldIn.func_72838_d(new EntityLightningBolt(worldIn, pos.func_177958_n(), pos.func_177956_o() + 2, pos.func_177952_p(), false));
-																		worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177964_d(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177964_d(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177970_e(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177970_e(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
+																		worldIn.setBlockState(pos.up(2), BlockMod.minotaur_spawn.getDefaultState());
+																		worldIn.spawnEntity(new EntityLightningBolt(worldIn, pos.getX(), pos.getY() + 2, pos.getZ(), false));
+																		worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.north(2).west(2), Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.north(2).east(2), Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.south(2).east(2), Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.south(2).west(2), Blocks.AIR.getDefaultState());
 																	}
 																
-																else if(worldIn.func_180495_p(pos.func_177964_d(2).func_177965_g(2)) == BlockMod.water_block.func_176223_P() && worldIn.func_180495_p(pos.func_177964_d(2).func_177985_f(2)) == BlockMod.water_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177985_f(2)) == BlockMod.water_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177965_g(2)) == BlockMod.water_block.func_176223_P())
+																else if(worldIn.getBlockState(pos.north(2).east(2)) == BlockMod.water_block.getDefaultState() && worldIn.getBlockState(pos.north(2).west(2)) == BlockMod.water_block.getDefaultState() && worldIn.getBlockState(pos.south(2).west(2)) == BlockMod.water_block.getDefaultState() && worldIn.getBlockState(pos.south(2).east(2)) == BlockMod.water_block.getDefaultState())
 																	{
-																		worldIn.func_175656_a(pos.func_177981_b(2), BlockMod.seafarer_spawn.func_176223_P());	
-																		worldIn.func_72838_d(new EntityLightningBolt(worldIn, pos.func_177958_n(), pos.func_177956_o() + 2, pos.func_177952_p(), false));
-																		worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177964_d(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177964_d(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177970_e(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																		worldIn.func_175656_a(pos.func_177970_e(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
+																		worldIn.setBlockState(pos.up(2), BlockMod.seafarer_spawn.getDefaultState());	
+																		worldIn.spawnEntity(new EntityLightningBolt(worldIn, pos.getX(), pos.getY() + 2, pos.getZ(), false));
+																		worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.north(2).west(2), Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.north(2).east(2), Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.south(2).east(2), Blocks.AIR.getDefaultState());
+																		worldIn.setBlockState(pos.south(2).west(2), Blocks.AIR.getDefaultState());
 																	}	
 																
-																else if(worldIn.func_180495_p(pos.func_177964_d(2).func_177965_g(2)) == BlockMod.earth_block.func_176223_P() && worldIn.func_180495_p(pos.func_177964_d(2).func_177985_f(2)) == BlockMod.earth_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177985_f(2)) == BlockMod.earth_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177965_g(2)) == BlockMod.earth_block.func_176223_P())
+																else if(worldIn.getBlockState(pos.north(2).east(2)) == BlockMod.earth_block.getDefaultState() && worldIn.getBlockState(pos.north(2).west(2)) == BlockMod.earth_block.getDefaultState() && worldIn.getBlockState(pos.south(2).west(2)) == BlockMod.earth_block.getDefaultState() && worldIn.getBlockState(pos.south(2).east(2)) == BlockMod.earth_block.getDefaultState())
 																{
-																	worldIn.func_175656_a(pos.func_177981_b(2), BlockMod.centaur_spawn.func_176223_P());	
-																	worldIn.func_72838_d(new EntityLightningBolt(worldIn, pos.func_177958_n(), pos.func_177956_o() + 2, pos.func_177952_p(), false));
-																	worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177964_d(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177964_d(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177970_e(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177970_e(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
+																	worldIn.setBlockState(pos.up(2), BlockMod.centaur_spawn.getDefaultState());	
+																	worldIn.spawnEntity(new EntityLightningBolt(worldIn, pos.getX(), pos.getY() + 2, pos.getZ(), false));
+																	worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.north(2).west(2), Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.north(2).east(2), Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.south(2).east(2), Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.south(2).west(2), Blocks.AIR.getDefaultState());
 																}
 																
-																else if(worldIn.func_180495_p(pos.func_177964_d(2).func_177965_g(2)) == BlockMod.air_block.func_176223_P() && worldIn.func_180495_p(pos.func_177964_d(2).func_177985_f(2)) == BlockMod.air_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177985_f(2)) == BlockMod.air_block.func_176223_P() && worldIn.func_180495_p(pos.func_177970_e(2).func_177965_g(2)) == BlockMod.air_block.func_176223_P())
+																else if(worldIn.getBlockState(pos.north(2).east(2)) == BlockMod.air_block.getDefaultState() && worldIn.getBlockState(pos.north(2).west(2)) == BlockMod.air_block.getDefaultState() && worldIn.getBlockState(pos.south(2).west(2)) == BlockMod.air_block.getDefaultState() && worldIn.getBlockState(pos.south(2).east(2)) == BlockMod.air_block.getDefaultState())
 																{
-																	worldIn.func_175656_a(pos.func_177981_b(2), BlockMod.flyingbeast_spawn.func_176223_P());
-																	worldIn.func_72838_d(new EntityLightningBolt(worldIn, pos.func_177958_n(), pos.func_177956_o() + 2, pos.func_177952_p(), false));
-																	worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177964_d(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177964_d(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177970_e(2).func_177965_g(2), Blocks.field_150350_a.func_176223_P());
-																	worldIn.func_175656_a(pos.func_177970_e(2).func_177985_f(2), Blocks.field_150350_a.func_176223_P());
+																	worldIn.setBlockState(pos.up(2), BlockMod.flyingbeast_spawn.getDefaultState());
+																	worldIn.spawnEntity(new EntityLightningBolt(worldIn, pos.getX(), pos.getY() + 2, pos.getZ(), false));
+																	worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.north(2).west(2), Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.north(2).east(2), Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.south(2).east(2), Blocks.AIR.getDefaultState());
+																	worldIn.setBlockState(pos.south(2).west(2), Blocks.AIR.getDefaultState());
 																}
 															}
 														}
@@ -140,19 +140,19 @@ public class BlockElementalStone extends Block {
 				}
 			}
 	//first Ritual
-			if(worldIn.func_180495_p(pos.func_177977_b()) == BlockMod.elemental_cobblestone.func_176223_P() && !worldIn.field_72995_K)
+			if(worldIn.getBlockState(pos.down()) == BlockMod.elemental_cobblestone.getDefaultState() && !worldIn.isRemote)
 			{
-				if(worldIn.func_180495_p(pos.func_177978_c().func_177974_f()) == BlockMod.block_crop_iron.func_176203_a(7) && worldIn.func_180495_p(pos.func_177978_c().func_177976_e()) == BlockMod.block_crop_iron.func_176203_a(7) && worldIn.func_180495_p(pos.func_177968_d().func_177974_f()) == BlockMod.block_crop_iron.func_176203_a(7) && worldIn.func_180495_p(pos.func_177968_d().func_177976_e()) == BlockMod.block_crop_iron.func_176203_a(7))
+				if(worldIn.getBlockState(pos.north().east()) == BlockMod.block_crop_iron.getStateFromMeta(7) && worldIn.getBlockState(pos.north().west()) == BlockMod.block_crop_iron.getStateFromMeta(7) && worldIn.getBlockState(pos.south().east()) == BlockMod.block_crop_iron.getStateFromMeta(7) && worldIn.getBlockState(pos.south().west()) == BlockMod.block_crop_iron.getStateFromMeta(7))
 				{
-					if(worldIn.func_180495_p(pos.func_177964_d(3)) == BlockMod.block_crop_gold.func_176203_a(7) && 	worldIn.func_180495_p(pos.func_177970_e(3)) == BlockMod.block_crop_gold.func_176203_a(7) && worldIn.func_180495_p(pos.func_177965_g(3)) == BlockMod.block_crop_gold.func_176203_a(7) && worldIn.func_180495_p(pos.func_177985_f(3)) == BlockMod.block_crop_gold.func_176203_a(7))
+					if(worldIn.getBlockState(pos.north(3)) == BlockMod.block_crop_gold.getStateFromMeta(7) && 	worldIn.getBlockState(pos.south(3)) == BlockMod.block_crop_gold.getStateFromMeta(7) && worldIn.getBlockState(pos.east(3)) == BlockMod.block_crop_gold.getStateFromMeta(7) && worldIn.getBlockState(pos.west(3)) == BlockMod.block_crop_gold.getStateFromMeta(7))
 					{
-						if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(2).func_177985_f(2)) == Blocks.field_150355_j.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177964_d(2).func_177965_g(2)) == Blocks.field_150355_j.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177970_e(2).func_177985_f(2)) == Blocks.field_150355_j.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177970_e(2).func_177965_g(2)) == Blocks.field_150355_j.func_176223_P())
+						if(worldIn.getBlockState(pos.down().north(2).west(2)) == Blocks.WATER.getDefaultState() && worldIn.getBlockState(pos.down().north(2).east(2)) == Blocks.WATER.getDefaultState() && worldIn.getBlockState(pos.down().south(2).west(2)) == Blocks.WATER.getDefaultState() && worldIn.getBlockState(pos.down().south(2).east(2)) == Blocks.WATER.getDefaultState())
 						{			
-							if(worldIn.func_180495_p(pos.func_177964_d(4).func_177974_f()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177964_d(4).func_177976_e()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177970_e(4).func_177974_f()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177970_e(4).func_177976_e()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177985_f(4).func_177978_c()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177985_f(4).func_177968_d()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177965_g(4).func_177978_c()) == Blocks.field_150348_b.func_176203_a(3) && worldIn.func_180495_p(pos.func_177965_g(4).func_177968_d()) == Blocks.field_150348_b.func_176203_a(3))
+							if(worldIn.getBlockState(pos.north(4).east()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.north(4).west()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.south(4).east()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.south(4).west()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.west(4).north()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.west(4).south()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.east(4).north()) == Blocks.STONE.getStateFromMeta(3) && worldIn.getBlockState(pos.east(4).south()) == Blocks.STONE.getStateFromMeta(3))
 							{
-								if(worldIn.func_180495_p(pos.func_177964_d(3).func_177965_g(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177964_d(3).func_177985_f(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177970_e(3).func_177965_g(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177970_e(3).func_177985_f(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177985_f(3).func_177964_d(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177985_f(3).func_177970_e(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177965_g(3).func_177964_d(3)) == Blocks.field_150348_b.func_176203_a(5) && worldIn.func_180495_p(pos.func_177984_a().func_177965_g(3).func_177970_e(3)) == Blocks.field_150348_b.func_176203_a(5))
+								if(worldIn.getBlockState(pos.north(3).east(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.north(3).west(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.south(3).east(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.south(3).west(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().west(3).north(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().west(3).south(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().east(3).north(3)) == Blocks.STONE.getStateFromMeta(5) && worldIn.getBlockState(pos.up().east(3).south(3)) == Blocks.STONE.getStateFromMeta(5))
 								{
-									if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c()) == Blocks.field_150340_R.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177974_f()) == Blocks.field_150340_R.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177968_d()) == Blocks.field_150340_R.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177976_e()) == Blocks.field_150340_R.func_176223_P())
+									if(worldIn.getBlockState(pos.down().north()) == Blocks.GOLD_BLOCK.getDefaultState() && worldIn.getBlockState(pos.down().east()) == Blocks.GOLD_BLOCK.getDefaultState() && worldIn.getBlockState(pos.down().south()) == Blocks.GOLD_BLOCK.getDefaultState() && worldIn.getBlockState(pos.down().west()) == Blocks.GOLD_BLOCK.getDefaultState())
 									{
 										/*if(placer.getHeldItemOffhand().getItem() == Items.EGG)
 										{						
@@ -163,50 +163,50 @@ public class BlockElementalStone extends Block {
 											worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());	
 											worldIn.spawnEntity(e);
 										}*/
-										if(placer.func_184592_cb().func_77973_b() == Items.field_151034_e)
+										if(placer.getHeldItemOffhand().getItem() == Items.APPLE)
 										{						
-											worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());	
-											worldIn.func_72838_d(new EntityItem(worldIn, pos.func_177958_n() + 0.5, pos.func_177956_o() + 1, pos.func_177952_p() + 0.5, new ItemStack(ItemMod.infinite_apple)));																											
+											worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());	
+											worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ItemMod.infinite_apple)));																											
 										
 										}
 										else
 										{
-											worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());	
-											worldIn.func_72838_d(new EntityItem(worldIn, pos.func_177958_n() + 0.5, pos.func_177956_o() + 1, pos.func_177952_p() + 0.5, new ItemStack(ItemMod.midas_hand)));																											
+											worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());	
+											worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ItemMod.midas_hand)));																											
 										}
-										worldIn.func_175656_a(pos.func_177977_b().func_177978_c(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177974_f(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177968_d(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177976_e(), Blocks.field_150350_a.func_176223_P());
+										worldIn.setBlockState(pos.down().north(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().east(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().south(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().west(), Blocks.AIR.getDefaultState());
 									}
-									if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c()) == Blocks.field_189878_dg.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177974_f()) == Blocks.field_189878_dg.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177968_d()) == Blocks.field_189878_dg.func_176223_P() && worldIn.func_180495_p(pos.func_177977_b().func_177976_e()) == Blocks.field_189878_dg.func_176223_P())
+									if(worldIn.getBlockState(pos.down().north()) == Blocks.NETHER_WART_BLOCK.getDefaultState() && worldIn.getBlockState(pos.down().east()) == Blocks.NETHER_WART_BLOCK.getDefaultState() && worldIn.getBlockState(pos.down().south()) == Blocks.NETHER_WART_BLOCK.getDefaultState() && worldIn.getBlockState(pos.down().west()) == Blocks.NETHER_WART_BLOCK.getDefaultState())
 									{
-										worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());	
-										worldIn.func_72838_d(new EntityItem(worldIn, pos.func_177958_n() + 0.5, pos.func_177956_o() + 1, pos.func_177952_p() + 0.5, new ItemStack(ItemMod.horn_plenty)));																											
-										worldIn.func_175656_a(pos.func_177977_b().func_177978_c(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177974_f(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177968_d(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177976_e(), Blocks.field_150350_a.func_176223_P());
+										worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());	
+										worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ItemMod.horn_plenty)));																											
+										worldIn.setBlockState(pos.down().north(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().east(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().south(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().west(), Blocks.AIR.getDefaultState());
 									}
-									if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c()).func_177230_c() == Blocks.field_189880_di && worldIn.func_180495_p(pos.func_177977_b().func_177974_f()).func_177230_c() == Blocks.field_189880_di && worldIn.func_180495_p(pos.func_177977_b().func_177968_d()).func_177230_c() == Blocks.field_189880_di && worldIn.func_180495_p(pos.func_177977_b().func_177976_e()).func_177230_c() == Blocks.field_189880_di && placer.func_184592_cb().func_77973_b() == Items.field_151131_as)
+									if(worldIn.getBlockState(pos.down().north()).getBlock() == Blocks.BONE_BLOCK && worldIn.getBlockState(pos.down().east()).getBlock() == Blocks.BONE_BLOCK && worldIn.getBlockState(pos.down().south()).getBlock() == Blocks.BONE_BLOCK && worldIn.getBlockState(pos.down().west()).getBlock() == Blocks.BONE_BLOCK && placer.getHeldItemOffhand().getItem() == Items.WATER_BUCKET)
 									{
-										worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());	
-										worldIn.func_72838_d(new EntityItem(worldIn, pos.func_177958_n() + 0.5, pos.func_177956_o() + 1, pos.func_177952_p() + 0.5, new ItemStack(ItemMod.water_can)));																											
-										worldIn.func_175656_a(pos.func_177977_b().func_177978_c(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177974_f(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177968_d(), Blocks.field_150350_a.func_176223_P());
-										worldIn.func_175656_a(pos.func_177977_b().func_177976_e(), Blocks.field_150350_a.func_176223_P());
+										worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());	
+										worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ItemMod.water_can)));																											
+										worldIn.setBlockState(pos.down().north(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().east(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().south(), Blocks.AIR.getDefaultState());
+										worldIn.setBlockState(pos.down().west(), Blocks.AIR.getDefaultState());
 									}
 									if(ConfigInit.death == true)
 									{
-										if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c()) == BlockMod.block_crop_diamond.func_176203_a(7) && worldIn.func_180495_p(pos.func_177977_b().func_177974_f()) == BlockMod.block_crop_diamond.func_176203_a(7) && worldIn.func_180495_p(pos.func_177977_b().func_177968_d()) == BlockMod.block_crop_diamond.func_176203_a(7) && worldIn.func_180495_p(pos.func_177977_b().func_177976_e()) == BlockMod.block_crop_diamond.func_176203_a(7))									
+										if(worldIn.getBlockState(pos.down().north()) == BlockMod.block_crop_diamond.getStateFromMeta(7) && worldIn.getBlockState(pos.down().east()) == BlockMod.block_crop_diamond.getStateFromMeta(7) && worldIn.getBlockState(pos.down().south()) == BlockMod.block_crop_diamond.getStateFromMeta(7) && worldIn.getBlockState(pos.down().west()) == BlockMod.block_crop_diamond.getStateFromMeta(7))									
 										{
-											worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());	
-											worldIn.func_72838_d(new EntityItem(worldIn, pos.func_177958_n() + 0.5, pos.func_177956_o() + 1, pos.func_177952_p() + 0.5, new ItemStack(ItemMod.seed_crop_death)));																											
-											worldIn.func_175656_a(pos.func_177977_b().func_177978_c(), Blocks.field_150350_a.func_176223_P());
-											worldIn.func_175656_a(pos.func_177977_b().func_177974_f(), Blocks.field_150350_a.func_176223_P());
-											worldIn.func_175656_a(pos.func_177977_b().func_177968_d(), Blocks.field_150350_a.func_176223_P());
-											worldIn.func_175656_a(pos.func_177977_b().func_177976_e(), Blocks.field_150350_a.func_176223_P());
+											worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());	
+											worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ItemMod.seed_crop_death)));																											
+											worldIn.setBlockState(pos.down().north(), Blocks.AIR.getDefaultState());
+											worldIn.setBlockState(pos.down().east(), Blocks.AIR.getDefaultState());
+											worldIn.setBlockState(pos.down().south(), Blocks.AIR.getDefaultState());
+											worldIn.setBlockState(pos.down().west(), Blocks.AIR.getDefaultState());
 										}
 									}
 									
@@ -216,142 +216,142 @@ public class BlockElementalStone extends Block {
 					}
 				}
 			}	
-			IBlockState soulsand = Blocks.field_150425_aM.func_176223_P();
-			IBlockState elemental = BlockMod.elemental_cobblestone.func_176223_P();
-			IBlockState slab = Blocks.field_150333_U.func_176203_a(3);
-			IBlockState lave = Blocks.field_150353_l.func_176223_P();
-			IBlockState plant = BlockMod.block_crop_death.func_176203_a(7);
-			IBlockState nether = Blocks.field_150385_bj.func_176223_P();
-			IBlockState stone = BlockMod.elemental_stone.func_176223_P();
-			IBlockState nethers = Blocks.field_150333_U.func_176203_a(6);
-			IBlockState nethersu = Blocks.field_150333_U.func_176203_a(14);
-			IBlockState magma = Blocks.field_189877_df.func_176223_P();
+			IBlockState soulsand = Blocks.SOUL_SAND.getDefaultState();
+			IBlockState elemental = BlockMod.elemental_cobblestone.getDefaultState();
+			IBlockState slab = Blocks.STONE_SLAB.getStateFromMeta(3);
+			IBlockState lave = Blocks.LAVA.getDefaultState();
+			IBlockState plant = BlockMod.block_crop_death.getStateFromMeta(7);
+			IBlockState nether = Blocks.NETHER_BRICK.getDefaultState();
+			IBlockState stone = BlockMod.elemental_stone.getDefaultState();
+			IBlockState nethers = Blocks.STONE_SLAB.getStateFromMeta(6);
+			IBlockState nethersu = Blocks.STONE_SLAB.getStateFromMeta(14);
+			IBlockState magma = Blocks.MAGMA.getDefaultState();
 			//Death ritual
-			if(!worldIn.field_72995_K && worldIn.func_180495_p(pos.func_177977_b()) == elemental && worldIn.func_180495_p(pos.func_177977_b().func_177964_d(2)) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177970_e(2)) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177965_g(2)) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177985_f(2)) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177978_c().func_177976_e()) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177978_c().func_177974_f()) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177968_d().func_177976_e()) == soulsand && worldIn.func_180495_p(pos.func_177977_b().func_177968_d().func_177974_f()) == soulsand)
+			if(!worldIn.isRemote && worldIn.getBlockState(pos.down()) == elemental && worldIn.getBlockState(pos.down().north(2)) == soulsand && worldIn.getBlockState(pos.down().south(2)) == soulsand && worldIn.getBlockState(pos.down().east(2)) == soulsand && worldIn.getBlockState(pos.down().west(2)) == soulsand && worldIn.getBlockState(pos.down().north().west()) == soulsand && worldIn.getBlockState(pos.down().north().east()) == soulsand && worldIn.getBlockState(pos.down().south().west()) == soulsand && worldIn.getBlockState(pos.down().south().east()) == soulsand)
 			{
-				if(worldIn.func_180495_p(pos.func_177978_c()) == slab && worldIn.func_180495_p(pos.func_177968_d()) == slab && worldIn.func_180495_p(pos.func_177974_f()) == slab && worldIn.func_180495_p(pos.func_177976_e()) == slab)
+				if(worldIn.getBlockState(pos.north()) == slab && worldIn.getBlockState(pos.south()) == slab && worldIn.getBlockState(pos.east()) == slab && worldIn.getBlockState(pos.west()) == slab)
 				{
-					if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177976_e()) == lave && worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177974_f()) == lave
-							&& worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177976_e()) == lave && worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177974_f()) == lave
-							&& worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177968_d()) == lave && worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177978_c()) == lave
-							&& worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177968_d()) == lave && worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177978_c()) == lave)
+					if(worldIn.getBlockState(pos.down().north(4).west()) == lave && worldIn.getBlockState(pos.down().north(4).east()) == lave
+							&& worldIn.getBlockState(pos.down().south(4).west()) == lave && worldIn.getBlockState(pos.down().south(4).east()) == lave
+							&& worldIn.getBlockState(pos.down().east(4).south()) == lave && worldIn.getBlockState(pos.down().east(4).north()) == lave
+							&& worldIn.getBlockState(pos.down().west(4).south()) == lave && worldIn.getBlockState(pos.down().west(4).north()) == lave)
 					{	
-					if(worldIn.func_180495_p(pos.func_177964_d(5).func_177976_e()) == plant && worldIn.func_180495_p(pos.func_177964_d(5).func_177974_f()) == plant && worldIn.func_180495_p(pos.func_177964_d(5)) == plant
-							&& worldIn.func_180495_p(pos.func_177970_e(5).func_177976_e()) == plant && worldIn.func_180495_p(pos.func_177970_e(5).func_177974_f()) == plant && worldIn.func_180495_p(pos.func_177970_e(5)) == plant
-							&& worldIn.func_180495_p(pos.func_177965_g(5).func_177968_d()) == plant && worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c()) == plant && worldIn.func_180495_p(pos.func_177965_g(5)) == plant
-							&& worldIn.func_180495_p(pos.func_177985_f(5).func_177968_d()) == plant && worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c()) == plant && worldIn.func_180495_p(pos.func_177985_f(5)) == plant)
+					if(worldIn.getBlockState(pos.north(5).west()) == plant && worldIn.getBlockState(pos.north(5).east()) == plant && worldIn.getBlockState(pos.north(5)) == plant
+							&& worldIn.getBlockState(pos.south(5).west()) == plant && worldIn.getBlockState(pos.south(5).east()) == plant && worldIn.getBlockState(pos.south(5)) == plant
+							&& worldIn.getBlockState(pos.east(5).south()) == plant && worldIn.getBlockState(pos.east(5).north()) == plant && worldIn.getBlockState(pos.east(5)) == plant
+							&& worldIn.getBlockState(pos.west(5).south()) == plant && worldIn.getBlockState(pos.west(5).north()) == plant && worldIn.getBlockState(pos.west(5)) == plant)
 						{
-						if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4)) == nether && worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4).func_177984_a()) == elemental && worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4).func_177981_b(2)) == elemental && worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4).func_177981_b(3)) == nethers
-								&& worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4)) == nether && worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4).func_177984_a()) == elemental && worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4).func_177981_b(2)) == elemental && worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4).func_177981_b(3)) == nethers
-								&& worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4)) == nether && worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4).func_177984_a()) == elemental && worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4).func_177981_b(2)) == elemental && worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4).func_177981_b(3)) == nethers
-								&& worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4)) == nether && worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4).func_177984_a()) == elemental && worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4).func_177981_b(2)) == elemental && worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4).func_177981_b(3)) == nethers)
+						if(worldIn.getBlockState(pos.north(4).east(4)) == nether && worldIn.getBlockState(pos.north(4).east(4).up()) == elemental && worldIn.getBlockState(pos.north(4).east(4).up(2)) == elemental && worldIn.getBlockState(pos.north(4).east(4).up(3)) == nethers
+								&& worldIn.getBlockState(pos.south(4).east(4)) == nether && worldIn.getBlockState(pos.south(4).east(4).up()) == elemental && worldIn.getBlockState(pos.south(4).east(4).up(2)) == elemental && worldIn.getBlockState(pos.south(4).east(4).up(3)) == nethers
+								&& worldIn.getBlockState(pos.north(4).west(4)) == nether && worldIn.getBlockState(pos.north(4).west(4).up()) == elemental && worldIn.getBlockState(pos.north(4).west(4).up(2)) == elemental && worldIn.getBlockState(pos.north(4).west(4).up(3)) == nethers
+								&& worldIn.getBlockState(pos.south(4).west(4)) == nether && worldIn.getBlockState(pos.south(4).west(4).up()) == elemental && worldIn.getBlockState(pos.south(4).west(4).up(2)) == elemental && worldIn.getBlockState(pos.south(4).west(4).up(3)) == nethers)
 						{
-							if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2)) == nether	
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177984_a()) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177981_b(2)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177981_b(3)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177981_b(4)) == nethers
-								&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177984_a()) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177981_b(2)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177981_b(3)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177981_b(4)) == nethers
-								&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177984_a()) == nethersu
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(2)) == magma
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(3)) == nethers
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(4)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(5)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(6)) == nether
-								&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177984_a()) == nethersu
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(2)) == magma
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(3)) == nethers
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(4)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(5)) == nether
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(6)) == nether
-								&& worldIn.func_180495_p(pos.func_177964_d(5).func_177981_b(5)) == nethersu
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177981_b(6)) == magma
-									&& worldIn.func_180495_p(pos.func_177964_d(5).func_177981_b(7)) == nethers)
+							if(worldIn.getBlockState(pos.north(5).east(2)) == nether	
+									&& worldIn.getBlockState(pos.north(5).east(2).up()) == nether
+									&& worldIn.getBlockState(pos.north(5).east(2).up(2)) == nether
+									&& worldIn.getBlockState(pos.north(5).east(2).up(3)) == nether
+									&& worldIn.getBlockState(pos.north(5).east(2).up(4)) == nethers
+								&& worldIn.getBlockState(pos.north(5).west(2)) == nether
+									&& worldIn.getBlockState(pos.north(5).west(2).up()) == nether
+									&& worldIn.getBlockState(pos.north(5).west(2).up(2)) == nether
+									&& worldIn.getBlockState(pos.north(5).west(2).up(3)) == nether
+									&& worldIn.getBlockState(pos.north(5).west(2).up(4)) == nethers
+								&& worldIn.getBlockState(pos.north(5).east(1).up()) == nethersu
+									&& worldIn.getBlockState(pos.north(5).east(1).up(2)) == magma
+									&& worldIn.getBlockState(pos.north(5).east(1).up(3)) == nethers
+									&& worldIn.getBlockState(pos.north(5).east(1).up(4)) == nether
+									&& worldIn.getBlockState(pos.north(5).east(1).up(5)) == nether
+									&& worldIn.getBlockState(pos.north(5).east(1).up(6)) == nether
+								&& worldIn.getBlockState(pos.north(5).west(1).up()) == nethersu
+									&& worldIn.getBlockState(pos.north(5).west(1).up(2)) == magma
+									&& worldIn.getBlockState(pos.north(5).west(1).up(3)) == nethers
+									&& worldIn.getBlockState(pos.north(5).west(1).up(4)) == nether
+									&& worldIn.getBlockState(pos.north(5).west(1).up(5)) == nether
+									&& worldIn.getBlockState(pos.north(5).west(1).up(6)) == nether
+								&& worldIn.getBlockState(pos.north(5).up(5)) == nethersu
+									&& worldIn.getBlockState(pos.north(5).up(6)) == magma
+									&& worldIn.getBlockState(pos.north(5).up(7)) == nethers)
 							{
-								if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2)) == nether	
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177984_a()) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177981_b(2)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177981_b(3)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177981_b(4)) == nethers
-									&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177984_a()) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177981_b(2)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177981_b(3)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177981_b(4)) == nethers
-									&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177984_a()) == nethersu
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(2)) == magma
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(3)) == nethers
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(4)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(5)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(6)) == nether
-									&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177984_a()) == nethersu
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(2)) == magma
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(3)) == nethers
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(4)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(5)) == nether
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(6)) == nether
-									&& worldIn.func_180495_p(pos.func_177970_e(5).func_177981_b(5)) == nethersu
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177981_b(6)) == magma
-										&& worldIn.func_180495_p(pos.func_177970_e(5).func_177981_b(7)) == nethers)
+								if(worldIn.getBlockState(pos.south(5).east(2)) == nether	
+										&& worldIn.getBlockState(pos.south(5).east(2).up()) == nether
+										&& worldIn.getBlockState(pos.south(5).east(2).up(2)) == nether
+										&& worldIn.getBlockState(pos.south(5).east(2).up(3)) == nether
+										&& worldIn.getBlockState(pos.south(5).east(2).up(4)) == nethers
+									&& worldIn.getBlockState(pos.south(5).west(2)) == nether
+										&& worldIn.getBlockState(pos.south(5).west(2).up()) == nether
+										&& worldIn.getBlockState(pos.south(5).west(2).up(2)) == nether
+										&& worldIn.getBlockState(pos.south(5).west(2).up(3)) == nether
+										&& worldIn.getBlockState(pos.south(5).west(2).up(4)) == nethers
+									&& worldIn.getBlockState(pos.south(5).east(1).up()) == nethersu
+										&& worldIn.getBlockState(pos.south(5).east(1).up(2)) == magma
+										&& worldIn.getBlockState(pos.south(5).east(1).up(3)) == nethers
+										&& worldIn.getBlockState(pos.south(5).east(1).up(4)) == nether
+										&& worldIn.getBlockState(pos.south(5).east(1).up(5)) == nether
+										&& worldIn.getBlockState(pos.south(5).east(1).up(6)) == nether
+									&& worldIn.getBlockState(pos.south(5).west(1).up()) == nethersu
+										&& worldIn.getBlockState(pos.south(5).west(1).up(2)) == magma
+										&& worldIn.getBlockState(pos.south(5).west(1).up(3)) == nethers
+										&& worldIn.getBlockState(pos.south(5).west(1).up(4)) == nether
+										&& worldIn.getBlockState(pos.south(5).west(1).up(5)) == nether
+										&& worldIn.getBlockState(pos.south(5).west(1).up(6)) == nether
+									&& worldIn.getBlockState(pos.south(5).up(5)) == nethersu
+										&& worldIn.getBlockState(pos.south(5).up(6)) == magma
+										&& worldIn.getBlockState(pos.south(5).up(7)) == nethers)
 								{
-									if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2)) == nether	
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177984_a()) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177981_b(2)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177981_b(3)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177981_b(4)) == nethers
-										&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177984_a()) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(2)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(3)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(4)) == nethers
-										&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(1).func_177984_a()) == nethersu
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(1).func_177981_b(2)) == magma
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(1).func_177981_b(3)) == nethers
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(1).func_177981_b(4)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(1).func_177981_b(5)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(1).func_177981_b(6)) == nether
-										&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(1).func_177984_a()) == nethersu
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(1).func_177981_b(2)) == magma
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(1).func_177981_b(3)) == nethers
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(1).func_177981_b(4)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(1).func_177981_b(5)) == nether
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(1).func_177981_b(6)) == nether
-										&& worldIn.func_180495_p(pos.func_177965_g(5).func_177981_b(5)) == nethersu
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177981_b(6)) == magma
-											&& worldIn.func_180495_p(pos.func_177965_g(5).func_177981_b(7)) == nethers)
+									if(worldIn.getBlockState(pos.east(5).north(2)) == nether	
+											&& worldIn.getBlockState(pos.east(5).north(2).up()) == nether
+											&& worldIn.getBlockState(pos.east(5).north(2).up(2)) == nether
+											&& worldIn.getBlockState(pos.east(5).north(2).up(3)) == nether
+											&& worldIn.getBlockState(pos.east(5).north(2).up(4)) == nethers
+										&& worldIn.getBlockState(pos.east(5).south(2)) == nether
+											&& worldIn.getBlockState(pos.east(5).south(2).up()) == nether
+											&& worldIn.getBlockState(pos.east(5).south(2).up(2)) == nether
+											&& worldIn.getBlockState(pos.east(5).south(2).up(3)) == nether
+											&& worldIn.getBlockState(pos.east(5).south(2).up(4)) == nethers
+										&& worldIn.getBlockState(pos.east(5).north(1).up()) == nethersu
+											&& worldIn.getBlockState(pos.east(5).north(1).up(2)) == magma
+											&& worldIn.getBlockState(pos.east(5).north(1).up(3)) == nethers
+											&& worldIn.getBlockState(pos.east(5).north(1).up(4)) == nether
+											&& worldIn.getBlockState(pos.east(5).north(1).up(5)) == nether
+											&& worldIn.getBlockState(pos.east(5).north(1).up(6)) == nether
+										&& worldIn.getBlockState(pos.east(5).south(1).up()) == nethersu
+											&& worldIn.getBlockState(pos.east(5).south(1).up(2)) == magma
+											&& worldIn.getBlockState(pos.east(5).south(1).up(3)) == nethers
+											&& worldIn.getBlockState(pos.east(5).south(1).up(4)) == nether
+											&& worldIn.getBlockState(pos.east(5).south(1).up(5)) == nether
+											&& worldIn.getBlockState(pos.east(5).south(1).up(6)) == nether
+										&& worldIn.getBlockState(pos.east(5).up(5)) == nethersu
+											&& worldIn.getBlockState(pos.east(5).up(6)) == magma
+											&& worldIn.getBlockState(pos.east(5).up(7)) == nethers)
 									{
-										if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2)) == nether	
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177984_a()) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177981_b(2)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177981_b(3)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177981_b(4)) == nethers
-											&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177984_a()) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(2)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(3)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(4)) == nethers
-											&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(1).func_177984_a()) == nethersu
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(1).func_177981_b(2)) == magma
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(1).func_177981_b(3)) == nethers
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(1).func_177981_b(4)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(1).func_177981_b(5)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(1).func_177981_b(6)) == nether
-											&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(1).func_177984_a()) == nethersu
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(1).func_177981_b(2)) == magma
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(1).func_177981_b(3)) == nethers
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(1).func_177981_b(4)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(1).func_177981_b(5)) == nether
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(1).func_177981_b(6)) == nether
-											&& worldIn.func_180495_p(pos.func_177985_f(5).func_177981_b(5)) == nethersu
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177981_b(6)) == magma
-												&& worldIn.func_180495_p(pos.func_177985_f(5).func_177981_b(7)) == nethers)
+										if(worldIn.getBlockState(pos.west(5).north(2)) == nether	
+												&& worldIn.getBlockState(pos.west(5).north(2).up()) == nether
+												&& worldIn.getBlockState(pos.west(5).north(2).up(2)) == nether
+												&& worldIn.getBlockState(pos.west(5).north(2).up(3)) == nether
+												&& worldIn.getBlockState(pos.west(5).north(2).up(4)) == nethers
+											&& worldIn.getBlockState(pos.west(5).south(2)) == nether
+												&& worldIn.getBlockState(pos.west(5).south(2).up()) == nether
+												&& worldIn.getBlockState(pos.west(5).south(2).up(2)) == nether
+												&& worldIn.getBlockState(pos.west(5).south(2).up(3)) == nether
+												&& worldIn.getBlockState(pos.west(5).south(2).up(4)) == nethers
+											&& worldIn.getBlockState(pos.west(5).north(1).up()) == nethersu
+												&& worldIn.getBlockState(pos.west(5).north(1).up(2)) == magma
+												&& worldIn.getBlockState(pos.west(5).north(1).up(3)) == nethers
+												&& worldIn.getBlockState(pos.west(5).north(1).up(4)) == nether
+												&& worldIn.getBlockState(pos.west(5).north(1).up(5)) == nether
+												&& worldIn.getBlockState(pos.west(5).north(1).up(6)) == nether
+											&& worldIn.getBlockState(pos.west(5).south(1).up()) == nethersu
+												&& worldIn.getBlockState(pos.west(5).south(1).up(2)) == magma
+												&& worldIn.getBlockState(pos.west(5).south(1).up(3)) == nethers
+												&& worldIn.getBlockState(pos.west(5).south(1).up(4)) == nether
+												&& worldIn.getBlockState(pos.west(5).south(1).up(5)) == nether
+												&& worldIn.getBlockState(pos.west(5).south(1).up(6)) == nether
+											&& worldIn.getBlockState(pos.west(5).up(5)) == nethersu
+												&& worldIn.getBlockState(pos.west(5).up(6)) == magma
+												&& worldIn.getBlockState(pos.west(5).up(7)) == nethers)
 										{
-											worldIn.func_175656_a(pos.func_177984_a(), BlockMod.reaper_spawn.func_176223_P());
-											worldIn.func_175656_a(pos, Blocks.field_150347_e.func_176223_P());
+											worldIn.setBlockState(pos.up(), BlockMod.reaper_spawn.getDefaultState());
+											worldIn.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
 										}
 									}
 								}

@@ -11,12 +11,12 @@ public class CompatBlockCrop extends BlockCrops
 	
 	public CompatBlockCrop(String name) 
 	{
-		this.func_149663_c(name);
+		this.setUnlocalizedName(name);
 		this.name = name;
 	}
 	 
 	@Override
-	protected Item func_149866_i()
+	protected Item getSeed()
 	{
 		if(name == "block_crop_aluminium")
 		{
@@ -74,7 +74,7 @@ public class CompatBlockCrop extends BlockCrops
 	}
 
 	@Override
-	protected Item func_149865_P()
+	protected Item getCrop()
 	{
 		if(name == "block_crop_aluminium")
 		{

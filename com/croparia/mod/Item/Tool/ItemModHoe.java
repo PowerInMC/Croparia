@@ -18,46 +18,46 @@ public class ItemModHoe extends HoeCroparia
         super(material);
     }
     
-    public boolean func_82789_a(ItemStack input, ItemStack repair)
+    public boolean getIsRepairable(ItemStack input, ItemStack repair)
     {
-        if(input.func_77973_b() == ItemMod.air_hoe)
+        if(input.getItem() == ItemMod.air_hoe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_air)
+            if(repair.getItem() == ItemMod.elemental_air)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.fire_hoe)
+        else if(input.getItem() == ItemMod.fire_hoe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_fire)
+            if(repair.getItem() == ItemMod.elemental_fire)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.water_hoe)
+        else if(input.getItem() == ItemMod.water_hoe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_water)
+            if(repair.getItem() == ItemMod.elemental_water)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.earth_hoe)
+        else if(input.getItem() == ItemMod.earth_hoe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_earth)
+            if(repair.getItem() == ItemMod.elemental_earth)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.obsidian_hoe)
+        else if(input.getItem() == ItemMod.obsidian_hoe)
         {
-            if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+            if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.renforced_hoe)
+        else if(input.getItem() == ItemMod.renforced_hoe)
         {
-            if(repair.func_77973_b() == Items.field_151045_i)
+            if(repair.getItem() == Items.DIAMOND)
             {
                 return true;
             }

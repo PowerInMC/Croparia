@@ -21,19 +21,19 @@ public class ItemMidasHand extends Item
 {
 	public ItemMidasHand(String name)
 	{
-		func_77655_b(name);
+		setUnlocalizedName(name);
 		setRegistryName(name);
-		func_77625_d(1);
-		func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+		setMaxStackSize(1);
+		setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 	}
 	@Override
-	public EnumActionResult func_180614_a(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 
-		if(worldIn.func_180495_p(pos) != Blocks.field_150357_h.func_176223_P() && !worldIn.field_72995_K)
+		if(worldIn.getBlockState(pos) != Blocks.BEDROCK.getDefaultState() && !worldIn.isRemote)
 		{		
-			worldIn.func_175656_a(pos, Blocks.field_150350_a.func_176223_P());
-			worldIn.func_72838_d(new EntityItem(worldIn, pos.func_177958_n(), pos.func_177956_o(), pos.func_177952_p(), new ItemStack(Items.field_151043_k)));	
+			worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.GOLD_INGOT)));	
 		}			
 		return EnumActionResult.SUCCESS;
 	}
@@ -41,8 +41,8 @@ public class ItemMidasHand extends Item
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) 
 	{
-		entity.field_70170_p.func_175656_a(entity.func_180425_c(), Blocks.field_150340_R.func_176223_P());
-		entity.func_70106_y();
+		entity.world.setBlockState(entity.getPosition(), Blocks.GOLD_BLOCK.getDefaultState());
+		entity.setDead();
 		return true;
 	}
 }

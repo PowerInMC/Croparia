@@ -24,6 +24,6 @@ public class ItemModFood extends ItemFood
 	public ItemModFood(int amount, float saturation, boolean isWolfFood)
     {
 		super(amount, saturation, isWolfFood);
-		this.func_77637_a(tab);
+		this.setCreativeTab(tab);
     }  
 }

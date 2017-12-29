@@ -19,39 +19,39 @@ public class BlockModCloud extends BlockGlass
 {
 
 	public BlockModCloud(String name) {
-		super(Material.field_151592_s, true);
-		this.func_149663_c(name);
-		this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
+		super(Material.GLASS, true);
+		this.setUnlocalizedName(name);
+		this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 	}
 
 	@Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer func_180664_k()
+    public BlockRenderLayer getBlockLayer()
     {
         return BlockRenderLayer.TRANSLUCENT;
     }
 	
 	@Override
-	public AxisAlignedBB func_185496_a(IBlockState state, IBlockAccess source, BlockPos pos) {
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		// TODO Auto-generated method stub
-		return Blocks.field_150413_aR.func_185496_a(state, source, pos);
+		return Blocks.UNPOWERED_REPEATER.getBoundingBox(state, source, pos);
 	}
 	
 	
 	@Override
-	public boolean func_149662_c(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
-	public boolean func_149751_l(IBlockState state) {
+	public boolean isTranslucent(IBlockState state) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
-    public boolean func_149686_d(IBlockState state)
+    public boolean isFullCube(IBlockState state)
     {
         return false;
     }

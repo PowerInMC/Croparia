@@ -25,12 +25,12 @@ public class BlockElemental extends Block{
 
 	public BlockElemental(String name) 
 	{
-		super(Material.field_151576_e);
-		func_149663_c(name);
-		func_149711_c(1.5F);
-		func_149752_b(10.0F);
-		func_149672_a(SoundType.field_185851_d);
-		this.func_149675_a(true);
+		super(Material.ROCK);
+		setUnlocalizedName(name);
+		setHardness(1.5F);
+		setResistance(10.0F);
+		setSoundType(SoundType.STONE);
+		this.setTickRandomly(true);
 		
 	}	
 }

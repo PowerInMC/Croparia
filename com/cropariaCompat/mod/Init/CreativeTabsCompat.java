@@ -15,7 +15,7 @@ public class CreativeTabsCompat
     public static final CreativeTabs MOD_COMPAT = new CreativeTabs("MOD_COMPAT")
 	{
 		@SideOnly(Side.CLIENT)
-        public ItemStack func_78016_d()
+        public ItemStack getTabIconItem()
         {
             return new ItemStack(ItemMod.seed_crop_diamond);
         }

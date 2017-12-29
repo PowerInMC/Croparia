@@ -27,50 +27,50 @@ public class BlockRitualGhost extends Block{
 	private int i = 0;
 	
 	public BlockRitualGhost() {
-		super(Material.field_151578_c);
-		func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
+		super(Material.GROUND);
+		setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 	}
 
 	@Override
-	public boolean func_180639_a(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
 	{
-		if(!worldIn.field_72995_K)
+		if(!worldIn.isRemote)
 		{	
 			if(i <= 3)
 				i++;
 			if(i > 3)
 				i = 1;
 			if(i == 1)
-				Minecraft.func_71410_x().field_71439_g.func_71165_d("First Ritual");
+				Minecraft.getMinecraft().player.sendChatMessage("First Ritual");
 			if(i == 2)
-				Minecraft.func_71410_x().field_71439_g.func_71165_d("Second Ritual");
+				Minecraft.getMinecraft().player.sendChatMessage("Second Ritual");
 			if(i == 3)
-				Minecraft.func_71410_x().field_71439_g.func_71165_d("Death Ritual");
+				Minecraft.getMinecraft().player.sendChatMessage("Death Ritual");
 		}
 		return true;
 	}
 	
 	@SideOnly(Side.CLIENT)
    @Override
-    public BlockRenderLayer func_180664_k()
+    public BlockRenderLayer getBlockLayer()
     {
         return BlockRenderLayer.TRANSLUCENT;
     }
 	@Override
-	public boolean func_149662_c(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
-	public boolean func_149751_l(IBlockState state) {
+	public boolean isTranslucent(IBlockState state) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
-    public boolean func_149686_d(IBlockState state)
+    public boolean isFullCube(IBlockState state)
     {
         return false;
     }
@@ -79,586 +79,586 @@ public class BlockRitualGhost extends Block{
 	
 	
 	@Override
-	public void func_176199_a(World worldIn, BlockPos pos, Entity entityIn)
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
 		{
-		IBlockState soulsand = BlockMod.ghost_soulsand.func_176223_P();
-		IBlockState andesite = BlockMod.ghost_andesite.func_176223_P();
-		IBlockState polished_andesite = BlockMod.ghost_polished_andesite.func_176223_P();
-		IBlockState elemental = BlockMod.ghost_elemental_cobble.func_176223_P();
-		IBlockState elementalstone = BlockMod.ghost_elementalstone.func_176223_P();
-		IBlockState slab = BlockMod.ghost_slabstone.func_176223_P();
-		IBlockState lave = BlockMod.ghost_lava.func_176223_P();
-		IBlockState waterliquid = BlockMod.ghost_waterliquid.func_176223_P();
-		IBlockState plant = BlockMod.ghost_death.func_176203_a(7);
-		IBlockState cropredstone = BlockMod.ghost_redstone.func_176203_a(7);
-		IBlockState cropelemental = BlockMod.ghost_cropelemental.func_176203_a(7);
-		IBlockState nether = BlockMod.ghost_nether.func_176223_P();
-		IBlockState nethers = BlockMod.ghost_slabnether.func_176223_P();
-		IBlockState nethersu = BlockMod.ghost_slabnetherup.func_176223_P();
-		IBlockState magma = BlockMod.ghost_magma.func_176223_P();
-		IBlockState air = BlockMod.ghost_air.func_176223_P();
-		IBlockState fire = BlockMod.ghost_fire.func_176223_P();
-		IBlockState earth = BlockMod.ghost_earth.func_176223_P();
-		IBlockState water = BlockMod.ghost_water.func_176223_P();
-		IBlockState cropiron = BlockMod.ghost_cropiron.func_176223_P();
-		IBlockState cropgold = BlockMod.ghost_cropgold.func_176223_P();
-		IBlockState diorite = BlockMod.ghost_diorite.func_176223_P();
+		IBlockState soulsand = BlockMod.ghost_soulsand.getDefaultState();
+		IBlockState andesite = BlockMod.ghost_andesite.getDefaultState();
+		IBlockState polished_andesite = BlockMod.ghost_polished_andesite.getDefaultState();
+		IBlockState elemental = BlockMod.ghost_elemental_cobble.getDefaultState();
+		IBlockState elementalstone = BlockMod.ghost_elementalstone.getDefaultState();
+		IBlockState slab = BlockMod.ghost_slabstone.getDefaultState();
+		IBlockState lave = BlockMod.ghost_lava.getDefaultState();
+		IBlockState waterliquid = BlockMod.ghost_waterliquid.getDefaultState();
+		IBlockState plant = BlockMod.ghost_death.getStateFromMeta(7);
+		IBlockState cropredstone = BlockMod.ghost_redstone.getStateFromMeta(7);
+		IBlockState cropelemental = BlockMod.ghost_cropelemental.getStateFromMeta(7);
+		IBlockState nether = BlockMod.ghost_nether.getDefaultState();
+		IBlockState nethers = BlockMod.ghost_slabnether.getDefaultState();
+		IBlockState nethersu = BlockMod.ghost_slabnetherup.getDefaultState();
+		IBlockState magma = BlockMod.ghost_magma.getDefaultState();
+		IBlockState air = BlockMod.ghost_air.getDefaultState();
+		IBlockState fire = BlockMod.ghost_fire.getDefaultState();
+		IBlockState earth = BlockMod.ghost_earth.getDefaultState();
+		IBlockState water = BlockMod.ghost_water.getDefaultState();
+		IBlockState cropiron = BlockMod.ghost_cropiron.getDefaultState();
+		IBlockState cropgold = BlockMod.ghost_cropgold.getDefaultState();
+		IBlockState diorite = BlockMod.ghost_diorite.getDefaultState();
 		
-			if(i == 1 && entityIn instanceof EntityPlayer && worldIn.field_72995_K)
+			if(i == 1 && entityIn instanceof EntityPlayer && worldIn.isRemote)
 			{
-				if(worldIn.func_180495_p(pos.func_177977_b()) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b(), elemental);
+				if(worldIn.getBlockState(pos.down()) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.down(), elemental);
 				
-				if(worldIn.func_180495_p(pos.func_177978_c().func_177974_f()) != BlockMod.block_crop_iron.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177978_c().func_177974_f(), cropiron);
-				if(worldIn.func_180495_p(pos.func_177978_c().func_177976_e()) != BlockMod.block_crop_iron.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177978_c().func_177976_e(), cropiron);
-				if(worldIn.func_180495_p(pos.func_177968_d().func_177974_f()) != BlockMod.block_crop_iron.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177968_d().func_177974_f(), cropiron);
-				if(worldIn.func_180495_p(pos.func_177968_d().func_177976_e()) != BlockMod.block_crop_iron.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177968_d().func_177976_e(), cropiron);
+				if(worldIn.getBlockState(pos.north().east()) != BlockMod.block_crop_iron.getStateFromMeta(7))
+					worldIn.setBlockState(pos.north().east(), cropiron);
+				if(worldIn.getBlockState(pos.north().west()) != BlockMod.block_crop_iron.getStateFromMeta(7))
+					worldIn.setBlockState(pos.north().west(), cropiron);
+				if(worldIn.getBlockState(pos.south().east()) != BlockMod.block_crop_iron.getStateFromMeta(7))
+					worldIn.setBlockState(pos.south().east(), cropiron);
+				if(worldIn.getBlockState(pos.south().west()) != BlockMod.block_crop_iron.getStateFromMeta(7))
+					worldIn.setBlockState(pos.south().west(), cropiron);
 					
-				if(worldIn.func_180495_p(pos.func_177964_d(3)) != BlockMod.block_crop_gold.func_176203_a(7))	
-					worldIn.func_175656_a(pos.func_177964_d(3), cropgold);
-				if(worldIn.func_180495_p(pos.func_177970_e(3)) != BlockMod.block_crop_gold.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177970_e(3), cropgold);
-				if(worldIn.func_180495_p(pos.func_177965_g(3)) != BlockMod.block_crop_gold.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177965_g(3), cropgold);
-				if(worldIn.func_180495_p(pos.func_177985_f(3)) != BlockMod.block_crop_gold.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177985_f(3), cropgold);
+				if(worldIn.getBlockState(pos.north(3)) != BlockMod.block_crop_gold.getStateFromMeta(7))	
+					worldIn.setBlockState(pos.north(3), cropgold);
+				if(worldIn.getBlockState(pos.south(3)) != BlockMod.block_crop_gold.getStateFromMeta(7))
+					worldIn.setBlockState(pos.south(3), cropgold);
+				if(worldIn.getBlockState(pos.east(3)) != BlockMod.block_crop_gold.getStateFromMeta(7))
+					worldIn.setBlockState(pos.east(3), cropgold);
+				if(worldIn.getBlockState(pos.west(3)) != BlockMod.block_crop_gold.getStateFromMeta(7))
+					worldIn.setBlockState(pos.west(3), cropgold);
 					
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(2).func_177985_f(2)) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(2).func_177985_f(2), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(2).func_177965_g(2)) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(2).func_177965_g(2), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(2).func_177985_f(2)) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(2).func_177985_f(2), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(2).func_177965_g(2)) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(2).func_177965_g(2), waterliquid);
+				if(worldIn.getBlockState(pos.down().north(2).west(2)) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().north(2).west(2), waterliquid);
+				if(worldIn.getBlockState(pos.down().north(2).east(2)) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().north(2).east(2), waterliquid);
+				if(worldIn.getBlockState(pos.down().south(2).west(2)) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().south(2).west(2), waterliquid);
+				if(worldIn.getBlockState(pos.down().south(2).east(2)) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().south(2).east(2), waterliquid);
 					
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177974_f()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177974_f(), diorite);
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177976_e()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177976_e(), diorite);
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177974_f()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177974_f(), diorite);
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177976_e()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177976_e(), diorite);
-				if(worldIn.func_180495_p(pos.func_177985_f(4).func_177978_c()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177985_f(4).func_177978_c(), diorite);
-				if(worldIn.func_180495_p(pos.func_177985_f(4).func_177968_d()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177985_f(4).func_177968_d(), diorite);
-				if(worldIn.func_180495_p(pos.func_177965_g(4).func_177978_c()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177965_g(4).func_177978_c(), diorite);
-				if(worldIn.func_180495_p(pos.func_177965_g(4).func_177968_d()) != Blocks.field_150348_b.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177965_g(4).func_177968_d(), diorite);
+				if(worldIn.getBlockState(pos.north(4).east()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.north(4).east(), diorite);
+				if(worldIn.getBlockState(pos.north(4).west()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.north(4).west(), diorite);
+				if(worldIn.getBlockState(pos.south(4).east()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.south(4).east(), diorite);
+				if(worldIn.getBlockState(pos.south(4).west()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.south(4).west(), diorite);
+				if(worldIn.getBlockState(pos.west(4).north()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.west(4).north(), diorite);
+				if(worldIn.getBlockState(pos.west(4).south()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.west(4).south(), diorite);
+				if(worldIn.getBlockState(pos.east(4).north()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.east(4).north(), diorite);
+				if(worldIn.getBlockState(pos.east(4).south()) != Blocks.STONE.getStateFromMeta(3))
+					worldIn.setBlockState(pos.east(4).south(), diorite);
 					
-				if(worldIn.func_180495_p(pos.func_177964_d(3).func_177965_g(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177964_d(3).func_177965_g(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177964_d(3).func_177985_f(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177964_d(3).func_177985_f(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177970_e(3).func_177965_g(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177970_e(3).func_177965_g(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177970_e(3).func_177985_f(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177970_e(3).func_177985_f(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177985_f(3).func_177964_d(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177984_a().func_177985_f(3).func_177964_d(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177985_f(3).func_177970_e(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177984_a().func_177985_f(3).func_177970_e(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177965_g(3).func_177964_d(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177984_a().func_177965_g(3).func_177964_d(3), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177965_g(3).func_177970_e(3)) != Blocks.field_150348_b.func_176203_a(5))
-					worldIn.func_175656_a(pos.func_177984_a().func_177965_g(3).func_177970_e(3), andesite);
+				if(worldIn.getBlockState(pos.north(3).east(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.north(3).east(3), andesite);
+				if(worldIn.getBlockState(pos.north(3).west(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.north(3).west(3), andesite);
+				if(worldIn.getBlockState(pos.south(3).east(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.south(3).east(3), andesite);
+				if(worldIn.getBlockState(pos.south(3).west(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.south(3).west(3), andesite);
+				if(worldIn.getBlockState(pos.up().west(3).north(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.up().west(3).north(3), andesite);
+				if(worldIn.getBlockState(pos.up().west(3).south(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.up().west(3).south(3), andesite);
+				if(worldIn.getBlockState(pos.up().east(3).north(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.up().east(3).north(3), andesite);
+				if(worldIn.getBlockState(pos.up().east(3).south(3)) != Blocks.STONE.getStateFromMeta(5))
+					worldIn.setBlockState(pos.up().east(3).south(3), andesite);
 			
 			}
 			
-			if(i == 2 && entityIn instanceof EntityPlayer && worldIn.field_72995_K)
+			if(i == 2 && entityIn instanceof EntityPlayer && worldIn.isRemote)
 			{	
-				if(worldIn.func_180495_p(pos.func_177977_b()) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b(), elemental);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c()) != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177977_b().func_177978_c(), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177968_d()) != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177977_b().func_177968_d(), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177974_f())  != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177977_b().func_177974_f(), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177976_e())  != BlockMod.elemental_stone.func_176223_P())						
-					worldIn.func_175656_a(pos.func_177977_b().func_177976_e(), elementalstone);
+				if(worldIn.getBlockState(pos.down()) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.down(), elemental);
+				if(worldIn.getBlockState(pos.down().north()) != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.down().north(), elementalstone);
+				if(worldIn.getBlockState(pos.down().south()) != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.down().south(), elementalstone);
+				if(worldIn.getBlockState(pos.down().east())  != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.down().east(), elementalstone);
+				if(worldIn.getBlockState(pos.down().west())  != BlockMod.elemental_stone.getDefaultState())						
+					worldIn.setBlockState(pos.down().west(), elementalstone);
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(5)) != BlockMod.block_crop_redstone.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177964_d(5), cropredstone);
-				if(worldIn.func_180495_p(pos.func_177970_e(5)) != BlockMod.block_crop_redstone.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177970_e(5), cropredstone);
-				if(worldIn.func_180495_p(pos.func_177965_g(5))  != BlockMod.block_crop_redstone.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177965_g(5), cropredstone);
-				if(worldIn.func_180495_p(pos.func_177985_f(5))  != BlockMod.block_crop_redstone.func_176203_a(7))	
-					worldIn.func_175656_a(pos.func_177985_f(5), cropredstone);
+				if(worldIn.getBlockState(pos.north(5)) != BlockMod.block_crop_redstone.getStateFromMeta(7))
+					worldIn.setBlockState(pos.north(5), cropredstone);
+				if(worldIn.getBlockState(pos.south(5)) != BlockMod.block_crop_redstone.getStateFromMeta(7))
+					worldIn.setBlockState(pos.south(5), cropredstone);
+				if(worldIn.getBlockState(pos.east(5))  != BlockMod.block_crop_redstone.getStateFromMeta(7))
+					worldIn.setBlockState(pos.east(5), cropredstone);
+				if(worldIn.getBlockState(pos.west(5))  != BlockMod.block_crop_redstone.getStateFromMeta(7))	
+					worldIn.setBlockState(pos.west(5), cropredstone);
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(3).func_177985_f(3)) != BlockMod.elemental_crop.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177964_d(3).func_177985_f(3), cropelemental);
-				if(worldIn.func_180495_p(pos.func_177964_d(3).func_177965_g(3)) != BlockMod.elemental_crop.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177964_d(3).func_177965_g(3), cropelemental);
-				if(worldIn.func_180495_p(pos.func_177970_e(3).func_177985_f(3))  != BlockMod.elemental_crop.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177970_e(3).func_177985_f(3), cropelemental);
-				if(worldIn.func_180495_p(pos.func_177970_e(3).func_177965_g(3))  != BlockMod.elemental_crop.func_176203_a(7))
-					worldIn.func_175656_a(pos.func_177970_e(3).func_177965_g(3), cropelemental);
+				if(worldIn.getBlockState(pos.north(3).west(3)) != BlockMod.elemental_crop.getStateFromMeta(7))
+					worldIn.setBlockState(pos.north(3).west(3), cropelemental);
+				if(worldIn.getBlockState(pos.north(3).east(3)) != BlockMod.elemental_crop.getStateFromMeta(7))
+					worldIn.setBlockState(pos.north(3).east(3), cropelemental);
+				if(worldIn.getBlockState(pos.south(3).west(3))  != BlockMod.elemental_crop.getStateFromMeta(7))
+					worldIn.setBlockState(pos.south(3).west(3), cropelemental);
+				if(worldIn.getBlockState(pos.south(3).east(3))  != BlockMod.elemental_crop.getStateFromMeta(7))
+					worldIn.setBlockState(pos.south(3).east(3), cropelemental);
 				
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177976_e()) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(4).func_177976_e(), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177974_f()) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(4).func_177974_f(), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177976_e())  != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(4).func_177976_e(), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177974_f())  != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(4).func_177974_f(), waterliquid);
-				
-				
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177978_c()) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177985_f(4).func_177978_c(), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177968_d()) != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177985_f(4).func_177968_d(), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177978_c())  != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177965_g(4).func_177978_c(), waterliquid);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177968_d())  != Blocks.field_150355_j.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177965_g(4).func_177968_d(), waterliquid);
+				if(worldIn.getBlockState(pos.down().north(4).west()) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().north(4).west(), waterliquid);
+				if(worldIn.getBlockState(pos.down().north(4).east()) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().north(4).east(), waterliquid);
+				if(worldIn.getBlockState(pos.down().south(4).west())  != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().south(4).west(), waterliquid);
+				if(worldIn.getBlockState(pos.down().south(4).east())  != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().south(4).east(), waterliquid);
 				
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4)) != Blocks.field_150348_b.func_176203_a(6)) 
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177985_f(4), polished_andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177964_d(4).func_177985_f(4)) != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177964_d(4).func_177985_f(4), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(4).func_177985_f(4)) != Blocks.field_150348_b.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177964_d(4).func_177985_f(4), polished_andesite);
+				if(worldIn.getBlockState(pos.down().west(4).north()) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().west(4).north(), waterliquid);
+				if(worldIn.getBlockState(pos.down().west(4).south()) != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().west(4).south(), waterliquid);
+				if(worldIn.getBlockState(pos.down().east(4).north())  != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().east(4).north(), waterliquid);
+				if(worldIn.getBlockState(pos.down().east(4).south())  != Blocks.WATER.getDefaultState())
+					worldIn.setBlockState(pos.down().east(4).south(), waterliquid);
+				
+				
+				if(worldIn.getBlockState(pos.north(4).west(4)) != Blocks.STONE.getStateFromMeta(6)) 
+					worldIn.setBlockState(pos.north(4).west(4), polished_andesite);
+				if(worldIn.getBlockState(pos.up().north(4).west(4)) != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.up().north(4).west(4), elementalstone);
+				if(worldIn.getBlockState(pos.up(2).north(4).west(4)) != Blocks.STONE.getStateFromMeta(6))
+					worldIn.setBlockState(pos.up(2).north(4).west(4), polished_andesite);
 			
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4)) != Blocks.field_150348_b.func_176203_a(6)) 
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177965_g(4), polished_andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177964_d(4).func_177965_g(4)) != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177964_d(4).func_177965_g(4), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(4).func_177965_g(4)) != Blocks.field_150348_b.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177964_d(4).func_177965_g(4), polished_andesite);
+				if(worldIn.getBlockState(pos.north(4).east(4)) != Blocks.STONE.getStateFromMeta(6)) 
+					worldIn.setBlockState(pos.north(4).east(4), polished_andesite);
+				if(worldIn.getBlockState(pos.up().north(4).east(4)) != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.up().north(4).east(4), elementalstone);
+				if(worldIn.getBlockState(pos.up(2).north(4).east(4)) != Blocks.STONE.getStateFromMeta(6))
+					worldIn.setBlockState(pos.up(2).north(4).east(4), polished_andesite);
 				
 				
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4)) != Blocks.field_150348_b.func_176203_a(6)) 
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177985_f(4), polished_andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177970_e(4).func_177985_f(4)) != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177970_e(4).func_177985_f(4), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(4).func_177985_f(4)) != Blocks.field_150348_b.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177970_e(4).func_177985_f(4), polished_andesite);
+				if(worldIn.getBlockState(pos.south(4).west(4)) != Blocks.STONE.getStateFromMeta(6)) 
+					worldIn.setBlockState(pos.south(4).west(4), polished_andesite);
+				if(worldIn.getBlockState(pos.up().south(4).west(4)) != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.up().south(4).west(4), elementalstone);
+				if(worldIn.getBlockState(pos.up(2).south(4).west(4)) != Blocks.STONE.getStateFromMeta(6))
+					worldIn.setBlockState(pos.up(2).south(4).west(4), polished_andesite);
 				
 				
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4)) != Blocks.field_150348_b.func_176203_a(6)) 
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177965_g(4), polished_andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177970_e(4).func_177965_g(4)) != BlockMod.elemental_stone.func_176223_P()) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177970_e(4).func_177965_g(4), elementalstone);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(4).func_177965_g(4)) != Blocks.field_150348_b.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177970_e(4).func_177965_g(4), polished_andesite);
+				if(worldIn.getBlockState(pos.south(4).east(4)) != Blocks.STONE.getStateFromMeta(6)) 
+					worldIn.setBlockState(pos.south(4).east(4), polished_andesite);
+				if(worldIn.getBlockState(pos.up().south(4).east(4)) != BlockMod.elemental_stone.getDefaultState()) 
+					worldIn.setBlockState(pos.up().south(4).east(4), elementalstone);
+				if(worldIn.getBlockState(pos.up(2).south(4).east(4)) != Blocks.STONE.getStateFromMeta(6))
+					worldIn.setBlockState(pos.up(2).south(4).east(4), polished_andesite);
 				
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177964_d(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177964_d(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177964_d(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177964_d(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177964_d(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177964_d(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177964_d(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177964_d(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177964_d(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177974_f()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177964_d(5).func_177974_f(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5).func_177976_e()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177964_d(5).func_177976_e(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177964_d(5)) != BlockMod.water_block.func_176223_P())
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177964_d(5), water);
+				if(worldIn.getBlockState(pos.north(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.north(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.north(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.north(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up().north(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().north(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.up().north(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().north(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).north(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).north(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).north(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).north(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).north(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).north(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).north(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).north(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).north(5).east()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).north(5).east(), andesite);
+				if(worldIn.getBlockState(pos.up(3).north(5).west()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).north(5).west(), andesite);
+				if(worldIn.getBlockState(pos.up(3).north(5)) != BlockMod.water_block.getDefaultState())
+					worldIn.setBlockState(pos.up(3).north(5), water);
 				
 				
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177970_e(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177970_e(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177970_e(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177970_e(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177970_e(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177970_e(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177970_e(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177965_g(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177970_e(5).func_177965_g(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177985_f(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177970_e(5).func_177985_f(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177974_f()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177970_e(5).func_177974_f(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5).func_177976_e()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177970_e(5).func_177976_e(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177970_e(5)) != BlockMod.fire_block.func_176223_P())
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177970_e(5), fire);
+				if(worldIn.getBlockState(pos.south(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.south(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.south(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.south(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up().south(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().south(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.up().south(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().south(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).south(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).south(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).south(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).south(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).south(5).east(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).south(5).east(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).south(5).west(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).south(5).west(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).south(5).east()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).south(5).east(), andesite);
+				if(worldIn.getBlockState(pos.up(3).south(5).west()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).south(5).west(), andesite);
+				if(worldIn.getBlockState(pos.up(3).south(5)) != BlockMod.fire_block.getDefaultState())
+					worldIn.setBlockState(pos.up(3).south(5), fire);
 
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177985_f(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177985_f(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177985_f(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177985_f(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177985_f(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177985_f(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177985_f(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177985_f(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177985_f(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177985_f(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177978_c()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177985_f(5).func_177978_c(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5).func_177968_d()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177985_f(5).func_177968_d(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177985_f(5)) != BlockMod.earth_block.func_176223_P())
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177985_f(5), earth);
+				if(worldIn.getBlockState(pos.west(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.west(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.west(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.west(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up().west(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().west(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.up().west(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().west(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).west(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).west(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).west(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).west(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).west(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).west(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).west(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).west(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).west(5).north()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).west(5).north(), andesite);
+				if(worldIn.getBlockState(pos.up(3).west(5).south()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).west(5).south(), andesite);
+				if(worldIn.getBlockState(pos.up(3).west(5)) != BlockMod.earth_block.getDefaultState())
+					worldIn.setBlockState(pos.up(3).west(5), earth);
 					
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177965_g(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177965_g(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177984_a().func_177965_g(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177984_a().func_177965_g(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177965_g(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177965_g(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(2).func_177965_g(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(2).func_177965_g(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177964_d(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177965_g(5).func_177964_d(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177970_e(2)) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177965_g(5).func_177970_e(2), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177978_c()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177965_g(5).func_177978_c(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5).func_177968_d()) != Blocks.field_150348_b.func_176203_a(5)) 
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177965_g(5).func_177968_d(), andesite);
-				if(worldIn.func_180495_p(pos.func_177981_b(3).func_177965_g(5)) != BlockMod.air_block.func_176223_P())
-					worldIn.func_175656_a(pos.func_177981_b(3).func_177965_g(5), air);
+				if(worldIn.getBlockState(pos.east(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.east(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.east(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.east(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up().east(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().east(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.up().east(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up().east(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).east(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).east(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.up(2).east(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(2).east(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).east(5).north(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).east(5).north(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).east(5).south(2)) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).east(5).south(2), andesite);
+				if(worldIn.getBlockState(pos.up(3).east(5).north()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).east(5).north(), andesite);
+				if(worldIn.getBlockState(pos.up(3).east(5).south()) != Blocks.STONE.getStateFromMeta(5)) 
+					worldIn.setBlockState(pos.up(3).east(5).south(), andesite);
+				if(worldIn.getBlockState(pos.up(3).east(5)) != BlockMod.air_block.getDefaultState())
+					worldIn.setBlockState(pos.up(3).east(5), air);
 			}
-			if(i == 3 && entityIn instanceof EntityPlayer && worldIn.field_72995_K)
+			if(i == 3 && entityIn instanceof EntityPlayer && worldIn.isRemote)
 			{
 
 
-				if(worldIn.func_180495_p(pos.func_177977_b()) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b(), elemental);	
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(2)) != Blocks.field_150425_aM.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(2), soulsand);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(2)) != Blocks.field_150425_aM.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(2), soulsand);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177965_g(2)) != Blocks.field_150425_aM.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177965_g(2), soulsand);   
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177985_f(2)) != Blocks.field_150425_aM.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177985_f(2), soulsand);   
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c().func_177976_e()) != Blocks.field_150425_aM.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177978_c().func_177976_e(), soulsand);   
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177978_c().func_177974_f()) != Blocks.field_150425_aM.func_176223_P())
-					worldIn.func_175656_a(pos.func_177977_b().func_177978_c().func_177974_f(), soulsand);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177968_d().func_177976_e()) != Blocks.field_150425_aM.func_176223_P())   
-					worldIn.func_175656_a(pos.func_177977_b().func_177968_d().func_177976_e(), soulsand); 
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177968_d().func_177974_f()) != Blocks.field_150425_aM.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177968_d().func_177974_f(), soulsand);
-				if(worldIn.func_180495_p(pos.func_177978_c()) != Blocks.field_150333_U.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177978_c(), slab);   			
-				if(worldIn.func_180495_p(pos.func_177968_d()) != Blocks.field_150333_U.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177968_d(), slab); 	
-				if(worldIn.func_180495_p(pos.func_177974_f()) != Blocks.field_150333_U.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177974_f(), slab);  
-				if(worldIn.func_180495_p(pos.func_177976_e()) != Blocks.field_150333_U.func_176203_a(3))
-					worldIn.func_175656_a(pos.func_177976_e(), slab);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177976_e()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(4).func_177976_e(), lave);   
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177964_d(4).func_177974_f()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177964_d(4).func_177974_f(), lave);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177976_e()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(4).func_177976_e(), lave);  
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177970_e(4).func_177974_f()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177970_e(4).func_177974_f(), lave);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177968_d()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177965_g(4).func_177968_d(), lave);   
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177965_g(4).func_177978_c()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177965_g(4).func_177978_c(), lave);
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177968_d()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177985_f(4).func_177968_d(), lave);   
-				if(worldIn.func_180495_p(pos.func_177977_b().func_177985_f(4).func_177978_c()) != Blocks.field_150353_l.func_176223_P())  
-					worldIn.func_175656_a(pos.func_177977_b().func_177985_f(4).func_177978_c(), lave);
+				if(worldIn.getBlockState(pos.down()) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.down(), elemental);	
+				if(worldIn.getBlockState(pos.down().north(2)) != Blocks.SOUL_SAND.getDefaultState())
+					worldIn.setBlockState(pos.down().north(2), soulsand);
+				if(worldIn.getBlockState(pos.down().south(2)) != Blocks.SOUL_SAND.getDefaultState())
+					worldIn.setBlockState(pos.down().south(2), soulsand);
+				if(worldIn.getBlockState(pos.down().east(2)) != Blocks.SOUL_SAND.getDefaultState())
+					worldIn.setBlockState(pos.down().east(2), soulsand);   
+				if(worldIn.getBlockState(pos.down().west(2)) != Blocks.SOUL_SAND.getDefaultState())
+					worldIn.setBlockState(pos.down().west(2), soulsand);   
+				if(worldIn.getBlockState(pos.down().north().west()) != Blocks.SOUL_SAND.getDefaultState())
+					worldIn.setBlockState(pos.down().north().west(), soulsand);   
+				if(worldIn.getBlockState(pos.down().north().east()) != Blocks.SOUL_SAND.getDefaultState())
+					worldIn.setBlockState(pos.down().north().east(), soulsand);
+				if(worldIn.getBlockState(pos.down().south().west()) != Blocks.SOUL_SAND.getDefaultState())   
+					worldIn.setBlockState(pos.down().south().west(), soulsand); 
+				if(worldIn.getBlockState(pos.down().south().east()) != Blocks.SOUL_SAND.getDefaultState())  
+					worldIn.setBlockState(pos.down().south().east(), soulsand);
+				if(worldIn.getBlockState(pos.north()) != Blocks.STONE_SLAB.getStateFromMeta(3))
+					worldIn.setBlockState(pos.north(), slab);   			
+				if(worldIn.getBlockState(pos.south()) != Blocks.STONE_SLAB.getStateFromMeta(3))
+					worldIn.setBlockState(pos.south(), slab); 	
+				if(worldIn.getBlockState(pos.east()) != Blocks.STONE_SLAB.getStateFromMeta(3))
+					worldIn.setBlockState(pos.east(), slab);  
+				if(worldIn.getBlockState(pos.west()) != Blocks.STONE_SLAB.getStateFromMeta(3))
+					worldIn.setBlockState(pos.west(), slab);
+				if(worldIn.getBlockState(pos.down().north(4).west()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().north(4).west(), lave);   
+				if(worldIn.getBlockState(pos.down().north(4).east()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().north(4).east(), lave);
+				if(worldIn.getBlockState(pos.down().south(4).west()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().south(4).west(), lave);  
+				if(worldIn.getBlockState(pos.down().south(4).east()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().south(4).east(), lave);
+				if(worldIn.getBlockState(pos.down().east(4).south()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().east(4).south(), lave);   
+				if(worldIn.getBlockState(pos.down().east(4).north()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().east(4).north(), lave);
+				if(worldIn.getBlockState(pos.down().west(4).south()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().west(4).south(), lave);   
+				if(worldIn.getBlockState(pos.down().west(4).north()) != Blocks.LAVA.getDefaultState())  
+					worldIn.setBlockState(pos.down().west(4).north(), lave);
 				for(int i = 0; i < 7; i++)
 				{
-					if(worldIn.func_180495_p(pos.func_177964_d(5).func_177974_f()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177964_d(5).func_177974_f(), plant);  			
-					if(worldIn.func_180495_p(pos.func_177964_d(5).func_177976_e()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177964_d(5).func_177976_e(), plant); 			
-					if(worldIn.func_180495_p(pos.func_177964_d(5)) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177964_d(5), plant);		
-					if(worldIn.func_180495_p(pos.func_177970_e(5).func_177976_e()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177970_e(5).func_177976_e(), plant);			
-					if(worldIn.func_180495_p(pos.func_177970_e(5).func_177974_f()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177970_e(5).func_177974_f(), plant); 			
-					if(worldIn.func_180495_p(pos.func_177970_e(5)) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177970_e(5), plant);			
-					if(worldIn.func_180495_p(pos.func_177965_g(5).func_177968_d()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177965_g(5).func_177968_d(), plant);   				
-					if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177965_g(5).func_177978_c(), plant);  			
-					if(worldIn.func_180495_p(pos.func_177965_g(5)) != BlockMod.block_crop_death.func_176203_a(i))
-						worldIn.func_175656_a(pos.func_177965_g(5), plant);				
-					if(worldIn.func_180495_p(pos.func_177985_f(5).func_177968_d()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177985_f(5).func_177968_d(), plant);  			
-					if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c()) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177985_f(5).func_177978_c(), plant);  		
-					if(worldIn.func_180495_p(pos.func_177985_f(5)) != BlockMod.block_crop_death.func_176203_a(i))
-					    worldIn.func_175656_a(pos.func_177985_f(5), plant);
+					if(worldIn.getBlockState(pos.north(5).east()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.north(5).east(), plant);  			
+					if(worldIn.getBlockState(pos.north(5).west()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.north(5).west(), plant); 			
+					if(worldIn.getBlockState(pos.north(5)) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.north(5), plant);		
+					if(worldIn.getBlockState(pos.south(5).west()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.south(5).west(), plant);			
+					if(worldIn.getBlockState(pos.south(5).east()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.south(5).east(), plant); 			
+					if(worldIn.getBlockState(pos.south(5)) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.south(5), plant);			
+					if(worldIn.getBlockState(pos.east(5).south()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.east(5).south(), plant);   				
+					if(worldIn.getBlockState(pos.east(5).north()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.east(5).north(), plant);  			
+					if(worldIn.getBlockState(pos.east(5)) != BlockMod.block_crop_death.getStateFromMeta(i))
+						worldIn.setBlockState(pos.east(5), plant);				
+					if(worldIn.getBlockState(pos.west(5).south()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.west(5).south(), plant);  			
+					if(worldIn.getBlockState(pos.west(5).north()) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.west(5).north(), plant);  		
+					if(worldIn.getBlockState(pos.west(5)) != BlockMod.block_crop_death.getStateFromMeta(i))
+					    worldIn.setBlockState(pos.west(5), plant);
 				}
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(4).func_177965_g(4), nether); 			
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4).func_177984_a()) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177965_g(4).func_177984_a(), elemental); 		
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4).func_177981_b(2)) != BlockMod.elemental_cobblestone.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(4).func_177965_g(4).func_177981_b(2), elemental); 		
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177965_g(4).func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177965_g(4).func_177981_b(3), nethers);	
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(4).func_177965_g(4), nether);  				
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4).func_177984_a()) != BlockMod.elemental_cobblestone.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(4).func_177965_g(4).func_177984_a(), elemental); 				
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4).func_177981_b(2)) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177965_g(4).func_177981_b(2), elemental); 				
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177965_g(4).func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177965_g(4).func_177981_b(3), nethers);				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4)) != Blocks.field_150385_bj.func_176223_P())
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177985_f(4), nether);  				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4).func_177984_a()) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177985_f(4).func_177984_a(), elemental);				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4).func_177981_b(2)) != BlockMod.elemental_cobblestone.func_176223_P())  
-				    worldIn.func_175656_a(pos.func_177964_d(4).func_177985_f(4).func_177981_b(2), elemental);				
-				if(worldIn.func_180495_p(pos.func_177964_d(4).func_177985_f(4).func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-					worldIn.func_175656_a(pos.func_177964_d(4).func_177985_f(4).func_177981_b(3), nethers);			
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4)) != Blocks.field_150385_bj.func_176223_P())
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177985_f(4), nether);  			
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4).func_177984_a()) != BlockMod.elemental_cobblestone.func_176223_P())
-					worldIn.func_175656_a(pos.func_177970_e(4).func_177985_f(4).func_177984_a(), elemental);   			
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4).func_177981_b(2)) != BlockMod.elemental_cobblestone.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(4).func_177985_f(4).func_177981_b(2), elemental);   			
-				if(worldIn.func_180495_p(pos.func_177970_e(4).func_177985_f(4).func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177970_e(4).func_177985_f(4).func_177981_b(3), nethers);
+				if(worldIn.getBlockState(pos.north(4).east(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(4).east(4), nether); 			
+				if(worldIn.getBlockState(pos.north(4).east(4).up()) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.north(4).east(4).up(), elemental); 		
+				if(worldIn.getBlockState(pos.north(4).east(4).up(2)) != BlockMod.elemental_cobblestone.getDefaultState())
+				    worldIn.setBlockState(pos.north(4).east(4).up(2), elemental); 		
+				if(worldIn.getBlockState(pos.north(4).east(4).up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+					worldIn.setBlockState(pos.north(4).east(4).up(3), nethers);	
+				if(worldIn.getBlockState(pos.south(4).east(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(4).east(4), nether);  				
+				if(worldIn.getBlockState(pos.south(4).east(4).up()) != BlockMod.elemental_cobblestone.getDefaultState())
+				    worldIn.setBlockState(pos.south(4).east(4).up(), elemental); 				
+				if(worldIn.getBlockState(pos.south(4).east(4).up(2)) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.south(4).east(4).up(2), elemental); 				
+				if(worldIn.getBlockState(pos.south(4).east(4).up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+					worldIn.setBlockState(pos.south(4).east(4).up(3), nethers);				
+				if(worldIn.getBlockState(pos.north(4).west(4)) != Blocks.NETHER_BRICK.getDefaultState())
+					worldIn.setBlockState(pos.north(4).west(4), nether);  				
+				if(worldIn.getBlockState(pos.north(4).west(4).up()) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.north(4).west(4).up(), elemental);				
+				if(worldIn.getBlockState(pos.north(4).west(4).up(2)) != BlockMod.elemental_cobblestone.getDefaultState())  
+				    worldIn.setBlockState(pos.north(4).west(4).up(2), elemental);				
+				if(worldIn.getBlockState(pos.north(4).west(4).up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+					worldIn.setBlockState(pos.north(4).west(4).up(3), nethers);			
+				if(worldIn.getBlockState(pos.south(4).west(4)) != Blocks.NETHER_BRICK.getDefaultState())
+					worldIn.setBlockState(pos.south(4).west(4), nether);  			
+				if(worldIn.getBlockState(pos.south(4).west(4).up()) != BlockMod.elemental_cobblestone.getDefaultState())
+					worldIn.setBlockState(pos.south(4).west(4).up(), elemental);   			
+				if(worldIn.getBlockState(pos.south(4).west(4).up(2)) != BlockMod.elemental_cobblestone.getDefaultState())
+				    worldIn.setBlockState(pos.south(4).west(4).up(2), elemental);   			
+				if(worldIn.getBlockState(pos.south(4).west(4).up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.south(4).west(4).up(3), nethers);
 				
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(2), nether);	
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(2).func_177984_a(), nether);		
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(2).func_177981_b(2), nether);		
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(2).func_177981_b(3), nether);			
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(2).func_177981_b(4), nethers);		
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(2), nether);			
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(2).func_177984_a(), nether);			
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(2).func_177981_b(2), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(2).func_177981_b(3), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(2).func_177981_b(4), nethers);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177965_g(1).func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177965_g(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-					worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177976_e().func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177976_e().func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-					worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177976_e().func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-					worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177985_f(1).func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177985_f(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177981_b(5)) != Blocks.field_150333_U.func_176203_a(14))
-					worldIn.func_175656_a(pos.func_177964_d(5).func_177981_b(5), nethersu);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177981_b(6)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177981_b(6), magma);
-				if(worldIn.func_180495_p(pos.func_177964_d(5).func_177981_b(7)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177964_d(5).func_177981_b(7), nethers);
+				if(worldIn.getBlockState(pos.north(5).east(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(2), nether);	
+				if(worldIn.getBlockState(pos.north(5).east(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(2).up(), nether);		
+				if(worldIn.getBlockState(pos.north(5).east(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(2).up(2), nether);		
+				if(worldIn.getBlockState(pos.north(5).east(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(2).up(3), nether);			
+				if(worldIn.getBlockState(pos.north(5).east(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.north(5).east(2).up(4), nethers);		
+				if(worldIn.getBlockState(pos.north(5).west(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).west(2), nether);			
+				if(worldIn.getBlockState(pos.north(5).west(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).west(2).up(), nether);			
+				if(worldIn.getBlockState(pos.north(5).west(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).west(2).up(2), nether);
+				if(worldIn.getBlockState(pos.north(5).west(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).west(2).up(3), nether);
+				if(worldIn.getBlockState(pos.north(5).west(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.north(5).west(2).up(4), nethers);
+				if(worldIn.getBlockState(pos.north(5).east(1).up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.north(5).east(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.north(5).east(1).up(2)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(1).up(2), magma);
+				if(worldIn.getBlockState(pos.north(5).east(1).up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.north(5).east(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.north(5).east(1).up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(1).up(4), nether);
+				if(worldIn.getBlockState(pos.north(5).east(1).up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(1).up(5), nether);
+				if(worldIn.getBlockState(pos.north(5).east(1).up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).east(1).up(6), nether);
+				if(worldIn.getBlockState(pos.north(5).west(1).up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.north(5).west(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.north(5).west(1).up(2)) != Blocks.MAGMA.getDefaultState())
+					worldIn.setBlockState(pos.north(5).west(1).up(2), magma);
+				if(worldIn.getBlockState(pos.north(5).west().up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.north(5).west(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.north(5).west().up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+					worldIn.setBlockState(pos.north(5).west(1).up(4), nether);
+				if(worldIn.getBlockState(pos.north(5).west().up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+					worldIn.setBlockState(pos.north(5).west(1).up(5), nether);
+				if(worldIn.getBlockState(pos.north(5).west(1).up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).west(1).up(6), nether);
+				if(worldIn.getBlockState(pos.north(5).up(5)) != Blocks.STONE_SLAB.getStateFromMeta(14))
+					worldIn.setBlockState(pos.north(5).up(5), nethersu);
+				if(worldIn.getBlockState(pos.north(5).up(6)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.north(5).up(6), magma);
+				if(worldIn.getBlockState(pos.north(5).up(7)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.north(5).up(7), nethers);
 				
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(2), nether);	
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(2).func_177984_a(), nether);		
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(2).func_177981_b(2), nether);		
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(2).func_177981_b(3), nether);			
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(2).func_177981_b(4), nethers);		
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(2), nether);			
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(2).func_177984_a(), nether);			
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(2).func_177981_b(2), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(2).func_177981_b(3), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(2).func_177981_b(4), nethers);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177965_g(1).func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177965_g(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177976_e().func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177976_e().func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177976_e().func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177985_f(1).func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177985_f(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177981_b(5)) != Blocks.field_150333_U.func_176203_a(14))
-				worldIn.func_175656_a(pos.func_177970_e(5).func_177981_b(5), nethersu);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177981_b(6)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177981_b(6), magma);
-				if(worldIn.func_180495_p(pos.func_177970_e(5).func_177981_b(7)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177970_e(5).func_177981_b(7), nethers);
+				if(worldIn.getBlockState(pos.south(5).east(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(2), nether);	
+				if(worldIn.getBlockState(pos.south(5).east(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(2).up(), nether);		
+				if(worldIn.getBlockState(pos.south(5).east(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(2).up(2), nether);		
+				if(worldIn.getBlockState(pos.south(5).east(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(2).up(3), nether);			
+				if(worldIn.getBlockState(pos.south(5).east(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.south(5).east(2).up(4), nethers);		
+				if(worldIn.getBlockState(pos.south(5).west(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).west(2), nether);			
+				if(worldIn.getBlockState(pos.south(5).west(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).west(2).up(), nether);			
+				if(worldIn.getBlockState(pos.south(5).west(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).west(2).up(2), nether);
+				if(worldIn.getBlockState(pos.south(5).west(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).west(2).up(3), nether);
+				if(worldIn.getBlockState(pos.south(5).west(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.south(5).west(2).up(4), nethers);
+				if(worldIn.getBlockState(pos.south(5).east(1).up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.south(5).east(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.south(5).east(1).up(2)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(1).up(2), magma);
+				if(worldIn.getBlockState(pos.south(5).east(1).up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.south(5).east(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.south(5).east(1).up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(1).up(4), nether);
+				if(worldIn.getBlockState(pos.south(5).east(1).up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(1).up(5), nether);
+				if(worldIn.getBlockState(pos.south(5).east(1).up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).east(1).up(6), nether);
+				if(worldIn.getBlockState(pos.south(5).west(1).up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.south(5).west(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.south(5).west(1).up(2)) != Blocks.MAGMA.getDefaultState())
+				worldIn.setBlockState(pos.south(5).west(1).up(2), magma);
+				if(worldIn.getBlockState(pos.south(5).west().up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.south(5).west(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.south(5).west().up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				worldIn.setBlockState(pos.south(5).west(1).up(4), nether);
+				if(worldIn.getBlockState(pos.south(5).west().up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				worldIn.setBlockState(pos.south(5).west(1).up(5), nether);
+				if(worldIn.getBlockState(pos.south(5).west(1).up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).west(1).up(6), nether);
+				if(worldIn.getBlockState(pos.south(5).up(5)) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				worldIn.setBlockState(pos.south(5).up(5), nethersu);
+				if(worldIn.getBlockState(pos.south(5).up(6)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.south(5).up(6), magma);
+				if(worldIn.getBlockState(pos.south(5).up(7)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.south(5).up(7), nethers);
 				
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(2), nether);	
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(2).func_177984_a(), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(2).func_177981_b(2), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(2).func_177981_b(3), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177964_d(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(2).func_177981_b(4), nethers);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(2), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(2).func_177984_a(), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(2).func_177981_b(2), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(2).func_177981_b(3), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(2).func_177981_b(4), nethers);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c().func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c().func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c().func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c().func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c().func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177978_c().func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177964_d(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177968_d().func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177968_d().func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177968_d().func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177968_d().func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177970_e(2).func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177970_e(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177981_b(5)) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177981_b(5), nethersu);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177981_b(6)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177981_b(6), magma);
-				if(worldIn.func_180495_p(pos.func_177965_g(5).func_177981_b(7)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177965_g(5).func_177981_b(7), nethers);
+				if(worldIn.getBlockState(pos.east(5).north(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(2), nether);	
+				if(worldIn.getBlockState(pos.east(5).north(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(2).up(), nether);
+				if(worldIn.getBlockState(pos.east(5).north(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(2).up(2), nether);
+				if(worldIn.getBlockState(pos.east(5).north(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				worldIn.setBlockState(pos.east(5).north(2).up(3), nether);
+				if(worldIn.getBlockState(pos.east(5).north(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.east(5).north(2).up(4), nethers);
+				if(worldIn.getBlockState(pos.east(5).south(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(2), nether);
+				if(worldIn.getBlockState(pos.east(5).south(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(2).up(), nether);
+				if(worldIn.getBlockState(pos.east(5).south(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(2).up(2), nether);
+				if(worldIn.getBlockState(pos.east(5).south(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(2).up(3), nether);
+				if(worldIn.getBlockState(pos.east(5).south(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.east(5).south(2).up(4), nethers);
+				if(worldIn.getBlockState(pos.east(5).north().up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.east(5).north(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.east(5).north().up(2)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(1).up(2), magma);
+				if(worldIn.getBlockState(pos.east(5).north().up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.east(5).north(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.east(5).north().up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(1).up(4), nether);
+				if(worldIn.getBlockState(pos.east(5).north().up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(1).up(5), nether);
+				if(worldIn.getBlockState(pos.east(5).north().up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).north(1).up(6), nether);
+				if(worldIn.getBlockState(pos.east(5).south().up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.east(5).south(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.east(5).south().up(2)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(1).up(2), magma);
+				if(worldIn.getBlockState(pos.east(5).south().up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.east(5).south(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.east(5).south().up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(1).up(4), nether);
+				if(worldIn.getBlockState(pos.east(5).south(2).up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(1).up(5), nether);
+				if(worldIn.getBlockState(pos.east(5).south(2).up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).south(1).up(6), nether);
+				if(worldIn.getBlockState(pos.east(5).up(5)) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.east(5).up(5), nethersu);
+				if(worldIn.getBlockState(pos.east(5).up(6)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.east(5).up(6), magma);
+				if(worldIn.getBlockState(pos.east(5).up(7)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.east(5).up(7), nethers);
 				
 				
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(2), nether);	
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(2).func_177984_a(), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(2).func_177981_b(2), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-					worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(2).func_177981_b(3), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177964_d(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(2).func_177981_b(4), nethers);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(2), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177984_a()) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(2).func_177984_a(), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(2)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(2).func_177981_b(2), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(3)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(2).func_177981_b(3), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(4)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(2).func_177981_b(4), nethers);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c().func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c().func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c().func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c().func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c().func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177978_c().func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177964_d(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177968_d().func_177984_a()) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(1).func_177984_a(), nethersu);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177968_d().func_177981_b(2)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(1).func_177981_b(2), magma);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177968_d().func_177981_b(3)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(1).func_177981_b(3), nethers);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177968_d().func_177981_b(4)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(1).func_177981_b(4), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(5)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(1).func_177981_b(5), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177970_e(2).func_177981_b(6)) != Blocks.field_150385_bj.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177970_e(1).func_177981_b(6), nether);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177981_b(5)) != Blocks.field_150333_U.func_176203_a(14))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177981_b(5), nethersu);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177981_b(6)) != Blocks.field_189877_df.func_176223_P())
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177981_b(6), magma);
-				if(worldIn.func_180495_p(pos.func_177985_f(5).func_177981_b(7)) != Blocks.field_150333_U.func_176203_a(6))
-				    worldIn.func_175656_a(pos.func_177985_f(5).func_177981_b(7), nethers);
+				if(worldIn.getBlockState(pos.west(5).north(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(2), nether);	
+				if(worldIn.getBlockState(pos.west(5).north(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(2).up(), nether);
+				if(worldIn.getBlockState(pos.west(5).north(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(2).up(2), nether);
+				if(worldIn.getBlockState(pos.west(5).north(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+					worldIn.setBlockState(pos.west(5).north(2).up(3), nether);
+				if(worldIn.getBlockState(pos.west(5).north(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.west(5).north(2).up(4), nethers);
+				if(worldIn.getBlockState(pos.west(5).south(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(2), nether);
+				if(worldIn.getBlockState(pos.west(5).south(2).up()) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(2).up(), nether);
+				if(worldIn.getBlockState(pos.west(5).south(2).up(2)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(2).up(2), nether);
+				if(worldIn.getBlockState(pos.west(5).south(2).up(3)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(2).up(3), nether);
+				if(worldIn.getBlockState(pos.west(5).south(2).up(4)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.west(5).south(2).up(4), nethers);
+				if(worldIn.getBlockState(pos.west(5).north().up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.west(5).north(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.west(5).north().up(2)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(1).up(2), magma);
+				if(worldIn.getBlockState(pos.west(5).north().up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.west(5).north(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.west(5).north().up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(1).up(4), nether);
+				if(worldIn.getBlockState(pos.west(5).north().up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(1).up(5), nether);
+				if(worldIn.getBlockState(pos.west(5).north().up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).north(1).up(6), nether);
+				if(worldIn.getBlockState(pos.west(5).south().up()) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.west(5).south(1).up(), nethersu);
+				if(worldIn.getBlockState(pos.west(5).south().up(2)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(1).up(2), magma);
+				if(worldIn.getBlockState(pos.west(5).south().up(3)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.west(5).south(1).up(3), nethers);
+				if(worldIn.getBlockState(pos.west(5).south().up(4)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(1).up(4), nether);
+				if(worldIn.getBlockState(pos.west(5).south(2).up(5)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(1).up(5), nether);
+				if(worldIn.getBlockState(pos.west(5).south(2).up(6)) != Blocks.NETHER_BRICK.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).south(1).up(6), nether);
+				if(worldIn.getBlockState(pos.west(5).up(5)) != Blocks.STONE_SLAB.getStateFromMeta(14))
+				    worldIn.setBlockState(pos.west(5).up(5), nethersu);
+				if(worldIn.getBlockState(pos.west(5).up(6)) != Blocks.MAGMA.getDefaultState())
+				    worldIn.setBlockState(pos.west(5).up(6), magma);
+				if(worldIn.getBlockState(pos.west(5).up(7)) != Blocks.STONE_SLAB.getStateFromMeta(6))
+				    worldIn.setBlockState(pos.west(5).up(7), nethers);
 		}
 	}
 }

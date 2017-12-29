@@ -38,206 +38,206 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockLapisFurnace extends BlockContainer {
 
-	public static final PropertyDirection FACING = BlockHorizontal.field_185512_D;
+	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private final boolean isBurning;
 	private static boolean keepInventory;
 
 	public BlockLapisFurnace(boolean isBurning, String name) {
-		super(Material.field_151576_e);
-		func_149663_c(name);
-		func_149711_c(5F);
-		func_149752_b(10F);
-		this.func_180632_j(this.field_176227_L.func_177621_b().func_177226_a(FACING, EnumFacing.NORTH));
+		super(Material.ROCK);
+		setUnlocalizedName(name);
+		setHardness(5F);
+		setResistance(10F);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.isBurning = isBurning;
-		func_149672_a(SoundType.field_185852_e);
+		setSoundType(SoundType.METAL);
 
 	}
 
-	public Item func_180660_a(IBlockState state, Random rand, int fortune) {
-		return Item.func_150898_a(BlockMod.lapis_furnace);
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(BlockMod.lapis_furnace);
 	}
 
-	public void func_176213_c(World worldIn, BlockPos pos, IBlockState state) {
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		setDefaultFacing(worldIn, pos, state);
 	}
 
 	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
-		if (worldIn.field_72995_K)
+		if (worldIn.isRemote)
 			return;
-		IBlockState iblockstate = worldIn.func_180495_p(pos.func_177978_c());
-		IBlockState iblockstate1 = worldIn.func_180495_p(pos.func_177968_d());
-		IBlockState iblockstate2 = worldIn.func_180495_p(pos.func_177976_e());
-		IBlockState iblockstate3 = worldIn.func_180495_p(pos.func_177974_f());
-		EnumFacing enumfacing = (EnumFacing) state.func_177229_b(FACING);
+		IBlockState iblockstate = worldIn.getBlockState(pos.north());
+		IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
+		IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
+		IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
+		EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
 
-		if ((enumfacing == EnumFacing.NORTH) && (iblockstate.func_185913_b()) && (!(iblockstate1.func_185913_b()))) {
+		if ((enumfacing == EnumFacing.NORTH) && (iblockstate.isFullBlock()) && (!(iblockstate1.isFullBlock()))) {
 			enumfacing = EnumFacing.SOUTH;
-		} else if ((enumfacing == EnumFacing.SOUTH) && (iblockstate1.func_185913_b()) && (!(iblockstate.func_185913_b()))) {
+		} else if ((enumfacing == EnumFacing.SOUTH) && (iblockstate1.isFullBlock()) && (!(iblockstate.isFullBlock()))) {
 			enumfacing = EnumFacing.NORTH;
-		} else if ((enumfacing == EnumFacing.WEST) && (iblockstate2.func_185913_b()) && (!(iblockstate3.func_185913_b()))) {
+		} else if ((enumfacing == EnumFacing.WEST) && (iblockstate2.isFullBlock()) && (!(iblockstate3.isFullBlock()))) {
 			enumfacing = EnumFacing.EAST;
-		} else if ((enumfacing == EnumFacing.EAST) && (iblockstate3.func_185913_b()) && (!(iblockstate2.func_185913_b()))) {
+		} else if ((enumfacing == EnumFacing.EAST) && (iblockstate3.isFullBlock()) && (!(iblockstate2.isFullBlock()))) {
 			enumfacing = EnumFacing.WEST;
 		}
 
-		worldIn.func_180501_a(pos, state.func_177226_a(FACING, enumfacing), 2);
+		worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
 	}
 
 	@SuppressWarnings("incomplete-switch")
 	@SideOnly(Side.CLIENT)
-	public void func_180655_c(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (!(this.isBurning))
 			return;
-		EnumFacing enumfacing = (EnumFacing) stateIn.func_177229_b(FACING);
-		double d0 = pos.func_177958_n() + 0.5D;
-		double d1 = pos.func_177956_o() + rand.nextDouble() * 6.0D / 16.0D;
-		double d2 = pos.func_177952_p() + 0.5D;
+		EnumFacing enumfacing = (EnumFacing) stateIn.getValue(FACING);
+		double d0 = pos.getX() + 0.5D;
+		double d1 = pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
+		double d2 = pos.getZ() + 0.5D;
 		double d3 = 0.52D;
 		double d4 = rand.nextDouble() * 0.6D - 0.3D;
 
 		if (rand.nextDouble() < 0.1D) {
-			worldIn.func_184134_a(pos.func_177958_n() + 0.5D, pos.func_177956_o(), pos.func_177952_p() + 0.5D, SoundEvents.field_187652_bv,
+			worldIn.playSound(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE,
 					SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 		}
 
 		switch (enumfacing) {
 		case WEST:
-			worldIn.func_175688_a(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D,
 					new int[0]);
-			worldIn.func_175688_a(EnumParticleTypes.FLAME, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
 			break;
 		case EAST:
-			worldIn.func_175688_a(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D,
 					new int[0]);
-			worldIn.func_175688_a(EnumParticleTypes.FLAME, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
 			break;
 		case NORTH:
-			worldIn.func_175688_a(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D,
 					new int[0]);
-			worldIn.func_175688_a(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D, new int[0]);
 			break;
 		case SOUTH:
-			worldIn.func_175688_a(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D,
 					new int[0]);
-			worldIn.func_175688_a(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D, new int[0]);
 		}
 	}
 
-	public boolean func_180639_a(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (worldIn.field_72995_K) {
+		if (worldIn.isRemote) {
 			return true;
 		}
 
-		TileEntity tileentity = worldIn.func_175625_s(pos);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
 
 		if (tileentity instanceof TileEntityLapisFurnace) {
-			playerIn.func_71007_a((TileEntityLapisFurnace) tileentity);
-			playerIn.func_71029_a(StatList.field_188061_aa);
+			playerIn.displayGUIChest((TileEntityLapisFurnace) tileentity);
+			playerIn.addStat(StatList.FURNACE_INTERACTION);
 		}
 
 		return true;
 	}
 
 	public static void setState(boolean active, World worldIn, BlockPos pos) {
-		IBlockState iblockstate = worldIn.func_180495_p(pos);
-		TileEntity tileentity = worldIn.func_175625_s(pos);
+		IBlockState iblockstate = worldIn.getBlockState(pos);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
 		keepInventory = true;
 
 		if (active) {
-			worldIn.func_180501_a(pos,
-					BlockMod.lit_lapis_furnace.func_176223_P().func_177226_a(FACING, iblockstate.func_177229_b(FACING)), 3);
-			worldIn.func_180501_a(pos,
-					BlockMod.lit_lapis_furnace.func_176223_P().func_177226_a(FACING, iblockstate.func_177229_b(FACING)), 3);
+			worldIn.setBlockState(pos,
+					BlockMod.lit_lapis_furnace.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+			worldIn.setBlockState(pos,
+					BlockMod.lit_lapis_furnace.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
 		} else {
-			worldIn.func_180501_a(pos,
-					BlockMod.lapis_furnace.func_176223_P().func_177226_a(FACING, iblockstate.func_177229_b(FACING)), 3);
-			worldIn.func_180501_a(pos,
-					BlockMod.lapis_furnace.func_176223_P().func_177226_a(FACING, iblockstate.func_177229_b(FACING)), 3);
+			worldIn.setBlockState(pos,
+					BlockMod.lapis_furnace.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+			worldIn.setBlockState(pos,
+					BlockMod.lapis_furnace.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
 		}
 
 		keepInventory = false;
 
 		if (tileentity == null)
 			return;
-		tileentity.func_145829_t();
-		worldIn.func_175690_a(pos, tileentity);
+		tileentity.validate();
+		worldIn.setTileEntity(pos, tileentity);
 	}
 
-	public TileEntity func_149915_a(World worldIn, int meta) {
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityLapisFurnace();
 	}
 
-	public IBlockState func_180642_a(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer) {
-		return func_176223_P().func_177226_a(FACING, placer.func_174811_aO().func_176734_d());
+		return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
-	public void func_180633_a(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
 			ItemStack stack) {
-		worldIn.func_180501_a(pos, state.func_177226_a(FACING, placer.func_174811_aO().func_176734_d()), 2);
+		worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 
-		if (!(stack.func_82837_s()))
+		if (!(stack.hasDisplayName()))
 			return;
-		TileEntity tileentity = worldIn.func_175625_s(pos);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
 
 		if (!(tileentity instanceof TileEntityLapisFurnace))
 			return;
-		((TileEntityLapisFurnace) tileentity).setCustomInventoryName(stack.func_82833_r());
+		((TileEntityLapisFurnace) tileentity).setCustomInventoryName(stack.getDisplayName());
 	}
 
-	public void func_180663_b(World worldIn, BlockPos pos, IBlockState state) {
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		if (!(keepInventory)) {
-			TileEntity tileentity = worldIn.func_175625_s(pos);
+			TileEntity tileentity = worldIn.getTileEntity(pos);
 
 			if (tileentity instanceof TileEntityLapisFurnace) {
-				InventoryHelper.func_180175_a(worldIn, pos, (TileEntityLapisFurnace) tileentity);
-				worldIn.func_175666_e(pos, this);
+				InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityLapisFurnace) tileentity);
+				worldIn.updateComparatorOutputLevel(pos, this);
 			}
 		}
 
-		super.func_180663_b(worldIn, pos, state);
+		super.breakBlock(worldIn, pos, state);
 	}
 
-	public boolean func_149740_M(IBlockState state) {
+	public boolean hasComparatorInputOverride(IBlockState state) {
 		return true;
 	}
 
-	public int func_180641_l(IBlockState blockState, World worldIn, BlockPos pos) {
-		return Container.func_178144_a(worldIn.func_175625_s(pos));
+	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
 
-	public ItemStack func_185473_a(World worldIn, BlockPos pos, IBlockState state) {
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
 		return new ItemStack(BlockMod.lapis_furnace);
 	}
 
-	public EnumBlockRenderType func_149645_b(IBlockState state) {
+	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
 
-	public IBlockState func_176203_a(int meta) {
-		EnumFacing enumfacing = EnumFacing.func_82600_a(meta);
+	public IBlockState getStateFromMeta(int meta) {
+		EnumFacing enumfacing = EnumFacing.getFront(meta);
 
-		if (enumfacing.func_176740_k() == EnumFacing.Axis.Y) {
+		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
 			enumfacing = EnumFacing.NORTH;
 		}
 
-		return func_176223_P().func_177226_a(FACING, enumfacing);
+		return getDefaultState().withProperty(FACING, enumfacing);
 	}
 
-	public int func_176201_c(IBlockState state) {
-		return ((EnumFacing) state.func_177229_b(FACING)).func_176745_a();
+	public int getMetaFromState(IBlockState state) {
+		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
-	public IBlockState func_185499_a(IBlockState state, Rotation rot) {
-		return state.func_177226_a(FACING, rot.func_185831_a((EnumFacing) state.func_177229_b(FACING)));
+	public IBlockState withRotation(IBlockState state, Rotation rot) {
+		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
 	}
 
-	public IBlockState func_185471_a(IBlockState state, Mirror mirrorIn) {
-		return state.func_185907_a(mirrorIn.func_185800_a((EnumFacing) state.func_177229_b(FACING)));
+	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+		return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
 	}
 
-	protected BlockStateContainer func_180661_e() {
+	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 }

@@ -14,9 +14,9 @@ public class ItemSeedsMod extends ItemSeeds{
 	
 	public ItemSeedsMod(Block block, Block soil, String name) {
 		super(block, soil);
-		func_77655_b(name);
+		setUnlocalizedName(name);
 		setRegistryName(name);
-		func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+		setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 	}
 
 }

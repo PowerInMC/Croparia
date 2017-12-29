@@ -19,17 +19,17 @@ import net.minecraft.world.World;
 public class BlockHarvester extends Block implements ITileEntityProvider{
 
 	public BlockHarvester(String name) {
-		super(Material.field_151573_f);
-		this.func_149663_c(name);
-		this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
+		super(Material.IRON);
+		this.setUnlocalizedName(name);
+		this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 	}
 	
-	World worldIn = Minecraft.func_71410_x().field_71441_e;
+	World worldIn = Minecraft.getMinecraft().world;
 	
 	@Override
-	public void func_176213_c(World worldIn, BlockPos pos, IBlockState state) 
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) 
 	{
-		if(worldIn.func_180495_p(pos.func_177977_b()).func_177230_c().func_176223_P() != Blocks.field_150355_j.func_176223_P())
+		if(worldIn.getBlockState(pos.down()).getBlock().getDefaultState() != Blocks.WATER.getDefaultState())
 		{
 			System.out.print("This Block Need A Water Source Under It");
 		}
@@ -38,9 +38,9 @@ public class BlockHarvester extends Block implements ITileEntityProvider{
 	@Override
 	public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) 
 	{
-		if(!worldIn.field_72995_K)
+		if(!worldIn.isRemote)
 		{
-			TileEntity te = worldIn.func_175625_s(pos);
+			TileEntity te = worldIn.getTileEntity(pos);
 			if(te instanceof TileEntityHarvester)
 			{
 				TileEntityHarvester harvester = (TileEntityHarvester)te;
@@ -50,7 +50,7 @@ public class BlockHarvester extends Block implements ITileEntityProvider{
 	}
 
 	@Override
-	public TileEntity func_149915_a(World worldIn, int meta) 
+	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		return new TileEntityHarvester();
 	}

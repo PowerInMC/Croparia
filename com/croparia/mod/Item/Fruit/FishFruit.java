@@ -15,11 +15,11 @@ public class FishFruit extends ItemModFood{
 		super(amount, saturation, isWolfFood);
 	}
 	
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        if (!worldIn.field_72995_K)
+        if (!worldIn.isRemote)
         {           
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76427_o, Reference.longtemps, 1));
+        	player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, Reference.longtemps, 1));
         }
     }
 

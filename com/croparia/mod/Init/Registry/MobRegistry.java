@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class MobRegistry
 {      
-		private static final Biome[] PLAINS = new Biome[] {Biome.func_150568_d(1)};
+		private static final Biome[] PLAINS = new Biome[] {Biome.getBiome(1)};
 		public static int entitiesId;
 	
         public static void register()
@@ -38,12 +38,12 @@ public class MobRegistry
         public static void registerRender()
         {
 
-            RenderingRegistry.registerEntityRenderingHandler(EntitySeafarer.class, new RenderSeafarer(Minecraft.func_71410_x().func_175598_ae(), new ModelSeafarer(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntitySeafarer.class, new RenderSeafarer(Minecraft.getMinecraft().getRenderManager(), new ModelSeafarer(), 0.5F));
             
-            RenderingRegistry.registerEntityRenderingHandler(EntityCentaur.class, new RenderCentaur(Minecraft.func_71410_x().func_175598_ae(), new ModelCentaur(), 0.5F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityMinotaur.class, new RenderMinotaur(Minecraft.func_71410_x().func_175598_ae(), new ModelMinotaur(), 0.5F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityFlying.class, new RenderFlying(Minecraft.func_71410_x().func_175598_ae(), new ModelFlying(), 0.5F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityReaper.class, new RenderReaper(Minecraft.func_71410_x().func_175598_ae(), new ModelReaper(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityCentaur.class, new RenderCentaur(Minecraft.getMinecraft().getRenderManager(), new ModelCentaur(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityMinotaur.class, new RenderMinotaur(Minecraft.getMinecraft().getRenderManager(), new ModelMinotaur(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityFlying.class, new RenderFlying(Minecraft.getMinecraft().getRenderManager(), new ModelFlying(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityReaper.class, new RenderReaper(Minecraft.getMinecraft().getRenderManager(), new ModelReaper(), 0.5F));
             
 
             //RenderingRegistry.registerEntityRenderingHandler(EntityGoldenChicken.class, new RenderGoldenChicken(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), 0.5F));

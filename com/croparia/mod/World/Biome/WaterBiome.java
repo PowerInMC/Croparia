@@ -24,8 +24,6 @@ import java.util.Random;
 import com.croparia.mod.Entity.EntitySeafarer;
 import com.croparia.mod.Init.BlockMod;
 
-import net.minecraft.world.biome.Biome.SpawnListEntry;
-
 public class WaterBiome {
 
 	static Biome.BiomeProperties customProps = null;
@@ -33,10 +31,10 @@ public class WaterBiome {
 
 	static {
 		customProps = new Biome.BiomeProperties("waterbiome");
-		customProps.func_185395_b(0.90F);
-		customProps.func_185398_c(0.1F);
-		customProps.func_185400_d(0.4F);
-		customProps.func_185402_a(0x000099);
+		customProps.setRainfall(0.90F);
+		customProps.setBaseHeight(0.1F);
+		customProps.setHeightVariation(0.4F);
+		customProps.setWaterColor(0x000099);
 		biome = new BiomeGenwaterbiome(customProps);
 	}
 
@@ -75,46 +73,46 @@ public class WaterBiome {
 		public BiomeGenwaterbiome(Biome.BiomeProperties mycustomProps) {
 			super(mycustomProps);
 			setRegistryName("waterbiome");
-			field_76752_A = Blocks.field_150403_cj.func_176223_P();
-			field_76753_B = Blocks.field_150432_aD.func_176223_P();
-			field_76760_I.field_76808_K = false;
-			field_76760_I.field_76832_z = 0;
-			field_76760_I.field_76802_A = 0;
-			field_76760_I.field_76803_B = 0;
-			field_76760_I.field_76804_C = 0;
-			field_76760_I.field_76798_D = 0;
-			field_76760_I.field_76799_E = 10;
-			field_76760_I.field_76800_F = 0;
+			topBlock = Blocks.PACKED_ICE.getDefaultState();
+			fillerBlock = Blocks.ICE.getDefaultState();
+			decorator.generateFalls = false;
+			decorator.treesPerChunk = 0;
+			decorator.flowersPerChunk = 0;
+			decorator.grassPerChunk = 0;
+			decorator.deadBushPerChunk = 0;
+			decorator.mushroomsPerChunk = 0;
+			decorator.reedsPerChunk = 10;
+			decorator.cactiPerChunk = 0;
 
-			this.field_76761_J.clear();
-			this.field_76762_K.clear();
-			this.field_76755_L.clear();
-			this.field_82914_M.clear();
+			this.spawnableMonsterList.clear();
+			this.spawnableCreatureList.clear();
+			this.spawnableWaterCreatureList.clear();
+			this.spawnableCaveCreatureList.clear();
 			
-			this.field_76761_J.add(new SpawnListEntry(EntitySeafarer.class, 10, 5, 8));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntitySeafarer.class, 10, 5, 8));
 
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public int func_180627_b(BlockPos pos) {
+		public int getGrassColorAtPos(BlockPos pos) {
 			return 0x00cc99;
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public int func_180625_c(BlockPos pos) {
+		public int getFoliageColorAtPos(BlockPos pos) {
 			return 0x00cc99;
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public int func_76731_a(float currentTemperature) {
+		public int getSkyColorByTemp(float currentTemperature) {
 			return 0x9999ff;
 		}
 		
 		@Override
-		public boolean func_76746_c() {
+		public boolean getEnableSnow() {
 			return true;
 		}
 

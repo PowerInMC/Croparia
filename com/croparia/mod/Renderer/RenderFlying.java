@@ -18,7 +18,7 @@ public class RenderFlying extends RenderLiving<EntityFlying>
     }   
     
     @Override
-    protected ResourceLocation func_110775_a(EntityFlying entity) 
+    protected ResourceLocation getEntityTexture(EntityFlying entity) 
     {
         return ENTITY_TEXTURE;
     }

@@ -21,10 +21,10 @@ public class BlockCropMod extends BlockCrops
 	{
 		super();
 		this.name = name;
-		func_149663_c(name);	
+		setUnlocalizedName(name);	
 	}
 
-	protected Item func_149866_i()
+	protected Item getSeed()
 	{
 		if(name == "block_crop_coal")
 		{
@@ -116,7 +116,7 @@ public class BlockCropMod extends BlockCrops
 			
 	}
 
-	 protected Item func_149865_P()
+	 protected Item getCrop()
 	    {
 			if(name == "block_crop_coal")
 			{

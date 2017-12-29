@@ -14,8 +14,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import net.minecraft.item.Item.ToolMaterial;
-
 public class MultitoolAir extends ItemMultitool 
 {
 
@@ -24,13 +22,13 @@ public class MultitoolAir extends ItemMultitool
 		super(damage, speed, material);
 	}
     
-	public EnumActionResult func_180614_a(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) 
+	public EnumActionResult onItemUse(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) 
 	{
-		ItemStack itemstack = stack.func_184586_b(pos);
+		ItemStack itemstack = stack.getHeldItem(pos);
 		
-		if(stack.func_70093_af() == true)
+		if(stack.isSneaking() == true)
 		{
-			if (!stack.func_175151_a(worldIn.func_177972_a(hand), hand, itemstack))
+			if (!stack.canPlayerEdit(worldIn.offset(hand), hand, itemstack))
 	        {
 	            return EnumActionResult.FAIL;
 	        }
@@ -39,13 +37,13 @@ public class MultitoolAir extends ItemMultitool
 	            int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(itemstack, stack, playerIn, worldIn);
 	            if (hook != 0) return hook > 0 ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 
-	            IBlockState iblockstate = playerIn.func_180495_p(worldIn);
-	            Block block = iblockstate.func_177230_c();
+	            IBlockState iblockstate = playerIn.getBlockState(worldIn);
+	            Block block = iblockstate.getBlock();
 	            
-	            		if (block != Blocks.field_150357_h)
+	            		if (block != Blocks.BEDROCK)
 	            		{
-	            			this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150350_a.func_176223_P());
-		            		stack.func_70097_a(DamageSource.field_76376_m, 4.0F);
+	            			this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.AIR.getDefaultState());
+		            		stack.attackEntityFrom(DamageSource.MAGIC, 4.0F);
 	            			return EnumActionResult.SUCCESS;          
 	            		}
 	                
@@ -53,7 +51,7 @@ public class MultitoolAir extends ItemMultitool
 	        }
 		}
 		
-		if (!stack.func_175151_a(worldIn.func_177972_a(hand), hand, itemstack))
+		if (!stack.canPlayerEdit(worldIn.offset(hand), hand, itemstack))
         {
             return EnumActionResult.FAIL;
         }
@@ -62,26 +60,26 @@ public class MultitoolAir extends ItemMultitool
             int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(itemstack, stack, playerIn, worldIn);
             if (hook != 0) return hook > 0 ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 
-            IBlockState iblockstate = playerIn.func_180495_p(worldIn);
-            Block block = iblockstate.func_177230_c();
+            IBlockState iblockstate = playerIn.getBlockState(worldIn);
+            Block block = iblockstate.getBlock();
 
-            if (hand != EnumFacing.DOWN && playerIn.func_175623_d(worldIn.func_177984_a()))
+            if (hand != EnumFacing.DOWN && playerIn.isAirBlock(worldIn.up()))
             {
-                if (block == Blocks.field_150349_c || block == Blocks.field_185774_da)
+                if (block == Blocks.GRASS || block == Blocks.GRASS_PATH)
                 {
-                    this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150458_ak.func_176223_P());
+                    this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.FARMLAND.getDefaultState());
                     return EnumActionResult.SUCCESS;
                 }
 
-                if (block == Blocks.field_150346_d)
+                if (block == Blocks.DIRT)
                 {
-                    switch ((BlockDirt.DirtType)iblockstate.func_177229_b(BlockDirt.field_176386_a))
+                    switch ((BlockDirt.DirtType)iblockstate.getValue(BlockDirt.VARIANT))
                     {
                         case DIRT:
-                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150458_ak.func_176223_P());
+                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.FARMLAND.getDefaultState());
                             return EnumActionResult.SUCCESS;
                         case COARSE_DIRT:
-                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150346_d.func_176223_P().func_177226_a(BlockDirt.field_176386_a, BlockDirt.DirtType.DIRT));
+                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
                             return EnumActionResult.SUCCESS;
                         case PODZOL:
                         	break;

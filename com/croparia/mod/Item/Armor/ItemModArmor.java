@@ -21,7 +21,7 @@ public class ItemModArmor extends ItemArmor
     public ItemModArmor(ArmorMaterial materialIn, EntityEquipmentSlot equipmentSlotIn)
     {
         super(materialIn, 0, equipmentSlotIn);
-        this.func_77637_a(tab);
+        this.setCreativeTab(tab);
     }
     
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
@@ -53,7 +53,7 @@ public class ItemModArmor extends ItemArmor
 	{
     	if(input == new ItemStack(ItemMod.obsidian_helmet))
     	{
-    		if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+    		if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
     		{
     			return true;
     		}
@@ -61,7 +61,7 @@ public class ItemModArmor extends ItemArmor
     	}
     	else if(input == new ItemStack(ItemMod.obsidian_chestplate))
     	{
-    		if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+    		if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
     		{
     			return true;
     		}
@@ -69,7 +69,7 @@ public class ItemModArmor extends ItemArmor
     	} 
     	else if(input == new ItemStack(ItemMod.obsidian_leggings))
     	{
-    		if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+    		if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
     		{
     			return true;
     		}
@@ -77,7 +77,7 @@ public class ItemModArmor extends ItemArmor
     	}
     	else if(input == new ItemStack(ItemMod.obsidian_boots))
     	{
-    		if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+    		if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
     		{
     			return true;
     		}
@@ -85,7 +85,7 @@ public class ItemModArmor extends ItemArmor
     	} 
     	else if(input == new ItemStack(ItemMod.renforced_helmet))
     	{
-    		if(repair.func_77973_b() == Items.field_151045_i)
+    		if(repair.getItem() == Items.DIAMOND)
     		{
     			return true;
     		}
@@ -93,7 +93,7 @@ public class ItemModArmor extends ItemArmor
     	}
     	else if(input == new ItemStack(ItemMod.renforced_chestplate))
     	{
-    		if(repair.func_77973_b() == Items.field_151045_i)
+    		if(repair.getItem() == Items.DIAMOND)
     		{
     			return true;
     		}
@@ -101,7 +101,7 @@ public class ItemModArmor extends ItemArmor
     	} 
     	else if(input == new ItemStack(ItemMod.renforced_leggings))
     	{
-    		if(repair.func_77973_b() == Items.field_151045_i)
+    		if(repair.getItem() == Items.DIAMOND)
     		{
     			return true;
     		}
@@ -109,7 +109,7 @@ public class ItemModArmor extends ItemArmor
     	}
     	else if(input == new ItemStack(ItemMod.renforced_boots))
     	{
-    		if(repair.func_77973_b() == Items.field_151045_i)
+    		if(repair.getItem() == Items.DIAMOND)
     		{
     			return true;
     		}

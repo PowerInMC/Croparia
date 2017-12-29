@@ -25,52 +25,52 @@ public class ItemEternalTime extends Item
 	public ItemEternalTime(String name)
 	{
 		super();
-		func_77655_b(name);
-		func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+		setUnlocalizedName(name);
+		setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 		setRegistryName(name);
-		func_77625_d(1);
-		func_77642_a(this);
-		func_77656_e(5000);
+		setMaxStackSize(1);
+		setContainerItem(this);
+		setMaxDamage(5000);
 	}
 	
 	
 	@Override
-	public void func_77663_a(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
 	{	
 		EntityPlayer player = (EntityPlayer)entityIn;
 
 		
-		if(player.func_70093_af())
+		if(player.isSneaking())
 		{
-			if(stack.func_77952_i() < stack.func_77958_k())
+			if(stack.getItemDamage() < stack.getMaxDamage())
 			{
-				worldIn.func_72877_b(worldIn.func_72820_D() + (long) 100F) ;
-				stack.func_77964_b(stack.func_77952_i() + 1);	
+				worldIn.setWorldTime(worldIn.getWorldTime() + (long) 100F) ;
+				stack.setItemDamage(stack.getItemDamage() + 1);	
 			}
 
 		}
 		
 			for(int i = 0; i < 4; i++)
 			{
-				ItemStack armor = player.field_71071_by.field_70460_b.get(i);
-				if(armor != null && armor.func_77952_i() > 0 && stack.func_77952_i() < stack.func_77958_k())
+				ItemStack armor = player.inventory.armorInventory.get(i);
+				if(armor != null && armor.getItemDamage() > 0 && stack.getItemDamage() < stack.getMaxDamage())
 				{
-					armor.func_77964_b(armor.func_77952_i() - 1);
-					stack.func_77964_b(stack.func_77952_i() + 1);	
+					armor.setItemDamage(armor.getItemDamage() - 1);
+					stack.setItemDamage(stack.getItemDamage() + 1);	
 				}					
 			}	
 			
-			if(stack.func_77952_i() == stack.func_77958_k())
+			if(stack.getItemDamage() == stack.getMaxDamage())
 			{
-				entityIn.func_70097_a(DamageSource.field_76376_m, 2000000F);
+				entityIn.attackEntityFrom(DamageSource.MAGIC, 2000000F);
 			}
 	}
 	
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) 
 	{
-		stack.func_77964_b(stack.func_77952_i() - 100);
-		entity.func_70106_y();
+		stack.setItemDamage(stack.getItemDamage() - 100);
+		entity.setDead();
 		return true;
 	}
 	

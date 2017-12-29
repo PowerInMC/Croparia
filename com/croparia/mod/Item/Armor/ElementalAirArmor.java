@@ -24,7 +24,7 @@ public class ElementalAirArmor extends ItemArmor
 	
 	public ElementalAirArmor(ArmorMaterial materialIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, 0, equipmentSlotIn);
-		this.func_77637_a(tab);
+		this.setCreativeTab(tab);
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
@@ -41,32 +41,32 @@ public class ElementalAirArmor extends ItemArmor
 		return null;
 	}
 
-	   public boolean func_82789_a(ItemStack input, ItemStack repair)
+	   public boolean getIsRepairable(ItemStack input, ItemStack repair)
 	    {
-	        if(input.func_77973_b() == ItemMod.elemental_air_helmet)
+	        if(input.getItem() == ItemMod.elemental_air_helmet)
 	        {
-	            if(repair.func_77973_b() == ItemMod.elemental_air)
+	            if(repair.getItem() == ItemMod.elemental_air)
 	            {
 	                return true;
 	            }
 	        }
-	        else if(input.func_77973_b() ==ItemMod.elemental_air_chestplate)
+	        else if(input.getItem() ==ItemMod.elemental_air_chestplate)
 	        {
-	            if(repair.func_77973_b() == ItemMod.elemental_air)
+	            if(repair.getItem() == ItemMod.elemental_air)
 	            {
 	                return true;
 	            }
 	        } 
-	        else if(input.func_77973_b() ==ItemMod.elemental_air_leggings)
+	        else if(input.getItem() ==ItemMod.elemental_air_leggings)
 	        {
-	            if(repair.func_77973_b() == ItemMod.elemental_air)
+	            if(repair.getItem() == ItemMod.elemental_air)
 	            {
 	                return true;
 	            }
 	        }
-	        else if(input.func_77973_b() ==ItemMod.elemental_air_boots)
+	        else if(input.getItem() ==ItemMod.elemental_air_boots)
 	        {
-	            if(repair.func_77973_b() == ItemMod.elemental_air)
+	            if(repair.getItem() == ItemMod.elemental_air)
 	            {
 	                return true;
 	            }
@@ -77,20 +77,20 @@ public class ElementalAirArmor extends ItemArmor
 	   @Override
 	    public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 	    	
-	    	entity.func_70690_d(new PotionEffect(MobEffects.field_76430_j, 220, 1));	
-	    	entity.func_70690_d(new PotionEffect(MobEffects.field_76424_c, 220, 1));
+	    	entity.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 220, 1));	
+	    	entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 220, 1));
 	    	
-	        ItemStack head = entity.func_184582_a(EntityEquipmentSlot.HEAD);
-	        ItemStack chest = entity.func_184582_a(EntityEquipmentSlot.CHEST);
-	        ItemStack legs = entity.func_184582_a(EntityEquipmentSlot.LEGS);
-	        ItemStack feet = entity.func_184582_a(EntityEquipmentSlot.FEET);
-	        if (head != null && head.func_77973_b() == ItemMod.elemental_air_helmet && chest != null && chest.func_77973_b() == ItemMod.elemental_air_chestplate && legs != null && legs.func_77973_b() == ItemMod.elemental_air_leggings && feet != null && feet.func_77973_b() == ItemMod.elemental_air_boots || entity.field_71075_bZ.field_75098_d || entity.func_175149_v()) {
-	            entity.field_71075_bZ.field_75101_c = true;
+	        ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+	        ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+	        ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+	        ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+	        if (head != null && head.getItem() == ItemMod.elemental_air_helmet && chest != null && chest.getItem() == ItemMod.elemental_air_chestplate && legs != null && legs.getItem() == ItemMod.elemental_air_leggings && feet != null && feet.getItem() == ItemMod.elemental_air_boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+	            entity.capabilities.allowFlying = true;
 	            
 	        } 
 	        else{
-	                entity.field_71075_bZ.field_75100_b = false;
-	                entity.field_71075_bZ.field_75101_c = false;
+	                entity.capabilities.isFlying = false;
+	                entity.capabilities.allowFlying = false;
 	        }
 	    }
 } 

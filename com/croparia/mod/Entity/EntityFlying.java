@@ -37,55 +37,55 @@ public class EntityFlying extends EntityMob
     public EntityFlying(World world)
     {
         super(world);
-        this.func_70105_a(1, 2);
+        this.setSize(1, 2);
     }
 
-    protected void func_184651_r()
+    protected void initEntityAI()
     {
-        this.field_70714_bg.func_75776_a(0, new EntityAISwimming(this));
-        this.field_70714_bg.func_75776_a(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        this.field_70714_bg.func_75776_a(6, new EntityAIWander(this, 1.0D));
-        this.field_70714_bg.func_75776_a(6, new EntityAIMoveTowardsTarget(this, 1, 20F));
-        this.field_70714_bg.func_75776_a(8, new EntityAILookIdle(this));
-        this.field_70714_bg.func_75776_a(4, new EntityFlying.AIFireballAttack(this));
-        this.field_70714_bg.func_75776_a(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        this.field_70714_bg.func_75776_a(1, new EntityAIBaseAttack(this, 1.0D, false));
-        this.field_70715_bh.func_75776_a(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIMoveTowardsTarget(this, 1, 20F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(4, new EntityFlying.AIFireballAttack(this));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(1, new EntityAIBaseAttack(this, 1.0D, false));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 
     }
 
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(400.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.90D);
-        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(100.0D / 2);
-        this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(60.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111266_c).func_111128_a(0D);
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(400.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.90D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(100.0D / 2);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(60.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0D);
 
     }
 
     @Override
-    public void func_70645_a(DamageSource cause)
+    public void onDeath(DamageSource cause)
     {
-        super.func_70645_a(cause);
-        if(cause.func_76346_g() instanceof EntityPlayer)
+        super.onDeath(cause);
+        if(cause.getTrueSource() instanceof EntityPlayer)
         {
-    		if(this.func_95999_t() == "Flying Beast")
+    		if(this.getCustomNameTag() == "Flying Beast")
 			{
-				this.func_145779_a(AirDim.block, 1);
+				this.dropItem(AirDim.block, 1);
 			}
     		else
     		{
-	            this.func_145779_a(ItemMod.elemental_air, 8);
-	            this.func_145779_a(ItemMod.elemental_air_chestplate, 1);
-	            this.func_145779_a(ItemMod.air_sword, 1);
+	            this.dropItem(ItemMod.elemental_air, 8);
+	            this.dropItem(ItemMod.elemental_air_chestplate, 1);
+	            this.dropItem(ItemMod.air_sword, 1);
     		}
 
         }
     }
     
-    protected void func_70619_bc()
+    protected void updateAITasks()
     {
         
         
@@ -94,60 +94,60 @@ public class EntityFlying extends EntityMob
         if (this.heightOffsetUpdateTime <= 0)
         {
             this.heightOffsetUpdateTime = 100;
-            this.heightOffset = 0.5F + (float)this.field_70146_Z.nextGaussian() * 3.0F;
+            this.heightOffset = 0.5F + (float)this.rand.nextGaussian() * 3.0F;
         }
 
-        EntityLivingBase entitylivingbase = this.func_70638_az();
+        EntityLivingBase entitylivingbase = this.getAttackTarget();
 
-        if (entitylivingbase != null && entitylivingbase.field_70163_u + (double)entitylivingbase.func_70047_e() > this.field_70163_u + (double)this.func_70047_e() + (double)this.heightOffset)
+        if (entitylivingbase != null && entitylivingbase.posY + (double)entitylivingbase.getEyeHeight() > this.posY + (double)this.getEyeHeight() + (double)this.heightOffset)
         {
-            this.field_70181_x += (0.30000001192092896D - this.field_70181_x) * 0.30000001192092896D;
-            this.field_70160_al = true;
+            this.motionY += (0.30000001192092896D - this.motionY) * 0.30000001192092896D;
+            this.isAirBorne = true;
         }
 
-        super.func_70619_bc();
+        super.updateAITasks();
     }
 
-    public void func_180430_e(float distance, float damageMultiplier)
+    public void fall(float distance, float damageMultiplier)
     {
     }
     
-    public void func_70636_d()
+    public void onLivingUpdate()
     {
-        if (!this.field_70122_E && this.field_70181_x < 0.0D)
+        if (!this.onGround && this.motionY < 0.0D)
         {
-            this.field_70181_x *= 0.6D;
+            this.motionY *= 0.6D;
         }
 
-        if (this.field_70170_p.field_72995_K)
+        if (this.world.isRemote)
         {
-            if (this.field_70146_Z.nextInt(24) == 0 && !this.func_174814_R())
+            if (this.rand.nextInt(24) == 0 && !this.isSilent())
             {
-                this.field_70170_p.func_184134_a(this.field_70165_t + 0.5D, this.field_70163_u + 0.5D, this.field_70161_v + 0.5D, SoundEvents.field_187597_B, this.func_184176_by(), 1.0F + this.field_70146_Z.nextFloat(), this.field_70146_Z.nextFloat() * 0.7F + 0.3F, false);
+                this.world.playSound(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, SoundEvents.ENTITY_BLAZE_BURN, this.getSoundCategory(), 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, false);
             }
 
             for (int i = 0; i < 2; ++i)
             {
-                this.field_70170_p.func_175688_a(EnumParticleTypes.SMOKE_LARGE, this.field_70165_t + (this.field_70146_Z.nextDouble() - 0.5D) * (double)this.field_70130_N, this.field_70163_u + this.field_70146_Z.nextDouble() * (double)this.field_70131_O, this.field_70161_v + (this.field_70146_Z.nextDouble() - 0.5D) * (double)this.field_70130_N, 0.0D, 0.0D, 0.0D, new int[0]);
+                this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D, new int[0]);
             }
         }
 
-        super.func_70636_d();
+        super.onLivingUpdate();
     }
     
-    public void func_184178_b(EntityPlayerMP player)
+    public void addTrackingPlayer(EntityPlayerMP player)
 
     {
 
-    	super.func_184178_b(player);
+    	super.addTrackingPlayer(player);
 
     }
     
-    public void func_184203_c(EntityPlayerMP player)
+    public void removeTrackingPlayer(EntityPlayerMP player)
 
     {
 
-        super.func_184203_c(player);
+        super.removeTrackingPlayer(player);
 
     }
     static class AIFireballAttack extends EntityAIBase
@@ -159,49 +159,49 @@ public class EntityFlying extends EntityMob
         public AIFireballAttack(EntityFlying entityFlying)
         {
             this.blaze = entityFlying;
-            this.func_75248_a(3);
+            this.setMutexBits(3);
         }
 
         /**
          * Returns whether the EntityAIBase should begin execution.
          */
-        public boolean func_75250_a()
+        public boolean shouldExecute()
         {
-            EntityLivingBase entitylivingbase = this.blaze.func_70638_az();
-            return entitylivingbase != null && entitylivingbase.func_70089_S();
+            EntityLivingBase entitylivingbase = this.blaze.getAttackTarget();
+            return entitylivingbase != null && entitylivingbase.isEntityAlive();
         }
 
         /**
          * Execute a one shot task or start executing a continuous task
          */
-        public void func_75249_e()
+        public void startExecuting()
         {
             this.attackStep = 0;
         }
         /**
          * Updates the task
          */
-        public void func_75246_d()
+        public void updateTask()
         {
             --this.attackTime;
-            EntityLivingBase entitylivingbase = this.blaze.func_70638_az();
-            double d0 = this.blaze.func_70068_e(entitylivingbase);
+            EntityLivingBase entitylivingbase = this.blaze.getAttackTarget();
+            double d0 = this.blaze.getDistanceSqToEntity(entitylivingbase);
 
             if (d0 < 4.0D)
             {
                 if (this.attackTime <= 0)
                 {
                     this.attackTime = 20;
-                    this.blaze.func_70652_k(entitylivingbase);
+                    this.blaze.attackEntityAsMob(entitylivingbase);
                 }
 
-                this.blaze.func_70605_aq().func_75642_a(entitylivingbase.field_70165_t, entitylivingbase.field_70163_u, entitylivingbase.field_70161_v, 1.0D);
+                this.blaze.getMoveHelper().setMoveTo(entitylivingbase.posX, entitylivingbase.posY, entitylivingbase.posZ, 1.0D);
             }
             else if (d0 < this.func_191523_f() * this.func_191523_f())
             {
-                double d1 = entitylivingbase.field_70165_t - this.blaze.field_70165_t;
-                double d2 = entitylivingbase.func_174813_aQ().field_72338_b + (double)(entitylivingbase.field_70131_O / 2.0F) - (this.blaze.field_70163_u + (double)(this.blaze.field_70131_O / 2.0F));
-                double d3 = entitylivingbase.field_70161_v - this.blaze.field_70161_v;
+                double d1 = entitylivingbase.posX - this.blaze.posX;
+                double d2 = entitylivingbase.getEntityBoundingBox().minY + (double)(entitylivingbase.height / 2.0F) - (this.blaze.posY + (double)(this.blaze.height / 2.0F));
+                double d3 = entitylivingbase.posZ - this.blaze.posZ;
 
                 if (this.attackTime <= 0)
                 {
@@ -225,33 +225,33 @@ public class EntityFlying extends EntityMob
 
                     if (this.attackStep > 1)
                     {
-                        float f = MathHelper.func_76129_c(MathHelper.func_76133_a(d0)) * 0.5F;
-                        this.blaze.field_70170_p.func_180498_a((EntityPlayer)null, 1018, new BlockPos((int)this.blaze.field_70165_t, (int)this.blaze.field_70163_u, (int)this.blaze.field_70161_v), 0);
+                        float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
+                        this.blaze.world.playEvent((EntityPlayer)null, 1018, new BlockPos((int)this.blaze.posX, (int)this.blaze.posY, (int)this.blaze.posZ), 0);
 
                         for (int i = 0; i < 1; ++i)
                         {
-                            EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.blaze.field_70170_p, this.blaze, d1 + this.blaze.func_70681_au().nextGaussian() * (double)f, d2, d3 + this.blaze.func_70681_au().nextGaussian() * (double)f);
-                            entitysmallfireball.field_70163_u = this.blaze.field_70163_u + (double)(this.blaze.field_70131_O / 2.0F) + 0.5D;
-                            this.blaze.field_70170_p.func_72838_d(entitysmallfireball);
+                            EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.blaze.world, this.blaze, d1 + this.blaze.getRNG().nextGaussian() * (double)f, d2, d3 + this.blaze.getRNG().nextGaussian() * (double)f);
+                            entitysmallfireball.posY = this.blaze.posY + (double)(this.blaze.height / 2.0F) + 0.5D;
+                            this.blaze.world.spawnEntity(entitysmallfireball);
                         }
                     }
                 }
 
-                this.blaze.func_70671_ap().func_75651_a(entitylivingbase, 10.0F, 10.0F);
+                this.blaze.getLookHelper().setLookPositionWithEntity(entitylivingbase, 10.0F, 10.0F);
             }
             else
             {
-                this.blaze.func_70661_as().func_75499_g();
-                this.blaze.func_70605_aq().func_75642_a(entitylivingbase.field_70165_t, entitylivingbase.field_70163_u, entitylivingbase.field_70161_v, 1.0D);
+                this.blaze.getNavigator().clearPathEntity();
+                this.blaze.getMoveHelper().setMoveTo(entitylivingbase.posX, entitylivingbase.posY, entitylivingbase.posZ, 1.0D);
             }
 
-            super.func_75246_d();
+            super.updateTask();
         }
 
         private double func_191523_f()
         {
-            IAttributeInstance iattributeinstance = this.blaze.func_110148_a(SharedMonsterAttributes.field_111265_b);
-            return iattributeinstance == null ? 16.0D : iattributeinstance.func_111126_e();
+            IAttributeInstance iattributeinstance = this.blaze.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE);
+            return iattributeinstance == null ? 16.0D : iattributeinstance.getAttributeValue();
         }
     }
 

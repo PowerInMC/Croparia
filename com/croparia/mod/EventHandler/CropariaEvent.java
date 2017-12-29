@@ -44,22 +44,22 @@ public class CropariaEvent {
 		faible = random.nextInt(2);
 
 		if (event.getEntityLiving() instanceof EntityCow) {
-			event.getEntityLiving().func_145779_a(ItemMod.roast_beef, faible);
+			event.getEntityLiving().dropItem(ItemMod.roast_beef, faible);
 		} 
 		else if (event.getEntityLiving() instanceof EntityPig) {
-			event.getEntityLiving().func_145779_a(ItemMod.roast_porc, faible);
+			event.getEntityLiving().dropItem(ItemMod.roast_porc, faible);
 		} 
 		else if (event.getEntityLiving() instanceof EntityChicken) {
-			event.getEntityLiving().func_145779_a(ItemMod.chicken_leg, 2);
+			event.getEntityLiving().dropItem(ItemMod.chicken_leg, 2);
 		} 
 		else if (event.getEntityLiving() instanceof EntityHorse) {
-			event.getEntityLiving().func_145779_a(ItemMod.horse_meat, normal);
+			event.getEntityLiving().dropItem(ItemMod.horse_meat, normal);
 		} 
 		else if (event.getEntityLiving() instanceof EntitySquid) {
-			event.getEntityLiving().func_145779_a(ItemMod.squid_meat, fort);
+			event.getEntityLiving().dropItem(ItemMod.squid_meat, fort);
 		} 
 		else if(event.getEntityLiving() instanceof EntityVillager) {
-			event.getEntityLiving().func_145779_a(Items.field_151166_bC, 1);
+			event.getEntityLiving().dropItem(Items.EMERALD, 1);
 		}
 	}
 
@@ -67,7 +67,7 @@ public class CropariaEvent {
 	
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-		if (event.getState().func_177230_c() != BlockMod.fruit_grass)
+		if (event.getState().getBlock() != BlockMod.fruit_grass)
 			return;
 		event.setDropChance(0.2F);
 		event.getDrops().add(new ItemStack(ItemMod.cherry));
@@ -83,12 +83,12 @@ public class CropariaEvent {
 	public void onDeathEvent(LivingDeathEvent event)
 	{
 		Random rand = new Random(); 
-		World world = Minecraft.func_71410_x().field_71441_e;
-		EntityReaper e = new EntityReaper(Minecraft.func_71410_x().field_71441_e);
-		if(event.getEntity() instanceof EntityPlayer && event.getSource().func_76346_g() instanceof EntityReaper && !world.field_72995_K)
+		World world = Minecraft.getMinecraft().world;
+		EntityReaper e = new EntityReaper(Minecraft.getMinecraft().world);
+		if(event.getEntity() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityReaper && !world.isRemote)
 		{
-			event.getSource().func_76346_g().func_70106_y();
-			Minecraft.func_71410_x().field_71439_g.func_71165_d("The Reaper disappears...");
+			event.getSource().getTrueSource().setDead();
+			Minecraft.getMinecraft().player.sendChatMessage("The Reaper disappears...");
 		}
 
 	}

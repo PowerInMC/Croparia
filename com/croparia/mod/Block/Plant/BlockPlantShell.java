@@ -17,17 +17,17 @@ public class BlockPlantShell extends Block
 
 	public BlockPlantShell(Material blockMaterialIn, MapColor blockMapColorIn) {
 		super(blockMaterialIn, blockMapColorIn);
-		this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
-		this.func_149711_c(1.0F);
-		this.func_149672_a(SoundType.field_185850_c);
+		this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
+		this.setHardness(1.0F);
+		this.setSoundType(SoundType.PLANT);
 	}
 	
-	public Item func_180660_a(IBlockState state, Random rand, int fortune)
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Item.func_150898_a(Blocks.field_190987_dv);
+        return Item.getItemFromBlock(Blocks.PURPLE_SHULKER_BOX);
     }
 	
-	public int func_149745_a(Random random)
+	public int quantityDropped(Random random)
     {
         return 1;
     }

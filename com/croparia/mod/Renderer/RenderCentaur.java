@@ -19,7 +19,7 @@ public class RenderCentaur extends RenderLiving<EntityCentaur>
     }   
     
     @Override
-    protected ResourceLocation func_110775_a(EntityCentaur entity) 
+    protected ResourceLocation getEntityTexture(EntityCentaur entity) 
     {
         return ENTITY_TEXTURE;
     }

@@ -10,22 +10,22 @@ public class FuelHandler implements IFuelHandler{
 	@Override
 	public int getBurnTime(ItemStack fuel) 
 	{
-		if(fuel.func_77973_b() == ItemMod.fruit_coal || fuel.func_77973_b() == ItemMod.seed_crop_coal)
+		if(fuel.getItem() == ItemMod.fruit_coal || fuel.getItem() == ItemMod.seed_crop_coal)
 		{
 			return 1600;
 		}
 		
-		else if(fuel.func_77973_b() == ItemMod.wood_multitool)
+		else if(fuel.getItem() == ItemMod.wood_multitool)
 		{
 			return 200;
 		}
 		
-		else if(fuel.func_77973_b() == ItemMod.elemental_fire)
+		else if(fuel.getItem() == ItemMod.elemental_fire)
 		{
 			return 80000;
 		}
 		
-		else if(fuel.func_77973_b() == ItemMod.eternal_fire)
+		else if(fuel.getItem() == ItemMod.eternal_fire)
 		{
 			return 999999999;
 		}

@@ -23,22 +23,22 @@ import net.minecraft.world.World;
 public class BlockDayGiver extends Block implements ITileEntityProvider{
 
 	public BlockDayGiver(String name) {
-		super(Material.field_151573_f);
-		this.func_149663_c(name);
-		this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
-		func_149711_c(5F);
-		func_149752_b(10F);
+		super(Material.IRON);
+		this.setUnlocalizedName(name);
+		this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
+		setHardness(5F);
+		setResistance(10F);
 	}
 	
 	public int date = new Date().getYear() + new Date().getMonth() + new Date().getDay();
 	
 	@Override
-	public boolean func_180639_a(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
 	{
-		if(!worldIn.field_72995_K)
+		if(!worldIn.isRemote)
 		{
-			TileEntity te = worldIn.func_175625_s(pos);
+			TileEntity te = worldIn.getTileEntity(pos);
 			if(te instanceof TileEntityDayGiver)
 			{
 				MinecraftServer sender;
@@ -47,7 +47,7 @@ public class BlockDayGiver extends Block implements ITileEntityProvider{
 				{
 					giver.give();
 					giver.more();
-					Minecraft.func_71410_x().field_71439_g.func_71165_d("Come Back Tomorrow For Another Reward");
+					Minecraft.getMinecraft().player.sendChatMessage("Come Back Tomorrow For Another Reward");
 				}
 				else if(date > giver.dateCounter)
 				{
@@ -55,7 +55,7 @@ public class BlockDayGiver extends Block implements ITileEntityProvider{
 				}
 				else if(date < giver.dateCounter)
 				{
-					Minecraft.func_71410_x().field_71439_g.func_71165_d("You already had your reward, come back tomorrow");
+					Minecraft.getMinecraft().player.sendChatMessage("You already had your reward, come back tomorrow");
 				}		
 			}
 
@@ -65,13 +65,13 @@ public class BlockDayGiver extends Block implements ITileEntityProvider{
 	
 
 	@Override
-	public void func_176206_d(World worldIn, BlockPos pos, IBlockState state) 
+	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) 
 	{
 	//	worldIn.spawnEntity(new EntityItem(worldIn, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, new ItemStack(BlockMod.reward)));
 	}
 
 	@Override
-	public TileEntity func_149915_a(World worldIn, int meta) {
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		// TODO Auto-generated method stub
 		return new TileEntityDayGiver();
 	}

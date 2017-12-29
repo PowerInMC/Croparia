@@ -401,34 +401,34 @@ public class BlockMod {
 			cloud = new BlockModCloud("cloud");
 			
 			
-			fruit_grass = new BlockModTallGrass().func_149663_c("fruit_grass");
+			fruit_grass = new BlockModTallGrass().setUnlocalizedName("fruit_grass");
 			
-			coal_furnace = new BlockCoalFurnace(false, "coal_furnace").func_149647_a(tab);
-			lit_coal_furnace = new BlockCoalFurnace(true, "lit_coal_furnace").func_149715_a(0.875F);
+			coal_furnace = new BlockCoalFurnace(false, "coal_furnace").setCreativeTab(tab);
+			lit_coal_furnace = new BlockCoalFurnace(true, "lit_coal_furnace").setLightLevel(0.875F);
 
-			iron_furnace = new BlockIronFurnace(false, "iron_furnace").func_149647_a(tab);
-			lit_iron_furnace = new BlockIronFurnace(true, "lit_iron_furnace").func_149715_a(0.875F);
+			iron_furnace = new BlockIronFurnace(false, "iron_furnace").setCreativeTab(tab);
+			lit_iron_furnace = new BlockIronFurnace(true, "lit_iron_furnace").setLightLevel(0.875F);
 
-			gold_furnace = new BlockGoldFurnace(false, "gold_furnace").func_149647_a(tab);
-			lit_gold_furnace = new BlockGoldFurnace(true, "lit_gold_furnace").func_149715_a(0.875F);
+			gold_furnace = new BlockGoldFurnace(false, "gold_furnace").setCreativeTab(tab);
+			lit_gold_furnace = new BlockGoldFurnace(true, "lit_gold_furnace").setLightLevel(0.875F);
 
-			redstone_furnace = new BlockRedstoneFurnace(false, "redstone_furnace").func_149647_a(tab);
-			lit_redstone_furnace = new BlockRedstoneFurnace(true, "lit_redstone_furnace").func_149715_a(0.875F);
+			redstone_furnace = new BlockRedstoneFurnace(false, "redstone_furnace").setCreativeTab(tab);
+			lit_redstone_furnace = new BlockRedstoneFurnace(true, "lit_redstone_furnace").setLightLevel(0.875F);
 
-			lapis_furnace = new BlockLapisFurnace(false, "lapis_furnace").func_149647_a(tab);
-			lit_lapis_furnace = new BlockLapisFurnace(true, "lit_lapis_furnace").func_149715_a(0.875F);
+			lapis_furnace = new BlockLapisFurnace(false, "lapis_furnace").setCreativeTab(tab);
+			lit_lapis_furnace = new BlockLapisFurnace(true, "lit_lapis_furnace").setLightLevel(0.875F);
 
-			diamond_furnace = new BlockDiamondFurnace(false, "diamond_furnace").func_149647_a(tab);
-			lit_diamond_furnace = new BlockDiamondFurnace(true, "lit_diamond_furnace").func_149715_a(0.875F);
+			diamond_furnace = new BlockDiamondFurnace(false, "diamond_furnace").setCreativeTab(tab);
+			lit_diamond_furnace = new BlockDiamondFurnace(true, "lit_diamond_furnace").setLightLevel(0.875F);
 
-			obsidian_furnace = new BlockObsidianFurnace(false, "obsidian_furnace").func_149647_a(tab);
-			lit_obsidian_furnace = new BlockObsidianFurnace(true, "lit_obsidian_furnace").func_149715_a(0.875F);
+			obsidian_furnace = new BlockObsidianFurnace(false, "obsidian_furnace").setCreativeTab(tab);
+			lit_obsidian_furnace = new BlockObsidianFurnace(true, "lit_obsidian_furnace").setLightLevel(0.875F);
 			
-			renforced_furnace = new BlockRenforcedFurnace(false, "renforced_furnace").func_149647_a(tab);
-			lit_renforced_furnace = new BlockRenforcedFurnace(true, "lit_renforced_furnace").func_149715_a(0.875F);
+			renforced_furnace = new BlockRenforcedFurnace(false, "renforced_furnace").setCreativeTab(tab);
+			lit_renforced_furnace = new BlockRenforcedFurnace(true, "lit_renforced_furnace").setLightLevel(0.875F);
 			
-			fire_furnace = new BlockFireFurnace(false, "fire_furnace").func_149647_a(tab);
-			lit_fire_furnace = new BlockFireFurnace(true, "lit_fire_furnace").func_149715_a(0.875F);
+			fire_furnace = new BlockFireFurnace(false, "fire_furnace").setCreativeTab(tab);
+			lit_fire_furnace = new BlockFireFurnace(true, "lit_fire_furnace").setLightLevel(0.875F);
 			
 			block_crop_coal = new BlockCropMod("block_crop_coal");
 			block_crop_iron = new BlockCropMod("block_crop_iron");
@@ -438,10 +438,10 @@ public class BlockMod {
 			block_crop_diamond = new BlockCropMod("block_crop_diamond");
 			block_crop_emerald = new BlockCropMod("block_crop_emerald");
 			block_crop_clay = new BlockCropMod("block_crop_clay");
-			block_crop_glowstone = new BlockCropMod("block_crop_glowstone").func_149715_a(1f);
+			block_crop_glowstone = new BlockCropMod("block_crop_glowstone").setLightLevel(1f);
 			block_crop_quartz = new BlockCropMod("block_crop_quartz");
 			block_crop_shard = new BlockCropMod("block_crop_shard");
-			block_crop_cristal = new BlockCropMod("block_crop_cristal").func_149715_a(1f);
+			block_crop_cristal = new BlockCropMod("block_crop_cristal").setLightLevel(1f);
 			block_crop_paper = new BlockCropMod("block_crop_paper");
 			block_crop_sugar = new BlockCropMod("block_crop_sugar");
 			block_crop_charcoal = new BlockCropMod("block_crop_charcoal");
@@ -513,26 +513,26 @@ public class BlockMod {
 			
 
 
-			block_plant_iron = new BlockPlantIron(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_iron");
-			block_plant_coal = new BlockPlantCoal(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_coal");
-			block_plant_gold = new BlockPlantGold(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_gold");
-			block_plant_redstone = new BlockPlantRedstone(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_redstone");
-			block_plant_lapis = new BlockPlantLapis(Material.field_151585_k, MapColor.field_151672_u)	.func_149663_c("block_plant_lapis");
-			block_plant_diamond = new BlockPlantDiamond(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_diamond");
-			block_plant_clay = new BlockPlantClay(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_clay");
-			block_plant_glowstone = new BlockPlantGlowstone(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_glowstone").func_149715_a(1.0F);
-			block_plant_emerald = new BlockPlantEmerald(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_emerald");
-			block_plant_quartz = new BlockPlantQuartz(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_quartz");
-			block_plant_shard = new BlockPlantShard(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_shard");
-			block_plant_cristal = new BlockPlantCristal(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_cristal").func_149715_a(1.0F);
+			block_plant_iron = new BlockPlantIron(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_iron");
+			block_plant_coal = new BlockPlantCoal(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_coal");
+			block_plant_gold = new BlockPlantGold(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_gold");
+			block_plant_redstone = new BlockPlantRedstone(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_redstone");
+			block_plant_lapis = new BlockPlantLapis(Material.PLANTS, MapColor.LIME)	.setUnlocalizedName("block_plant_lapis");
+			block_plant_diamond = new BlockPlantDiamond(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_diamond");
+			block_plant_clay = new BlockPlantClay(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_clay");
+			block_plant_glowstone = new BlockPlantGlowstone(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_glowstone").setLightLevel(1.0F);
+			block_plant_emerald = new BlockPlantEmerald(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_emerald");
+			block_plant_quartz = new BlockPlantQuartz(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_quartz");
+			block_plant_shard = new BlockPlantShard(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_shard");
+			block_plant_cristal = new BlockPlantCristal(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_cristal").setLightLevel(1.0F);
 
-			block_plant_obsidian = new BlockPlantObsidian(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_obsidian");
-			block_plant_bone = new BlockPlantBone(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_bone");
-			block_plant_snow = new BlockPlantSnow(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_snow");
-			block_plant_nether = new BlockPlantNether(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_nether");
-			block_plant_glass = new BlockPlantGlass(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_glass");
-			block_plant_magma = new BlockPlantMagma(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_magma");
-			block_plant_shell = new BlockPlantShell(Material.field_151585_k, MapColor.field_151672_u).func_149663_c("block_plant_shell");
+			block_plant_obsidian = new BlockPlantObsidian(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_obsidian");
+			block_plant_bone = new BlockPlantBone(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_bone");
+			block_plant_snow = new BlockPlantSnow(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_snow");
+			block_plant_nether = new BlockPlantNether(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_nether");
+			block_plant_glass = new BlockPlantGlass(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_glass");
+			block_plant_magma = new BlockPlantMagma(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_magma");
+			block_plant_shell = new BlockPlantShell(Material.PLANTS, MapColor.LIME).setUnlocalizedName("block_plant_shell");
 			
 
 			stem_iron = new BlockStemMod(block_plant_iron, "stem_iron");
@@ -542,23 +542,23 @@ public class BlockMod {
 			stem_lapis = new BlockStemMod(block_plant_lapis, "stem_lapis");
 			stem_diamond = new BlockStemMod(block_plant_diamond, "stem_diamond");
 			stem_clay = new BlockStemMod(block_plant_clay, "stem_clay");
-			stem_glowstone = new BlockStemMod(block_plant_glowstone, "stem_glowstone").func_149715_a(1.0F);
+			stem_glowstone = new BlockStemMod(block_plant_glowstone, "stem_glowstone").setLightLevel(1.0F);
 			stem_emerald = new BlockStemMod(block_plant_emerald, "stem_emerald");
 			stem_quartz = new BlockStemMod(block_plant_quartz, "stem_quartz");
 			stem_shard = new BlockStemMod(block_plant_shard, "stem_shard");
-			stem_cristal = new BlockStemMod(block_plant_cristal, "stem_cristal").func_149715_a(1.0F);
+			stem_cristal = new BlockStemMod(block_plant_cristal, "stem_cristal").setLightLevel(1.0F);
 	        stem_obsidian = new BlockStemMod(block_plant_obsidian, "stem_obsidian");
 	        stem_bone = new BlockStemMod(block_plant_bone, "stem_bone");
 	        stem_snow = new BlockStemMod(block_plant_snow, "stem_snow");
 	        stem_nether = new BlockStemMod(block_plant_nether, "stem_nether");
 	        stem_glass = new BlockStemMod(block_plant_glass, "stem_glass");
-	        stem_magma = new BlockStemMod(block_plant_magma, "stem_magma").func_149715_a(1.0F);;
+	        stem_magma = new BlockStemMod(block_plant_magma, "stem_magma").setLightLevel(1.0F);;
 	        stem_shell = new BlockStemMod(block_plant_shell, "stem_shell");
 
-			elemental_stone = new BlockElementalStone(Material.field_151578_c, MapColor.field_151678_z).func_149663_c("elemental_stone");
-			elemental_cobblestone = new BlockElementalStone(Material.field_151578_c, MapColor.field_151678_z).func_149663_c("elemental_cobblestone");
+			elemental_stone = new BlockElementalStone(Material.GROUND, MapColor.PURPLE).setUnlocalizedName("elemental_stone");
+			elemental_cobblestone = new BlockElementalStone(Material.GROUND, MapColor.PURPLE).setUnlocalizedName("elemental_cobblestone");
 			elemental_crop = new BlockCropMod("elemental_crop");
-			block_plant_elemental = new BlockPlantElemental(Material.field_151585_k, MapColor.field_151678_z).func_149663_c("block_plant_elemental");
+			block_plant_elemental = new BlockPlantElemental(Material.PLANTS, MapColor.PURPLE).setUnlocalizedName("block_plant_elemental");
 			stem_elemental = new BlockStemMod(block_plant_elemental, "stem_elemental");
 
 			seafarer_spawn = new BlockSeafarerSpawn("seafarer_spawn");
@@ -567,44 +567,44 @@ public class BlockMod {
 			flyingbeast_spawn = new BlockFlyingbeastSpawn("flyingbeast_spawn");
 			reaper_spawn = new BlockReaperSpawn("Reaper_spawn");
 			
-			water_block = new BlockElemental("water_block").func_149647_a(tab);
-			fire_block = new BlockElemental("fire_block").func_149647_a(tab);
-			earth_block = new BlockElemental("earth_block").func_149647_a(tab);
-			air_block = new BlockElemental("air_block").func_149647_a(tab);
+			water_block = new BlockElemental("water_block").setCreativeTab(tab);
+			fire_block = new BlockElemental("fire_block").setCreativeTab(tab);
+			earth_block = new BlockElemental("earth_block").setCreativeTab(tab);
+			air_block = new BlockElemental("air_block").setCreativeTab(tab);
 
-			ice_water_ore = new BlockElementalOre("ice_water_ore").func_149647_a(tab);
-			dirt_earth_ore = new BlockElementalOre("dirt_earth_ore").func_149647_a(tab);
-			magma_fire_ore = new BlockElementalOre("magma_fire_ore").func_149647_a(tab);
-			cloud_air_ore = new BlockElementalOre("cloud_air_ore").func_149647_a(tab);
+			ice_water_ore = new BlockElementalOre("ice_water_ore").setCreativeTab(tab);
+			dirt_earth_ore = new BlockElementalOre("dirt_earth_ore").setCreativeTab(tab);
+			magma_fire_ore = new BlockElementalOre("magma_fire_ore").setCreativeTab(tab);
+			cloud_air_ore = new BlockElementalOre("cloud_air_ore").setCreativeTab(tab);
 
-			block_cane_cobble = new CaneCobble("block_cane_cobble").func_149647_a(tab);
-			block_cane_sand = new CaneSand("block_cane_sand").func_149647_a(tab);
-			block_cane_grass = new CaneGrass("block_cane_grass").func_149647_a(tab);
-			block_cane_acacia = new CaneAcacia("block_cane_acacia").func_149647_a(tab);
-			block_cane_birch = new CaneBirch("block_cane_birch").func_149647_a(tab);
-			block_cane_darkoak = new CaneDarkOak("block_cane_darkoak").func_149647_a(tab);
-			block_cane_jungle = new CaneJungle("block_cane_jungle").func_149647_a(tab);
-			block_cane_oak = new CaneOak("block_cane_oak").func_149647_a(tab);
-			block_cane_spruce = new CaneSpruce("block_cane_spruce").func_149647_a(tab);
+			block_cane_cobble = new CaneCobble("block_cane_cobble").setCreativeTab(tab);
+			block_cane_sand = new CaneSand("block_cane_sand").setCreativeTab(tab);
+			block_cane_grass = new CaneGrass("block_cane_grass").setCreativeTab(tab);
+			block_cane_acacia = new CaneAcacia("block_cane_acacia").setCreativeTab(tab);
+			block_cane_birch = new CaneBirch("block_cane_birch").setCreativeTab(tab);
+			block_cane_darkoak = new CaneDarkOak("block_cane_darkoak").setCreativeTab(tab);
+			block_cane_jungle = new CaneJungle("block_cane_jungle").setCreativeTab(tab);
+			block_cane_oak = new CaneOak("block_cane_oak").setCreativeTab(tab);
+			block_cane_spruce = new CaneSpruce("block_cane_spruce").setCreativeTab(tab);
 			
-			block_cane_black = new CaneBlack("block_cane_black").func_149647_a(tab);	
-			block_cane_blue = new CaneBlue("block_cane_blue").func_149647_a(tab);	
-			block_cane_brown = new CaneBrown("block_cane_brown").func_149647_a(tab);	
-			block_cane_cyan = new CaneCyan("block_cane_cyan").func_149647_a(tab);	
-			block_cane_gray = new CaneGray("block_cane_gray").func_149647_a(tab);	
-			block_cane_green = new CaneGreen("block_cane_green").func_149647_a(tab);	
-			block_cane_lightblue = new CaneLightblue("block_cane_lightblue").func_149647_a(tab);	
-			block_cane_lime = new CaneLime("block_cane_lime").func_149647_a(tab);	
-			block_cane_magenta = new CaneMagenta("block_cane_magenta").func_149647_a(tab);	
-			block_cane_orange = new CaneOrange("block_cane_orange").func_149647_a(tab);	
-			block_cane_pink = new CanePink("block_cane_pink").func_149647_a(tab);	
-			block_cane_purple = new CanePurple("block_cane_purple").func_149647_a(tab);	
-			block_cane_red = new CaneRed("block_cane_red").func_149647_a(tab);	
-			block_cane_silver = new CaneSilver("block_cane_silver").func_149647_a(tab);	
-			block_cane_white = new CaneWhite("block_cane_white").func_149647_a(tab);	
-			block_cane_yellow = new CaneYellow("block_cane_yellow").func_149647_a(tab);
+			block_cane_black = new CaneBlack("block_cane_black").setCreativeTab(tab);	
+			block_cane_blue = new CaneBlue("block_cane_blue").setCreativeTab(tab);	
+			block_cane_brown = new CaneBrown("block_cane_brown").setCreativeTab(tab);	
+			block_cane_cyan = new CaneCyan("block_cane_cyan").setCreativeTab(tab);	
+			block_cane_gray = new CaneGray("block_cane_gray").setCreativeTab(tab);	
+			block_cane_green = new CaneGreen("block_cane_green").setCreativeTab(tab);	
+			block_cane_lightblue = new CaneLightblue("block_cane_lightblue").setCreativeTab(tab);	
+			block_cane_lime = new CaneLime("block_cane_lime").setCreativeTab(tab);	
+			block_cane_magenta = new CaneMagenta("block_cane_magenta").setCreativeTab(tab);	
+			block_cane_orange = new CaneOrange("block_cane_orange").setCreativeTab(tab);	
+			block_cane_pink = new CanePink("block_cane_pink").setCreativeTab(tab);	
+			block_cane_purple = new CanePurple("block_cane_purple").setCreativeTab(tab);	
+			block_cane_red = new CaneRed("block_cane_red").setCreativeTab(tab);	
+			block_cane_silver = new CaneSilver("block_cane_silver").setCreativeTab(tab);	
+			block_cane_white = new CaneWhite("block_cane_white").setCreativeTab(tab);	
+			block_cane_yellow = new CaneYellow("block_cane_yellow").setCreativeTab(tab);
 			
-			block_ritual_debug = new BlockRitualGhost().func_149663_c("debug_ritual");
+			block_ritual_debug = new BlockRitualGhost().setUnlocalizedName("debug_ritual");
 			
 			block_crop_aluminium = new CompatBlockCrop("block_crop_aluminium");
 			block_crop_brass = new CompatBlockCrop("block_crop_brass");
@@ -1388,26 +1388,26 @@ public class BlockMod {
 		
 		
 		public static void add(Block block) {
-			ForgeRegistries.BLOCKS.register(block.setRegistryName(block.func_149739_a().substring(5)));
+			ForgeRegistries.BLOCKS.register(block.setRegistryName(block.getUnlocalizedName().substring(5)));
 		}
 		
 		public static void addWithItem(Block block) {
-			ForgeRegistries.BLOCKS.register(block.setRegistryName(block.func_149739_a().substring(5)));
-			ForgeRegistries.ITEMS.register(new ItemBlock(block).func_77664_n().setRegistryName(block.func_149739_a().substring(5)));
+			ForgeRegistries.BLOCKS.register(block.setRegistryName(block.getUnlocalizedName().substring(5)));
+			ForgeRegistries.ITEMS.register(new ItemBlock(block).setFull3D().setRegistryName(block.getUnlocalizedName().substring(5)));
 		}
 		
 		public static void addOreDic(String what, Block block) 
 		{
 				if(OreDictionary.doesOreNameExist(what))			
 				{
-					ForgeRegistries.BLOCKS.register(block.setRegistryName(block.func_149739_a().substring(5)));
+					ForgeRegistries.BLOCKS.register(block.setRegistryName(block.getUnlocalizedName().substring(5)));
 				}
 
 		}
 		
 	public static void registerRender(Block block) {
-		Item item = Item.func_150898_a(block);
-		Minecraft.func_71410_x().func_175599_af().func_175037_a().func_178086_a(item, 0, new ModelResourceLocation(
-				Reference.MOD_ID + ":" + item.func_77658_a().substring(5), "inventory"));
+		Item item = Item.getItemFromBlock(block);
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(
+				Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
 	}
 }

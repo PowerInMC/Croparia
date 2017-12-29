@@ -17,23 +17,23 @@ public class TileEntityHarvester extends TileEntity
 {
 	public void run() 
 	{
-		if(field_145850_b.func_180495_p(field_174879_c.func_177978_c()).func_177230_c().func_176203_a(7) == BlockMod.block_crop_coal.func_176203_a(7))
+		if(world.getBlockState(pos.north()).getBlock().getStateFromMeta(7) == BlockMod.block_crop_coal.getStateFromMeta(7))
 		{
-			Block block = field_145850_b.func_180495_p(field_174879_c.func_177978_c()).func_177230_c();
-			block.func_180663_b(field_145850_b, field_174879_c, BlockMod.block_crop_coal.func_176203_a(7));
-			field_145850_b.func_175656_a(field_174879_c.func_177978_c(), Blocks.field_150350_a.func_176223_P());
+			Block block = world.getBlockState(pos.north()).getBlock();
+			block.breakBlock(world, pos, BlockMod.block_crop_coal.getStateFromMeta(7));
+			world.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
 		}
 	}
 	
 	@Override
-	public NBTTagCompound func_189515_b(NBTTagCompound compound) {
-		super.func_189515_b(compound);
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
 		return compound;
 	}
 	
 	@Override
-	public void func_145839_a(NBTTagCompound compound) {
-		super.func_145839_a(compound);
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
 	}
 
 	

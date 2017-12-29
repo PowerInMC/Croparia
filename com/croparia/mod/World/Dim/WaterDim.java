@@ -98,8 +98,8 @@ public class WaterDim {
 	public static WaterTrigger block;
 
 	static {
-		portal = (BlockWaterPortal) (new BlockWaterPortal().func_149663_c("waterdim_portal"));
-		block = (WaterTrigger) (new WaterTrigger().func_77655_b("waterdim_trigger"));
+		portal = (BlockWaterPortal) (new BlockWaterPortal().setUnlocalizedName("waterdim_portal"));
+		block = (WaterTrigger) (new WaterTrigger().setUnlocalizedName("waterdim_trigger"));
 	}
 
 	public WaterDim() {
@@ -110,8 +110,8 @@ public class WaterDim {
 	public void load(FMLInitializationEvent event) {
 
 		if (event.getSide() == Side.CLIENT)
-			Minecraft.func_71410_x().func_175599_af().func_175037_a()
-					.func_178086_a(block, 0, new ModelResourceLocation(Reference.MOD_ID + ":waterdim_trigger", "inventory"));
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+					.register(block, 0, new ModelResourceLocation(Reference.MOD_ID + ":waterdim_trigger", "inventory"));
 
 	}
 
@@ -146,52 +146,52 @@ public class WaterDim {
 	public static class WorldProviderMod extends WorldProvider {
 
 		@Override
-		public void func_76572_b() {
-			this.field_76578_c = new BiomeProviderCustom(this.field_76579_a.func_72905_C(), field_76579_a.func_72912_H().func_76067_t());
+		public void init() {
+			this.biomeProvider = new BiomeProviderCustom(this.world.getSeed(), world.getWorldInfo().getTerrainType());
 		}
 
-		public DimensionType func_186058_p() {
+		public DimensionType getDimensionType() {
 			return dtype;
 		}
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public Vec3d func_76562_b(float par1, float par2) {
+		public Vec3d getFogColor(float par1, float par2) {
 			return new Vec3d(0.4D, 0.6D, 1.0D);
 		}
 
 		@Override
-		public IChunkGenerator func_186060_c() {
-			return new ChunkProviderModded(this.field_76579_a, this.field_76579_a.func_72905_C() - 19702);
+		public IChunkGenerator createChunkGenerator() {
+			return new ChunkProviderModded(this.world, this.world.getSeed() - 19702);
 		}
 
 		@Override
-		public boolean func_76569_d() {
+		public boolean isSurfaceWorld() {
 			return false;
 		}
 
 		@Override
-		public boolean func_76566_a(int par1, int par2) {
+		public boolean canCoordinateBeSpawn(int par1, int par2) {
 			return false;
 		}
 
 		@Override
-		public boolean func_76567_e() {
+		public boolean canRespawnHere() {
 			return false;
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public boolean func_76568_b(int par1, int par2) {
+		public boolean doesXZShowFog(int par1, int par2) {
 			return false;
 		}
 
 		@Override
-		protected void func_76556_a() {
+		protected void generateLightBrightnessTable() {
 			float f = 0.5F;
 			for (int i = 0; i <= 15; ++i) {
 				float f1 = 1.0F - (float) i / 15.0F;
-				this.field_76573_f[i] = (1.0F - f1) / (f1 * 3.0F + 1.0F) * (1.0F - f) + f;
+				this.lightBrightnessTable[i] = (1.0F - f1) / (f1 * 3.0F + 1.0F) * (1.0F - f) + f;
 			}
 		}
 
@@ -209,19 +209,19 @@ public class WaterDim {
 		public TeleporterDimensionMod(WorldServer worldIn) {
 			super(worldIn);
 			this.worldServerInstance = worldIn;
-			this.random = new Random(worldIn.func_72905_C());
+			this.random = new Random(worldIn.getSeed());
 		}
 
-		public void func_180266_a(Entity entityIn, float rotationYaw) {
-			if (this.worldServerInstance.field_73011_w.getDimension() != 1) {
-				if (!this.func_180620_b(entityIn, rotationYaw)) {
-					this.func_85188_a(entityIn);
-					this.func_180620_b(entityIn, rotationYaw);
+		public void placeInPortal(Entity entityIn, float rotationYaw) {
+			if (this.worldServerInstance.provider.getDimension() != 1) {
+				if (!this.placeInExistingPortal(entityIn, rotationYaw)) {
+					this.makePortal(entityIn);
+					this.placeInExistingPortal(entityIn, rotationYaw);
 				}
 			} else {
-				int i = MathHelper.func_76128_c(entityIn.field_70165_t);
-				int j = MathHelper.func_76128_c(entityIn.field_70163_u) - 1;
-				int k = MathHelper.func_76128_c(entityIn.field_70161_v);
+				int i = MathHelper.floor(entityIn.posX);
+				int j = MathHelper.floor(entityIn.posY) - 1;
+				int k = MathHelper.floor(entityIn.posZ);
 				byte b0 = 1;
 				byte b1 = 0;
 
@@ -232,31 +232,31 @@ public class WaterDim {
 							int l1 = j + j1;
 							int i2 = k + i1 * b1 - l * b0;
 							boolean flag = j1 < 0;
-							this.worldServerInstance.func_175656_a(new BlockPos(k1, l1, i2),
-									flag ? BlockMod.water_block.func_176223_P() : Blocks.field_150350_a.func_176223_P());
+							this.worldServerInstance.setBlockState(new BlockPos(k1, l1, i2),
+									flag ? BlockMod.water_block.getDefaultState() : Blocks.AIR.getDefaultState());
 						}
 					}
 				}
 
-				entityIn.func_70012_b((double) i, (double) j, (double) k, entityIn.field_70177_z, 0.0F);
-				entityIn.field_70159_w = entityIn.field_70181_x = entityIn.field_70179_y = 0.0D;
+				entityIn.setLocationAndAngles((double) i, (double) j, (double) k, entityIn.rotationYaw, 0.0F);
+				entityIn.motionX = entityIn.motionY = entityIn.motionZ = 0.0D;
 			}
 		}
 
-		public boolean func_180620_b(Entity entityIn, float p_180620_2_) {
+		public boolean placeInExistingPortal(Entity entityIn, float p_180620_2_) {
 			boolean flag = true;
 			double d0 = -1.0D;
-			int i = MathHelper.func_76128_c(entityIn.field_70165_t);
-			int j = MathHelper.func_76128_c(entityIn.field_70161_v);
+			int i = MathHelper.floor(entityIn.posX);
+			int j = MathHelper.floor(entityIn.posZ);
 			boolean flag1 = true;
-			BlockPos object = BlockPos.field_177992_a;
-			long k = ChunkPos.func_77272_a(i, j);
+			BlockPos object = BlockPos.ORIGIN;
+			long k = ChunkPos.asLong(i, j);
 
 			if (this.destinationCoordinateCache.containsKey(k)) {
 				Teleporter.PortalPosition portalposition = (Teleporter.PortalPosition) this.destinationCoordinateCache.get(k);
 				d0 = 0.0D;
 				object = portalposition;
-				portalposition.field_85087_d = this.worldServerInstance.func_82737_E();
+				portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
 				flag1 = false;
 			} else {
 				BlockPos blockpos4 = new BlockPos(entityIn);
@@ -265,16 +265,16 @@ public class WaterDim {
 					BlockPos blockpos1;
 
 					for (int i1 = -128; i1 <= 128; ++i1) {
-						for (BlockPos blockpos = blockpos4.func_177982_a(l, this.worldServerInstance.func_72940_L() - 1 - blockpos4.func_177956_o(), i1); blockpos
-								.func_177956_o() >= 0; blockpos = blockpos1) {
-							blockpos1 = blockpos.func_177977_b();
+						for (BlockPos blockpos = blockpos4.add(l, this.worldServerInstance.getActualHeight() - 1 - blockpos4.getY(), i1); blockpos
+								.getY() >= 0; blockpos = blockpos1) {
+							blockpos1 = blockpos.down();
 
-							if (this.worldServerInstance.func_180495_p(blockpos).func_177230_c() == portal) {
-								while (this.worldServerInstance.func_180495_p(blockpos1 = blockpos.func_177977_b()).func_177230_c() == portal) {
+							if (this.worldServerInstance.getBlockState(blockpos).getBlock() == portal) {
+								while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.down()).getBlock() == portal) {
 									blockpos = blockpos1;
 								}
 
-								double d1 = blockpos.func_177951_i(blockpos4);
+								double d1 = blockpos.distanceSq(blockpos4);
 
 								if (d0 < 0.0D || d1 < d0) {
 									d0 = d1;
@@ -288,48 +288,48 @@ public class WaterDim {
 
 			if (d0 >= 0.0D) {
 				if (flag1) {
-					this.destinationCoordinateCache.put(k, new Teleporter.PortalPosition(object, this.worldServerInstance.func_82737_E()));
+					this.destinationCoordinateCache.put(k, new Teleporter.PortalPosition(object, this.worldServerInstance.getTotalWorldTime()));
 				}
 
-				double d4 = (double) ((BlockPos) object).func_177958_n() + 0.5D;
-				double d5 = (double) ((BlockPos) object).func_177956_o() + 0.5D;
-				double d6 = (double) ((BlockPos) object).func_177952_p() + 0.5D;
+				double d4 = (double) ((BlockPos) object).getX() + 0.5D;
+				double d5 = (double) ((BlockPos) object).getY() + 0.5D;
+				double d6 = (double) ((BlockPos) object).getZ() + 0.5D;
 				EnumFacing enumfacing = null;
 
-				if (this.worldServerInstance.func_180495_p(((BlockPos) object).func_177976_e()).func_177230_c() == portal) {
+				if (this.worldServerInstance.getBlockState(((BlockPos) object).west()).getBlock() == portal) {
 					enumfacing = EnumFacing.NORTH;
 				}
 
-				if (this.worldServerInstance.func_180495_p(((BlockPos) object).func_177974_f()).func_177230_c() == portal) {
+				if (this.worldServerInstance.getBlockState(((BlockPos) object).east()).getBlock() == portal) {
 					enumfacing = EnumFacing.SOUTH;
 				}
 
-				if (this.worldServerInstance.func_180495_p(((BlockPos) object).func_177978_c()).func_177230_c() == portal) {
+				if (this.worldServerInstance.getBlockState(((BlockPos) object).north()).getBlock() == portal) {
 					enumfacing = EnumFacing.EAST;
 				}
 
-				if (this.worldServerInstance.func_180495_p(((BlockPos) object).func_177968_d()).func_177230_c() == portal) {
+				if (this.worldServerInstance.getBlockState(((BlockPos) object).south()).getBlock() == portal) {
 					enumfacing = EnumFacing.WEST;
 				}
 
 				// func_181012_aH = getTeleportDirection
 				// EnumFacing enumfacing1 =
 				// EnumFacing.getHorizontal(entityIn.func_181012_aH());
-				EnumFacing enumfacing1 = entityIn.func_181012_aH();
+				EnumFacing enumfacing1 = entityIn.getTeleportDirection();
 
 				if (enumfacing != null) {
-					EnumFacing enumfacing2 = enumfacing.func_176735_f();
-					BlockPos blockpos2 = ((BlockPos) object).func_177972_a(enumfacing);
+					EnumFacing enumfacing2 = enumfacing.rotateYCCW();
+					BlockPos blockpos2 = ((BlockPos) object).offset(enumfacing);
 					boolean flag2 = this.func_180265_a(blockpos2);
-					boolean flag3 = this.func_180265_a(blockpos2.func_177972_a(enumfacing2));
+					boolean flag3 = this.func_180265_a(blockpos2.offset(enumfacing2));
 
 					if (flag3 && flag2) {
-						object = ((BlockPos) object).func_177972_a(enumfacing2);
-						enumfacing = enumfacing.func_176734_d();
-						enumfacing2 = enumfacing2.func_176734_d();
-						BlockPos blockpos3 = ((BlockPos) object).func_177972_a(enumfacing);
+						object = ((BlockPos) object).offset(enumfacing2);
+						enumfacing = enumfacing.getOpposite();
+						enumfacing2 = enumfacing2.getOpposite();
+						BlockPos blockpos3 = ((BlockPos) object).offset(enumfacing);
 						flag2 = this.func_180265_a(blockpos3);
-						flag3 = this.func_180265_a(blockpos3.func_177972_a(enumfacing2));
+						flag3 = this.func_180265_a(blockpos3.offset(enumfacing2));
 					}
 
 					float f6 = 0.5F;
@@ -343,11 +343,11 @@ public class WaterDim {
 						f1 = 0.0F;
 					}
 
-					d4 = (double) ((BlockPos) object).func_177958_n() + 0.5D;
-					d5 = (double) ((BlockPos) object).func_177956_o() + 0.5D;
-					d6 = (double) ((BlockPos) object).func_177952_p() + 0.5D;
-					d4 += (double) ((float) enumfacing2.func_82601_c() * f6 + (float) enumfacing.func_82601_c() * f1);
-					d6 += (double) ((float) enumfacing2.func_82599_e() * f6 + (float) enumfacing.func_82599_e() * f1);
+					d4 = (double) ((BlockPos) object).getX() + 0.5D;
+					d5 = (double) ((BlockPos) object).getY() + 0.5D;
+					d6 = (double) ((BlockPos) object).getZ() + 0.5D;
+					d4 += (double) ((float) enumfacing2.getFrontOffsetX() * f6 + (float) enumfacing.getFrontOffsetX() * f1);
+					d6 += (double) ((float) enumfacing2.getFrontOffsetZ() * f6 + (float) enumfacing.getFrontOffsetZ() * f1);
 					float f2 = 0.0F;
 					float f3 = 0.0F;
 					float f4 = 0.0F;
@@ -356,10 +356,10 @@ public class WaterDim {
 					if (enumfacing1 != null && enumfacing == enumfacing1) {
 						f2 = 1.0F;
 						f3 = 1.0F;
-					} else if (enumfacing1 != null && enumfacing == enumfacing1.func_176734_d()) {
+					} else if (enumfacing1 != null && enumfacing == enumfacing1.getOpposite()) {
 						f2 = -1.0F;
 						f3 = -1.0F;
-					} else if (enumfacing1 != null && enumfacing == enumfacing1.func_176746_e()) {
+					} else if (enumfacing1 != null && enumfacing == enumfacing1.rotateY()) {
 						f4 = 1.0F;
 						f5 = -1.0F;
 					} else {
@@ -367,18 +367,18 @@ public class WaterDim {
 						f5 = 1.0F;
 					}
 
-					double d2 = entityIn.field_70159_w;
-					double d3 = entityIn.field_70179_y;
-					entityIn.field_70159_w = d2 * (double) f2 + d3 * (double) f5;
-					entityIn.field_70179_y = d2 * (double) f4 + d3 * (double) f3;
+					double d2 = entityIn.motionX;
+					double d3 = entityIn.motionZ;
+					entityIn.motionX = d2 * (double) f2 + d3 * (double) f5;
+					entityIn.motionZ = d2 * (double) f4 + d3 * (double) f3;
 					if (enumfacing1 != null)
-						entityIn.field_70177_z = p_180620_2_ - (float) (enumfacing1.func_176736_b() * 90)
-								+ (float) (enumfacing.func_176736_b() * 90);
+						entityIn.rotationYaw = p_180620_2_ - (float) (enumfacing1.getHorizontalIndex() * 90)
+								+ (float) (enumfacing.getHorizontalIndex() * 90);
 				} else {
-					entityIn.field_70159_w = entityIn.field_70181_x = entityIn.field_70179_y = 0.0D;
+					entityIn.motionX = entityIn.motionY = entityIn.motionZ = 0.0D;
 				}
 
-				entityIn.func_70012_b(d4, d5, d6, entityIn.field_70177_z, entityIn.field_70125_A);
+				entityIn.setLocationAndAngles(d4, d5, d6, entityIn.rotationYaw, entityIn.rotationPitch);
 				return true;
 			} else {
 				return false;
@@ -386,16 +386,16 @@ public class WaterDim {
 		}
 
 		private boolean func_180265_a(BlockPos p_180265_1_) {
-			return !this.worldServerInstance.func_175623_d(p_180265_1_) || !this.worldServerInstance.func_175623_d(p_180265_1_.func_177984_a());
+			return !this.worldServerInstance.isAirBlock(p_180265_1_) || !this.worldServerInstance.isAirBlock(p_180265_1_.up());
 		}
 
-		public boolean func_85188_a(Entity p_85188_1_) {
+		public boolean makePortal(Entity p_85188_1_) {
 
 			byte b0 = 16;
 			double d0 = -1.0D;
-			int i = MathHelper.func_76128_c(p_85188_1_.field_70165_t);
-			int j = MathHelper.func_76128_c(p_85188_1_.field_70163_u);
-			int k = MathHelper.func_76128_c(p_85188_1_.field_70161_v);
+			int i = MathHelper.floor(p_85188_1_.posX);
+			int j = MathHelper.floor(p_85188_1_.posY);
+			int k = MathHelper.floor(p_85188_1_.posZ);
 			int l = i;
 			int i1 = j;
 			int j1 = k;
@@ -418,15 +418,15 @@ public class WaterDim {
 			double d4;
 
 			for (i2 = i - b0; i2 <= i + b0; ++i2) {
-				d1 = (double) i2 + 0.5D - p_85188_1_.field_70165_t;
+				d1 = (double) i2 + 0.5D - p_85188_1_.posX;
 
 				for (k2 = k - b0; k2 <= k + b0; ++k2) {
-					d2 = (double) k2 + 0.5D - p_85188_1_.field_70161_v;
+					d2 = (double) k2 + 0.5D - p_85188_1_.posZ;
 					label271 :
 
-					for (i3 = this.worldServerInstance.func_72940_L() - 1; i3 >= 0; --i3) {
-						if (this.worldServerInstance.func_175623_d(new BlockPos(i2, i3, k2))) {
-							while (i3 > 0 && this.worldServerInstance.func_175623_d(new BlockPos(i2, i3 - 1, k2))) {
+					for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3) {
+						if (this.worldServerInstance.isAirBlock(new BlockPos(i2, i3, k2))) {
+							while (i3 > 0 && this.worldServerInstance.isAirBlock(new BlockPos(i2, i3 - 1, k2))) {
 								--i3;
 							}
 
@@ -445,16 +445,16 @@ public class WaterDim {
 											l4 = i2 + (j4 - 1) * k3 + i4 * l3;
 											i5 = i3 + k4;
 											int j5 = k2 + (j4 - 1) * l3 - i4 * k3;
-											Block tmp = this.worldServerInstance.func_180495_p(new BlockPos(l4, i5, j5)).func_177230_c();
-											if (k4 < 0 && !tmp.func_149688_o(tmp.func_176223_P()).func_76220_a() || k4 >= 0
-													&& !this.worldServerInstance.func_175623_d(new BlockPos(l4, i5, j5))) {
+											Block tmp = this.worldServerInstance.getBlockState(new BlockPos(l4, i5, j5)).getBlock();
+											if (k4 < 0 && !tmp.getMaterial(tmp.getDefaultState()).isSolid() || k4 >= 0
+													&& !this.worldServerInstance.isAirBlock(new BlockPos(l4, i5, j5))) {
 												continue label271;
 											}
 										}
 									}
 								}
 
-								d3 = (double) i3 + 0.5D - p_85188_1_.field_70163_u;
+								d3 = (double) i3 + 0.5D - p_85188_1_.posY;
 								d4 = d1 * d1 + d3 * d3 + d2 * d2;
 
 								if (d0 < 0.0D || d4 < d0) {
@@ -472,15 +472,15 @@ public class WaterDim {
 
 			if (d0 < 0.0D) {
 				for (i2 = i - b0; i2 <= i + b0; ++i2) {
-					d1 = (double) i2 + 0.5D - p_85188_1_.field_70165_t;
+					d1 = (double) i2 + 0.5D - p_85188_1_.posX;
 
 					for (k2 = k - b0; k2 <= k + b0; ++k2) {
-						d2 = (double) k2 + 0.5D - p_85188_1_.field_70161_v;
+						d2 = (double) k2 + 0.5D - p_85188_1_.posZ;
 						label219 :
 
-						for (i3 = this.worldServerInstance.func_72940_L() - 1; i3 >= 0; --i3) {
-							if (this.worldServerInstance.func_175623_d(new BlockPos(i2, i3, k2))) {
-								while (i3 > 0 && this.worldServerInstance.func_175623_d(new BlockPos(i2, i3 - 1, k2))) {
+						for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3) {
+							if (this.worldServerInstance.isAirBlock(new BlockPos(i2, i3, k2))) {
+								while (i3 > 0 && this.worldServerInstance.isAirBlock(new BlockPos(i2, i3 - 1, k2))) {
 									--i3;
 								}
 
@@ -493,15 +493,15 @@ public class WaterDim {
 											k4 = i2 + (i4 - 1) * k3;
 											l4 = i3 + j4;
 											i5 = k2 + (i4 - 1) * l3;
-											Block tmpb = this.worldServerInstance.func_180495_p(new BlockPos(k4, l4, i5)).func_177230_c();
-											if (j4 < 0 && !tmpb.func_149688_o(tmpb.func_176223_P()).func_76220_a() || j4 >= 0
-													&& !this.worldServerInstance.func_175623_d(new BlockPos(k4, l4, i5))) {
+											Block tmpb = this.worldServerInstance.getBlockState(new BlockPos(k4, l4, i5)).getBlock();
+											if (j4 < 0 && !tmpb.getMaterial(tmpb.getDefaultState()).isSolid() || j4 >= 0
+													&& !this.worldServerInstance.isAirBlock(new BlockPos(k4, l4, i5))) {
 												continue label219;
 											}
 										}
 									}
 
-									d3 = (double) i3 + 0.5D - p_85188_1_.field_70163_u;
+									d3 = (double) i3 + 0.5D - p_85188_1_.posY;
 									d4 = d1 * d1 + d3 * d3 + d2 * d2;
 
 									if (d0 < 0.0D || d4 < d0) {
@@ -530,7 +530,7 @@ public class WaterDim {
 			}
 
 			if (d0 < 0.0D) {
-				i1 = MathHelper.func_76125_a(i1, 70, this.worldServerInstance.func_72940_L() - 10);
+				i1 = MathHelper.clamp(i1, 70, this.worldServerInstance.getActualHeight() - 10);
 				j2 = i1;
 
 				for (i3 = -1; i3 <= 1; ++i3) {
@@ -540,14 +540,14 @@ public class WaterDim {
 							i4 = j2 + k3;
 							j4 = k2 + (j3 - 1) * l2 - i3 * l5;
 							boolean flag = k3 < 0;
-							this.worldServerInstance.func_175656_a(new BlockPos(l3, i4, j4),
-									flag ? BlockMod.water_block.func_176223_P() : Blocks.field_150350_a.func_176223_P());
+							this.worldServerInstance.setBlockState(new BlockPos(l3, i4, j4),
+									flag ? BlockMod.water_block.getDefaultState() : Blocks.AIR.getDefaultState());
 						}
 					}
 				}
 			}
 
-			IBlockState iblockstate = portal.func_176223_P().func_177226_a(BlockPortal.field_176550_a, l5 == 0 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
+			IBlockState iblockstate = portal.getDefaultState().withProperty(BlockPortal.AXIS, l5 == 0 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
 
 			for (j3 = 0; j3 < 4; ++j3) {
 				for (k3 = 0; k3 < 4; ++k3) {
@@ -557,7 +557,7 @@ public class WaterDim {
 						k4 = k2 + (k3 - 1) * l2;
 						boolean flag1 = k3 == 0 || k3 == 3 || l3 == -1 || l3 == 3;
 						this.worldServerInstance
-								.func_180501_a(new BlockPos(i4, j4, k4), flag1 ? BlockMod.water_block.func_176223_P() : iblockstate, 2);
+								.setBlockState(new BlockPos(i4, j4, k4), flag1 ? BlockMod.water_block.getDefaultState() : iblockstate, 2);
 					}
 				}
 
@@ -566,8 +566,8 @@ public class WaterDim {
 						i4 = k5 + (k3 - 1) * l5;
 						j4 = j2 + l3;
 						k4 = k2 + (k3 - 1) * l2;
-						this.worldServerInstance.func_175685_c(new BlockPos(i4, j4, k4),
-								this.worldServerInstance.func_180495_p(new BlockPos(i4, j4, k4)).func_177230_c(), true);
+						this.worldServerInstance.notifyNeighborsOfStateChange(new BlockPos(i4, j4, k4),
+								this.worldServerInstance.getBlockState(new BlockPos(i4, j4, k4)).getBlock(), true);
 					}
 				}
 			}
@@ -579,7 +579,7 @@ public class WaterDim {
 		 * called periodically to remove out-of-date portal locations from the
 		 * cache list. Argument par1 is a WorldServer.getTotalWorldTime() value.
 		 */
-		public void func_85189_a(long worldTime) {
+		public void removeStalePortalLocations(long worldTime) {
 			if (worldTime % 100L == 0L) {
 				long i = worldTime - 300L;
 				it.unimi.dsi.fastutil.objects.ObjectIterator<Teleporter.PortalPosition> objectiterator = this.destinationCoordinateCache.values()
@@ -588,7 +588,7 @@ public class WaterDim {
 				while (objectiterator.hasNext()) {
 					Teleporter.PortalPosition teleporter$portalposition = (Teleporter.PortalPosition) objectiterator.next();
 
-					if (teleporter$portalposition == null || teleporter$portalposition.field_85087_d < i) {
+					if (teleporter$portalposition == null || teleporter$portalposition.lastUpdateTime < i) {
 						objectiterator.remove();
 					}
 				}
@@ -601,7 +601,7 @@ public class WaterDim {
 			private static final String __OBFID = "CL_00000154";
 
 			public PortalPosition(BlockPos pos, long p_i45747_3_) {
-				super(pos.func_177958_n(), pos.func_177956_o(), pos.func_177952_p());
+				super(pos.getX(), pos.getY(), pos.getZ());
 				this.lastUpdateTime = p_i45747_3_;
 			}
 		}
@@ -613,7 +613,7 @@ public class WaterDim {
 	static class BlockFireMod extends Block {
 
 		protected BlockFireMod() {
-			super(Material.field_151578_c);
+			super(Material.GROUND);
 		}
 
 		public void onBlockAdded(World par1World, int par2, int par3, int par4) {
@@ -626,31 +626,31 @@ public class WaterDim {
 
 	public static class BlockWaterPortal extends Block {
 
-		public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis> func_177706_a("axis", EnumFacing.Axis.class,
+		public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis> create("axis", EnumFacing.Axis.class,
 				new EnumFacing.Axis[]{EnumFacing.Axis.X, EnumFacing.Axis.Z});
 		protected static final AxisAlignedBB field_185683_b = new AxisAlignedBB(0.0D, 0.0D, 0.375D, 1.0D, 1.0D, 0.625D);
 		protected static final AxisAlignedBB field_185684_c = new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.0D, 1.0D);
 		protected static final AxisAlignedBB field_185685_d = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
 
 		public BlockWaterPortal() {
-			super(Material.field_151567_E);
-			this.func_180632_j(this.field_176227_L.func_177621_b().func_177226_a(AXIS, EnumFacing.Axis.Z));
-			this.func_149675_a(true);
-			this.func_149711_c(-1.0F);
-			this.func_149715_a(0.75F);
+			super(Material.PORTAL);
+			this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumFacing.Axis.Z));
+			this.setTickRandomly(true);
+			this.setHardness(-1.0F);
+			this.setLightLevel(0.75F);
 		}
 
 		@javax.annotation.Nullable
 		public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-			return field_185506_k;
+			return NULL_AABB;
 		}
 
-		public boolean func_149662_c(IBlockState state) {
+		public boolean isOpaqueCube(IBlockState state) {
 			return false;
 		}
 
-		public AxisAlignedBB func_185496_a(IBlockState state, IBlockAccess source, BlockPos pos) {
-			switch ((EnumFacing.Axis) state.func_177229_b(AXIS)) {
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			switch ((EnumFacing.Axis) state.getValue(AXIS)) {
 				case X :
 					return field_185683_b;
 				case Y :
@@ -665,16 +665,16 @@ public class WaterDim {
 			return axis == EnumFacing.Axis.X ? 1 : (axis == EnumFacing.Axis.Z ? 2 : 0);
 		}
 
-		public boolean func_149686_d(IBlockState state) {
+		public boolean isFullCube(IBlockState state) {
 			return false;
 		}
 
-		public int func_176201_c(IBlockState state) {
-			return getMetaForAxis((EnumFacing.Axis) state.func_177229_b(AXIS));
+		public int getMetaFromState(IBlockState state) {
+			return getMetaForAxis((EnumFacing.Axis) state.getValue(AXIS));
 		}
 
-		public IBlockState func_176203_a(int meta) {
-			return this.func_176223_P().func_177226_a(AXIS, (meta & 3) == 2 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
+		public IBlockState getStateFromMeta(int meta) {
+			return this.getDefaultState().withProperty(AXIS, (meta & 3) == 2 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
 		}
 
 		/**
@@ -697,7 +697,7 @@ public class WaterDim {
 			if (b0 == b1) {
 				return false;
 			} else {
-				if (getBlock(par1World, par2 - b0, par3, par4 - b1) == Blocks.field_150350_a) {
+				if (getBlock(par1World, par2 - b0, par3, par4 - b1) == Blocks.AIR) {
 					par2 -= b0;
 					par4 -= b1;
 				}
@@ -722,9 +722,9 @@ public class WaterDim {
 				}
 				for (l = 0; l < 2; ++l) {
 					for (i1 = 0; i1 < 3; ++i1) {
-						IBlockState iblockstate = this.func_176223_P().func_177226_a(BlockPortal.field_176550_a,
+						IBlockState iblockstate = this.getDefaultState().withProperty(BlockPortal.AXIS,
 								b0 == 0 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
-						par1World.func_180501_a(new BlockPos(par2 + b0 * l, par3 + i1, par4 + b1 * l), iblockstate, 3);
+						par1World.setBlockState(new BlockPos(par2 + b0 * l, par3 + i1, par4 + b1 * l), iblockstate, 3);
 					}
 				}
 				return true;
@@ -737,11 +737,11 @@ public class WaterDim {
 		 * z, neighbor blockID
 		 */
 		@Override
-		public void func_189540_a(IBlockState state, World par1World, BlockPos pos, Block neighborBlock, BlockPos fromPos) {
+		public void neighborChanged(IBlockState state, World par1World, BlockPos pos, Block neighborBlock, BlockPos fromPos) {
 
-			int par2 = pos.func_177958_n();
-			int par3 = pos.func_177956_o();
-			int par4 = pos.func_177952_p();
+			int par2 = pos.getX();
+			int par3 = pos.getY();
+			int par4 = pos.getZ();
 
 			byte b0 = 0;
 			byte b1 = 1;
@@ -754,7 +754,7 @@ public class WaterDim {
 				;
 			}
 			if (getBlock(par1World, par2, i1 - 1, par4) != BlockMod.water_block) {
-				par1World.func_175698_g(new BlockPos(par2, par3, par4));
+				par1World.setBlockToAir(new BlockPos(par2, par3, par4));
 			} else {
 				int j1;
 				for (j1 = 1; j1 < 4 && getBlock(par1World, par2, i1 + j1, par4) == this; ++j1) {
@@ -764,28 +764,28 @@ public class WaterDim {
 					boolean flag = getBlock(par1World, par2 - 1, par3, par4) == this || getBlock(par1World, par2 + 1, par3, par4) == this;
 					boolean flag1 = getBlock(par1World, par2, par3, par4 - 1) == this || getBlock(par1World, par2, par3, par4 + 1) == this;
 					if (flag && flag1) {
-						par1World.func_175698_g(new BlockPos(par2, par3, par4));
+						par1World.setBlockToAir(new BlockPos(par2, par3, par4));
 					} else {
 						if ((getBlock(par1World, par2 + b0, par3, par4 + b1) != BlockMod.water_block || getBlock(par1World, par2 - b0, par3, par4 - b1) != this)
 								&& (getBlock(par1World, par2 - b0, par3, par4 - b1) != BlockMod.water_block || getBlock(par1World, par2 + b0, par3, par4
 										+ b1) != this)) {
-							par1World.func_175698_g(new BlockPos(par2, par3, par4));
+							par1World.setBlockToAir(new BlockPos(par2, par3, par4));
 						}
 					}
 				} else {
-					par1World.func_175698_g(new BlockPos(par2, par3, par4));
+					par1World.setBlockToAir(new BlockPos(par2, par3, par4));
 				}
 			}
 		}
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public boolean func_176225_a(IBlockState blockState, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 			EnumFacing.Axis axis = null;
-			IBlockState iblockstate = worldIn.func_180495_p(pos);
+			IBlockState iblockstate = worldIn.getBlockState(pos);
 
-			if (worldIn.func_180495_p(pos).func_177230_c() == this) {
-				axis = (EnumFacing.Axis) iblockstate.func_177229_b(AXIS);
+			if (worldIn.getBlockState(pos).getBlock() == this) {
+				axis = (EnumFacing.Axis) iblockstate.getValue(AXIS);
 
 				if (axis == null) {
 					return false;
@@ -800,10 +800,10 @@ public class WaterDim {
 				}
 			}
 
-			boolean flag = worldIn.func_180495_p(pos.func_177976_e()).func_177230_c() == this && worldIn.func_180495_p(pos.func_177985_f(2)).func_177230_c() != this;
-			boolean flag1 = worldIn.func_180495_p(pos.func_177974_f()).func_177230_c() == this && worldIn.func_180495_p(pos.func_177965_g(2)).func_177230_c() != this;
-			boolean flag2 = worldIn.func_180495_p(pos.func_177978_c()).func_177230_c() == this && worldIn.func_180495_p(pos.func_177964_d(2)).func_177230_c() != this;
-			boolean flag3 = worldIn.func_180495_p(pos.func_177968_d()).func_177230_c() == this && worldIn.func_180495_p(pos.func_177970_e(2)).func_177230_c() != this;
+			boolean flag = worldIn.getBlockState(pos.west()).getBlock() == this && worldIn.getBlockState(pos.west(2)).getBlock() != this;
+			boolean flag1 = worldIn.getBlockState(pos.east()).getBlock() == this && worldIn.getBlockState(pos.east(2)).getBlock() != this;
+			boolean flag2 = worldIn.getBlockState(pos.north()).getBlock() == this && worldIn.getBlockState(pos.north(2)).getBlock() != this;
+			boolean flag3 = worldIn.getBlockState(pos.south()).getBlock() == this && worldIn.getBlockState(pos.south(2)).getBlock() != this;
 			boolean flag4 = flag || flag1 || axis == EnumFacing.Axis.X;
 			boolean flag5 = flag2 || flag3 || axis == EnumFacing.Axis.Z;
 			return flag4 && side == EnumFacing.WEST ? true : (flag4 && side == EnumFacing.EAST ? true : (flag5 && side == EnumFacing.NORTH
@@ -812,38 +812,38 @@ public class WaterDim {
 		}
 
 		@SideOnly(Side.CLIENT)
-		public BlockRenderLayer func_180664_k() {
+		public BlockRenderLayer getBlockLayer() {
 			return BlockRenderLayer.TRANSLUCENT;
 		}
 
-		protected net.minecraft.block.state.BlockStateContainer func_180661_e() {
+		protected net.minecraft.block.state.BlockStateContainer createBlockState() {
 			return new net.minecraft.block.state.BlockStateContainer(this, new IProperty[]{AXIS});
 		}
 
-		public int func_149745_a(Random par1Random) {
+		public int quantityDropped(Random par1Random) {
 			return 0;
 		}
 
 		@Override
-		public void func_180634_a(World par1World, BlockPos pos, IBlockState state, Entity par5Entity) {
+		public void onEntityCollidedWithBlock(World par1World, BlockPos pos, IBlockState state, Entity par5Entity) {
 
-			int par2 = pos.func_177958_n();
-			int par3 = pos.func_177956_o();
-			int par4 = pos.func_177952_p();
+			int par2 = pos.getX();
+			int par3 = pos.getY();
+			int par4 = pos.getZ();
 
-			if (par5Entity.func_184187_bx() == null && !par5Entity.func_184207_aI() && par5Entity instanceof EntityPlayerMP) {
+			if (par5Entity.getRidingEntity() == null && !par5Entity.isBeingRidden() && par5Entity instanceof EntityPlayerMP) {
 
 				EntityPlayerMP thePlayer = (EntityPlayerMP) par5Entity;
-				if (thePlayer.field_71088_bW > 0) {
-					thePlayer.field_71088_bW = 10;
-				} else if (thePlayer.field_71093_bK != DIMID) {
-					thePlayer.field_71088_bW = 10;
-					thePlayer.field_71133_b.func_184103_al().transferPlayerToDimension(thePlayer, DIMID,
-							new TeleporterDimensionMod(thePlayer.field_71133_b.func_71218_a(DIMID)));
+				if (thePlayer.timeUntilPortal > 0) {
+					thePlayer.timeUntilPortal = 10;
+				} else if (thePlayer.dimension != DIMID) {
+					thePlayer.timeUntilPortal = 10;
+					thePlayer.mcServer.getPlayerList().transferPlayerToDimension(thePlayer, DIMID,
+							new TeleporterDimensionMod(thePlayer.mcServer.getWorld(DIMID)));
 				} else {
-					thePlayer.field_71088_bW = 10;
-					thePlayer.field_71133_b.func_184103_al().transferPlayerToDimension(thePlayer, 0,
-							new TeleporterDimensionMod(thePlayer.field_71133_b.func_71218_a(0)));
+					thePlayer.timeUntilPortal = 10;
+					thePlayer.mcServer.getPlayerList().transferPlayerToDimension(thePlayer, 0,
+							new TeleporterDimensionMod(thePlayer.mcServer.getWorld(0)));
 				}
 			}
 		}
@@ -862,22 +862,22 @@ public class WaterDim {
 	public static class WaterTrigger extends Item {
 		public WaterTrigger() {
 			super();
-			this.field_77777_bU = 1;
-			func_77656_e(64);
-			func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+			this.maxStackSize = 1;
+			setMaxDamage(64);
+			setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 		}
 
 		@Override
-		public EnumActionResult func_180614_a(EntityPlayer par2EntityPlayer, World par3World, BlockPos pos, EnumHand hand, EnumFacing side, float par8,
+		public EnumActionResult onItemUse(EntityPlayer par2EntityPlayer, World par3World, BlockPos pos, EnumHand hand, EnumFacing side, float par8,
 				float par9, float par10) {
 
-			ItemStack par1ItemStack = par2EntityPlayer.func_184586_b(hand);
+			ItemStack par1ItemStack = par2EntityPlayer.getHeldItem(hand);
 
-			int par4 = pos.func_177958_n();
-			int par5 = pos.func_177956_o();
-			int par6 = pos.func_177952_p();
+			int par4 = pos.getX();
+			int par5 = pos.getY();
+			int par6 = pos.getZ();
 
-			int par7 = side.func_176745_a();
+			int par7 = side.getIndex();
 
 			if (par7 == 0) {
 				par5--;
@@ -897,22 +897,22 @@ public class WaterDim {
 			if (par7 == 5) {
 				par4++;
 			}
-			if (!par2EntityPlayer.func_175151_a(new BlockPos(par4, par5, par6), side, par1ItemStack)) {
+			if (!par2EntityPlayer.canPlayerEdit(new BlockPos(par4, par5, par6), side, par1ItemStack)) {
 				return EnumActionResult.FAIL;
 			}
 			Block i1 = getBlock(par3World, par4, par5, par6);
-			if (i1 == Blocks.field_150350_a) {
-				par3World.func_184133_a(par2EntityPlayer, new BlockPos(par4, par5, par6), SoundEvents.field_187649_bu, SoundCategory.BLOCKS, 1.0F,
-						field_77697_d.nextFloat() * 0.4F + 0.8F);
+			if (i1 == Blocks.AIR) {
+				par3World.playSound(par2EntityPlayer, new BlockPos(par4, par5, par6), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F,
+						itemRand.nextFloat() * 0.4F + 0.8F);
 				portal.tryToCreatePortal(par3World, par4, par5, par6);
 			}
-			par1ItemStack.func_77972_a(1, par2EntityPlayer);
+			par1ItemStack.damageItem(1, par2EntityPlayer);
 			return EnumActionResult.SUCCESS;
 		}
 	}
 
 	public static class ChunkProviderModded implements IChunkGenerator {
-		protected static final IBlockState field_185982_a = Blocks.field_150403_cj.func_176223_P();
+		protected static final IBlockState field_185982_a = Blocks.PACKED_ICE.getDefaultState();
 		private final Random rand;
 		private NoiseGeneratorOctaves field_185991_j;
 		private NoiseGeneratorOctaves field_185992_k;
@@ -928,7 +928,7 @@ public class WaterDim {
 		private final double[] heightMap;
 		private final float[] field_185999_r;
 		private ChunkGeneratorSettings settings;
-		private IBlockState oceanBlock = Blocks.field_150432_aD.func_176223_P();
+		private IBlockState oceanBlock = Blocks.ICE.getDefaultState();
 		private double[] field_186002_u = new double[256];
 		private MapGenBase caveGenerator = new MapGenCaves();
 		private MapGenBase ravineGenerator = new MapGenRavine();
@@ -937,10 +937,10 @@ public class WaterDim {
 		double[] field_185987_f;
 		double[] field_185988_g;
 		double[] field_185989_h;
-		protected static final IBlockState AIR = Blocks.field_150350_a.func_176223_P();
-		protected static final IBlockState BEDROCK = Blocks.field_150357_h.func_176223_P();
-		protected static final IBlockState GRAVEL = Blocks.field_150403_cj.func_176223_P();
-		private final WorldGenerator quartzGen = new WorldGenMinable(BlockMod.ice_water_ore.func_176223_P(), 14, BlockMatcher.func_177642_a(Blocks.field_150403_cj));
+		protected static final IBlockState AIR = Blocks.AIR.getDefaultState();
+		protected static final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
+		protected static final IBlockState GRAVEL = Blocks.PACKED_ICE.getDefaultState();
+		private final WorldGenerator quartzGen = new WorldGenMinable(BlockMod.ice_water_ore.getDefaultState(), 14, BlockMatcher.forBlock(Blocks.PACKED_ICE));
 		
 		
 
@@ -953,7 +953,7 @@ public class WaterDim {
 			}
 			this.world = worldIn;
 			this.mapFeaturesEnabled = false;
-			this.terrainType = worldIn.func_72912_H().func_76067_t();
+			this.terrainType = worldIn.getWorldInfo().getTerrainType();
 			this.rand = new Random(seed);
 			this.field_185991_j = new NoiseGeneratorOctaves(this.rand, 16);
 			this.field_185992_k = new NoiseGeneratorOctaves(this.rand, 16);
@@ -967,12 +967,12 @@ public class WaterDim {
 
 			for (int i = -2; i <= 2; ++i) {
 				for (int j = -2; j <= 2; ++j) {
-					float f = 10.0F / MathHelper.func_76129_c((float) (i * i + j * j) + 0.2F);
+					float f = 10.0F / MathHelper.sqrt((float) (i * i + j * j) + 0.2F);
 					this.field_185999_r[i + 2 + (j + 2) * 5] = f;
 				}
 			}
 
-			this.settings = ChunkGeneratorSettings.Factory.func_177865_a("").func_177864_b();
+			this.settings = ChunkGeneratorSettings.Factory.jsonToFactory("").build();
 
 			net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld ctx = new net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld(
 					field_185991_j, field_185992_k, field_185993_l, field_185994_m, field_185983_b, field_185984_c, field_185985_d);
@@ -987,106 +987,106 @@ public class WaterDim {
 		}
 
 		@Override
-		public Chunk func_185932_a(int x, int z) {
+		public Chunk generateChunk(int x, int z) {
 			this.rand.setSeed((long) x * 341873128712L + (long) z * 132897987541L);
 			ChunkPrimer chunkprimer = new ChunkPrimer();
 			this.setBlocksInChunk(x, z, chunkprimer);
-			this.biomesForGeneration = this.world.func_72959_q().func_76937_a(this.biomesForGeneration, x * 16, z * 16, 16, 16);
+			this.biomesForGeneration = this.world.getBiomeProvider().getBiomesForGeneration(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 			this.replaceBiomeBlocks(x, z, chunkprimer, this.biomesForGeneration);
 
-			if (this.settings.field_177839_r) {
-				this.caveGenerator.func_186125_a(this.world, x, z, chunkprimer);
+			if (this.settings.useCaves) {
+				this.caveGenerator.generate(this.world, x, z, chunkprimer);
 			}
 
-			if (this.settings.field_177850_z) {
-				this.ravineGenerator.func_186125_a(this.world, x, z, chunkprimer);
+			if (this.settings.useRavines) {
+				this.ravineGenerator.generate(this.world, x, z, chunkprimer);
 			}
 
 			Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
-			byte[] abyte = chunk.func_76605_m();
+			byte[] abyte = chunk.getBiomeArray();
 
 			for (int i = 0; i < abyte.length; ++i) {
-				abyte[i] = (byte) Biome.func_185362_a(this.biomesForGeneration[i]);
+				abyte[i] = (byte) Biome.getIdForBiome(this.biomesForGeneration[i]);
 			}
 
-			chunk.func_76603_b();
+			chunk.generateSkylightMap();
 			return chunk;
 		}
 
 		@Override
-		public void func_185931_b(int x, int z) {
-			BlockFalling.field_149832_M = true;
+		public void populate(int x, int z) {
+			BlockFalling.fallInstantly = true;
 			int i = x * 16;
 			int j = z * 16;
 			BlockPos blockpos = new BlockPos(i, 0, j);
-			Biome Biome = this.world.func_180494_b(blockpos.func_177982_a(16, 0, 16));
-			this.rand.setSeed(this.world.func_72905_C());
+			Biome Biome = this.world.getBiome(blockpos.add(16, 0, 16));
+			this.rand.setSeed(this.world.getSeed());
 			long k = this.rand.nextLong() / 2L * 2L + 1L;
 			long l = this.rand.nextLong() / 2L * 2L + 1L;
-			this.rand.setSeed((long) x * k + (long) z * l ^ this.world.func_72905_C());
+			this.rand.setSeed((long) x * k + (long) z * l ^ this.world.getSeed());
 			boolean flag = false;
 
 			net.minecraftforge.event.ForgeEventFactory.onChunkPopulate(true, this, this.world, this.rand, x, z, flag);
 
-			if (Biome != Biomes.field_76769_d && Biome != Biomes.field_76786_s && this.settings.field_177781_A && !flag
-					&& this.rand.nextInt(this.settings.field_177782_B) == 0)
+			if (Biome != Biomes.DESERT && Biome != Biomes.DESERT_HILLS && this.settings.useWaterLakes && !flag
+					&& this.rand.nextInt(this.settings.waterLakeChance) == 0)
 				if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, flag,
 						net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
 					int i1 = this.rand.nextInt(16) + 8;
 					int j1 = this.rand.nextInt(256);
 					int k1 = this.rand.nextInt(16) + 8;
-					(new WorldGenLakes(Blocks.field_150432_aD)).func_180709_b(this.world, this.rand, blockpos.func_177982_a(i1, j1, k1));
+					(new WorldGenLakes(Blocks.ICE)).generate(this.world, this.rand, blockpos.add(i1, j1, k1));
 				}
 
-			if (!flag && this.rand.nextInt(this.settings.field_177777_D / 10) == 0 && this.settings.field_177783_C)
+			if (!flag && this.rand.nextInt(this.settings.lavaLakeChance / 10) == 0 && this.settings.useLavaLakes)
 				if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, flag,
 						net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAVA)) {
 					int i2 = this.rand.nextInt(16) + 8;
 					int l2 = this.rand.nextInt(this.rand.nextInt(248) + 8);
 					int k3 = this.rand.nextInt(16) + 8;
 
-					if (l2 < this.world.func_181545_F() || this.rand.nextInt(this.settings.field_177777_D / 8) == 0) {
-						(new WorldGenLakes(Blocks.field_150432_aD)).func_180709_b(this.world, this.rand, blockpos.func_177982_a(i2, l2, k3));
+					if (l2 < this.world.getSeaLevel() || this.rand.nextInt(this.settings.lavaLakeChance / 8) == 0) {
+						(new WorldGenLakes(Blocks.ICE)).generate(this.world, this.rand, blockpos.add(i2, l2, k3));
 					}
 				}
 			
 			if (net.minecraftforge.event.terraingen.TerrainGen.generateOre(this.world, this.rand, quartzGen, blockpos,
 					net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.QUARTZ))
 				for (int l1 = 0; l1 < 16; ++l1) {
-					this.quartzGen.func_180709_b(this.world, this.rand,
-							blockpos.func_177982_a(this.rand.nextInt(16), this.rand.nextInt(108) + 10, this.rand.nextInt(16)));
+					this.quartzGen.generate(this.world, this.rand,
+							blockpos.add(this.rand.nextInt(16), this.rand.nextInt(108) + 10, this.rand.nextInt(16)));
 				}
 
-			if (this.settings.field_177837_s)
+			if (this.settings.useDungeons)
 				if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, flag,
 						net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON)) {
-					for (int j2 = 0; j2 < this.settings.field_177835_t; ++j2) {
+					for (int j2 = 0; j2 < this.settings.dungeonChance; ++j2) {
 						int i3 = this.rand.nextInt(16) + 8;
 						int l3 = this.rand.nextInt(256);
 						int l1 = this.rand.nextInt(16) + 8;
-						(new WorldGenDungeons()).func_180709_b(this.world, this.rand, blockpos.func_177982_a(i3, l3, l1));
+						(new WorldGenDungeons()).generate(this.world, this.rand, blockpos.add(i3, l3, l1));
 					}
 				}
 
-			Biome.func_180624_a(this.world, this.rand, new BlockPos(i, 0, j));
+			Biome.decorate(this.world, this.rand, new BlockPos(i, 0, j));
 			if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, flag,
 					net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ANIMALS))
-				WorldEntitySpawner.func_77191_a(this.world, Biome, i + 8, j + 8, 16, 16, this.rand);
-			blockpos = blockpos.func_177982_a(8, 0, 8);
+				WorldEntitySpawner.performWorldGenSpawning(this.world, Biome, i + 8, j + 8, 16, 16, this.rand);
+			blockpos = blockpos.add(8, 0, 8);
 
 			if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, flag,
 					net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE)) {
 				for (int k2 = 0; k2 < 16; ++k2) {
 					for (int j3 = 0; j3 < 16; ++j3) {
-						BlockPos blockpos1 = this.world.func_175725_q(blockpos.func_177982_a(k2, 0, j3));
-						BlockPos blockpos2 = blockpos1.func_177977_b();
+						BlockPos blockpos1 = this.world.getPrecipitationHeight(blockpos.add(k2, 0, j3));
+						BlockPos blockpos2 = blockpos1.down();
 
-						if (this.world.func_175675_v(blockpos2)) {
-							this.world.func_180501_a(blockpos2, Blocks.field_150432_aD.func_176223_P(), 2);
+						if (this.world.canBlockFreezeWater(blockpos2)) {
+							this.world.setBlockState(blockpos2, Blocks.ICE.getDefaultState(), 2);
 						}
 
-						if (this.world.func_175708_f(blockpos1, true)) {
-							this.world.func_180501_a(blockpos1, Blocks.field_150431_aC.func_176223_P(), 2);
+						if (this.world.canSnowAt(blockpos1, true)) {
+							this.world.setBlockState(blockpos1, Blocks.SNOW_LAYER.getDefaultState(), 2);
 						}
 					}
 				}
@@ -1097,36 +1097,36 @@ public class WaterDim {
 
 			net.minecraftforge.event.ForgeEventFactory.onChunkPopulate(false, this, this.world, this.rand, x, z, flag);
 
-			BlockFalling.field_149832_M = false;
+			BlockFalling.fallInstantly = false;
 		}
 
 		@Override
-		public List<Biome.SpawnListEntry> func_177458_a(EnumCreatureType creatureType, BlockPos pos) {
-			Biome Biome = this.world.func_180494_b(pos);
-			return Biome.func_76747_a(creatureType);
+		public List<Biome.SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos) {
+			Biome Biome = this.world.getBiome(pos);
+			return Biome.getSpawnableList(creatureType);
 		}
 
 		@Override
-		public void func_180514_a(Chunk chunkIn, int x, int z) {
+		public void recreateStructures(Chunk chunkIn, int x, int z) {
 		}
 
 		@Override
-		public boolean func_193414_a(World worldIn, String structureName, BlockPos pos) {
+		public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
 			return false;
 		}
 
 		@Override
-		public BlockPos func_180513_a(World worldIn, String structureName, BlockPos position, boolean findUnexplored) {
+		public BlockPos getNearestStructurePos(World worldIn, String structureName, BlockPos position, boolean findUnexplored) {
 			return null;
 		}
 
 		@Override
-		public boolean func_185933_a(Chunk chunkIn, int x, int z) {
+		public boolean generateStructures(Chunk chunkIn, int x, int z) {
 			return false;
 		}
 
 		private void setBlocksInChunk(int x, int z, ChunkPrimer primer) {
-			this.biomesForGeneration = this.world.func_72959_q().func_76937_a(this.biomesForGeneration, x * 4 - 2, z * 4 - 2, 10, 10);
+			this.biomesForGeneration = this.world.getBiomeProvider().getBiomesForGeneration(this.biomesForGeneration, x * 4 - 2, z * 4 - 2, 10, 10);
 			this.generateHeightmap(x * 4, 0, z * 4);
 
 			for (int i = 0; i < 4; ++i) {
@@ -1164,9 +1164,9 @@ public class WaterDim {
 
 								for (int l2 = 0; l2 < 4; ++l2) {
 									if ((lvt_45_1_ += d16) > 0.0D) {
-										primer.func_177855_a(i * 4 + k2, i2 * 8 + j2, l * 4 + l2, field_185982_a);
-									} else if (i2 * 8 + j2 < this.settings.field_177841_q) {
-										primer.func_177855_a(i * 4 + k2, i2 * 8 + j2, l * 4 + l2, this.oceanBlock);
+										primer.setBlockState(i * 4 + k2, i2 * 8 + j2, l * 4 + l2, field_185982_a);
+									} else if (i2 * 8 + j2 < this.settings.seaLevel) {
+										primer.setBlockState(i * 4 + k2, i2 * 8 + j2, l * 4 + l2, this.oceanBlock);
 									}
 								}
 
@@ -1188,7 +1188,7 @@ public class WaterDim {
 			if (!net.minecraftforge.event.ForgeEventFactory.onReplaceBiomeBlocks(this, x, z, primer, this.world))
 				return;
 			double d0 = 0.03125D;
-			this.field_186002_u = this.field_185994_m.func_151599_a(this.field_186002_u, (double) (x * 16), (double) (z * 16), 16, 16, d0 * 2.0D,
+			this.field_186002_u = this.field_185994_m.getRegion(this.field_186002_u, (double) (x * 16), (double) (z * 16), 16, 16, d0 * 2.0D,
 					d0 * 2.0D, 1.0D);
 
 			for (int i = 0; i < 16; ++i) {
@@ -1200,9 +1200,9 @@ public class WaterDim {
 		}
 
 		private void generateBiomeTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal, Biome Biome) {
-			int i = worldIn.func_181545_F();
-			IBlockState iblockstate = Biome.field_76752_A;
-			IBlockState iblockstate1 = Biome.field_76753_B;
+			int i = worldIn.getSeaLevel();
+			IBlockState iblockstate = Biome.topBlock;
+			IBlockState iblockstate1 = Biome.fillerBlock;
 			int j = -1;
 			int k = (int) (noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 			int l = x & 15;
@@ -1211,44 +1211,44 @@ public class WaterDim {
 
 			for (int j1 = 255; j1 >= 0; --j1) {
 				if (j1 <= rand.nextInt(5)) {
-					chunkPrimerIn.func_177855_a(i1, j1, l, BEDROCK);
+					chunkPrimerIn.setBlockState(i1, j1, l, BEDROCK);
 				} else {
-					IBlockState iblockstate2 = chunkPrimerIn.func_177856_a(i1, j1, l);
+					IBlockState iblockstate2 = chunkPrimerIn.getBlockState(i1, j1, l);
 
-					if (iblockstate2.func_185904_a() == Material.field_151579_a) {
+					if (iblockstate2.getMaterial() == Material.AIR) {
 						j = -1;
-					} else if (iblockstate2.func_177230_c() == Blocks.field_150403_cj) {
+					} else if (iblockstate2.getBlock() == Blocks.PACKED_ICE) {
 						if (j == -1) {
 							if (k <= 0) {
 								iblockstate = AIR;
-								iblockstate1 = Blocks.field_150403_cj.func_176223_P();
+								iblockstate1 = Blocks.PACKED_ICE.getDefaultState();
 							} else if (j1 >= i - 4 && j1 <= i + 1) {
-								iblockstate = Biome.field_76752_A;
-								iblockstate1 = Biome.field_76753_B;
+								iblockstate = Biome.topBlock;
+								iblockstate1 = Biome.fillerBlock;
 							}
 
-							if (j1 < i && (iblockstate == null || iblockstate.func_185904_a() == Material.field_151579_a)) {
-								iblockstate1 = Blocks.field_150432_aD.func_176223_P();
+							if (j1 < i && (iblockstate == null || iblockstate.getMaterial() == Material.AIR)) {
+								iblockstate1 = Blocks.ICE.getDefaultState();
 							}
 
 							j = k;
 
 							if (j1 >= i - 1) {
-								chunkPrimerIn.func_177855_a(i1, j1, l, iblockstate);
+								chunkPrimerIn.setBlockState(i1, j1, l, iblockstate);
 							} else if (j1 < i - 7 - k) {
 								iblockstate = AIR;
-								iblockstate1 = Blocks.field_150403_cj.func_176223_P();
-								chunkPrimerIn.func_177855_a(i1, j1, l, GRAVEL);
+								iblockstate1 = Blocks.PACKED_ICE.getDefaultState();
+								chunkPrimerIn.setBlockState(i1, j1, l, GRAVEL);
 							} else {
-								chunkPrimerIn.func_177855_a(i1, j1, l, iblockstate1);
+								chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1);
 							}
 						} else if (j > 0) {
 							--j;
-							chunkPrimerIn.func_177855_a(i1, j1, l, iblockstate1);
+							chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1);
 
-							if (j == 0 && iblockstate1.func_177230_c() == Blocks.field_150354_m) {
+							if (j == 0 && iblockstate1.getBlock() == Blocks.SAND) {
 								j = rand.nextInt(4) + Math.max(0, j1 - 63);
-								iblockstate1 = Blocks.field_150403_cj.func_176223_P();
+								iblockstate1 = Blocks.PACKED_ICE.getDefaultState();
 							}
 						}
 					}
@@ -1257,16 +1257,16 @@ public class WaterDim {
 		}
 
 		private void generateHeightmap(int p_185978_1_, int p_185978_2_, int p_185978_3_) {
-			this.field_185989_h = this.field_185984_c.func_76305_a(this.field_185989_h, p_185978_1_, p_185978_3_, 5, 5,
-					(double) this.settings.field_177808_e, (double) this.settings.field_177803_f, (double) this.settings.field_177804_g);
-			float f = this.settings.field_177811_a;
-			float f1 = this.settings.field_177809_b;
-			this.field_185986_e = this.field_185993_l.func_76304_a(this.field_185986_e, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5,
-					(double) (f / this.settings.field_177825_h), (double) (f1 / this.settings.field_177827_i),
-					(double) (f / this.settings.field_177821_j));
-			this.field_185987_f = this.field_185991_j.func_76304_a(this.field_185987_f, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5,
+			this.field_185989_h = this.field_185984_c.generateNoiseOctaves(this.field_185989_h, p_185978_1_, p_185978_3_, 5, 5,
+					(double) this.settings.depthNoiseScaleX, (double) this.settings.depthNoiseScaleZ, (double) this.settings.depthNoiseScaleExponent);
+			float f = this.settings.coordinateScale;
+			float f1 = this.settings.heightScale;
+			this.field_185986_e = this.field_185993_l.generateNoiseOctaves(this.field_185986_e, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5,
+					(double) (f / this.settings.mainNoiseScaleX), (double) (f1 / this.settings.mainNoiseScaleY),
+					(double) (f / this.settings.mainNoiseScaleZ));
+			this.field_185987_f = this.field_185991_j.generateNoiseOctaves(this.field_185987_f, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5,
 					(double) f, (double) f1, (double) f);
-			this.field_185988_g = this.field_185992_k.func_76304_a(this.field_185988_g, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5,
+			this.field_185988_g = this.field_185992_k.generateNoiseOctaves(this.field_185988_g, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5,
 					(double) f, (double) f1, (double) f);
 			p_185978_3_ = 0;
 			p_185978_1_ = 0;
@@ -1284,17 +1284,17 @@ public class WaterDim {
 					for (int j1 = -i1; j1 <= i1; ++j1) {
 						for (int k1 = -i1; k1 <= i1; ++k1) {
 							Biome Biome1 = this.biomesForGeneration[k + j1 + 2 + (l + k1 + 2) * 10];
-							float f5 = this.settings.field_177813_n + Biome1.func_185355_j() * this.settings.field_177819_m;
-							float f6 = this.settings.field_177843_p + Biome1.func_185360_m() * this.settings.field_177815_o;
+							float f5 = this.settings.biomeDepthOffSet + Biome1.getBaseHeight() * this.settings.biomeDepthWeight;
+							float f6 = this.settings.biomeScaleOffset + Biome1.getHeightVariation() * this.settings.biomeScaleWeight;
 
-							if (this.terrainType == WorldType.field_151360_e && f5 > 0.0F) {
+							if (this.terrainType == WorldType.AMPLIFIED && f5 > 0.0F) {
 								f5 = 1.0F + f5 * 2.0F;
 								f6 = 1.0F + f6 * 4.0F;
 							}
 
 							float f7 = this.field_185999_r[j1 + 2 + (k1 + 2) * 5] / (f5 + 2.0F);
 
-							if (Biome1.func_185355_j() > Biome.func_185355_j()) {
+							if (Biome1.getBaseHeight() > Biome.getBaseHeight()) {
 								f7 /= 2.0F;
 							}
 
@@ -1337,20 +1337,20 @@ public class WaterDim {
 					double d8 = (double) f3;
 					double d9 = (double) f2;
 					d8 = d8 + d7 * 0.2D;
-					d8 = d8 * (double) this.settings.field_177823_k / 8.0D;
-					double d0 = (double) this.settings.field_177823_k + d8 * 4.0D;
+					d8 = d8 * (double) this.settings.baseSize / 8.0D;
+					double d0 = (double) this.settings.baseSize + d8 * 4.0D;
 
 					for (int l1 = 0; l1 < 33; ++l1) {
-						double d1 = ((double) l1 - d0) * (double) this.settings.field_177817_l * 128.0D / 256.0D / d9;
+						double d1 = ((double) l1 - d0) * (double) this.settings.stretchY * 128.0D / 256.0D / d9;
 
 						if (d1 < 0.0D) {
 							d1 *= 4.0D;
 						}
 
-						double d2 = this.field_185987_f[i] / (double) this.settings.field_177806_d;
-						double d3 = this.field_185988_g[i] / (double) this.settings.field_177810_c;
+						double d2 = this.field_185987_f[i] / (double) this.settings.lowerLimitScale;
+						double d3 = this.field_185988_g[i] / (double) this.settings.upperLimitScale;
 						double d4 = (this.field_185986_e[i] / 10.0D + 1.0D) / 2.0D;
-						double d5 = MathHelper.func_151238_b(d2, d3, d4) - d1;
+						double d5 = MathHelper.clampedLerp(d2, d3, d4) - d1;
 
 						if (l1 > 29) {
 							double d6 = (double) ((float) (l1 - 29) / 3.0F);
@@ -1393,7 +1393,7 @@ public class WaterDim {
 		}
 
 		public BiomeProviderCustom(World world) {
-			this(world.func_72905_C(), world.func_72912_H().func_76067_t());
+			this(world.getSeed(), world.getWorldInfo().getTerrainType());
 
 		}
 
@@ -1401,7 +1401,7 @@ public class WaterDim {
 		 * Gets the list of valid biomes for the player to spawn in.
 		 */
 		@Override
-		public List<Biome> func_76932_a() {
+		public List<Biome> getBiomesToSpawnIn() {
 			return this.biomesToSpawnIn;
 		}
 
@@ -1414,7 +1414,7 @@ public class WaterDim {
 		}
 
 		public Biome getBiomeGenerator(BlockPos pos, Biome biomeGenBaseIn) {
-			return this.biomeCache.func_180284_a(pos.func_177958_n(), pos.func_177952_p(), biomeGenBaseIn);
+			return this.biomeCache.getBiome(pos.getX(), pos.getZ(), biomeGenBaseIn);
 		}
 
 		/**
@@ -1423,7 +1423,7 @@ public class WaterDim {
 		 */
 		@Override
 		@SideOnly(Side.CLIENT)
-		public float func_76939_a(float par1, int par2) {
+		public float getTemperatureAtHeight(float par1, int par2) {
 			return par1;
 		}
 
@@ -1431,29 +1431,29 @@ public class WaterDim {
 		 * Returns an array of biomes for the location input.
 		 */
 		@Override
-		public Biome[] func_76937_a(Biome[] par1ArrayOfBiome, int par2, int par3, int par4, int par5) {
-			IntCache.func_76446_a();
+		public Biome[] getBiomesForGeneration(Biome[] par1ArrayOfBiome, int par2, int par3, int par4, int par5) {
+			IntCache.resetIntCache();
 
 			if (par1ArrayOfBiome == null || par1ArrayOfBiome.length < par4 * par5) {
 				par1ArrayOfBiome = new Biome[par4 * par5];
 			}
 
-			int[] aint = this.genBiomes.func_75904_a(par2, par3, par4, par5);
+			int[] aint = this.genBiomes.getInts(par2, par3, par4, par5);
 
 			try {
 				for (int i = 0; i < par4 * par5; ++i) {
-					par1ArrayOfBiome[i] = Biome.func_150568_d(aint[i]);
+					par1ArrayOfBiome[i] = Biome.getBiome(aint[i]);
 				}
 
 				return par1ArrayOfBiome;
 			} catch (Throwable throwable) {
-				CrashReport crashreport = CrashReport.func_85055_a(throwable, "Invalid Biome id");
-				CrashReportCategory crashreportcategory = crashreport.func_85058_a("RawBiomeBlock");
-				crashreportcategory.func_71507_a("biomes[] size", Integer.valueOf(par1ArrayOfBiome.length));
-				crashreportcategory.func_71507_a("x", Integer.valueOf(par2));
-				crashreportcategory.func_71507_a("z", Integer.valueOf(par3));
-				crashreportcategory.func_71507_a("w", Integer.valueOf(par4));
-				crashreportcategory.func_71507_a("h", Integer.valueOf(par5));
+				CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
+				CrashReportCategory crashreportcategory = crashreport.makeCategory("RawBiomeBlock");
+				crashreportcategory.addCrashSection("biomes[] size", Integer.valueOf(par1ArrayOfBiome.length));
+				crashreportcategory.addCrashSection("x", Integer.valueOf(par2));
+				crashreportcategory.addCrashSection("z", Integer.valueOf(par3));
+				crashreportcategory.addCrashSection("w", Integer.valueOf(par4));
+				crashreportcategory.addCrashSection("h", Integer.valueOf(par5));
 				throw new ReportedException(crashreport);
 			}
 		}
@@ -1464,8 +1464,8 @@ public class WaterDim {
 		 * oldBiomeList, x, z, width, depth
 		 */
 		@Override
-		public Biome[] func_76933_b(Biome[] oldBiomeList, int x, int z, int width, int depth) {
-			return this.func_76931_a(oldBiomeList, x, z, width, depth, true);
+		public Biome[] getBiomes(Biome[] oldBiomeList, int x, int z, int width, int depth) {
+			return this.getBiomes(oldBiomeList, x, z, width, depth, true);
 		}
 
 		/**
@@ -1474,22 +1474,22 @@ public class WaterDim {
 		 * avoid infinite loop in BiomeCacheBlock)
 		 */
 		@Override
-		public Biome[] func_76931_a(Biome[] listToReuse, int x, int y, int width, int length, boolean cacheFlag) {
-			IntCache.func_76446_a();
+		public Biome[] getBiomes(Biome[] listToReuse, int x, int y, int width, int length, boolean cacheFlag) {
+			IntCache.resetIntCache();
 
 			if (listToReuse == null || listToReuse.length < width * length) {
 				listToReuse = new Biome[width * length];
 			}
 
 			if (cacheFlag && width == 16 && length == 16 && (x & 15) == 0 && (y & 15) == 0) {
-				Biome[] aBiome1 = this.biomeCache.func_76839_e(x, y);
+				Biome[] aBiome1 = this.biomeCache.getCachedBiomes(x, y);
 				System.arraycopy(aBiome1, 0, listToReuse, 0, width * length);
 				return listToReuse;
 			} else {
-				int[] aint = this.biomeIndexLayer.func_75904_a(x, y, width, length);
+				int[] aint = this.biomeIndexLayer.getInts(x, y, width, length);
 
 				for (int i = 0; i < width * length; ++i) {
-					listToReuse[i] = Biome.func_150568_d(aint[i]);
+					listToReuse[i] = Biome.getBiome(aint[i]);
 				}
 				return listToReuse;
 			}
@@ -1500,19 +1500,19 @@ public class WaterDim {
 		 */
 		@Override
 		@SuppressWarnings("rawtypes")
-		public boolean func_76940_a(int x, int y, int z, List par4List) {
-			IntCache.func_76446_a();
+		public boolean areBiomesViable(int x, int y, int z, List par4List) {
+			IntCache.resetIntCache();
 			int l = x - z >> 2;
 			int i1 = y - z >> 2;
 			int j1 = x + z >> 2;
 			int k1 = y + z >> 2;
 			int l1 = j1 - l + 1;
 			int i2 = k1 - i1 + 1;
-			int[] aint = this.genBiomes.func_75904_a(l, i1, l1, i2);
+			int[] aint = this.genBiomes.getInts(l, i1, l1, i2);
 
 			try {
 				for (int j2 = 0; j2 < l1 * i2; ++j2) {
-					Biome biome = Biome.func_150568_d(aint[j2]);
+					Biome biome = Biome.getBiome(aint[j2]);
 
 					if (!par4List.contains(biome)) {
 						return false;
@@ -1521,13 +1521,13 @@ public class WaterDim {
 
 				return true;
 			} catch (Throwable throwable) {
-				CrashReport crashreport = CrashReport.func_85055_a(throwable, "Invalid Biome id");
-				CrashReportCategory crashreportcategory = crashreport.func_85058_a("Layer");
-				crashreportcategory.func_71507_a("Layer", this.genBiomes.toString());
-				crashreportcategory.func_71507_a("x", Integer.valueOf(x));
-				crashreportcategory.func_71507_a("z", Integer.valueOf(y));
-				crashreportcategory.func_71507_a("radius", Integer.valueOf(z));
-				crashreportcategory.func_71507_a("allowed", par4List);
+				CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
+				CrashReportCategory crashreportcategory = crashreport.makeCategory("Layer");
+				crashreportcategory.addCrashSection("Layer", this.genBiomes.toString());
+				crashreportcategory.addCrashSection("x", Integer.valueOf(x));
+				crashreportcategory.addCrashSection("z", Integer.valueOf(y));
+				crashreportcategory.addCrashSection("radius", Integer.valueOf(z));
+				crashreportcategory.addCrashSection("allowed", par4List);
 				throw new ReportedException(crashreport);
 			}
 		}
@@ -1539,22 +1539,22 @@ public class WaterDim {
 		 */
 		@Override
 		@SuppressWarnings("rawtypes")
-		public BlockPos func_180630_a(int x, int z, int range, List biomes, Random random) {
-			IntCache.func_76446_a();
+		public BlockPos findBiomePosition(int x, int z, int range, List biomes, Random random) {
+			IntCache.resetIntCache();
 			int l = x - range >> 2;
 			int i1 = z - range >> 2;
 			int j1 = x + range >> 2;
 			int k1 = z + range >> 2;
 			int l1 = j1 - l + 1;
 			int i2 = k1 - i1 + 1;
-			int[] aint = this.genBiomes.func_75904_a(l, i1, l1, i2);
+			int[] aint = this.genBiomes.getInts(l, i1, l1, i2);
 			BlockPos blockpos = null;
 			int j2 = 0;
 
 			for (int k2 = 0; k2 < l1 * i2; ++k2) {
 				int l2 = l + k2 % l1 << 2;
 				int i3 = i1 + k2 / l1 << 2;
-				Biome biome = Biome.func_150568_d(aint[k2]);
+				Biome biome = Biome.getBiome(aint[k2]);
 
 				if (biomes.contains(biome) && (blockpos == null || random.nextInt(j2 + 1) == 0)) {
 					blockpos = new BlockPos(l2, 0, i3);
@@ -1569,8 +1569,8 @@ public class WaterDim {
 		 * Calls the WorldChunkManager's biomeCache.cleanupCache()
 		 */
 		@Override
-		public void func_76938_b() {
-			this.biomeCache.func_76838_a();
+		public void cleanupCache() {
+			this.biomeCache.cleanupCache();
 		}
 	}
 
@@ -1589,13 +1589,13 @@ public class WaterDim {
 			biomes = new GenLayerZoom(1004L, biomes);
 			biomes = new GenLayerZoom(1005L, biomes);
 			GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
-			biomes.func_75905_a(seed);
-			genlayervoronoizoom.func_75905_a(seed);
+			biomes.initWorldGenSeed(seed);
+			genlayervoronoizoom.initWorldGenSeed(seed);
 			return new GenLayer[]{biomes, genlayervoronoizoom};
 		}
 
 		@Override
-		public int[] func_75904_a(int p_75904_1_, int p_75904_2_, int p_75904_3_, int p_75904_4_) {
+		public int[] getInts(int p_75904_1_, int p_75904_2_, int p_75904_3_, int p_75904_4_) {
 			return null;
 		}
 	}
@@ -1610,16 +1610,16 @@ public class WaterDim {
 
 		public GenLayerBiomesCustom(long seed, GenLayer genlayer) {
 			super(seed);
-			this.field_75909_a = genlayer;
+			this.parent = genlayer;
 		}
 
 		@Override
-		public int[] func_75904_a(int x, int z, int width, int depth) {
-			int[] dest = IntCache.func_76445_a(width * depth);
+		public int[] getInts(int x, int z, int width, int depth) {
+			int[] dest = IntCache.getIntCache(width * depth);
 			for (int dz = 0; dz < depth; dz++) {
 				for (int dx = 0; dx < width; dx++) {
-					this.func_75903_a(dx + x, dz + z);
-					dest[(dx + dz * width)] = Biome.func_185362_a(this.allowedBiomes[func_75902_a(this.allowedBiomes.length)]);
+					this.initChunkSeed(dx + x, dz + z);
+					dest[(dx + dz * width)] = Biome.getIdForBiome(this.allowedBiomes[nextInt(this.allowedBiomes.length)]);
 				}
 			}
 			return dest;
@@ -1628,7 +1628,7 @@ public class WaterDim {
 
 	// helpers
 	public static Block getBlock(IBlockAccess world, int i, int j, int k) {
-		return world.func_180495_p(new BlockPos(i, j, k)).func_177230_c();
+		return world.getBlockState(new BlockPos(i, j, k)).getBlock();
 	}
 
 }

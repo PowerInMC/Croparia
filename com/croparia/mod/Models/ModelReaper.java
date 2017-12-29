@@ -25,80 +25,80 @@ public class ModelReaper extends ModelBase
   
   public ModelReaper()
   {
-    field_78090_t = 128;
-    field_78089_u = 64;
+    textureWidth = 128;
+    textureHeight = 64;
     
       tete2 = new ModelRenderer(this, 75, 35);
-      tete2.func_78789_a(-2F, 4F, -17F, 2, 4, 1);
-      tete2.func_78793_a(-5F, -1F, 0F);
-      tete2.func_78787_b(128, 64);
-      tete2.field_78809_i = true;
+      tete2.addBox(-2F, 4F, -17F, 2, 4, 1);
+      tete2.setRotationPoint(-5F, -1F, 0F);
+      tete2.setTextureSize(128, 64);
+      tete2.mirror = true;
       setRotation(tete2, 0.504321F, 0F, 0F);
       tete = new ModelRenderer(this, 75, 28);
-      tete.func_78789_a(-2F, 7F, -13F, 2, 5, 1);
-      tete.func_78793_a(-5F, -1F, 0F);
-      tete.func_78787_b(128, 64);
-      tete.field_78809_i = true;
+      tete.addBox(-2F, 7F, -13F, 2, 5, 1);
+      tete.setRotationPoint(-5F, -1F, 0F);
+      tete.setTextureSize(128, 64);
+      tete.mirror = true;
       setRotation(tete, 0F, 0F, 0F);
       manche = new ModelRenderer(this, 53, 27);
-      manche.func_78789_a(-1.5F, 8F, -12F, 1, 1, 16);
-      manche.func_78793_a(-5F, -1F, 0F);
-      manche.func_78787_b(128, 64);
-      manche.field_78809_i = true;
+      manche.addBox(-1.5F, 8F, -12F, 1, 1, 16);
+      manche.setRotationPoint(-5F, -1F, 0F);
+      manche.setTextureSize(128, 64);
+      manche.mirror = true;
 	  setRotation(manche, 0F, 0F, 0F);
       capuche = new ModelRenderer(this, 64, 0);
-      capuche.func_78789_a(-4.5F, -8.5F, -4.5F, 9, 9, 9);
-      capuche.func_78793_a(0F, -3F, 0F);
-      capuche.func_78787_b(128, 64);
-      capuche.field_78809_i = true;
+      capuche.addBox(-4.5F, -8.5F, -4.5F, 9, 9, 9);
+      capuche.setRotationPoint(0F, -3F, 0F);
+      capuche.setTextureSize(128, 64);
+      capuche.mirror = true;
       setRotation(capuche, 0F, 0F, 0F);
       head = new ModelRenderer(this, 0, 0);
-      head.func_78789_a(-4F, -8F, -4F, 8, 8, 8);
-      head.func_78793_a(0F, -3F, 0F);
-      head.func_78787_b(128, 64);
-      head.field_78809_i = true;
+      head.addBox(-4F, -8F, -4F, 8, 8, 8);
+      head.setRotationPoint(0F, -3F, 0F);
+      head.setTextureSize(128, 64);
+      head.mirror = true;
       setRotation(head, 0F, 0F, 0F);
       body = new ModelRenderer(this, 16, 16);
-      body.func_78789_a(-4F, 0F, -2F, 8, 12, 4);
-      body.func_78793_a(0F, -3F, 0F);
-      body.func_78787_b(128, 64);
-      body.field_78809_i = true;
+      body.addBox(-4F, 0F, -2F, 8, 12, 4);
+      body.setRotationPoint(0F, -3F, 0F);
+      body.setTextureSize(128, 64);
+      body.mirror = true;
       setRotation(body, 0F, 0F, 0F);
       rightarm = new ModelRenderer(this, 40, 16);
-      rightarm.func_78789_a(-3F, -2F, -2F, 4, 12, 4);
-      rightarm.func_78793_a(-5F, -1F, 0F);
-      rightarm.func_78787_b(128, 64);
-      rightarm.field_78809_i = true;
+      rightarm.addBox(-3F, -2F, -2F, 4, 12, 4);
+      rightarm.setRotationPoint(-5F, -1F, 0F);
+      rightarm.setTextureSize(128, 64);
+      rightarm.mirror = true;
       setRotation(rightarm, 0F, 0F, 0F);
       leftarm = new ModelRenderer(this, 40, 16);
-      leftarm.func_78789_a(-1F, -2F, -2F, 4, 12, 4);
-      leftarm.func_78793_a(5F, -1F, 0F);
-      leftarm.func_78787_b(128, 64);
-      leftarm.field_78809_i = true;
+      leftarm.addBox(-1F, -2F, -2F, 4, 12, 4);
+      leftarm.setRotationPoint(5F, -1F, 0F);
+      leftarm.setTextureSize(128, 64);
+      leftarm.mirror = true;
       setRotation(leftarm, 0F, 0F, 0F);
       bas = new ModelRenderer(this, 0, 39);
-      bas.func_78789_a(-4F, 0F, -2F, 8, 12, 4);
-      bas.func_78793_a(0F, 9F, 0F);
-      bas.func_78787_b(128, 64);
-      bas.field_78809_i = true;
+      bas.addBox(-4F, 0F, -2F, 8, 12, 4);
+      bas.setRotationPoint(0F, 9F, 0F);
+      bas.setTextureSize(128, 64);
+      bas.mirror = true;
       setRotation(bas, 0F, 0F, 0F);
       tissucape = new ModelRenderer(this, 37, 0);
-      tissucape.func_78789_a(-4F, 0F, 2.2F, 8, 9, 0);
-      tissucape.func_78793_a(0F, -3F, 0F);
-      tissucape.func_78787_b(128, 64);
-      tissucape.field_78809_i = true;
+      tissucape.addBox(-4F, 0F, 2.2F, 8, 9, 0);
+      tissucape.setRotationPoint(0F, -3F, 0F);
+      tissucape.setTextureSize(128, 64);
+      tissucape.mirror = true;
       setRotation(tissucape, 0F, 0F, 0F);
       tissubrasl = new ModelRenderer(this, 33, 37);
-      tissubrasl.func_78789_a(-3F, 10F, -2F, 4, 5, 4);
-      tissubrasl.func_78793_a(-5F, -1F, 0F);
-      tissubrasl.func_78787_b(128, 64);
-      tissubrasl.field_78809_i = true;
+      tissubrasl.addBox(-3F, 10F, -2F, 4, 5, 4);
+      tissubrasl.setRotationPoint(-5F, -1F, 0F);
+      tissubrasl.setTextureSize(128, 64);
+      tissubrasl.mirror = true;
       setRotation(tissubrasl, 0F, 0F, 0F);
       tissubrasR = new ModelRenderer(this, 33, 37);
-      tissubrasR.func_78789_a(-1F, 10F, -2F, 4, 5, 4);
-      tissubrasR.func_78793_a(5F, -1F, 0F);
-      tissubrasR.func_78787_b(128, 64);
-      tissubrasR.field_78809_i = true;
+      tissubrasR.addBox(-1F, 10F, -2F, 4, 5, 4);
+      tissubrasR.setRotationPoint(5F, -1F, 0F);
+      tissubrasR.setTextureSize(128, 64);
+      tissubrasR.mirror = true;
       setRotation(tissubrasR, 0F, 0F, 0F);
  
       convertToChild(head, capuche);
@@ -113,30 +113,30 @@ public class ModelReaper extends ModelBase
   protected void convertToChild(ModelRenderer parent, ModelRenderer child)
   {
     // move child rotation point to be relative to parent
-      child.field_78800_c -= parent.field_78800_c;
-      child.field_78797_d -= parent.field_78797_d;
-      child.field_78798_e -= parent.field_78798_e;
+      child.rotationPointX -= parent.rotationPointX;
+      child.rotationPointY -= parent.rotationPointY;
+      child.rotationPointZ -= parent.rotationPointZ;
       
     // make rotations relative to parent
-      child.field_78795_f -= parent.field_78795_f;
-      child.field_78796_g -= parent.field_78796_g;
-      child.field_78808_h -= parent.field_78808_h;
+      child.rotateAngleX -= parent.rotateAngleX;
+      child.rotateAngleY -= parent.rotateAngleY;
+      child.rotateAngleZ -= parent.rotateAngleZ;
       
     //create relationship
-      parent.func_78792_a(child);
+      parent.addChild(child);
       
   }
   
-  public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+  public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
-    super.func_78088_a(entity, f, f1, f2, f3, f4, f5);
-    func_78087_a(f, f1, f2, f3, f4, f5, entity);
+    super.render(entity, f, f1, f2, f3, f4, f5);
+    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 //    capuche.render(f5);
-    head.func_78785_a(f5);
-    body.func_78785_a(f5);
-    rightarm.func_78785_a(f5);
-    leftarm.func_78785_a(f5);
-    bas.func_78785_a(f5);
+    head.render(f5);
+    body.render(f5);
+    rightarm.render(f5);
+    leftarm.render(f5);
+    bas.render(f5);
 //    tissucape.render(f5);
 //    tissubrasl.render(f5);
 //    tissubrasR.render(f5);
@@ -144,22 +144,22 @@ public class ModelReaper extends ModelBase
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
   {
-    model.field_78795_f = x;
-    model.field_78796_g = y;
-    model.field_78808_h = z;
+    model.rotateAngleX = x;
+    model.rotateAngleY = y;
+    model.rotateAngleZ = z;
   }
   
-  public void func_78087_a(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity)
+  public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity)
   {
       float XAngle = headPitch / 57.29578F;
       float YAngle = netHeadYaw / 57.29578F;
       
-      this.head.field_78795_f = (0.2617794F + XAngle);
-      this.head.field_78796_g = YAngle;
+      this.head.rotateAngleX = (0.2617794F + XAngle);
+      this.head.rotateAngleY = YAngle;
       
-      this.bas.field_78795_f = MathHelper.func_76134_b(0.6662F);
-      this.leftarm.field_78795_f = MathHelper.func_76134_b(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-      this.rightarm.field_78795_f = (MathHelper.func_76134_b(limbSwing * 0.6662F) * 1.4F * limbSwingAmount) - 0.750F;
+      this.bas.rotateAngleX = MathHelper.cos(0.6662F);
+      this.leftarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+      this.rightarm.rotateAngleX = (MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount) - 0.750F;
   }
 
 

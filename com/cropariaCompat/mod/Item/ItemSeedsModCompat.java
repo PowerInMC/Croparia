@@ -13,9 +13,9 @@ public class ItemSeedsModCompat extends ItemSeeds{
 	
 	public ItemSeedsModCompat(Block block, Block soil, String name) {
 		super(block, soil);
-		func_77655_b(name);
+		setUnlocalizedName(name);
 		setRegistryName(name);
-		func_77637_a(CreativeTabsCompat.MOD_COMPAT);
+		setCreativeTab(CreativeTabsCompat.MOD_COMPAT);
 	}
 
 }

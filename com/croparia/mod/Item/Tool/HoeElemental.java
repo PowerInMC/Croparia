@@ -31,22 +31,22 @@ public class HoeElemental extends Item {
 
 	public HoeElemental(Item.ToolMaterial material) {
 		this.theToolMaterial = material;
-		this.field_77777_bU = 1;
-		this.func_77656_e(material.func_77997_a());
-		this.func_77637_a(CreativeTabs.field_78040_i);
-		this.speed = material.func_78000_c() + 1.0F;
+		this.maxStackSize = 1;
+		this.setMaxDamage(material.getMaxUses());
+		this.setCreativeTab(CreativeTabs.TOOLS);
+		this.speed = material.getDamageVsEntity() + 1.0F;
 	}
 
 	/**
 	 * Called when a Block is right-clicked with this Item
 	 */
-	public EnumActionResult func_180614_a(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) 
+	public EnumActionResult onItemUse(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) 
 	{
-		ItemStack itemstack = stack.func_184586_b(pos);
+		ItemStack itemstack = stack.getHeldItem(pos);
 		
-		if(stack.func_70093_af() == true)
+		if(stack.isSneaking() == true)
 		{
-			if (!stack.func_175151_a(worldIn.func_177972_a(hand), hand, itemstack)) 
+			if (!stack.canPlayerEdit(worldIn.offset(hand), hand, itemstack)) 
 			{
 				return EnumActionResult.FAIL;
 			} 
@@ -56,112 +56,112 @@ public class HoeElemental extends Item {
 				if (hook != 0)
 					return hook > 0 ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 
-				IBlockState iblockstate = playerIn.func_180495_p(worldIn);
-				Block block = iblockstate.func_177230_c();
+				IBlockState iblockstate = playerIn.getBlockState(worldIn);
+				Block block = iblockstate.getBlock();
 
-				if (hand != EnumFacing.DOWN && playerIn.func_175623_d(worldIn.func_177984_a())) 
+				if (hand != EnumFacing.DOWN && playerIn.isAirBlock(worldIn.up())) 
 				{
-						if (block == Blocks.field_150349_c || block == Blocks.field_185774_da || block == Blocks.field_150346_d) 
+						if (block == Blocks.GRASS || block == Blocks.GRASS_PATH || block == Blocks.DIRT) 
 						{
-							this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150355_j.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.WATER.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().east(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).east(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).east(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).east(1), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().west(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).west(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).west(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).west(1), Blocks.FARMLAND.getDefaultState());
 							
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).east(2), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).west(2), Blocks.FARMLAND.getDefaultState());
 							
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).east(3), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).west(3), Blocks.FARMLAND.getDefaultState());
 							
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).east(4), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c().func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2).func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3).func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4).func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north().west(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2).west(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3).west(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4).west(4), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177978_c(), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177964_d(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.north(4), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).east(2), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).west(2), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).east(3), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).west(3), Blocks.FARMLAND.getDefaultState());
 							
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).east(4), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().west(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).west(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).west(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).west(4), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177965_g(1), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().east(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).east(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).east(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).east(1), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d().func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2).func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3).func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4).func_177985_f(1), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south().west(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2).west(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3).west(1), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4).west(1), Blocks.FARMLAND.getDefaultState());
 
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177968_d(), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177970_e(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.south(4), Blocks.FARMLAND.getDefaultState());
 							
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177974_f(), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177965_g(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177965_g(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177965_g(4), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177976_e(), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177985_f(2), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177985_f(3), Blocks.field_150458_ak.func_176223_P());
-							this.setBlock(itemstack, stack, playerIn, worldIn.func_177985_f(4), Blocks.field_150458_ak.func_176223_P());
+							this.setBlock(itemstack, stack, playerIn, worldIn.east(), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.east(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.east(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.east(4), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.west(), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.west(2), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.west(3), Blocks.FARMLAND.getDefaultState());
+							this.setBlock(itemstack, stack, playerIn, worldIn.west(4), Blocks.FARMLAND.getDefaultState());
 							return EnumActionResult.SUCCESS;
 						}
 					
@@ -170,7 +170,7 @@ public class HoeElemental extends Item {
 
 		}
 		
-		if (!stack.func_175151_a(worldIn.func_177972_a(hand), hand, itemstack))
+		if (!stack.canPlayerEdit(worldIn.offset(hand), hand, itemstack))
         {
             return EnumActionResult.FAIL;
         }
@@ -179,26 +179,26 @@ public class HoeElemental extends Item {
             int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(itemstack, stack, playerIn, worldIn);
             if (hook != 0) return hook > 0 ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 
-            IBlockState iblockstate = playerIn.func_180495_p(worldIn);
-            Block block = iblockstate.func_177230_c();
+            IBlockState iblockstate = playerIn.getBlockState(worldIn);
+            Block block = iblockstate.getBlock();
 
-            if (hand != EnumFacing.DOWN && playerIn.func_175623_d(worldIn.func_177984_a()))
+            if (hand != EnumFacing.DOWN && playerIn.isAirBlock(worldIn.up()))
             {
-                if (block == Blocks.field_150349_c || block == Blocks.field_185774_da)
+                if (block == Blocks.GRASS || block == Blocks.GRASS_PATH)
                 {
-                    this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150458_ak.func_176223_P());
+                    this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.FARMLAND.getDefaultState());
                     return EnumActionResult.SUCCESS;
                 }
 
-                if (block == Blocks.field_150346_d)
+                if (block == Blocks.DIRT)
                 {
-                    switch ((BlockDirt.DirtType)iblockstate.func_177229_b(BlockDirt.field_176386_a))
+                    switch ((BlockDirt.DirtType)iblockstate.getValue(BlockDirt.VARIANT))
                     {
                         case DIRT:
-                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150458_ak.func_176223_P());
+                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.FARMLAND.getDefaultState());
                             return EnumActionResult.SUCCESS;
                         case COARSE_DIRT:
-                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.field_150346_d.func_176223_P().func_177226_a(BlockDirt.field_176386_a, BlockDirt.DirtType.DIRT));
+                            this.setBlock(itemstack, stack, playerIn, worldIn, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
                             return EnumActionResult.SUCCESS;
                         case PODZOL:
                         	break;
@@ -216,17 +216,17 @@ public class HoeElemental extends Item {
 	 * Current implementations of this method in child classes do not use the
 	 * entry argument beside ev. They just raise the damage on the stack.
 	 */
-	public boolean func_77644_a(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		stack.func_77972_a(1, attacker);
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		stack.damageItem(1, attacker);
 		return true;
 	}
 
 	protected void setBlock(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.func_184133_a(player, pos, SoundEvents.field_187693_cj, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		worldIn.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
-		if (!worldIn.field_72995_K) {
-			worldIn.func_180501_a(pos, state, 11);
-			stack.func_77972_a(1, player);
+		if (!worldIn.isRemote) {
+			worldIn.setBlockState(pos, state, 11);
+			stack.damageItem(1, player);
 		}
 	}
 
@@ -234,7 +234,7 @@ public class HoeElemental extends Item {
 	 * Returns True is the item is renderer in full 3D when hold.
 	 */
 	@SideOnly(Side.CLIENT)
-	public boolean func_77662_d() {
+	public boolean isFull3D() {
 		return true;
 	}
 
@@ -246,14 +246,14 @@ public class HoeElemental extends Item {
 		return this.theToolMaterial.toString();
 	}
 
-	public Multimap<String, AttributeModifier> func_111205_h(EntityEquipmentSlot equipmentSlot) {
-		Multimap<String, AttributeModifier> multimap = super.func_111205_h(equipmentSlot);
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
-			multimap.put(SharedMonsterAttributes.field_111264_e.func_111108_a(),
-					new AttributeModifier(field_111210_e, "Weapon modifier", 0.0D, 0));
-			multimap.put(SharedMonsterAttributes.field_188790_f.func_111108_a(),
-					new AttributeModifier(field_185050_h, "Weapon modifier", (double) (this.speed - 4.0F), 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
+					new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 0.0D, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(),
+					new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double) (this.speed - 4.0F), 0));
 		}
 
 		return multimap;

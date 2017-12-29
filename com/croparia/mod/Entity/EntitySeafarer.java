@@ -30,45 +30,45 @@ public class EntitySeafarer extends EntityMob
         super(world);
     }
 
-    protected void func_184651_r()
+    protected void initEntityAI()
     {
-        this.field_70714_bg.func_75776_a(0, new EntityAISwimming(this));
-        this.field_70714_bg.func_75776_a(6, new EntityAIWander(this, 1.0D));
-        this.field_70714_bg.func_75776_a(6, new EntityAIMoveTowardsTarget(this, 1, 20F));
-        this.field_70714_bg.func_75776_a(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        this.field_70714_bg.func_75776_a(1, new EntityAIBaseAttack(this, 1.0D, false));
-        this.field_70715_bh.func_75776_a(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.field_70714_bg.func_75776_a(8, new EntityAILookIdle(this));
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIMoveTowardsTarget(this, 1, 20F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(1, new EntityAIBaseAttack(this, 1.0D, false));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
 
 
     }
     
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(200.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.40D);
-        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(15.0D / 2);
-        this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(30.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111266_c).func_111128_a(0D);
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(200.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.40D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(15.0D / 2);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0D);
 
     }
 
     @Override
-    public void func_70645_a(DamageSource cause)
+    public void onDeath(DamageSource cause)
     {
-        super.func_70645_a(cause); 
-    	if(cause.func_76346_g() instanceof EntityPlayer)
+        super.onDeath(cause); 
+    	if(cause.getTrueSource() instanceof EntityPlayer)
 	    {
-    	    if(this.func_95999_t() == "Seafarer")
+    	    if(this.getCustomNameTag() == "Seafarer")
  			{
- 				this.func_145779_a(WaterDim.block, 1);
+ 				this.dropItem(WaterDim.block, 1);
  			}
     	    else 
     	    {
-	    		this.func_145779_a(ItemMod.elemental_water, 8);
-	        	this.func_145779_a(ItemMod.elemental_water_chestplate, 1);
-	        	this.func_145779_a(ItemMod.water_sword, 1);
+	    		this.dropItem(ItemMod.elemental_water, 8);
+	        	this.dropItem(ItemMod.elemental_water_chestplate, 1);
+	        	this.dropItem(ItemMod.water_sword, 1);
     	    }
         
 	    }
@@ -76,29 +76,29 @@ public class EntitySeafarer extends EntityMob
     
     @Override
 
-    protected void func_70619_bc()
+    protected void updateAITasks()
 
     {
 
-     super.func_70619_bc();
+     super.updateAITasks();
 
 
     }
 
-    public void func_184178_b(EntityPlayerMP player)
+    public void addTrackingPlayer(EntityPlayerMP player)
 
     {
 
-        super.func_184178_b(player);
+        super.addTrackingPlayer(player);
 
 
     }
     
-    public void func_184203_c(EntityPlayerMP player)
+    public void removeTrackingPlayer(EntityPlayerMP player)
 
     {
 
-        super.func_184203_c(player);
+        super.removeTrackingPlayer(player);
 
     }
 

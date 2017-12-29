@@ -18,31 +18,31 @@ public class BlockFlyingbeastSpawn  extends Block{
 
 
 	public BlockFlyingbeastSpawn(String name) {
-		super(Material.field_151585_k);
-		func_149663_c(name);
-		func_149672_a(SoundType.field_185850_c);
+		super(Material.PLANTS);
+		setUnlocalizedName(name);
+		setSoundType(SoundType.PLANT);
 	}
 
 	
 	@Override
-	public void func_176206_d(World worldIn, BlockPos pos, IBlockState state) {
-		if(!worldIn.field_72995_K)
+	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+		if(!worldIn.isRemote)
 		{
 			EntityFlying e = new EntityFlying(worldIn);
 
-			e.func_70107_b(pos.func_177958_n(), pos.func_177956_o(), pos.func_177952_p());
-			e.func_96094_a("Flying Beast");
+			e.setPosition(pos.getX(), pos.getY(), pos.getZ());
+			e.setCustomNameTag("Flying Beast");
 
-			worldIn.func_72838_d(e);
+			worldIn.spawnEntity(e);
 		
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void func_180655_c(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
 	{
-		super.func_180655_c(stateIn, worldIn, pos, rand);
+		super.randomDisplayTick(stateIn, worldIn, pos, rand);
 
         for (int i = -2; i <= 2; ++i)
         {
@@ -59,7 +59,7 @@ public class BlockFlyingbeastSpawn  extends Block{
 
 
 
-                            worldIn.func_175688_a(EnumParticleTypes.ENCHANTMENT_TABLE, (double)pos.func_177958_n() + 0.5D, (double)pos.func_177956_o() + 2.0D, (double)pos.func_177952_p() + 0.5D, (double)((float)i + rand.nextFloat()) - 0.5D, (double)((float)k - rand.nextFloat() - 3.0F), (double)((float)j + rand.nextFloat()) - 0.5D, new int[0]);
+                            worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, (double)pos.getX() + 0.5D, (double)pos.getY() + 2.0D, (double)pos.getZ() + 0.5D, (double)((float)i + rand.nextFloat()) - 0.5D, (double)((float)k - rand.nextFloat() - 3.0F), (double)((float)j + rand.nextFloat()) - 0.5D, new int[0]);
                     }
                     
                 

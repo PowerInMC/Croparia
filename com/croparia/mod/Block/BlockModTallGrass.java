@@ -21,9 +21,9 @@ public class BlockModTallGrass extends BlockBush
 {
     public BlockModTallGrass()
     {
-        super(Material.field_151577_b, MapColor.field_151661_c);
-        this.func_149672_a(SoundType.field_185850_c);
-        this.func_149647_a(CreativeTabsRegistry.MOD_BLOCK);
+        super(Material.GRASS, MapColor.GRASS);
+        this.setSoundType(SoundType.PLANT);
+        this.setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
     }
 
 

@@ -19,46 +19,46 @@ public class ItemModSword extends ItemSword
     {
         super(material);
     }
-    public boolean func_82789_a(ItemStack input, ItemStack repair)
+    public boolean getIsRepairable(ItemStack input, ItemStack repair)
     {
-        if(input.func_77973_b() == ItemMod.air_sword)
+        if(input.getItem() == ItemMod.air_sword)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_air)
+            if(repair.getItem() == ItemMod.elemental_air)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.fire_sword)
+        else if(input.getItem() == ItemMod.fire_sword)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_fire)
+            if(repair.getItem() == ItemMod.elemental_fire)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.water_sword)
+        else if(input.getItem() == ItemMod.water_sword)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_water)
+            if(repair.getItem() == ItemMod.elemental_water)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.earth_sword)
+        else if(input.getItem() == ItemMod.earth_sword)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_earth)
+            if(repair.getItem() == ItemMod.elemental_earth)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.obsidian_sword)
+        else if(input.getItem() == ItemMod.obsidian_sword)
         {
-            if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+            if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.renforced_sword)
+        else if(input.getItem() == ItemMod.renforced_sword)
         {
-            if(repair.func_77973_b() == Items.field_151045_i)
+            if(repair.getItem() == Items.DIAMOND)
             {
                 return true;
             }

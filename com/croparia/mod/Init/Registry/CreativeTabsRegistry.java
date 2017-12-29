@@ -15,7 +15,7 @@ public class CreativeTabsRegistry
     public static final CreativeTabs MOD_BLOCK = new CreativeTabs("MOD_BLOCK")
 	{
 		@SideOnly(Side.CLIENT)
-        public ItemStack func_78016_d()
+        public ItemStack getTabIconItem()
         {
             return new ItemStack(ItemMod.elemental_fragment);
         }
@@ -24,7 +24,7 @@ public class CreativeTabsRegistry
 	 public static final CreativeTabs WIP = new CreativeTabs("WIP")
 		{
 			@SideOnly(Side.CLIENT)
-	        public ItemStack func_78016_d()
+	        public ItemStack getTabIconItem()
 	        {
 	            return new ItemStack(ItemMod.element_eternity);
 	        }

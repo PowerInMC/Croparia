@@ -19,22 +19,22 @@ public class Iron extends ItemModFood{
 	public Iron(String name, CreativeTabs tabs) {
 		super(0, 0, false);
 		setRegistryName(name);
-		func_77655_b(name);
-		func_77637_a(tabs);
-		func_77848_i();
+		setUnlocalizedName(name);
+		setCreativeTab(tabs);
+		setAlwaysEdible();
 		this.name = name;
 	}
 	
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        if (!worldIn.field_72995_K && this.name != "fruit_uranium")
+        if (!worldIn.isRemote && this.name != "fruit_uranium")
         {           
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76429_m, 400, 1));
+        	player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 400, 1));
         }
-        else if(!worldIn.field_72995_K && this.name == "fruit_uranium")
+        else if(!worldIn.isRemote && this.name == "fruit_uranium")
         {
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76429_m, 400, 1));
-        	player.func_70690_d(new PotionEffect(MobEffects.field_76436_u, Reference.infini, 2));
+        	player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 400, 1));
+        	player.addPotionEffect(new PotionEffect(MobEffects.POISON, Reference.infini, 2));
         }
     }
 

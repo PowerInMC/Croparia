@@ -16,11 +16,11 @@ public class Star extends ItemModFood{
 		super(amount, saturation, isWolfFood);
 	}
 	
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        if (!worldIn.field_72995_K)
+        if (!worldIn.isRemote)
         {           
-        	player.func_70634_a(player.func_180425_c().func_177958_n(), player.func_180425_c().func_177956_o() + 1000, player.func_180425_c().func_177952_p());
+        	player.setPositionAndUpdate(player.getPosition().getX(), player.getPosition().getY() + 1000, player.getPosition().getZ());
         }
     }
 

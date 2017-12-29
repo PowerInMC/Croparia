@@ -7,17 +7,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemSword;
 import scala.Int;
 
-import net.minecraft.item.Item.ToolMaterial;
-
 public class ItemScythe extends ItemSword 
 {
 
 	public ItemScythe(ToolMaterial mat, String name) {
 		super(mat);
-		func_77655_b(name);
+		setUnlocalizedName(name);
 		setRegistryName(name);
-		func_77625_d(1);
-		func_77637_a(CreativeTabsRegistry.MOD_BLOCK);
+		setMaxStackSize(1);
+		setCreativeTab(CreativeTabsRegistry.MOD_BLOCK);
 		setNoRepair();
 	}
 }

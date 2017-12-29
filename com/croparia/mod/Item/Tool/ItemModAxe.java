@@ -24,44 +24,44 @@ public class ItemModAxe extends ItemAxe
 
     public boolean isRepairable(ItemStack input, ItemStack repair)
     {
-        if(input.func_77973_b() == ItemMod.air_axe)
+        if(input.getItem() == ItemMod.air_axe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_air)
+            if(repair.getItem() == ItemMod.elemental_air)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.fire_axe)
+        else if(input.getItem() == ItemMod.fire_axe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_fire)
+            if(repair.getItem() == ItemMod.elemental_fire)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.water_axe)
+        else if(input.getItem() == ItemMod.water_axe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_water)
+            if(repair.getItem() == ItemMod.elemental_water)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.earth_axe)
+        else if(input.getItem() == ItemMod.earth_axe)
         {
-            if(repair.func_77973_b() == ItemMod.elemental_earth)
+            if(repair.getItem() == ItemMod.elemental_earth)
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.obsidian_axe)
+        else if(input.getItem() == ItemMod.obsidian_axe)
         {
-            if(repair.func_77973_b() == Item.func_150898_a(Blocks.field_150343_Z))
+            if(repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN))
             {
                 return true;
             }
         }
-        else if(input.func_77973_b() == ItemMod.renforced_axe)
+        else if(input.getItem() == ItemMod.renforced_axe)
         {
-            if(repair.func_77973_b() == Items.field_151045_i)
+            if(repair.getItem() == Items.DIAMOND)
             {
                 return true;
             }

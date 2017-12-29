@@ -16,7 +16,7 @@ public class ItemMinautor extends Item
 	public ItemMinautor(String name)
 	{
 		super();
-		func_77655_b(name);
+		setUnlocalizedName(name);
 
 		setRegistryName(name);
 	}	

@@ -13,10 +13,10 @@ public class FruitFire extends ItemModFood{
 	}
 	
 	@Override
-	protected void func_77849_c(ItemStack stack, World worldIn, EntityPlayer player) {
-		if (!worldIn.field_72995_K)
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		if (!worldIn.isRemote)
 		{		
-			player.func_70015_d(60);
+			player.setFire(60);
 		}
 	}
 	

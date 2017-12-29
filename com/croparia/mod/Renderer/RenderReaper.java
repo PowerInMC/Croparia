@@ -20,7 +20,7 @@ public class RenderReaper extends RenderLiving<EntityReaper>
     }   
     
     @Override
-    protected ResourceLocation func_110775_a(EntityReaper entity) 
+    protected ResourceLocation getEntityTexture(EntityReaper entity) 
     {
         return ENTITY_TEXTURE;
     }

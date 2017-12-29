@@ -23,37 +23,37 @@ public class BlockGhost extends BlockBush {
 	private String name;
 	
 	public BlockGhost(String name) {
-		super(Material.field_151579_a);
+		super(Material.AIR);
 		this.name = name;
-		this.func_149663_c(name);
+		this.setUnlocalizedName(name);
 	}
 	
 	@Override
-    public boolean func_176200_f(IBlockAccess worldIn, BlockPos pos)
+    public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos)
     {
-		if(isIt("ghost_nether", Blocks.field_150385_bj))
+		if(isIt("ghost_nether", Blocks.NETHER_BRICK))
 			return true;
-		if(isIt("ghost_lava", Items.field_151129_at))
+		if(isIt("ghost_lava", Items.LAVA_BUCKET))
 			return true;
 		if(isIt("ghost_death", ItemMod.seed_crop_death))
 			return true;
-		if(isIt("ghost_magma", Blocks.field_189877_df))
+		if(isIt("ghost_magma", Blocks.MAGMA))
 			return true;
 		if(isIt("ghost_elemental_cobble", BlockMod.elemental_cobblestone))
 			return true;
-		if(isIt("ghost_soulsand", Blocks.field_150425_aM))
+		if(isIt("ghost_soulsand", Blocks.SOUL_SAND))
 			return true;
-		if(isIt("ghost_slabstone", Blocks.field_150333_U))
+		if(isIt("ghost_slabstone", Blocks.STONE_SLAB))
 			return true;
-		if(isIt("ghost_slabnether", Blocks.field_150333_U))
+		if(isIt("ghost_slabnether", Blocks.STONE_SLAB))
 			return true;
-		if(isIt("ghost_slabnetherup", Blocks.field_150333_U))
+		if(isIt("ghost_slabnetherup", Blocks.STONE_SLAB))
 			return true;
-		if(isIt("ghost_andesite", Blocks.field_150348_b))
+		if(isIt("ghost_andesite", Blocks.STONE))
 			return true;
-		if(isIt("ghost_polished_andesite", Blocks.field_150348_b))
+		if(isIt("ghost_polished_andesite", Blocks.STONE))
 			return true;
-		if(isIt("ghost_waterliquid", Items.field_151131_as))
+		if(isIt("ghost_waterliquid", Items.WATER_BUCKET))
 			return true;
 		if(isIt("ghost_redstone", ItemMod.seed_crop_redstone))
 			return true;
@@ -73,7 +73,7 @@ public class BlockGhost extends BlockBush {
 			return true;
 		if(isIt("ghost_cropgold", ItemMod.seed_crop_gold))
 			return true;
-		if(isIt("ghost_diorite", Blocks.field_150348_b))
+		if(isIt("ghost_diorite", Blocks.STONE))
 			return true;
 		
 		return false;
@@ -82,7 +82,7 @@ public class BlockGhost extends BlockBush {
 	
 	public boolean isIt(String name, Block block)
 	{
-		if(this.name == name && Minecraft.func_71410_x().field_71439_g.func_184614_ca().func_77973_b() == Item.func_150898_a(block))
+		if(this.name == name && Minecraft.getMinecraft().player.getHeldItemMainhand().getItem() == Item.getItemFromBlock(block))
 		{
 			return true;
 		}
@@ -92,7 +92,7 @@ public class BlockGhost extends BlockBush {
 
 	public boolean isIt(String name, Item item)
 	{
-		if(this.name == name && Minecraft.func_71410_x().field_71439_g.func_184614_ca().func_77973_b() == item)
+		if(this.name == name && Minecraft.getMinecraft().player.getHeldItemMainhand().getItem() == item)
 		{
 			return true;
 		}
@@ -101,25 +101,25 @@ public class BlockGhost extends BlockBush {
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public BlockRenderLayer func_180664_k()
+	public BlockRenderLayer getBlockLayer()
 	{
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 	
 	@Override
-	public boolean func_149662_c(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
-	public boolean func_149751_l(IBlockState state) {
+	public boolean isTranslucent(IBlockState state) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
-    public boolean func_149686_d(IBlockState state)
+    public boolean isFullCube(IBlockState state)
     {
         return false;
     }

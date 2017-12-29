@@ -26,35 +26,35 @@ import net.minecraft.world.World;
 public class CaneGray extends BlockReed
 {
 
-	public Block onIt = Blocks.field_192443_dR;
+	public Block onIt = Blocks.CONCRETE;
 	
 	public CaneGray(String name) 
 	{
 		super();
-		func_149663_c(name);
-		func_149672_a(SoundType.field_185850_c);
+		setUnlocalizedName(name);
+		setSoundType(SoundType.PLANT);
 	}
 
 
 	
 	@Override
-	public Item func_180660_a(IBlockState state, Random rand, int fortune) 
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) 
 	{
-		return Item.func_150898_a(BlockMod.block_cane_gray);
+		return Item.getItemFromBlock(BlockMod.block_cane_gray);
 	}
 	
 	@Override
-	public ItemStack func_185473_a(World worldIn, BlockPos pos, IBlockState state)
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
 	{
-		return new ItemStack(Item.func_150898_a(BlockMod.block_cane_gray));
+		return new ItemStack(Item.getItemFromBlock(BlockMod.block_cane_gray));
 	}
 	
 	@Override
-	public boolean func_176196_c(World worldIn, BlockPos pos)
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     {
-        IBlockState state = worldIn.func_180495_p(pos.func_177977_b());
-        Block block = state.func_177230_c();
-        if (block.canSustainPlant(state, worldIn, pos.func_177977_b(), EnumFacing.UP, this)) return true;
+        IBlockState state = worldIn.getBlockState(pos.down());
+        Block block = state.getBlock();
+        if (block.canSustainPlant(state, worldIn, pos.down(), EnumFacing.UP, this)) return true;
 
         if (block == this)
         {
@@ -66,13 +66,13 @@ public class CaneGray extends BlockReed
         }
         else
         {
-            BlockPos blockpos = pos.func_177977_b();
+            BlockPos blockpos = pos.down();
 
             for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL)
             {
-                IBlockState iblockstate = worldIn.func_180495_p(blockpos.func_177972_a(enumfacing));
+                IBlockState iblockstate = worldIn.getBlockState(blockpos.offset(enumfacing));
 
-                if (iblockstate.func_185904_a() == Material.field_151586_h || iblockstate.func_177230_c() == Blocks.field_185778_de)
+                if (iblockstate.getMaterial() == Material.WATER || iblockstate.getBlock() == Blocks.FROSTED_ICE)
                 {
                     return true;
                 }
