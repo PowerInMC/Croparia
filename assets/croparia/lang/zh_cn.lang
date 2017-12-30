@@ -26,12 +26,12 @@ item.cooked_roast_porc.name=熟猪肉
 item.cooked_horse_meat.name=熟马肉
 item.cooked_squid_meat.name=熟鱿鱼肉
 
-item.GuideBook.name=欢迎来到矿石作物
+item.GuideBook.name=欢迎聆听魔种之咏
 
-item.waterdim_trigger.name=水之维度开启器
-item.earthdim_trigger.name=地之维度开启器
-item.firedim_trigger.name=火之维度开启器
-item.airdim_trigger.name=风之维度开启器
+item.waterdim_trigger.name=位面之钥：水
+item.earthdim_trigger.name=位面之钥：地
+item.firedim_trigger.name=位面之钥：火
+item.airdim_trigger.name=位面之钥：风
 
 item.obsidian_axe.name=黑曜石斧
 item.obsidian_pickaxe.name=黑曜石镐
@@ -429,7 +429,7 @@ tile.block_cane_oak.name=橡木甘蔗
 tile.block_cane_spruce.name=云杉木甘蔗
 tile.block_cane_birch.name=白桦木甘蔗
 tile.block_cane_jungle.name=丛林木甘蔗
-tile.block_cane_grass.name=草甘蔗
+tile.block_cane_grass.name=草块甘蔗
 tile.block_cane_sand.name=沙甘蔗
 tile.block_cane_cobble.name=圆石甘蔗
 tile.block_cane_black.name=黑色甘蔗
@@ -460,11 +460,11 @@ item.elemental_air.name=风元素
 item.elemental_earth.name=土元素
 
 item.element_eternity.name=永恒元素碎片
-item.eternal_time.name=永恒时间
-item.eternal_fire.name=永恒之火
-item.eternal_water.name=永恒之水
-item.eternal_earth.name=永恒之土
-item.eternal_air.name=永恒之风
+item.eternal_time.name=永恒符文：时间
+item.eternal_fire.name=永恒符文：火
+item.eternal_water.name=永恒符文：水
+item.eternal_earth.name=永恒符文：土
+item.eternal_air.name=永恒符文：风
 
 
 item.seed_stem_coal.name=煤炭花种
@@ -507,9 +507,9 @@ item.af_fruit.name=永恒燃料作物
 
 
 
-itemGroup.MOD_BLOCK=矿石作物
-itemGroup.MOD_COMPAT=矿石作物-模组兼容
-itemGroup.WIP=矿石作物[WIP]
+itemGroup.MOD_BLOCK=魔种之咏
+itemGroup.MOD_COMPAT=魔种之咏-模组兼容
+itemGroup.WIP=魔种之咏[WIP]
 
 
 
@@ -543,7 +543,7 @@ tile.block_crop_quartz.name=下界石英作物
 tile.block_crop_shard.name=海晶作物
 tile.block_crop_cristal.name=海晶灯作物
 tile.block_crop_ender.name=末影作物
-tile.block_crop_paper.name=纸张作物
+tile.block_crop_paper.name=纸作物
 tile.block_crop_sugar.name=蔗糖作物
 tile.block_crop_charcoal.name=木炭作物
 tile.block_crop_flint.name=燧石作物
@@ -554,42 +554,42 @@ tile.block_crop_bottle.name=玻璃瓶作物
 
 
 
-tile.stem_iron.name=铁块作物
-tile.stem_coal.name=煤块作物
-tile.stem_gold.name=金块作物
-tile.stem_redstone.name=红石块作物
-tile.stem_lapis.name=青金石块作物
-tile.stem_diamond.name=钻石块作物
-tile.stem_clay.name=粘土块作物
-tile.stem_emeral.name=绿宝石块作物
-tile.stem_glowstone.name=地狱疣块作物
-tile.stem_quartz.name=下界石英块作物
-tile.stem_shard.name=海晶石作物
-tile.stem_cristal.name=萤石块作物
-tile.stem_elemental.name=末影块作物
+tile.stem_iron.name=铁瓜茎
+tile.stem_coal.name=煤炭瓜茎
+tile.stem_gold.name=金瓜茎
+tile.stem_redstone.name=红石瓜茎
+tile.stem_lapis.name=青金石瓜茎
+tile.stem_diamond.name=钻石瓜茎
+tile.stem_clay.name=粘土瓜茎
+tile.stem_emeral.name=绿宝石瓜茎
+tile.stem_glowstone.name=地狱疣瓜茎
+tile.stem_quartz.name=下界石英瓜茎
+tile.stem_shard.name=海晶瓜茎
+tile.stem_cristal.name=萤石瓜茎
+tile.stem_elemental.name=末影瓜茎
 
 
 
-tile.block_plant_coal.name=煤炭块植物
-tile.block_plant_iron.name=铁块植物
-tile.block_plant_gold.name=金块植物
-tile.block_plant_redstone.name=红石块植物
-tile.block_plant_lapis.name=青金石块植物
-tile.block_plant_diamond.name=钻石块植物
-tile.block_plant_clay.name=粘土块植物
-tile.block_plant_emerald.name=绿宝石块植物
-tile.block_plant_glowstone.name=地狱疣块植物
-tile.block_plant_quartz.name=下界石英块植物
-tile.block_plant_shard.name=海晶石植物
-tile.block_plant_cristal.name=海晶灯植物
-tile.block_plant_elemental.name=末影块植物
-tile.block_plant_bone.name=骨块植物
-tile.block_plant_snow.name=雪块植物
-tile.block_plant_obsidian.name=黑曜石植物
-tile.block_plant_magma.name=岩浆块植物
-tile.block_plant_nether.name=地狱砖块植物
-tile.block_plant_shell.name=潜影壳植物
-tile.block_plant_glass.name=玻璃植物
+tile.block_plant_coal.name=煤炭瓜
+tile.block_plant_iron.name=铁瓜
+tile.block_plant_gold.name=金瓜
+tile.block_plant_redstone.name=红石瓜
+tile.block_plant_lapis.name=青金石瓜
+tile.block_plant_diamond.name=钻石瓜
+tile.block_plant_clay.name=粘土瓜
+tile.block_plant_emerald.name=绿宝石瓜
+tile.block_plant_glowstone.name=地狱疣瓜
+tile.block_plant_quartz.name=下界石英瓜
+tile.block_plant_shard.name=海晶瓜
+tile.block_plant_cristal.name=海晶灯瓜
+tile.block_plant_elemental.name=末影瓜
+tile.block_plant_bone.name=白骨瓜
+tile.block_plant_snow.name=雪瓜
+tile.block_plant_obsidian.name=黑曜石瓜
+tile.block_plant_magma.name=岩浆瓜
+tile.block_plant_nether.name=地狱砖瓜
+tile.block_plant_shell.name=潜影瓜
+tile.block_plant_glass.name=玻璃瓜
 
 
 
@@ -601,12 +601,12 @@ tile.lapis_jar.name=青金石储罐
 tile.diamond_jar.name=钻石储罐
 
 
-tile.runic_coal.name=煤炭储台
-tile.runic_iron.name=铁储台
-tile.runic_gold.name=金储台
-tile.runic_redstone.name=红石储台
-tile.runic_lapis.name=青金石储台
-tile.runic_diamond.name=钻石储台
+tile.runic_coal.name=煤炭符文
+tile.runic_iron.name=铁符文
+tile.runic_gold.name=金符文
+tile.runic_redstone.name=红石符文
+tile.runic_lapis.name=青金石符文
+tile.runic_diamond.name=钻石符文
 
 
 tile.elemental_stone.name=元素石
@@ -638,9 +638,9 @@ container.lapis_furnace=青金石熔炉
 container.diamond_furnace=钻石熔炉
 container.obsidian_furnace=黑曜石熔炉
 container.renforced_furnace=钻曜熔炉
-container.fire_furnace=元素火熔炉
+container.fire_furnace=元素之火熔炉
 
-
+entity.Seafarer.name=鱿鱼怪
 entity.Minotaur.name=牛头人
 entity.Centaur.name=半人马
 entity.Flying.name=飞兽
