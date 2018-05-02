@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=z": { "model": "croparia:earthdim_portal_ew" },
+        "axis=x": { "model": "croparia:earthdim_portal_ns" },
+		"inventory": { "model": "croparia:earthdim_portal_ns" }
+    }
+}

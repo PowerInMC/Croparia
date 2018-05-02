@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OfO", 
+    "OFO", 
+    "OfO"
+  ],
+  "key": {
+    "O": 
+    {
+      "item": "minecraft:diamond"
+    },
+    "F": 
+    {
+      "item": "croparia:lapis_furnace"
+    },
+    "f": 
+    {
+      "item": "croparia:fruit_diamond"
+    }
+  },
+  "result": {
+    "item": "croparia:diamond_furnace"
+  }
+}
+

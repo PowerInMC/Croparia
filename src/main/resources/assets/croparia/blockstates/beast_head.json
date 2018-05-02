@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=north": { "model": "croparia:beast_head" },
+        "facing=south": { "model": "croparia:beast_head", "y": 180 },
+        "facing=west":  { "model": "croparia:beast_head", "y": 270 },
+        "facing=east":  { "model": "croparia:beast_head", "y": 90 }
+    }
+}
+

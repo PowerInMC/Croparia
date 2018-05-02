@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": [
+    {
+      "item": "minecraft:stone",
+      "data": 0
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 1
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 2
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 3
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 4
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 5
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 6
+    }
+    ],
+    "X": {
+      "item": "croparia:elemental_fragment"
+    }
+  },
+  "result": {
+    "item": "croparia:elemental_stone"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OIS", 
+    "IPI", 
+    "BIJ"
+  ],
+  "key": {
+    "P": {
+      "item": "croparia:fruit_start"
+    },
+    "I": [
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    }
+    ],
+    "O": {
+      "item": "minecraft:sapling",
+      "data": 0
+    },
+    "S": {
+      "item": "minecraft:sapling",
+      "data": 1
+    },
+    "B": {      
+      "item": "minecraft:sapling",
+      "data": 2
+    },
+    "J": {      
+      "item": "minecraft:sapling",
+      "data": 3
+    }
+  },
+  "result": {
+    "item": "croparia:fruit_start_natural"
+  }
+}

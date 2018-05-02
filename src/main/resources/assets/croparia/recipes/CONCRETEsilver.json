@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "croparia:block_cane_silver",
+      "data": 0
+    },
+    {
+      "item": "croparia:block_cane_silver",
+      "data": 0
+    },
+    {
+      "item": "croparia:block_cane_silver",
+      "data": 0
+    },
+    {
+      "item": "croparia:block_cane_silver",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "minecraft:concrete_powder",
+	"data": 8,
+    "count": 2
+  }
+}

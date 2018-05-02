@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "croparia:obsidian_shovel"
+    },
+    "a": {
+      "item": "croparia:obsidian_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "croparia:obsidian_pickaxe"
+    },
+    "h": {
+      "item": "croparia:obsidian_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:obsidian_multitool"
+  }
+}

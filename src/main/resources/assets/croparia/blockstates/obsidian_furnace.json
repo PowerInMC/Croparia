@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=north": { "model": "croparia:obsidian_furnace" },
+        "facing=south": { "model": "croparia:obsidian_furnace", "y": 180 },
+        "facing=west":  { "model": "croparia:obsidian_furnace", "y": 270 },
+        "facing=east":  { "model": "croparia:obsidian_furnace", "y": 90 }
+    }
+}
+
+

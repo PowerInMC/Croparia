@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "croparia:earth_shovel"
+    },
+    "a": {
+      "item": "croparia:earth_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "croparia:earth_pickaxe"
+    },
+    "h": {
+      "item": "croparia:earth_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:earth_multitool"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "croparia:blocks/block_plant_emerald",
+        "down": "croparia:blocks/block_plant_emerald",
+        "up": "croparia:blocks/block_plant_emerald_top",
+        "north": "croparia:blocks/block_plant_emerald",
+        "east": "croparia:blocks/block_plant_emerald",
+        "south": "croparia:blocks/block_plant_emerald",
+        "west": "croparia:blocks/block_plant_emerald"
+    }
+}

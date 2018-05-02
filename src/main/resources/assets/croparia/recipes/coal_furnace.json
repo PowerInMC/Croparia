@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OfO", 
+    "OFO", 
+    "OfO"
+  ],
+  "key": {
+    "F": 
+    {
+      "item": "minecraft:furnace"
+    },
+    "f": [ 
+    {
+      "item": "croparia:fruit_coal"
+    },
+    {
+      "item": "croparia:fruit_charcoal"
+    }
+    ],
+    "O": [
+    {
+      "item": "minecraft:coal",
+      "data": 0
+    },
+    {
+      "item": "minecraft:coal",
+      "data": 1
+    }
+    ]
+  },
+  "result": {
+    "item": "croparia:coal_furnace"
+  }
+}
+

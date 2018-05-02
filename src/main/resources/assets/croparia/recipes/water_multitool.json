@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "croparia:water_shovel"
+    },
+    "a": {
+      "item": "croparia:water_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "croparia:water_pickaxe"
+    },
+    "h": {
+      "item": "croparia:water_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:water_multitool"
+  }
+}

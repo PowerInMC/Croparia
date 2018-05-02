@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SXS",
+    "XCX",
+    "SXS"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "X": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "croparia:reward"
+  }
+}

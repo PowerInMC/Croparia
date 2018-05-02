@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OfO", 
+    "OFO", 
+    "OfO"
+  ],
+  "key": {
+    "O": 
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    "F": 
+    {
+      "item": "croparia:iron_furnace"
+    },
+    "f": 
+    {
+      "item": "croparia:fruit_gold"
+    }
+  },
+  "result": {
+    "item": "croparia:gold_furnace"
+  }
+}
+

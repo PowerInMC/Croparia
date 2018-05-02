@@ -1,0 +1,6 @@
+{
+    "parent": "block/stem_growth6",
+    "textures": {
+        "stem": "croparia:blocks/stem/lapis_stem_disconnected"
+    }
+}

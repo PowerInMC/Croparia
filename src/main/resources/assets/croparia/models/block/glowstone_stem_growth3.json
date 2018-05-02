@@ -1,0 +1,6 @@
+{
+    "parent": "block/stem_growth3",
+    "textures": {
+        "stem": "croparia:blocks/stem/glowstone_stem_disconnected"
+    }
+}

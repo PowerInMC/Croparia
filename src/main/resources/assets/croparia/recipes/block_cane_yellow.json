@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IWI", 
+    "WSW", 
+    "IWI"
+  ],
+  "key": {
+    "S": {
+      "item": "croparia:fruit_start"
+    },
+    "W": 
+    {
+      "item": "minecraft:reeds"
+    },
+    "I": {
+      "item": "minecraft:concrete_powder",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "croparia:block_cane_yellow"
+  }
+}

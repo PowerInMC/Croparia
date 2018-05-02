@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "croparia:seed_stem_coal"
+    },
+    {
+      "item": "croparia:seed_stem_iron"
+    },
+    {
+      "item": "croparia:seed_stem_gold"
+    },
+    {
+      "item": "croparia:seed_stem_redstone"
+    },
+    {
+      "item": "croparia:seed_stem_lapis"
+    },
+    {
+      "item": "croparia:seed_stem_diamond"
+    },
+    {
+      "item": "croparia:seed_stem_diamond"
+    },
+    {
+      "item": "croparia:seed_stem_emerald"
+    },
+    {
+      "item": "croparia:seed_stem_emerald"
+    }
+  ],
+  "result": {
+    "item": "croparia:elemental_seed_stem",
+    "count": 1
+  }
+}

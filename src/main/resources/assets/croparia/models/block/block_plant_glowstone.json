@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "croparia:blocks/block_plant_glowstone",
+        "down": "croparia:blocks/block_plant_glowstone",
+        "up": "croparia:blocks/block_plant_glowstone_top",
+        "north": "croparia:blocks/block_plant_glowstone",
+        "east": "croparia:blocks/block_plant_glowstone",
+        "south": "croparia:blocks/block_plant_glowstone",
+        "west": "croparia:blocks/block_plant_glowstone"
+    }
+}

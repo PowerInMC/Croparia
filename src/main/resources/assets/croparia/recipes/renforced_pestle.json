@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X#X",
+    " X "
+  ],
+  "key": {
+    "#": {
+      "item": "croparia:obsidian_pestle"
+    },
+    "X": 
+      {
+        "item": "minecraft:diamond",
+        "data": 0
+      }
+  },
+  "result": {
+    "item": "croparia:renforced_pestle"
+  }
+}
+

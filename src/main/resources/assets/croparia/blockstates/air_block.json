@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "croparia:air_block" }
+    }
+}

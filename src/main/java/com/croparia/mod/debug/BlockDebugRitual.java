@@ -1,0 +1,498 @@
+package com.croparia.mod.debug;
+
+import com.croparia.mod.Init.BlockMod;
+import com.croparia.mod.Init.ItemMod;
+
+import ibxm.Player;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class BlockDebugRitual extends Block{
+	
+	private int i = 0;
+	
+	public BlockDebugRitual() {
+		super(Material.GROUND);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
+	{
+		if(i <= 3)
+			i++;
+		if(i > 3)
+			i = 1;
+		if(i == 1)
+			Minecraft.getMinecraft().player.sendChatMessage("First Ritual");
+		if(i == 2)
+			Minecraft.getMinecraft().player.sendChatMessage("Second Ritual");
+		if(i == 3)
+			Minecraft.getMinecraft().player.sendChatMessage("Death Ritual");
+		return true;
+	}
+	
+	@Override
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+
+		if(i == 1 && entityIn instanceof EntityPlayer) 
+		{
+			worldIn.setBlockState(pos.down(), BlockMod.elemental_cobblestone.getDefaultState());
+			worldIn.setBlockState(pos.north().east(), BlockMod.block_crop_iron.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.north().west(), BlockMod.block_crop_iron.getStateFromMeta(7));
+			worldIn.setBlockState(pos.south().east(), BlockMod.block_crop_iron.getStateFromMeta(7));
+			worldIn.setBlockState(pos.south().west(), BlockMod.block_crop_iron.getStateFromMeta(7));
+			worldIn.setBlockState(pos.north(3), BlockMod.block_crop_gold.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.south(3), BlockMod.block_crop_gold.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.east(3), BlockMod.block_crop_gold.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.west(3), BlockMod.block_crop_gold.getStateFromMeta(7));
+			worldIn.setBlockState(pos.down().north(2).west(2), Blocks.WATER.getDefaultState()); 
+			worldIn.setBlockState(pos.down().north(2).east(2), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.down().south(2).west(2), Blocks.WATER.getDefaultState()); 
+			worldIn.setBlockState(pos.down().south(2).east(2), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.north(4).east(), Blocks.STONE.getStateFromMeta(3)); 
+			worldIn.setBlockState(pos.north(4).west(), Blocks.STONE.getStateFromMeta(3)); 
+			worldIn.setBlockState(pos.south(4).east(), Blocks.STONE.getStateFromMeta(3)); 
+			worldIn.setBlockState(pos.south(4).west(), Blocks.STONE.getStateFromMeta(3));
+			worldIn.setBlockState(pos.west(4).north(), Blocks.STONE.getStateFromMeta(3)); 
+			worldIn.setBlockState(pos.west(4).south(), Blocks.STONE.getStateFromMeta(3)); 
+			worldIn.setBlockState(pos.east(4).north(), Blocks.STONE.getStateFromMeta(3)); 
+			worldIn.setBlockState(pos.east(4).south(), Blocks.STONE.getStateFromMeta(3));
+			worldIn.setBlockState(pos.north(3).east(3), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.north(3).west(3), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.south(3).east(3), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.south(3).west(3), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up().west(3).north(3), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up().west(3).south(3), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up().east(3).north(3), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up().east(3).south(3), Blocks.STONE.getStateFromMeta(5));
+								
+		}
+		//2nd ritual
+		if(i == 2 && entityIn instanceof EntityPlayer)
+		{
+			worldIn.setBlockState(pos.down(), BlockMod.elemental_cobblestone.getDefaultState());
+			worldIn.setBlockState(pos.down().north(), BlockMod.elemental_stone.getDefaultState());
+			worldIn.setBlockState(pos.down().south(), BlockMod.elemental_stone.getDefaultState()); 
+			worldIn.setBlockState(pos.down().east(), BlockMod.elemental_stone.getDefaultState()); 
+			worldIn.setBlockState(pos.down().west(), BlockMod.elemental_stone.getDefaultState());						
+			worldIn.setBlockState(pos.north(5), BlockMod.block_crop_redstone.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.south(5), BlockMod.block_crop_redstone.getStateFromMeta(7));
+			worldIn.setBlockState(pos.east(5), BlockMod.block_crop_redstone.getStateFromMeta(7));
+			worldIn.setBlockState(pos.west(5), BlockMod.block_crop_redstone.getStateFromMeta(7));	
+			worldIn.setBlockState(pos.north(3).west(3), BlockMod.elemental_crop.getStateFromMeta(7));
+			worldIn.setBlockState(pos.north(3).east(3), BlockMod.elemental_crop.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.south(3).west(3), BlockMod.elemental_crop.getStateFromMeta(7)); 
+			worldIn.setBlockState(pos.south(3).east(3), BlockMod.elemental_crop.getStateFromMeta(7));
+			worldIn.setBlockState(pos.down().north(4).west(), Blocks.WATER.getDefaultState()); 
+			worldIn.setBlockState(pos.down().north(4).east(), Blocks.WATER.getDefaultState()); 
+			worldIn.setBlockState(pos.down().south(4).west(), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.down().south(4).east(), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.down().west(4).north(), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.down().west(4).south(), Blocks.WATER.getDefaultState()); 
+			worldIn.setBlockState(pos.down().east(4).north(), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.down().east(4).south(), Blocks.WATER.getDefaultState());
+			worldIn.setBlockState(pos.north(4).west(4), Blocks.STONE.getStateFromMeta(6)); 
+			worldIn.setBlockState(pos.up().north(4).west(4), BlockMod.elemental_stone.getDefaultState());
+			worldIn.setBlockState(pos.up(2).north(4).west(4), Blocks.STONE.getStateFromMeta(6));
+			worldIn.setBlockState(pos.north(4).east(4), Blocks.STONE.getStateFromMeta(6)); 
+			worldIn.setBlockState(pos.up().north(4).east(4), BlockMod.elemental_stone.getDefaultState());
+			worldIn.setBlockState(pos.up(2).north(4).east(4), Blocks.STONE.getStateFromMeta(6));
+			worldIn.setBlockState(pos.south(4).west(4), Blocks.STONE.getStateFromMeta(6)); 
+			worldIn.setBlockState(pos.up().south(4).west(4), BlockMod.elemental_stone.getDefaultState()); 
+			worldIn.setBlockState(pos.up(2).south(4).west(4), Blocks.STONE.getStateFromMeta(6));
+			worldIn.setBlockState(pos.south(4).east(4), Blocks.STONE.getStateFromMeta(6)); 
+			worldIn.setBlockState(pos.up().south(4).east(4), BlockMod.elemental_stone.getDefaultState()); 
+			worldIn.setBlockState(pos.up(2).south(4).east(4), Blocks.STONE.getStateFromMeta(6));
+			worldIn.setBlockState(pos.north(5).east(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.north(5).west(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up().north(5).east(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up().north(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(2).north(5).east(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up(2).north(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).north(5).east(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).north(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).north(5).east(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).north(5).west(), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up(3).north(5), BlockMod.water_block.getDefaultState());
+			worldIn.setBlockState(pos.south(5).east(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.south(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up().south(5).east(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up().south(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(2).south(5).east(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(2).south(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).south(5).east(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).south(5).west(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).south(5).east(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).south(5).west(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).south(5), BlockMod.fire_block.getDefaultState());
+			worldIn.setBlockState(pos.west(5).north(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.west(5).south(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up().west(5).north(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up().west(5).south(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up(2).west(5).north(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up(2).west(5).south(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up(3).west(5).north(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).west(5).south(2), Blocks.STONE.getStateFromMeta(5));
+			worldIn.setBlockState(pos.up(3).west(5).north(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).west(5).south(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).west(5), BlockMod.earth_block.getDefaultState());
+			worldIn.setBlockState(pos.east(5).north(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.east(5).south(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up().east(5).north(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up().east(5).south(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(2).east(5).north(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(2).east(5).south(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).east(5).north(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).east(5).south(2), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).east(5).north(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).east(5).south(), Blocks.STONE.getStateFromMeta(5)); 
+			worldIn.setBlockState(pos.up(3).east(5), BlockMod.air_block.getDefaultState());
+														
+		}
+		//Death ritual
+		if(i == 3 && entityIn instanceof EntityPlayer)
+		{
+			IBlockState soulsand = BlockMod.ghost_soulsand.getDefaultState();
+			IBlockState elemental = BlockMod.ghost_elemental_cobble.getDefaultState();
+			IBlockState slab = BlockMod.ghost_slabstone.getDefaultState();
+			IBlockState lave = BlockMod.ghost_lava.getDefaultState();
+			IBlockState plant = BlockMod.ghost_death.getStateFromMeta(7);
+			IBlockState nether = BlockMod.ghost_nether.getDefaultState();
+			IBlockState nethers = BlockMod.ghost_slabnether.getDefaultState();
+			IBlockState nethersu = BlockMod.ghost_slabnetherup.getDefaultState();
+			IBlockState magma = BlockMod.ghost_magma.getDefaultState();
+				
+			worldIn.setBlockState(pos.down(), elemental);
+			worldIn.setBlockState(pos.down().north(2), soulsand);
+			worldIn.setBlockState(pos.down().south(2), soulsand);   
+			worldIn.setBlockState(pos.down().east(2), soulsand);   
+			worldIn.setBlockState(pos.down().west(2), soulsand);   
+			worldIn.setBlockState(pos.down().north().west(), soulsand);   
+			worldIn.setBlockState(pos.down().north().east(), soulsand);   
+			worldIn.setBlockState(pos.down().south().west(), soulsand);   
+			worldIn.setBlockState(pos.down().south().east(), soulsand);
+			worldIn.setBlockState(pos.north(), slab);   
+			worldIn.setBlockState(pos.south(), slab);   
+			worldIn.setBlockState(pos.east(), slab);   
+			worldIn.setBlockState(pos.west(), slab);
+			worldIn.setBlockState(pos.down().north(4).west(), lave);   
+			worldIn.setBlockState(pos.down().north(4).east(), lave);
+			worldIn.setBlockState(pos.down().south(4).west(), lave);  
+			worldIn.setBlockState(pos.down().south(4).east(), lave);
+			worldIn.setBlockState(pos.down().east(4).south(), lave);   
+			worldIn.setBlockState(pos.down().east(4).north(), lave);
+			worldIn.setBlockState(pos.down().west(4).south(), lave);   
+			worldIn.setBlockState(pos.down().west(4).north(), lave);
+			worldIn.setBlockState(pos.north(5).west(), plant);   
+			worldIn.setBlockState(pos.north(5).east(), plant);   
+			worldIn.setBlockState(pos.north(5), plant);
+			worldIn.setBlockState(pos.south(5).west(), plant);   
+			worldIn.setBlockState(pos.south(5).east(), plant);   
+			worldIn.setBlockState(pos.south(5), plant);
+			worldIn.setBlockState(pos.east(5).south(), plant);   
+			worldIn.setBlockState(pos.east(5).north(), plant);   
+			worldIn.setBlockState(pos.east(5), plant);
+			worldIn.setBlockState(pos.west(5).south(), plant);   
+			worldIn.setBlockState(pos.west(5).north(), plant);   
+			worldIn.setBlockState(pos.west(5), plant);
+			worldIn.setBlockState(pos.north(4).east(4), nether);  
+			worldIn.setBlockState(pos.north(4).east(4).up(), elemental);   
+			worldIn.setBlockState(pos.north(4).east(4).up(2), elemental);  
+			worldIn.setBlockState(pos.north(4).east(4).up(3), nethers);
+			worldIn.setBlockState(pos.south(4).east(4), nether);  
+			worldIn.setBlockState(pos.south(4).east(4).up(), elemental);  
+			worldIn.setBlockState(pos.south(4).east(4).up(2), elemental); 
+			worldIn.setBlockState(pos.south(4).east(4).up(3), nethers);
+			worldIn.setBlockState(pos.north(4).west(4), nether);  
+			worldIn.setBlockState(pos.north(4).west(4).up(), elemental);  
+			worldIn.setBlockState(pos.north(4).west(4).up(2), elemental);  
+			worldIn.setBlockState(pos.north(4).west(4).up(3), nethers);
+			worldIn.setBlockState(pos.south(4).west(4), nether);  
+			worldIn.setBlockState(pos.south(4).west(4).up(), elemental);   
+			worldIn.setBlockState(pos.south(4).west(4).up(2), elemental);   
+			worldIn.setBlockState(pos.south(4).west(4).up(3), nethers);
+			worldIn.setBlockState(pos.north(5).east(2), nether);	
+			worldIn.setBlockState(pos.north(5).east(2).up(), nether);
+			worldIn.setBlockState(pos.north(5).east(2).up(2), nether);
+			worldIn.setBlockState(pos.north(5).east(2).up(3), nether);
+			worldIn.setBlockState(pos.north(5).east(2).up(4), nethers);
+			worldIn.setBlockState(pos.north(5).west(2), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(2), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(3), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(4), nethers);
+			worldIn.setBlockState(pos.north(5).east(1).up(), nethersu);
+			worldIn.setBlockState(pos.north(5).east(1).up(2), magma);
+			worldIn.setBlockState(pos.north(5).east(1).up(3), nethers);
+			worldIn.setBlockState(pos.north(5).east(1).up(4), nether);
+			worldIn.setBlockState(pos.north(5).east(1).up(5), nether);
+			worldIn.setBlockState(pos.north(5).east(1).up(6), nether);
+			worldIn.setBlockState(pos.north(5).west(1).up(), nethersu);
+			worldIn.setBlockState(pos.north(5).west(1).up(2), magma);
+			worldIn.setBlockState(pos.north(5).west(1).up(3), nethers);
+			worldIn.setBlockState(pos.north(5).west(1).up(4), nether);
+			worldIn.setBlockState(pos.north(5).west(1).up(5), nether);
+			worldIn.setBlockState(pos.north(5).west(1).up(6), nether);
+			worldIn.setBlockState(pos.north(5).up(5), nethersu);
+			worldIn.setBlockState(pos.north(5).up(6), magma);
+			worldIn.setBlockState(pos.north(5).up(7), nethers);
+			worldIn.setBlockState(pos.south(5).east(2), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(2), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(3), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(4), nethers);
+			worldIn.setBlockState(pos.south(5).west(2), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(2), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(3), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(4), nethers);
+			worldIn.setBlockState(pos.south(5).east(1).up(), nethersu);
+			worldIn.setBlockState(pos.south(5).east(1).up(2), magma);
+			worldIn.setBlockState(pos.south(5).east(1).up(3), nethers);
+			worldIn.setBlockState(pos.south(5).east(1).up(4), nether);
+			worldIn.setBlockState(pos.south(5).east(1).up(5), nether);
+			worldIn.setBlockState(pos.south(5).east(1).up(6), nether);
+			worldIn.setBlockState(pos.south(5).west(1).up(), nethersu);
+			worldIn.setBlockState(pos.south(5).west(1).up(2), magma);
+			worldIn.setBlockState(pos.south(5).west(1).up(3), nethers);
+			worldIn.setBlockState(pos.south(5).west(1).up(4), nether);
+			worldIn.setBlockState(pos.south(5).west(1).up(5), nether);
+			worldIn.setBlockState(pos.south(5).west(1).up(6), nether);
+			worldIn.setBlockState(pos.south(5).up(5), nethersu);
+			worldIn.setBlockState(pos.south(5).up(6), magma);
+			worldIn.setBlockState(pos.south(5).up(7), nethers);
+			worldIn.setBlockState(pos.east(5).north(2), nether);	
+			worldIn.setBlockState(pos.east(5).north(2).up(), nether);
+			worldIn.setBlockState(pos.east(5).north(2).up(2), nether);
+			worldIn.setBlockState(pos.east(5).north(2).up(3), nether);
+			worldIn.setBlockState(pos.east(5).north(2).up(4), nethers);
+			worldIn.setBlockState(pos.east(5).south(2), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(2), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(3), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(4), nethers);
+			worldIn.setBlockState(pos.east(5).north(1).up(), nethersu);
+			worldIn.setBlockState(pos.east(5).north(1).up(2), magma);
+			worldIn.setBlockState(pos.east(5).north(1).up(3), nethers);
+			worldIn.setBlockState(pos.east(5).north(1).up(4), nether);
+			worldIn.setBlockState(pos.east(5).north(1).up(5), nether);
+			worldIn.setBlockState(pos.east(5).north(1).up(6), nether);
+			worldIn.setBlockState(pos.east(5).south(1).up(), nethersu);
+			worldIn.setBlockState(pos.east(5).south(1).up(2), magma);
+			worldIn.setBlockState(pos.east(5).south(1).up(3), nethers);
+			worldIn.setBlockState(pos.east(5).south(1).up(4), nether);
+			worldIn.setBlockState(pos.east(5).south(1).up(5), nether);
+			worldIn.setBlockState(pos.east(5).south(1).up(6), nether);
+			worldIn.setBlockState(pos.east(5).up(5), nethersu);
+			worldIn.setBlockState(pos.east(5).up(6), magma);
+			worldIn.setBlockState(pos.east(5).up(7), nethers);
+			worldIn.setBlockState(pos.west(5).north(2), nether);	
+			worldIn.setBlockState(pos.west(5).north(2).up(), nether);
+			worldIn.setBlockState(pos.west(5).north(2).up(2), nether);
+			worldIn.setBlockState(pos.west(5).north(2).up(3), nether);
+			worldIn.setBlockState(pos.west(5).north(2).up(4), nethers);
+			worldIn.setBlockState(pos.west(5).south(2), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(2), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(3), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(4), nethers);
+			worldIn.setBlockState(pos.west(5).north(1).up(), nethersu);
+			worldIn.setBlockState(pos.west(5).north(1).up(2), magma);
+			worldIn.setBlockState(pos.west(5).north(1).up(3), nethers);
+			worldIn.setBlockState(pos.west(5).north(1).up(4), nether);
+			worldIn.setBlockState(pos.west(5).north(1).up(5), nether);
+			worldIn.setBlockState(pos.west(5).north(1).up(6), nether);
+			worldIn.setBlockState(pos.west(5).south(1).up(), nethersu);
+			worldIn.setBlockState(pos.west(5).south(1).up(2), magma);
+			worldIn.setBlockState(pos.west(5).south(1).up(3), nethers);
+			worldIn.setBlockState(pos.west(5).south(1).up(4), nether);
+			worldIn.setBlockState(pos.west(5).south(1).up(5), nether);
+			worldIn.setBlockState(pos.west(5).south(1).up(6), nether);
+			worldIn.setBlockState(pos.west(5).up(5), nethersu);
+			worldIn.setBlockState(pos.west(5).up(6), magma);
+			worldIn.setBlockState(pos.west(5).up(7), nethers);						
+		}
+		//Satan ritual
+	//	if(i == 4 && playerIn.getHeldItemMainhand().getItem() == ItemMod.seed_crop_redstone)
+		//Angel ritual
+	/*	if(playerIn.getHeldItemMainhand().getItem() == ItemMod.seed_crop_lapis)
+		{
+			IBlockState soulsand = Blocks.SEA_LANTERN.getDefaultState();
+			IBlockState elemental = BlockMod.elemental_cobblestone.getDefaultState();
+			IBlockState slab = Blocks.STONE_SLAB.getStateFromMeta(3);
+			IBlockState lave = Blocks.WATER.getDefaultState();
+			IBlockState plant = BlockMod.block_crop_totem.getStateFromMeta(7);
+			IBlockState nether = Blocks.QUARTZ_BLOCK.getDefaultState();
+			IBlockState stone = BlockMod.elemental_stone.getDefaultState();
+			IBlockState nethers = Blocks.STONE_SLAB.getStateFromMeta(7);
+			IBlockState nethersu = Blocks.STONE_SLAB.getStateFromMeta(15);
+			IBlockState magma = Blocks.GLOWSTONE.getDefaultState();
+				
+			worldIn.setBlockState(pos.down(), elemental);
+			worldIn.setBlockState(pos.down().north(2), soulsand);
+			worldIn.setBlockState(pos.down().south(2), soulsand);   
+			worldIn.setBlockState(pos.down().east(2), soulsand);   
+			worldIn.setBlockState(pos.down().west(2), soulsand);   
+			worldIn.setBlockState(pos.down().north().west(), soulsand);   
+			worldIn.setBlockState(pos.down().north().east(), soulsand);   
+			worldIn.setBlockState(pos.down().south().west(), soulsand);   
+			worldIn.setBlockState(pos.down().south().east(), soulsand);
+			worldIn.setBlockState(pos.north(), slab);   
+			worldIn.setBlockState(pos.south(), slab);   
+			worldIn.setBlockState(pos.east(), slab);   
+			worldIn.setBlockState(pos.west(), slab);
+			worldIn.setBlockState(pos.down().north(4).west(), lave);   
+			worldIn.setBlockState(pos.down().north(4).east(), lave);
+			worldIn.setBlockState(pos.down().south(4).west(), lave);  
+			worldIn.setBlockState(pos.down().south(4).east(), lave);
+			worldIn.setBlockState(pos.down().east(4).south(), lave);   
+			worldIn.setBlockState(pos.down().east(4).north(), lave);
+			worldIn.setBlockState(pos.down().west(4).south(), lave);   
+			worldIn.setBlockState(pos.down().west(4).north(), lave);
+			worldIn.setBlockState(pos.north(5).west(), plant);   
+			worldIn.setBlockState(pos.north(5).east(), plant);   
+			worldIn.setBlockState(pos.north(5), plant);
+			worldIn.setBlockState(pos.south(5).west(), plant);   
+			worldIn.setBlockState(pos.south(5).east(), plant);   
+			worldIn.setBlockState(pos.south(5), plant);
+			worldIn.setBlockState(pos.east(5).south(), plant);   
+			worldIn.setBlockState(pos.east(5).north(), plant);   
+			worldIn.setBlockState(pos.east(5), plant);
+			worldIn.setBlockState(pos.west(5).south(), plant);   
+			worldIn.setBlockState(pos.west(5).north(), plant);   
+			worldIn.setBlockState(pos.west(5), plant);
+			worldIn.setBlockState(pos.north(4).east(4), nether);  
+			worldIn.setBlockState(pos.north(4).east(4).up(), elemental);   
+			worldIn.setBlockState(pos.north(4).east(4).up(2), elemental);  
+			worldIn.setBlockState(pos.north(4).east(4).up(3), nethers);
+			worldIn.setBlockState(pos.south(4).east(4), nether);  
+			worldIn.setBlockState(pos.south(4).east(4).up(), elemental);  
+			worldIn.setBlockState(pos.south(4).east(4).up(2), elemental); 
+			worldIn.setBlockState(pos.south(4).east(4).up(3), nethers);
+			worldIn.setBlockState(pos.north(4).west(4), nether);  
+			worldIn.setBlockState(pos.north(4).west(4).up(), elemental);  
+			worldIn.setBlockState(pos.north(4).west(4).up(2), elemental);  
+			worldIn.setBlockState(pos.north(4).west(4).up(3), nethers);
+			worldIn.setBlockState(pos.south(4).west(4), nether);  
+			worldIn.setBlockState(pos.south(4).west(4).up(), elemental);   
+			worldIn.setBlockState(pos.south(4).west(4).up(2), elemental);   
+			worldIn.setBlockState(pos.south(4).west(4).up(3), nethers);
+			worldIn.setBlockState(pos.north(5).east(2), nether);	
+			worldIn.setBlockState(pos.north(5).east(2).up(), nether);
+			worldIn.setBlockState(pos.north(5).east(2).up(2), nether);
+			worldIn.setBlockState(pos.north(5).east(2).up(3), nether);
+			worldIn.setBlockState(pos.north(5).east(2).up(4), nethers);
+			worldIn.setBlockState(pos.north(5).west(2), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(2), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(3), nether);
+			worldIn.setBlockState(pos.north(5).west(2).up(4), nethers);
+			worldIn.setBlockState(pos.north(5).east(1).up(), nethersu);
+			worldIn.setBlockState(pos.north(5).east(1).up(2), magma);
+			worldIn.setBlockState(pos.north(5).east(1).up(3), nethers);
+			worldIn.setBlockState(pos.north(5).east(1).up(4), nether);
+			worldIn.setBlockState(pos.north(5).east(1).up(5), nether);
+			worldIn.setBlockState(pos.north(5).east(1).up(6), nether);
+			worldIn.setBlockState(pos.north(5).west(1).up(), nethersu);
+			worldIn.setBlockState(pos.north(5).west(1).up(2), magma);
+			worldIn.setBlockState(pos.north(5).west(1).up(3), nethers);
+			worldIn.setBlockState(pos.north(5).west(1).up(4), nether);
+			worldIn.setBlockState(pos.north(5).west(1).up(5), nether);
+			worldIn.setBlockState(pos.north(5).west(1).up(6), nether);
+			worldIn.setBlockState(pos.north(5).up(5), nethersu);
+			worldIn.setBlockState(pos.north(5).up(6), magma);
+			worldIn.setBlockState(pos.north(5).up(7), nethers);
+			worldIn.setBlockState(pos.south(5).east(2), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(2), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(3), nether);
+			worldIn.setBlockState(pos.south(5).east(2).up(4), nethers);
+			worldIn.setBlockState(pos.south(5).west(2), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(2), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(3), nether);
+			worldIn.setBlockState(pos.south(5).west(2).up(4), nethers);
+			worldIn.setBlockState(pos.south(5).east(1).up(), nethersu);
+			worldIn.setBlockState(pos.south(5).east(1).up(2), magma);
+			worldIn.setBlockState(pos.south(5).east(1).up(3), nethers);
+			worldIn.setBlockState(pos.south(5).east(1).up(4), nether);
+			worldIn.setBlockState(pos.south(5).east(1).up(5), nether);
+			worldIn.setBlockState(pos.south(5).east(1).up(6), nether);
+			worldIn.setBlockState(pos.south(5).west(1).up(), nethersu);
+			worldIn.setBlockState(pos.south(5).west(1).up(2), magma);
+			worldIn.setBlockState(pos.south(5).west(1).up(3), nethers);
+			worldIn.setBlockState(pos.south(5).west(1).up(4), nether);
+			worldIn.setBlockState(pos.south(5).west(1).up(5), nether);
+			worldIn.setBlockState(pos.south(5).west(1).up(6), nether);
+			worldIn.setBlockState(pos.south(5).up(5), nethersu);
+			worldIn.setBlockState(pos.south(5).up(6), magma);
+			worldIn.setBlockState(pos.south(5).up(7), nethers);
+			worldIn.setBlockState(pos.east(5).north(2), nether);	
+			worldIn.setBlockState(pos.east(5).north(2).up(), nether);
+			worldIn.setBlockState(pos.east(5).north(2).up(2), nether);
+			worldIn.setBlockState(pos.east(5).north(2).up(3), nether);
+			worldIn.setBlockState(pos.east(5).north(2).up(4), nethers);
+			worldIn.setBlockState(pos.east(5).south(2), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(2), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(3), nether);
+			worldIn.setBlockState(pos.east(5).south(2).up(4), nethers);
+			worldIn.setBlockState(pos.east(5).north(1).up(), nethersu);
+			worldIn.setBlockState(pos.east(5).north(1).up(2), magma);
+			worldIn.setBlockState(pos.east(5).north(1).up(3), nethers);
+			worldIn.setBlockState(pos.east(5).north(1).up(4), nether);
+			worldIn.setBlockState(pos.east(5).north(1).up(5), nether);
+			worldIn.setBlockState(pos.east(5).north(1).up(6), nether);
+			worldIn.setBlockState(pos.east(5).south(1).up(), nethersu);
+			worldIn.setBlockState(pos.east(5).south(1).up(2), magma);
+			worldIn.setBlockState(pos.east(5).south(1).up(3), nethers);
+			worldIn.setBlockState(pos.east(5).south(1).up(4), nether);
+			worldIn.setBlockState(pos.east(5).south(1).up(5), nether);
+			worldIn.setBlockState(pos.east(5).south(1).up(6), nether);
+			worldIn.setBlockState(pos.east(5).up(5), nethersu);
+			worldIn.setBlockState(pos.east(5).up(6), magma);
+			worldIn.setBlockState(pos.east(5).up(7), nethers);
+			worldIn.setBlockState(pos.west(5).north(2), nether);	
+			worldIn.setBlockState(pos.west(5).north(2).up(), nether);
+			worldIn.setBlockState(pos.west(5).north(2).up(2), nether);
+			worldIn.setBlockState(pos.west(5).north(2).up(3), nether);
+			worldIn.setBlockState(pos.west(5).north(2).up(4), nethers);
+			worldIn.setBlockState(pos.west(5).south(2), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(2), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(3), nether);
+			worldIn.setBlockState(pos.west(5).south(2).up(4), nethers);
+			worldIn.setBlockState(pos.west(5).north(1).up(), nethersu);
+			worldIn.setBlockState(pos.west(5).north(1).up(2), magma);
+			worldIn.setBlockState(pos.west(5).north(1).up(3), nethers);
+			worldIn.setBlockState(pos.west(5).north(1).up(4), nether);
+			worldIn.setBlockState(pos.west(5).north(1).up(5), nether);
+			worldIn.setBlockState(pos.west(5).north(1).up(6), nether);
+			worldIn.setBlockState(pos.west(5).south(1).up(), nethersu);
+			worldIn.setBlockState(pos.west(5).south(1).up(2), magma);
+			worldIn.setBlockState(pos.west(5).south(1).up(3), nethers);
+			worldIn.setBlockState(pos.west(5).south(1).up(4), nether);
+			worldIn.setBlockState(pos.west(5).south(1).up(5), nether);
+			worldIn.setBlockState(pos.west(5).south(1).up(6), nether);
+			worldIn.setBlockState(pos.west(5).up(5), nethersu);
+			worldIn.setBlockState(pos.west(5).up(6), magma);
+			worldIn.setBlockState(pos.west(5).up(7), nethers);									
+			worldIn.setBlockState(pos.up(), BlockMod.reaper_spawn.getDefaultState());
+			worldIn.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
+		}*/
+	}
+}
+				

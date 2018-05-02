@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SXS",
+    "XXX",
+    "SXS"
+  ],
+  "key": {
+    "X": {
+      "item": "croparia:elemental_stone"
+    },
+    "S": {
+      "item": "croparia:elemental_water"
+    }
+  },
+  "result": {
+    "item": "croparia:water_block"
+  }
+}

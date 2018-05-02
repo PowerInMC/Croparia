@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "croparia:empty_urne" }
+    }
+}

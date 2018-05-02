@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "croparia:renforced_shovel"
+    },
+    "a": {
+      "item": "croparia:renforced_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "croparia:renforced_pickaxe"
+    },
+    "h": {
+      "item": "croparia:renforced_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:renforced_multitool"
+  }
+}

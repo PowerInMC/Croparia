@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "croparia:stone_pestle",
+      "data": 0
+    },
+    {
+      "item": "croparia:block_cane_birch",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "croparia:powder_birch",
+    "count": 1
+  }
+}

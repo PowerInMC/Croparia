@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "croparia:bigreactor/yellorium_stage_6"
+    }
+}

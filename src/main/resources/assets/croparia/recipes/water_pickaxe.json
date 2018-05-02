@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "croparia:obsidian_pickaxe"
+    },
+    "X": {
+      "item": "croparia:elemental_water"
+    }
+  },
+  "result": {
+    "item": "croparia:water_pickaxe"
+  }
+}

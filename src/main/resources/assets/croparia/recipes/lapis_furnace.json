@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OfO", 
+    "OFO", 
+    "OfO"
+  ],
+  "key": {
+    "O": 
+    {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "F": 
+    {
+      "item": "croparia:redstone_furnace"
+    },
+    "f": 
+    {
+      "item": "croparia:fruit_lapis"
+    }
+  },
+  "result": {
+    "item": "croparia:lapis_furnace"
+  }
+}
+

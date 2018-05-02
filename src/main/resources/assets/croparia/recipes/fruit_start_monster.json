@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+  "RIE", 
+  "IPI", 
+  "GIB"
+  ],
+  "key": {
+    "P": {
+      "item": "croparia:fruit_start"
+    },
+    "I": [
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    }
+    ],
+     "R": {
+      "item": "minecraft:rotten_flesh"
+    },
+     "E": {
+      "item": "minecraft:spider_eye"
+    },
+     "G": {
+      "item": "minecraft:gunpowder"
+    },
+     "B": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "croparia:fruit_start_monster"
+  }
+}

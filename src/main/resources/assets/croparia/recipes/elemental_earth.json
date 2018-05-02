@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#X",
+    "###",
+    "X#X"
+  ],
+  "key": {
+    "#": 
+    {
+      "item": "croparia:elemental_fragment"
+    },
+    "X": [
+    {
+      "item": "minecraft:leaves",
+      "data": 0
+    },
+    {
+      "item": "minecraft:leaves",
+      "data": 1
+    },
+    {
+      "item": "minecraft:leaves",
+      "data": 2
+    },
+    {
+      "item": "minecraft:leaves",
+      "data": 3
+    },
+    {
+      "item": "minecraft:leaves2",
+      "data": 0
+    },
+    {
+      "item": "minecraft:leaves2",
+      "data": 1
+    }
+    ]
+  },
+  "result": {
+    "item": "croparia:elemental_earth"
+  }
+}

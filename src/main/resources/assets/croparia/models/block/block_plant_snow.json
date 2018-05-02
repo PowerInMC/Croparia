@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "croparia:blocks/block_plant_snow",
+        "down": "croparia:blocks/block_plant_snow",
+        "up": "croparia:blocks/block_plant_snow_top",
+        "north": "croparia:blocks/block_plant_snow",
+        "east": "croparia:blocks/block_plant_snow",
+        "south": "croparia:blocks/block_plant_snow",
+        "west": "croparia:blocks/block_plant_snow"
+    }
+}

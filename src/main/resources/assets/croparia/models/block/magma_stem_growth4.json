@@ -1,0 +1,6 @@
+{
+    "parent": "block/stem_growth4",
+    "textures": {
+        "stem": "croparia:blocks/stem/magma_stem_disconnected"
+    }
+}

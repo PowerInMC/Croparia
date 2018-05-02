@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "croparia:fire_shovel"
+    },
+    "a": {
+      "item": "croparia:fire_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "croparia:fire_pickaxe"
+    },
+    "h": {
+      "item": "croparia:fire_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:fire_multitool"
+  }
+}

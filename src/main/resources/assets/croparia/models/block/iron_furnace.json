@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "croparia:blocks/furnace/iron_furnace_side",
+        "front": "croparia:blocks/furnace/iron_furnace_off",
+        "top": "croparia:blocks/furnace/iron_furnace_top",
+        "side": "croparia:blocks/furnace/iron_furnace_side"
+    }
+}

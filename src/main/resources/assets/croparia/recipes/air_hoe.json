@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "croparia:obsidian_hoe"
+    },
+    "X": {
+      "item": "croparia:elemental_air"
+    }
+  },
+  "result": {
+    "item": "croparia:air_hoe"
+  }
+}

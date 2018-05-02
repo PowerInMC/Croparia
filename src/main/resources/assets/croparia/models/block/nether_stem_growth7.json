@@ -1,0 +1,6 @@
+{
+    "parent": "block/stem_growth7",
+    "textures": {
+        "stem": "croparia:blocks/stem/nether_stem_disconnected"
+    }
+}

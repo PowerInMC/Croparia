@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "croparia:crop_stage0" },
+        "age=1": { "model": "croparia:crop_stage1" },
+        "age=2": { "model": "croparia:crop_stage2" },
+        "age=3": { "model": "croparia:crop_stage3" },
+        "age=4": { "model": "croparia:crop_stage4" },
+        "age=5": { "model": "croparia:ludicrite_stage5" },
+        "age=6": { "model": "croparia:ludicrite_stage6" },
+        "age=7": { "model": "croparia:ludicrite_stage7" }
+    }
+}

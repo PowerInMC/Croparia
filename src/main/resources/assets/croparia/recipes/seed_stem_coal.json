@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ", 
+    "SPS", 
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:coal",
+      "data": 0
+    },
+    "P": [
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    }
+    ]
+  },
+  "result": {
+    "item": "croparia:seed_stem_coal"
+  }
+}

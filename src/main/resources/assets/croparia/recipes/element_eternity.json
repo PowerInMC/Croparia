@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X#X",
+    " X "
+  ],
+  "key": {
+    "#": 
+    {
+      "item": "minecraft:clock",
+      "data": 0
+    },
+    "X": {
+      "item": "croparia:elemental_fragment"
+    }
+  },
+  "result": {
+    "item": "croparia:element_eternity"
+  }
+}

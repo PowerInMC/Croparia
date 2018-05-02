@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=north": { "model": "croparia:gold_furnace" },
+        "facing=south": { "model": "croparia:gold_furnace", "y": 180 },
+        "facing=west":  { "model": "croparia:gold_furnace", "y": 270 },
+        "facing=east":  { "model": "croparia:gold_furnace", "y": 90 }
+    }
+}
+
+

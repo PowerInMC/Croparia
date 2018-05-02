@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:baked_potato",
+      "data": 0
+    },
+	{
+      "item": "minecraft:porkchop",
+      "data": 0
+    },
+	{
+      "item": "croparia:cheese",
+      "data": 0
+    },
+    {
+      "item": "minecraft:bowl",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "croparia:raclette",
+    "count": 1
+  }
+}

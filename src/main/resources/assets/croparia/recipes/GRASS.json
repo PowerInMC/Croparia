@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "croparia:powder_grass",
+      "data": 0
+    },
+    {
+      "item": "croparia:powder_grass",
+      "data": 0
+    },
+    {
+      "item": "croparia:powder_grass",
+      "data": 0
+    },
+    {
+      "item": "croparia:powder_grass",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "minecraft:grass",
+    "count": 2
+  }
+}

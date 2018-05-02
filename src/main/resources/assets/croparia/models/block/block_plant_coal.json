@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "croparia:blocks/block_plant_coal",
+        "down": "croparia:blocks/block_plant_coal",
+        "up": "croparia:blocks/block_plant_coal_top",
+        "north": "croparia:blocks/block_plant_coal",
+        "east": "croparia:blocks/block_plant_coal",
+        "south": "croparia:blocks/block_plant_coal",
+        "west": "croparia:blocks/block_plant_coal"
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ", 
+    "SPS", 
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "P": 
+    {
+      "item": "croparia:seed_stem_redstone"
+    }
+  },
+  "result": {
+    "item": "croparia:seed_stem_lapis"
+  }
+}

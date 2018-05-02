@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:wooden_shovel"
+    },
+    "a": {
+      "item": "minecraft:wooden_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "minecraft:wooden_pickaxe"
+    },
+    "h": {
+      "item": "minecraft:wooden_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:wood_multitool"
+  }
+}

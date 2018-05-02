@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "age=0": { "model": "croparia:block_cane_cyan" },
+        "age=1": { "model": "croparia:block_cane_cyan" },
+        "age=2": { "model": "croparia:block_cane_cyan" },
+        "age=3": { "model": "croparia:block_cane_cyan" },
+        "age=4": { "model": "croparia:block_cane_cyan" },
+        "age=5": { "model": "croparia:block_cane_cyan" },
+        "age=6": { "model": "croparia:block_cane_cyan" },
+        "age=7": { "model": "croparia:block_cane_cyan" },
+        "age=8": { "model": "croparia:block_cane_cyan" },
+        "age=9": { "model": "croparia:block_cane_cyan" },
+        "age=10": { "model": "croparia:block_cane_cyan" },
+        "age=11": { "model": "croparia:block_cane_cyan" },
+        "age=12": { "model": "croparia:block_cane_cyan" },
+        "age=13": { "model": "croparia:block_cane_cyan" },
+        "age=14": { "model": "croparia:block_cane_cyan" },
+        "age=15": { "model": "croparia:block_cane_cyan" }
+    }
+}
+

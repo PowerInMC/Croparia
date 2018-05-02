@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "O O", 
+    "OOO"
+  ],
+  "key": {
+    "O":
+    {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "result": {
+    "item": "croparia:empty_urne_raw"
+  }
+}
+

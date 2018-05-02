@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "croparia:buildcraft/geargold_stage_7"
+    }
+}

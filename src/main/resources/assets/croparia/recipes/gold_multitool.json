@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:golden_shovel"
+    },
+    "a": {
+      "item": "minecraft:golden_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "h": {
+      "item": "minecraft:golden_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:gold_multitool"
+  }
+}

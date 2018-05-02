@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "croparia:blocks/block_plant_redstone",
+        "down": "croparia:blocks/block_plant_redstone",
+        "up": "croparia:blocks/block_plant_redstone_top",
+        "north": "croparia:blocks/block_plant_redstone",
+        "east": "croparia:blocks/block_plant_redstone",
+        "south": "croparia:blocks/block_plant_redstone",
+        "west": "croparia:blocks/block_plant_redstone"
+    }
+}

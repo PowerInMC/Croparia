@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=z": { "model": "croparia:firedim_portal_ew" },
+        "axis=x": { "model": "croparia:firedim_portal_ns" },
+		"inventory": { "model": "croparia:firedim_portal_ns" }
+    }
+}

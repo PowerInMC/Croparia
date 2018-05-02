@@ -1,0 +1,88 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "particle": "minecraft:blocks/hardened_clay",
+        "0": "minecraft:blocks/hardened_clay",
+        "1": "croparia:blocks/earthfor_urne"
+    },
+    "elements": [
+        {
+            "name": "Base",
+            "from": [ 1.0, 0.0, 1.0 ], 
+            "to": [ 15.0, 12.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 1.0, 14.0, 14.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 1.0, 14.0, 13.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 1.0, 14.0, 13.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 1.0, 14.0, 13.0 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 14.0, 14.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 14.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "Droit",
+            "from": [ 1.0, 12.0, 1.0 ], 
+            "to": [ 5.0, 13.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 14.0, 1.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 14.0, 1.0 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 14.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "Gauche",
+            "from": [ 11.0, 12.0, 1.0 ], 
+            "to": [ 15.0, 13.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 14.0, 1.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 14.0, 1.0 ] },
+                "up": { "texture": "#0", "uv": [ 10.0, 0.0, 14.0, 14.0 ] },
+                "down": { "texture": "#0", "uv": [ 10.0, 0.0, 14.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "Face",
+            "from": [ 5.0, 12.0, 11.0 ], 
+            "to": [ 11.0, 13.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 1.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 1.0, 10.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 1.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "up": { "texture": "#0", "uv": [ 6.0, 10.0, 12.0, 14.0 ] },
+                "down": { "texture": "#0", "uv": [ 6.0, 10.0, 12.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "Deriere",
+            "from": [ 5.0, 12.0, 1.0 ], 
+            "to": [ 11.0, 13.0, 5.0 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 1.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 1.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "up": { "texture": "#0", "uv": [ 4.0, 0.0, 10.0, 4.0 ] },
+                "down": { "texture": "#0", "uv": [ 4.0, 0.0, 10.0, 4.0 ] }
+            }
+        },
+        {
+            "name": "Thing",
+            "from": [ 5.0, 12.0, 5.0 ], 
+            "to": [ 11.0, 15.0, 11.0 ], 
+            "faces": {
+                "north": { "texture": "#1", "uv": [ 0.0, 0.0, 6.0, 3.0 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 6.0, 3.0 ] },
+                "south": { "texture": "#1", "uv": [ 0.0, 0.0, 6.0, 3.0 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 6.0, 3.0 ] },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 6.0, 6.0 ] },
+                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 6.0, 6.0 ] }
+            }
+        }
+    ]
+}

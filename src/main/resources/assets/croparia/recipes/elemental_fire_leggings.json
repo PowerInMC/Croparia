@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "croparia:obsidian_leggings"
+    },
+    "X": {
+      "item": "croparia:elemental_fire"
+    }
+  },
+  "result": {
+    "item": "croparia:elemental_fire_leggings"
+  }
+}

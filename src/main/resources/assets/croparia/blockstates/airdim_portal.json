@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=z": { "model": "croparia:airdim_portal_ew" },
+        "axis=x": { "model": "croparia:airdim_portal_ns" },
+		"inventory": { "model": "croparia:airdim_portal_ns" }
+    }
+}

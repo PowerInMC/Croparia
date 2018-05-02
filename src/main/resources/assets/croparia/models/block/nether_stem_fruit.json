@@ -1,0 +1,7 @@
+{
+    "parent": "block/stem_fruit",
+    "textures": {
+        "stem": "croparia:blocks/stem/nether_stem_disconnected",
+        "upperstem": "croparia:blocks/stem/nether_stem_connected"
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SXS",
+    "X#X",
+    "SXS"
+  ],
+  "key": {
+    "#": 
+    {
+      "item": "croparia:element_eternity",
+      "data": 0
+    },
+    "X": {
+      "item": "croparia:elemental_fire"
+    },
+    "S": {
+      "item": "croparia:elemental_fragment"
+    }
+  },
+  "result": {
+    "item": "croparia:eternal_fire"
+  }
+}

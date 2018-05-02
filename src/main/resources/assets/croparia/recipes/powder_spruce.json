@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "croparia:stone_pestle",
+      "data": 0
+    },
+    {
+      "item": "croparia:block_cane_spruce",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "croparia:powder_spruce",
+    "count": 1
+  }
+}

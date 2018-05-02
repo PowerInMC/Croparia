@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ", 
+    "OFO", 
+    " O "
+  ],
+  "key": {
+    "O": 
+    {
+      "item": "minecraft:diamond"
+    },
+    "F": 
+    {
+      "item": "croparia:obsidian_furnace"
+    }
+  },
+  "result": {
+    "item": "croparia:renforced_furnace"
+  }
+}
+

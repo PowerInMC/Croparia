@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " F ", 
+    "WSE", 
+    " A "
+  ],
+  "key": {
+    "F": {
+      "item": "croparia:elemental_fire"
+    },
+    "W": {
+      "item": "croparia:elemental_water"
+    },
+    "E": {
+      "item": "croparia:elemental_earth"
+    },
+    "A": {
+      "item": "croparia:elemental_air"
+    },
+    "S": {
+      "item": "croparia:renforced_pestle"
+    }
+  },
+  "result": {
+    "item": "croparia:elemental_pestle"
+  }
+}
+

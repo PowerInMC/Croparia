@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "croparia:bigreactor/cyanite_stage_5"
+    }
+}

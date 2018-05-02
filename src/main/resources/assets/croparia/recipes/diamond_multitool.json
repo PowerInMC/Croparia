@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:diamond_shovel"
+    },
+    "a": {
+      "item": "minecraft:diamond_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "minecraft:diamond_pickaxe"
+    },
+    "h": {
+      "item": "minecraft:diamond_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:diamond_multitool"
+  }
+}

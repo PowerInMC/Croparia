@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "croparia:powder_darkoak",
+      "data": 0
+    },
+    {
+      "item": "croparia:powder_darkoak",
+      "data": 0
+    },
+    {
+      "item": "croparia:powder_darkoak",
+      "data": 0
+    },
+    {
+      "item": "croparia:powder_darkoak",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "minecraft:log2",
+	"data": 1,
+    "count": 2
+  }
+}

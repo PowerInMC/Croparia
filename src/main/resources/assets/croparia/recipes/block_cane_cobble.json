@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IWI", 
+    "WSW", 
+    "IWI"
+  ],
+  "key": {
+    "S": {
+      "item": "croparia:fruit_start"
+    },
+    "W": 
+    {
+      "item": "minecraft:reeds"
+    },
+    "I": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "item": "croparia:block_cane_cobble"
+  }
+}

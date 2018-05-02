@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=z": { "model": "croparia:waterdim_portal_ew" },
+        "axis=x": { "model": "croparia:waterdim_portal_ns" },
+		"inventory": { "model": "croparia:waterdim_portal_ns" }
+    }
+}

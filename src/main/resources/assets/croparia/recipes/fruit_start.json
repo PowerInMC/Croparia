@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+  "PIP", 
+  "IPI", 
+  "PIP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:diamond"
+    },
+    "I": [
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    }
+    ]
+  },
+  "result": {
+    "item": "croparia:fruit_start"
+  }
+}

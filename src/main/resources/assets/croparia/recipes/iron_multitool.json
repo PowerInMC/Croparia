@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "aIp",
+    " h "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:iron_shovel"
+    },
+    "a": {
+      "item": "minecraft:iron_axe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "minecraft:iron_pickaxe"
+    },
+    "h": {
+      "item": "minecraft:iron_hoe"
+    }
+  },
+  "result": {
+    "item": "croparia:iron_multitool"
+  }
+}

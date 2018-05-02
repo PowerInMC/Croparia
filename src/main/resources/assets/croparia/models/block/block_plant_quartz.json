@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "croparia:blocks/block_plant_quartz",
+        "down": "croparia:blocks/block_plant_quartz",
+        "up": "croparia:blocks/block_plant_quartz_top",
+        "north": "croparia:blocks/block_plant_quartz",
+        "east": "croparia:blocks/block_plant_quartz",
+        "south": "croparia:blocks/block_plant_quartz",
+        "west": "croparia:blocks/block_plant_quartz"
+    }
+}

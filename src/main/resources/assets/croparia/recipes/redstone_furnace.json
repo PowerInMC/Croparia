@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OfO", 
+    "OFO", 
+    "OfO"
+  ],
+  "key": {
+    "O": 
+    {
+      "item": "minecraft:redstone"
+    },
+    "F": 
+    {
+      "item": "croparia:gold_furnace"
+    },
+    "f": 
+    {
+      "item": "croparia:fruit_redstone"
+    }
+  },
+  "result": {
+    "item": "croparia:redstone_furnace"
+  }
+}
+

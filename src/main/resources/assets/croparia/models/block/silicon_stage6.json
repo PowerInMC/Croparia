@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "croparia:compat/crop/silicon_stage_6"
+    }
+}
