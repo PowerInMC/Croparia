@@ -1,7 +1,0 @@
-    {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "croparia:blocks/crop/shard_stage_7"
-    }
-}
-    

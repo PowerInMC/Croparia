@@ -1,7 +1,0 @@
-    {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "croparia:blocks/stem/emerald_stem_disconnected"
-    }
-}
-    

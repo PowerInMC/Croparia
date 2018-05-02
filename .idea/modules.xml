@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Croparia-1.16.3-sources.iml" filepath="$PROJECT_DIR$/.idea/Croparia-1.16.3-sources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Croparia.iml" filepath="$PROJECT_DIR$/.idea/Croparia.iml" />
     </modules>
   </component>
 </project>
