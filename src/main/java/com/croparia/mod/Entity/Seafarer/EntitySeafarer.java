@@ -74,13 +74,15 @@ public class EntitySeafarer extends EntityMob
     	    else 
     	    {
         		int i = rand.nextInt(6);
+        		int a = rand.nextInt(1);
+        		int b = rand.nextInt(1);
         		if(i < 2)
         		{
-        			i = i * 3;
+        			i = i + 3;
         		}
     	    	this.dropItem(ItemMod.elemental_water, i); 
-	        	this.dropItem(ItemMod.elemental_water_chestplate, 1);
-	        	this.dropItem(ItemMod.water_sword, 1);
+	        	this.dropItem(ItemMod.elemental_water_chestplate, a);
+	        	this.dropItem(ItemMod.water_sword, b);
     	    }
         
 	    }

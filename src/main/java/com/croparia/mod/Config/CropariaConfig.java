@@ -92,6 +92,8 @@ public class CropariaConfig
         ConfigInit.rawmutton = config.get("Crops", "Implement Raw Mutton Crop ?", true).getBoolean();
         ConfigInit.death = config.get("Crops", "Implement Death Crop ?", true).getBoolean();
         ConfigInit.totem = config.get("Crops", "Implement Totem Crop ?", true).getBoolean();
+        ConfigInit.lead2 = config.get("Crops", "Implement Lead Crop ?", true).getBoolean();
+        ConfigInit.nametag = config.get("Crops", "Implement Name Tag Crop ?", true).getBoolean();
 	   	
 	   	//Fruit drop rate
         ConfigInit.clayRate = config.get("Fruit Drop Rate", "Clay Drop Rate", 2).getInt();
@@ -167,6 +169,8 @@ public class CropariaConfig
        	ConfigInit.rawmuttonRate = config.get("Fruit Drop Rate", "Raw Mutton Drop Rate", 2).getInt();
        	ConfigInit.deathRate = config.get("Fruit Drop Rate", "Death Drop Rate", 2).getInt();
        	ConfigInit.totemRate = config.get("Fruit Drop Rate", "Totem Drop Rate", 2).getInt();
+       	ConfigInit.lead2Rate = config.get("Fruit Drop Rate", "Lead Drop Rate", 2).getInt();
+       	ConfigInit.nametagRate = config.get("Fruit Drop Rate", "Name Tag Drop Rate", 2).getInt();
 	   	//Cane
 	   	
 	   	//Furnace

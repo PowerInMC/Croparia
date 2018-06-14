@@ -142,6 +142,10 @@ public class BlockElementalStone extends Block {
 				if(worldIn.getBlockState(pos.west(7)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.north(7)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.south(7)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.east(7)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.north(5).east(5)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.south(5).east(5)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.north(5).west(5)) == BlockMod.filled_urne_s.getDefaultState() && worldIn.getBlockState(pos.south(5).west(5)) == BlockMod.filled_urne_s.getDefaultState())		
 				{
 					worldIn.setBlockState(pos, BlockMod.waterboss_spawn.getDefaultState());
+				}	
+				if(worldIn.getBlockState(pos.west(7)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.north(7)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.south(7)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.east(7)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.north(5).east(5)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.south(5).east(5)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.north(5).west(5)) == BlockMod.filled_urne_m.getDefaultState() && worldIn.getBlockState(pos.south(5).west(5)) == BlockMod.filled_urne_m.getDefaultState())		
+				{
+					worldIn.setBlockState(pos, BlockMod.fireboss_spawn.getDefaultState());
 				}
 			}
 		

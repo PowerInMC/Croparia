@@ -337,6 +337,14 @@ public class RecipeRegistry
 	       	seed(ItemMod.seed_crop_totem, Items.TOTEM_OF_UNDYING, ItemMod.fruit_diamond, ItemMod.seed_crop_diamond);
 	       	fruit(Items.TOTEM_OF_UNDYING, ConfigInit.totemRate, ItemMod.fruit_totem);
 	   	}
+	   	if(ConfigInit.nametag == true){
+	       	seed(ItemMod.seed_crop_nametag, Items.NAME_TAG, ItemMod.fruit_iron, ItemMod.seed_crop_iron);
+	       	fruit(Items.NAME_TAG, ConfigInit.nametagRate, ItemMod.fruit_nametag);
+	   	}
+	   	if(ConfigInit.lead2 == true){
+	       	seed(ItemMod.seed_crop_lead2, Items.LEAD, ItemMod.fruit_iron, ItemMod.seed_crop_iron);
+	       	fruit(Items.LEAD, ConfigInit.lead2Rate, ItemMod.fruit_lead2);
+	   	}
 	   	
 	   	ShapelessOreRecipe(new ItemStack(BlockMod.block_ritual_debug, 1), new ItemStack(Blocks.DIRT));	
 	}

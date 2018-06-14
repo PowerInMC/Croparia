@@ -167,6 +167,8 @@ public class ItemMod
     public static Item seafarer_crane;
     public static Item icy_crane;
     public static Item steam_crane;
+    public static Item obsidian_crane;
+    public static Item lava_crane;
     
     public static Item minotaur_gem;
     public static Item minotaur_frag;
@@ -301,6 +303,8 @@ public class ItemMod
            			   seed_crop_rawmutton,
            			   seed_crop_death,
            			   seed_crop_totem,
+           			   seed_crop_lead2,
+           			   seed_crop_nametag,
                                             
                        fruit_coal, 
                        fruit_iron, 
@@ -386,6 +390,8 @@ public class ItemMod
            			   fruit_rawmutton,
            			   fruit_death,
            			   fruit_totem,
+           			   fruit_lead2,
+           			   fruit_nametag,
                       	
                        seed_stem_coal, 
                        seed_stem_iron, 
@@ -820,6 +826,8 @@ public class ItemMod
 		seed_crop_rawmutton = new ItemSeedsMod(BlockMod.block_crop_rawmutton, Blocks.FARMLAND, "seed_crop_rawmutton");  
 		seed_crop_death = new ItemSeedsMod(BlockMod.block_crop_death, Blocks.FARMLAND, "seed_crop_death");  
 		seed_crop_totem = new ItemSeedsMod(BlockMod.block_crop_totem, Blocks.FARMLAND, "seed_crop_totem");  
+		seed_crop_lead2 = new ItemSeedsMod(BlockMod.block_crop_lead2, Blocks.FARMLAND, "seed_crop_lead2");  
+		seed_crop_nametag = new ItemSeedsMod(BlockMod.block_crop_nametag, Blocks.FARMLAND, "seed_crop_nametag"); 
 		   
         fruit_coal = new Coal(0, 0, false).setAlwaysEdible().setUnlocalizedName("fruit_coal").setCreativeTab(tab).setRegistryName("fruit_coal");
         fruit_iron = new Iron("fruit_iron", tab);
@@ -904,7 +912,9 @@ public class ItemMod
 	    fruit_rawrabbit = new RawRabbit(1, 1, true).setAlwaysEdible().setUnlocalizedName("fruit_rawrabbit").setCreativeTab(tab).setRegistryName("fruit_rawrabbit");
 	    fruit_rawmutton = new RawFruit(1, 1, true).setAlwaysEdible().setUnlocalizedName("fruit_rawmutton").setCreativeTab(tab).setRegistryName("fruit_rawmutton");        	   
 	    fruit_death = new DeathFruit(1, 1, false).setAlwaysEdible().setUnlocalizedName("fruit_death").setCreativeTab(tab).setRegistryName("fruit_death");        	   
-	    fruit_totem = new ItemFood(1, 1, false).setAlwaysEdible().setUnlocalizedName("fruit_totem").setCreativeTab(tab).setRegistryName("fruit_totem");        	   
+	    fruit_totem = new ItemFood(1, 1, false).setAlwaysEdible().setUnlocalizedName("fruit_totem").setCreativeTab(tab).setRegistryName("fruit_totem");          	   
+	    fruit_lead2 = new ItemFood(1, 1, false).setAlwaysEdible().setUnlocalizedName("fruit_lead2").setCreativeTab(tab).setRegistryName("fruit_lead2");          	   
+	    fruit_nametag = new ItemFood(1, 1, false).setAlwaysEdible().setUnlocalizedName("fruit_nametag").setCreativeTab(tab).setRegistryName("fruit_nametag");        	   
 		    
 	    powder_cobble = new Item().setUnlocalizedName("powder_cobble").setRegistryName("powder_cobble").setCreativeTab(tab);
         powder_sand = new Item().setUnlocalizedName("powder_sand").setRegistryName("powder_sand").setCreativeTab(tab);
@@ -1112,6 +1122,8 @@ public class ItemMod
         seafarer_crane = new Item().setUnlocalizedName("seafarer_crane").setCreativeTab(tab).setRegistryName("seafarer_crane");
         icy_crane = new Item().setUnlocalizedName("icy_crane").setCreativeTab(tab).setRegistryName("icy_crane");
         steam_crane = new Item().setUnlocalizedName("steam_crane").setCreativeTab(tab).setRegistryName("steam_crane");
+        obsidian_crane = new Item().setUnlocalizedName("obsidian_crane").setCreativeTab(tab).setRegistryName("obsidian_crane");
+        lava_crane = new Item().setUnlocalizedName("lava_crane").setCreativeTab(tab).setRegistryName("lava_crane");
 
 
         minotaur_frag = new Item().setUnlocalizedName("minotaur_frag").setCreativeTab(tab).setRegistryName("minotaur_frag");
@@ -1135,6 +1147,8 @@ public class ItemMod
         add(seafarer_crane);
         add(icy_crane);
         add(steam_crane);
+        add(obsidian_crane);
+        add(lava_crane);
 
     	add(minotaur_frag);
         add(minotaur_gem);
@@ -1657,6 +1671,16 @@ public class ItemMod
 		{
 			add(seed_crop_totem);
 			add(fruit_totem);
+		}
+		if(ConfigInit.lead2 == true)
+		{
+			add(seed_crop_lead2);
+			add(fruit_lead2);
+		}
+		if(ConfigInit.nametag == true)
+		{
+			add(seed_crop_nametag);
+			add(fruit_nametag);
 		}	
         
 		add(fruit_start);
@@ -2024,6 +2048,8 @@ public class ItemMod
     	registerRender(seafarer_crane);
     	registerRender(icy_crane);
     	registerRender(steam_crane);
+    	registerRender(obsidian_crane);
+    	registerRender(lava_crane);
     	
     	registerRender(minotaur_frag);
     	registerRender(minotaur_gem);
@@ -2250,6 +2276,8 @@ public class ItemMod
 		registerRender(seed_crop_rawmutton);
 		registerRender(seed_crop_death);
 		registerRender(seed_crop_totem);
+		registerRender(seed_crop_lead2);
+		registerRender(seed_crop_nametag);
 		
         registerRender(fruit_coal);
         registerRender(fruit_iron);
@@ -2335,6 +2363,8 @@ public class ItemMod
 		registerRender(fruit_rawmutton);
 		registerRender(fruit_death);
 		registerRender(fruit_totem);
+		registerRender(fruit_nametag);
+		registerRender(fruit_lead2);
 
         registerRender(seed_stem_coal);
         registerRender(seed_stem_iron);

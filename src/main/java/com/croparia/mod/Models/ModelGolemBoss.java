@@ -2,8 +2,9 @@ package com.croparia.mod.Models;
 
 import org.lwjgl.opengl.GL11;
 
-import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
-import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import com.croparia.mod.LlibraryImplementation.AdvancedModelBase;
+import com.croparia.mod.LlibraryImplementation.AdvancedModelRenderer;
+
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 

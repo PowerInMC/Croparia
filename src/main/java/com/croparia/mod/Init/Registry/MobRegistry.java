@@ -2,10 +2,14 @@ package com.croparia.mod.Init.Registry;
 
 import com.croparia.mod.ModCroparia;
 import com.croparia.mod.Reference;
+import com.croparia.mod.Entity.EntityAkurojin;
 import com.croparia.mod.Entity.EntityCentaur;
 import com.croparia.mod.Entity.EntityFlying;
 import com.croparia.mod.Entity.EntityReaper;
+import com.croparia.mod.Entity.Golem.EntityFireBoss;
 import com.croparia.mod.Entity.Golem.EntityIcyBoss;
+import com.croparia.mod.Entity.Golem.EntityLavaBoss;
+import com.croparia.mod.Entity.Golem.EntityObsidianBoss;
 import com.croparia.mod.Entity.Golem.EntitySteamBoss;
 import com.croparia.mod.Entity.Golem.EntityWaterBoss;
 import com.croparia.mod.Entity.Minotaur.EntityMinotaur;
@@ -24,10 +28,14 @@ import com.croparia.mod.Models.ModelMinotaur;
 import com.croparia.mod.Models.ModelPenguin;
 import com.croparia.mod.Models.ModelReaper;
 import com.croparia.mod.Models.Seafarer.ModelSeafarerRmx;
+import com.croparia.mod.Renderer.RenderAkurojin;
 import com.croparia.mod.Renderer.RenderCentaur;
 import com.croparia.mod.Renderer.RenderFlying;
 import com.croparia.mod.Renderer.RenderReaper;
+import com.croparia.mod.Renderer.Golem.RenderFireBoss;
 import com.croparia.mod.Renderer.Golem.RenderIcyBoss;
+import com.croparia.mod.Renderer.Golem.RenderLavaBoss;
+import com.croparia.mod.Renderer.Golem.RenderObsidianBoss;
 import com.croparia.mod.Renderer.Golem.RenderSteamBoss;
 import com.croparia.mod.Renderer.Golem.RenderWaterBoss;
 import com.croparia.mod.Renderer.Minotaur.RenderMinotaur;
@@ -41,6 +49,7 @@ import com.croparia.mod.Renderer.Seafarer.RenderSeafarerL;
 import com.croparia.mod.Renderer.Seafarer.RenderSeafarerS;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -65,8 +74,8 @@ public class MobRegistry
             RenderingRegistry.registerEntityRenderingHandler(EntitySeafarerS.class, new RenderSeafarerS(Minecraft.getMinecraft().getRenderManager(), new ModelSeafarerRmx(), 0.5F));
 
             RenderingRegistry.registerEntityRenderingHandler(EntityMinotaur.class, new RenderMinotaur(Minecraft.getMinecraft().getRenderManager(), new ModelMinotaur(), 0.5F));
-       //     RenderingRegistry.registerEntityRenderingHandler(EntityMinotaurL.class, new RenderMinotaurL(Minecraft.getMinecraft().getRenderManager(), new ModelMinotaur(), 0.5F));
-         //   RenderingRegistry.registerEntityRenderingHandler(EntityMinotaurS.class, new RenderMinotaurS(Minecraft.getMinecraft().getRenderManager(), new ModelMinotaur(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityMinotaurL.class, new RenderMinotaurL(Minecraft.getMinecraft().getRenderManager(), new ModelMinotaur(), 0.5F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityMinotaurS.class, new RenderMinotaurS(Minecraft.getMinecraft().getRenderManager(), new ModelMinotaur(), 0.5F));
             
             RenderingRegistry.registerEntityRenderingHandler(EntityCentaur.class, new RenderCentaur(Minecraft.getMinecraft().getRenderManager(), new ModelCentaur(), 0.5F));
             RenderingRegistry.registerEntityRenderingHandler(EntityFlying.class, new RenderFlying(Minecraft.getMinecraft().getRenderManager(), new ModelFlying(), 0.5F));
@@ -76,10 +85,15 @@ public class MobRegistry
             RenderingRegistry.registerEntityRenderingHandler(EntityPenguin2.class, new RenderPenguin2(Minecraft.getMinecraft().getRenderManager(), new ModelPenguin(), 0.5F));
             RenderingRegistry.registerEntityRenderingHandler(EntityPenguin3.class, new RenderPenguin3(Minecraft.getMinecraft().getRenderManager(), new ModelPenguin(), 0.5F));
             
+            RenderingRegistry.registerEntityRenderingHandler(EntityAkurojin.class, new RenderAkurojin(Minecraft.getMinecraft().getRenderManager(), new ModelBiped(), 0F));
+            
 
             RenderingRegistry.registerEntityRenderingHandler(EntityWaterBoss.class, new RenderWaterBoss(Minecraft.getMinecraft().getRenderManager(), new ModelGolemBoss(), 0.5f));
             RenderingRegistry.registerEntityRenderingHandler(EntityIcyBoss.class, new RenderIcyBoss(Minecraft.getMinecraft().getRenderManager(), new ModelGolemBoss(), 0.5f));
             RenderingRegistry.registerEntityRenderingHandler(EntitySteamBoss.class, new RenderSteamBoss(Minecraft.getMinecraft().getRenderManager(), new ModelGolemBoss(), 0.5f));
+            RenderingRegistry.registerEntityRenderingHandler(EntityFireBoss.class, new RenderFireBoss(Minecraft.getMinecraft().getRenderManager(), new ModelGolemBoss(), 0.5f));
+            RenderingRegistry.registerEntityRenderingHandler(EntityObsidianBoss.class, new RenderObsidianBoss(Minecraft.getMinecraft().getRenderManager(), new ModelGolemBoss(), 0.5f));
+            RenderingRegistry.registerEntityRenderingHandler(EntityLavaBoss.class, new RenderLavaBoss(Minecraft.getMinecraft().getRenderManager(), new ModelGolemBoss(), 0.5f));
             
             //RenderingRegistry.registerEntityRenderingHandler(EntityGoldenChicken.class, new RenderGoldenChicken(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), 0.5F));
             }
@@ -91,18 +105,22 @@ public class MobRegistry
     		register(EntitySeafarerS.class, "SeafarerS", 0x000069, 0x110BBF);  
     		
     		register(EntityMinotaur.class, "Minotaur", 0x000069, 0xDB000A);
-    		//register(EntityMinotaurL.class, "MinotaurL", 0x000069, 0xDB000A);
-    		//register(EntityMinotaurS.class, "MinotaurS", 0x000069, 0xDB000A);
+    		register(EntityMinotaurL.class, "MinotaurL", 0x000069, 0xDB000A);
+    		register(EntityMinotaurS.class, "MinotaurS", 0x000069, 0xDB000A);
     		
     		register(EntityCentaur.class, "Centaur", 0x000069, 0x913C04);
     		register(EntityFlying.class, "Flying", 0x000069, 0xC0C0C0);
     		register(EntityReaper.class, "Reaper", 0x00000, 0xFFFFFF);  
 
     		register(EntityPenguin.class, "Penguin", 0x00000, 0xC5801F); 
+    		register(EntityAkurojin.class, "Akurojin", 0x00000, 0x00000); 
 
     		register(EntityWaterBoss.class, "WaterBoss", 0xFFFFFF, 0x000BFF); 
     		register(EntityIcyBoss.class, "IcyBoss", 0xFFFFFF, 0xA5F4FF); 
     		register(EntitySteamBoss.class, "SteamBoss", 0xFFFFFF, 0xFFFFFF); 
+    		register(EntityFireBoss.class, "FireBoss", 0xFFFFFF, 0x000BFF); 
+    		register(EntityLavaBoss.class, "LavaBoss", 0xFFFFFF, 0xA5F4FF); 
+    		register(EntityObsidianBoss.class, "ObsidianBoss", 0xFFFFFF, 0xFFFFFF); 
     		
     		//register(EntityGoldenChicken.class, "GoldenChicken", 0xDEDE00, 0xFFFF8B);  
         }

@@ -22,6 +22,7 @@ public class OreWorldGen implements IWorldGenerator {
 
 	private WorldGenerator gen_ice;
 	private WorldGenerator gen_poisonous_icy_plant;
+	private WorldGenerator gen_obsi_fired;
 	private WorldGenerator gen_fruitgrass;
 	private WorldGenerator gen_coalcrop;
 	
@@ -31,6 +32,7 @@ public class OreWorldGen implements IWorldGenerator {
 	{
 		this.gen_ice = new WorldGenMinable(Blocks.ICE.getDefaultState(), 6, BlockMatcher.forBlock(Blocks.PACKED_ICE));
 		this.gen_poisonous_icy_plant = new WorldGenMinable(BlockMod.poisonous_icy_plant.getDefaultState(), 6, BlockMatcher.forBlock(BlockMod.icy_plant));
+		this.gen_obsi_fired = new WorldGenMinable(BlockMod.obsidian_fired_ground.getDefaultState(), 6, BlockMatcher.forBlock(BlockMod.obsidian_ground));
 		this.gen_fruitgrass = new WorldGenMinable(BlockMod.fruit_grass.getDefaultState(), 6, BlockMatcher.forBlock(Blocks.TALLGRASS));
 		this.gen_coalcrop = new WorldGenMinable(BlockMod.block_crop_coal.getStateFromMeta(2), 6, BlockMatcher.forBlock(Blocks.TALLGRASS));
 		
@@ -56,7 +58,11 @@ public class OreWorldGen implements IWorldGenerator {
 			this.runGenerator(this.gen_ice, world, random, chunkX, chunkZ, 40, 0, 256);
 			this.runGenerator(this.gen_poisonous_icy_plant, world, random, chunkX, chunkZ, 60, Blocks.ICE);
 			break;
-		}
+			
+		case 6 : //Firedim
+		this.runGenerator(this.gen_obsi_fired, world, random, chunkX, chunkZ, 60, Blocks.MAGMA);
+		break;
+	}
 	} 
 	
 	private void runGenerator(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chancesToSpawn, int minHeight, int maxHeight)

@@ -222,7 +222,7 @@ public class CropariaGuideBook implements IGuideBook {
         // Creation of our 103rd page.
         List<IPage> pages103= new ArrayList<IPage>(); 
         pages103.add(new PageText("Don't walk on these sorts of icy plants, or wear Water Boots. Some of them give you a poison effect... but it's not a big deal..."));  
-        entries5.put(new ResourceLocation(Reference.MOD_ID, "entry103"), new EntryItemStack(pages103, "Dimension Plants", new ItemStack(BlockMod.icy_plant)));
+        entries5.put(new ResourceLocation(Reference.MOD_ID, "entry103"), new EntryItemStack(pages103, "Dimension Decoration", new ItemStack(BlockMod.icy_plant)));
         // Creation of our 104th page.
         List<IPage> pages104= new ArrayList<IPage>(); 
         pages104.add(new PageText("There are 3 new structures here. A Penguin hut, a Seafarer house and an other one. All of them have a chest. In it, you can find diamond or iron for exemple and Elemental Water Gem Frag... maybe you can create a gem... and after, check the STONE RITUAL in the RITUAL HELPER..."));  
@@ -254,8 +254,18 @@ public class CropariaGuideBook implements IGuideBook {
         entries7.put(new ResourceLocation(Reference.MOD_ID, "entry301"), new EntryItemStack(pages301, "Dimension Ores", new ItemStack(BlockMod.magma_fire_ore)));
         // Creation of our 302nd page.
         List<IPage> pages302= new ArrayList<IPage>(); 
-        pages302.add(new PageText("There are a lot of Minotaur here...that's all"));  
+        pages302.add(new PageText("There are a lot of 'normal' Minotaur, and some 'tall' and 'small' Minotaur too... they will drop you elemental fire, and maybe fire chestplate and fire sword"));  
+        pages302.add(new PageText("There are some Akurojin-no-hi, translated from japanese into the fire of the god of the bad road... I don't want to know why..."));  
         entries7.put(new ResourceLocation(Reference.MOD_ID, "entry302"), new EntryItemStack(pages302, "Dimension Mobs", new ItemStack(BlockMod.minotaur_spawn)));
+        // Creation of our 303rd page.
+        List<IPage> pages303= new ArrayList<IPage>(); 
+        pages303.add(new PageText("Don't walk on these sorts of obsidian path, or wear Fire Boots. Some of them puts you in fire... but it's not a big deal..."));  
+        entries7.put(new ResourceLocation(Reference.MOD_ID, "entry303"), new EntryItemStack(pages303, "Dimension Plants", new ItemStack(BlockMod.obsidian_ground)));
+        // Creation of our 304th page.
+        List<IPage> pages304= new ArrayList<IPage>(); 
+        pages304.add(new PageText("There are new structures here, especially magma and bedrock spike. Some of them have a chest. In it, you can find diamond or iron for exemple and Elemental Fire Gem Frag... maybe you can create a gem... and after, check the STONE RITUAL in the RITUAL HELPER..."));  
+        entries7.put(new ResourceLocation(Reference.MOD_ID, "entry304"), new EntryItemStack(pages304, "Dimension Structures", new ItemStack(Blocks.MAGMA)));
+
 
         // Creation of our 400th page.
         List<IPage> pages400= new ArrayList<IPage>();
@@ -287,7 +297,7 @@ public class CropariaGuideBook implements IGuideBook {
         categories.add(new CategoryItemStack(entries3, "Other Stuff", new ItemStack(BlockMod.fire_furnace)));
         categories.add(new CategoryItemStack(entries5, "Water Dimension", new ItemStack(BlockMod.water_block)));
         categories.add(new CategoryItemStack(entries6, "Earth Dimension [WIP]", new ItemStack(BlockMod.earth_block)));
-        categories.add(new CategoryItemStack(entries7, "Fire Dimension [WIP]", new ItemStack(BlockMod.fire_block)));
+        categories.add(new CategoryItemStack(entries7, "Fire Dimension ", new ItemStack(BlockMod.fire_block)));
         categories.add(new CategoryItemStack(entries8, "Air Dimension [WIP]", new ItemStack(BlockMod.air_block)));
         categories.add(new CategoryItemStack(entries9, "Elemental Golem [WIP]", new ItemStack(BlockMod.waterboss_spawn)));
 //      categories.add(new CategoryItemStack(entries4, "Compatibility [WIP]", new ItemStack(Blocks.ANVIL)));

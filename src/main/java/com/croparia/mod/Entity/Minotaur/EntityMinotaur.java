@@ -64,11 +64,18 @@ public class EntityMinotaur extends EntityMob
     		{
     			this.dropItem(FireDim.block, 1);
     		}
-    	    else
+    	    else 
     	    {
-	    	    this.dropItem(ItemMod.elemental_fire, 8);
-	    	    this.dropItem(ItemMod.elemental_fire_chestplate, 1);
-	    	    this.dropItem(ItemMod.fire_sword, 1);
+        		int i = rand.nextInt(6);
+        		int a = rand.nextInt(1);
+        		int b = rand.nextInt(1);
+        		if(i < 2)
+        		{
+        			i = i + 3;
+        		}
+    	    	this.dropItem(ItemMod.elemental_fire, i); 
+	        	this.dropItem(ItemMod.elemental_fire_chestplate, a);
+	        	this.dropItem(ItemMod.fire_sword, b);
     	    }
         
         }

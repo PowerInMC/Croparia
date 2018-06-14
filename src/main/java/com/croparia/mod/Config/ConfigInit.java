@@ -74,6 +74,8 @@ public class ConfigInit {
    	public static boolean rawmutton;
    	public static boolean death;
    	public static boolean totem;
+   	public static boolean lead2;
+   	public static boolean nametag;
    	
     public static int clayRate;
     public static int glowstoneRate; 
@@ -148,4 +150,6 @@ public class ConfigInit {
    	public static int rawmuttonRate;
    	public static int deathRate;
    	public static int totemRate;
+   	public static int nametagRate;
+   	public static int lead2Rate;
 }

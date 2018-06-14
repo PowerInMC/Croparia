@@ -4,14 +4,18 @@ import com.croparia.mod.Reference;
 import com.croparia.mod.Entity.Golem.EntityWaterBoss;
 import com.croparia.mod.Models.ModelGolemBoss;
 
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderWaterBoss extends RenderLiving<EntityWaterBoss>
 {
-    public RenderWaterBoss(RenderManager rendermanagerIn, ModelGolemBoss modelbaseIn, float shadowsizeIn) {
+
+
+	public RenderWaterBoss(RenderManager rendermanagerIn, ModelGolemBoss modelbaseIn, float shadowsizeIn) {
 		super(rendermanagerIn, modelbaseIn, shadowsizeIn);
+		// TODO Auto-generated constructor stub
 	}
 
 

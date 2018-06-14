@@ -112,7 +112,9 @@ public class BlockCropMod extends BlockCrops implements IGrowable
 				this.name == "block_crop_rawmutton" ? ItemMod.seed_crop_rawmutton : 
 				this.name == "block_crop_death" ? ItemMod.seed_crop_death : 
 				this.name == "elemental_crop" ? ItemMod.elemental_seed:
-				this.name == "block_crop_totem" ? ItemMod.seed_crop_totem : null;
+				this.name == "block_crop_totem" ? ItemMod.seed_crop_totem :
+				this.name == "block_crop_lead2" ? ItemMod.seed_crop_lead2 : 
+				this.name == "block_crop_nametag" ? ItemMod.seed_crop_nametag :null;
 		}
 			
 	}
@@ -204,7 +206,9 @@ public class BlockCropMod extends BlockCrops implements IGrowable
 					this.name == "block_crop_rawmutton" ? ItemMod.fruit_rawmutton : 
 					this.name == "block_crop_death" ? ItemMod.fruit_death : 
 					this.name == "elemental_crop" ? ItemMod.elemental_fragment:
-					this.name == "block_crop_totem" ? ItemMod.fruit_totem : null;
+					this.name == "block_crop_totem" ? ItemMod.fruit_totem : 
+					this.name == "block_crop_lead2" ? ItemMod.fruit_lead2 : 
+					this.name == "block_crop_nametag" ? ItemMod.fruit_nametag : null;
 			}
 	    }
 	 
@@ -213,5 +217,4 @@ public class BlockCropMod extends BlockCrops implements IGrowable
 	 {
 		 return EnumPlantType.Crop;
 	 }
-	 
 }

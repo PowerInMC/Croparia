@@ -4,6 +4,7 @@ import com.croparia.mod.Reference;
 import com.croparia.mod.Block.BlockIcyPlant;
 import com.croparia.mod.Block.BlockModCloud;
 import com.croparia.mod.Block.BlockModTallGrass;
+import com.croparia.mod.Block.BlockObsidianGround;
 import com.croparia.mod.Block.BlockStemMod;
 import com.croparia.mod.Block.BlockUrne;
 import com.croparia.mod.Block.Cane.CaneAcacia;
@@ -68,6 +69,7 @@ import com.croparia.mod.Block.Plant.BlockPlantShell;
 import com.croparia.mod.Block.Plant.BlockPlantSnow;
 import com.croparia.mod.Block.Pulsor.CropPulsor;
 import com.croparia.mod.Block.Spawn.BlockCentaurSpawn;
+import com.croparia.mod.Block.Spawn.BlockFirebossSpawn;
 import com.croparia.mod.Block.Spawn.BlockFlyingbeastSpawn;
 import com.croparia.mod.Block.Spawn.BlockMinotaurSpawn;
 import com.croparia.mod.Block.Spawn.BlockReaperSpawn;
@@ -175,6 +177,8 @@ public class BlockMod {
 		public static Block block_crop_rawmutton;
 		public static Block block_crop_death;
 		public static Block block_crop_totem;
+		public static Block block_crop_lead2;
+		public static Block block_crop_nametag;
 		
 		public static Block stem_iron;
 		public static Block stem_coal;
@@ -259,6 +263,7 @@ public class BlockMod {
 		public static Block flyingbeast_spawn;
 		public static Block reaper_spawn;
 		public static Block waterboss_spawn;
+		public static Block fireboss_spawn;
 	
 		public static Block water_block;
 		public static Block fire_block;
@@ -374,6 +379,8 @@ public class BlockMod {
 
 		public static Block icy_plant;
 		public static Block poisonous_icy_plant;
+		public static Block obsidian_ground;
+		public static Block obsidian_fired_ground;
 
 		public static Block empty_urne_raw;
 		public static Block empty_urne;
@@ -424,6 +431,8 @@ public class BlockMod {
 
 			icy_plant = new BlockIcyPlant("icy_plant");
 			poisonous_icy_plant = new BlockIcyPlant("poisonous_icy_plant");
+			obsidian_ground = new BlockObsidianGround("obsidian_ground");
+			obsidian_fired_ground = new BlockObsidianGround("obsidian_fired_ground");
 			
 			fruit_grass = new BlockModTallGrass().setUnlocalizedName("fruit_grass");
 			
@@ -534,6 +543,8 @@ public class BlockMod {
 			block_crop_rawmutton = new BlockCropMod("block_crop_rawmutton");
 			block_crop_death = new BlockCropMod("block_crop_death");
 			block_crop_totem = new BlockCropMod("block_crop_totem");
+			block_crop_lead2 = new BlockCropMod("block_crop_lead2");
+			block_crop_nametag = new BlockCropMod("block_crop_nametag");
 			
 
 
@@ -591,6 +602,7 @@ public class BlockMod {
 			flyingbeast_spawn = new BlockFlyingbeastSpawn("flyingbeast_spawn");
 			reaper_spawn = new BlockReaperSpawn("Reaper_spawn");
 			waterboss_spawn = new BlockWaterbossSpawn("waterboss_spawn");
+			fireboss_spawn = new BlockFirebossSpawn("fireboss_spawn");
 			
 			water_block = new BlockElemental("water_block").setCreativeTab(tab);
 			fire_block = new BlockElemental("fire_block").setCreativeTab(tab);
@@ -682,6 +694,8 @@ public class BlockMod {
 			addWithItem(fruit_grass);
 			addWithItem(icy_plant);
 			addWithItem(poisonous_icy_plant);
+			addWithItem(obsidian_ground);
+			addWithItem(obsidian_fired_ground);
 
 			addWithItem(empty_urne);
 			addWithItem(empty_urne_raw);
@@ -789,6 +803,8 @@ public class BlockMod {
 			add(block_crop_rawmutton);
 			add(block_crop_death);
 			add(block_crop_totem);
+			add(block_crop_lead2);
+			add(block_crop_nametag);
 			
 
 			addWithItem(block_cane_cobble);
@@ -873,6 +889,7 @@ public class BlockMod {
 			addWithItem(flyingbeast_spawn);
 			addWithItem(reaper_spawn);
 			addWithItem(waterboss_spawn);
+			addWithItem(fireboss_spawn);
 			
 			addWithItem(water_block);
 			addWithItem(fire_block);
@@ -1140,6 +1157,8 @@ public class BlockMod {
 			registerRender(fruit_grass);
 			registerRender(icy_plant);
 			registerRender(poisonous_icy_plant);
+			registerRender(obsidian_ground);
+			registerRender(obsidian_fired_ground);
 
 			registerRender(empty_urne);
 			registerRender(empty_urne_raw);
@@ -1247,6 +1266,8 @@ public class BlockMod {
 			registerRender(block_crop_rawmutton);
 			registerRender(block_crop_death);
 			registerRender(block_crop_totem);
+			registerRender(block_crop_lead2);
+			registerRender(block_crop_nametag);
 			
 
 			registerRender(block_cane_cobble);
@@ -1330,6 +1351,7 @@ public class BlockMod {
 			registerRender(flyingbeast_spawn);
 			registerRender(reaper_spawn);
 			registerRender(waterboss_spawn);
+			registerRender(fireboss_spawn);
 			
 			registerRender(water_block);
 			registerRender(fire_block);

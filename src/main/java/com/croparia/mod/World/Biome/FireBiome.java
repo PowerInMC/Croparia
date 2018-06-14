@@ -2,14 +2,18 @@ package com.croparia.mod.World.Biome;
 
 import java.util.Random;
 
+import com.croparia.mod.Entity.EntityAkurojin;
 import com.croparia.mod.Entity.Minotaur.EntityMinotaur;
+import com.croparia.mod.Entity.Minotaur.EntityMinotaurL;
+import com.croparia.mod.Entity.Minotaur.EntityMinotaurS;
+import com.croparia.mod.World.WorldGen.Generator.ObsidianGroundGenerator;
 
-import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -74,7 +78,7 @@ public class FireBiome {
 			decorator.generateFalls = false;
 			decorator.treesPerChunk = 0;
 			decorator.flowersPerChunk = 0;
-			decorator.grassPerChunk = 0;
+			decorator.grassPerChunk = 20;
 			decorator.deadBushPerChunk = 0;
 			decorator.mushroomsPerChunk = 0;
 			decorator.reedsPerChunk = 0;
@@ -84,8 +88,18 @@ public class FireBiome {
 			this.spawnableCreatureList.clear();
 			this.spawnableWaterCreatureList.clear();
 			this.spawnableCaveCreatureList.clear();
-			
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityMinotaur.class, 10, 5, 8));
+
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityMinotaur.class, 4, 1, 2));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityMinotaurS.class, 3, 2, 4));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityMinotaurL.class, 2, 1, 2));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityAkurojin.class, 4, 1, 2));
+		
+		}
+		
+		@Override
+		public WorldGenerator getRandomWorldGenForGrass(Random rand) 
+		{
+			return new ObsidianGroundGenerator();
 		}
 
 		@SideOnly(Side.CLIENT)

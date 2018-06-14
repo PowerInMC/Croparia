@@ -24,7 +24,7 @@ public class EntityMinotaurL extends EntityMob
 	public EntityMinotaurL(World world)
     {
         super(world);
-        this.setSize(1.5f, 3f);
+        this.setSize(1.5f, 4.5f);
     }
 
     protected void initEntityAI()
@@ -43,8 +43,8 @@ public class EntityMinotaurL extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(600.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(600.0D * 1.5);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D * 0.8);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(80.0D / 2);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30.0D);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
@@ -59,17 +59,12 @@ public class EntityMinotaurL extends EntityMob
                 
     	if(cause.getTrueSource() instanceof EntityPlayer)
         {
-    	    if(this.getCustomNameTag() == "Minotaur")
+    		int i = rand.nextInt(8);
+    		if(i < 3)
     		{
-    			this.dropItem(FireDim.block, 1);
+    			i = i + 2;
     		}
-    	    else
-    	    {
-	    	    this.dropItem(ItemMod.elemental_fire, 8);
-	    	    this.dropItem(ItemMod.elemental_fire_chestplate, 1);
-	    	    this.dropItem(ItemMod.fire_sword, 1);
-    	    }
-        
+	    	this.dropItem(ItemMod.elemental_fire, i); 
         }
     }
     

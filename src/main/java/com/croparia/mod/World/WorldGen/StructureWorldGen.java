@@ -2,16 +2,19 @@ package com.croparia.mod.World.WorldGen;
 
 import java.util.Random;
 
-import com.croparia.mod.World.WorldGen.Structures.Mthing1WorldGen;
-import com.croparia.mod.World.WorldGen.Structures.Mthing2WorldGen;
-import com.croparia.mod.World.WorldGen.Structures.Mthing3WorldGen;
-import com.croparia.mod.World.WorldGen.Structures.Mthing4WorldGen;
-import com.croparia.mod.World.WorldGen.Structures.PhutWorldGen;
-import com.croparia.mod.World.WorldGen.Structures.SchestWorldGen;
-import com.croparia.mod.World.WorldGen.Structures.ShouseWorldGen;
-import com.croparia.mod.World.WorldGen.Structures.Stree1WorldGen;
-import com.croparia.mod.World.WorldGen.Structures.Stree2WorldGen;
-import com.croparia.mod.World.WorldGen.Structures.Stree3WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mthing1WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mthing2WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mthing3WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mthing4WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mtree1WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mtree2WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Fire.Mtree3WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Water.PhutWorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Water.SchestWorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Water.ShouseWorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Water.Stree1WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Water.Stree2WorldGen;
+import com.croparia.mod.World.WorldGen.Structures.Water.Stree3WorldGen;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -103,7 +106,55 @@ static Random rand2 = new Random();
 	
 	private void generateFire(World world, Random rand, int blockX, int blockZ)
 	{	
-
+		if ((int) (Math.random() * 5) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mtree1WorldGen();
+			structure1.generate(world, rand, pos);
+		}	
+		if ((int) (Math.random() * 5) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mtree2WorldGen();
+			structure1.generate(world, rand, pos);
+		}	
+		if ((int) (Math.random() * 5) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mtree3WorldGen();
+			structure1.generate(world, rand, pos);
+		}
+		if ((int) (Math.random() * 300) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mthing1WorldGen();
+			structure1.generate(world, rand, pos);
+		}		
+		if ((int) (Math.random() * 300) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mthing2WorldGen();
+			structure1.generate(world, rand, pos);
+		}		
+		if ((int) (Math.random() * 300) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mthing3WorldGen();
+			structure1.generate(world, rand, pos);
+		}		
+		if ((int) (Math.random() * 300) == 0)
+		{
+			int y = getGroundFromAbove(world, blockX, blockZ);
+			BlockPos pos = new BlockPos(blockX, y, blockZ);
+			WorldGenerator structure1 = new Mthing4WorldGen();
+			structure1.generate(world, rand, pos);
+		}
 	}
 
 	private void generateOverworld(World world, Random rand, int chunkX, int chunkZ) {}
@@ -120,7 +171,7 @@ static Random rand2 = new Random();
 		while(!foundGround && y-- >= 31)
 		{
 			Block blockAt = world.getBlockState(new BlockPos(x,y,z)).getBlock();
-			foundGround = blockAt == Blocks.PACKED_ICE || blockAt == Blocks.ICE;
+			foundGround = blockAt == Blocks.PACKED_ICE || blockAt == Blocks.ICE || blockAt == Blocks.MAGMA;
 		}
 
 		return y;

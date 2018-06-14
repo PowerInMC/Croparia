@@ -45,6 +45,8 @@ item.centaur_crane.name=Elemental Earth Skull
 item.minotaur_frag.name=Elemental Fire Gem Fragment
 item.minotaur_gem.name=Elemental Fire Gem
 item.minotaur_crane.name=Elemental Fire Skull
+item.lava_crane.name=Elemental Lava Skull
+item.obsidian_crane.name=Elemental Obsidian Skull
 item.flyingbeast_frag.name=Elemental Air Gem Fragment
 item.flyingbeast_gem.name=Elemental Air Gem
 item.flyingbeast_crane.name=Elemental Air Skull
@@ -207,6 +209,8 @@ item.seed_crop_red.name=Red Dyius Seed
 item.seed_crop_black.name=Black Dyius Seed
 item.seed_crop_death.name=Death Seed
 item.seed_crop_totem.name=Totemes Seed
+item.seed_crop_lead2.name=Leadias Seed
+item.seed_crop_nametag.name=Names Tagus Seed
 
 item.fruit_coal.name=Coara Fruit
 item.fruit_iron.name=Ironias Fruit
@@ -292,6 +296,8 @@ item.fruit_rawrabbit.name=Rabbis Fruit
 item.fruit_rawmutton.name=Muttos Fruit
 item.fruit_death.name=Death Fruit
 item.fruit_totem.name=Totemes Fruit
+item.fruit_lead2.name=Leadias Fruit
+item.fruit_nametag.name=Names Tagus Fruit
 
 
 
@@ -458,6 +464,8 @@ tile.reward.name=Daily Reward Block
 
 tile.icy_plant.name=Icy Plant
 tile.poisonous_icy_plant.name=Poisonous Icy Plant
+tile.obsidian_ground.name=Obsidian Path
+tile.obsidian_fired_ground.name=Inflammed Obsidian Path
 
 tile.block_cane_acacia.name=Acacia Cane
 tile.block_cane_darkoak.name=Dark Oak Cane
@@ -691,10 +699,12 @@ container.fire_furnace=Elemental Fire Furnace
 entity.Seafarer.name=Seafarer
 entity.SeafarerL.name=Tall Seafarer
 entity.SeafarerS.name=Small Seafarer
+entity.Penguin.name=Penguin
 
 entity.Minotaur.name=Minautor
 entity.MinotaurL.name=Tall Minautor
 entity.MinotaurS.name=Small Minautor
+entity.Akurojin.name=Akurojin-no-hi
 
 entity.Centaur.name=Centaur
 entity.CentaurL.name=Tall Centaur
@@ -706,6 +716,10 @@ entity.FlyingS.name=Small Flying Beast
 
 entity.GoldenChicken.name=Golden Chicken
 entity.Reaper.name=Reaper
+
 entity.WaterBoss.name=Elemental Water Golem
 entity.SteamBoss.name=Elemental Steam Golem
 entity.IcyBoss.name=Elemental Ice Golem
+entity.FireBoss.name=Elemental Fire Golem
+entity.LavaBoss.name=Elemental Lava Golem
+entity.ObsidianBoss.name=Elemental Obsidian Golem
