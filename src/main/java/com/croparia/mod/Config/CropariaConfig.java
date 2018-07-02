@@ -13,6 +13,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CropariaConfig 
 {	
+	public static boolean enableBonemeal;
+
 	public static void config()
 	{
 		Configuration config = new Configuration(new File("config/Croparia/Croparia.cfg"));
@@ -176,6 +178,9 @@ public class CropariaConfig
 	   	//Furnace
 	   	
 	   	//Stem
+       	
+       	//Other
+        ConfigInit.enableBonemeal = config.get("Tools", "Allow the utilisation of bonemeal on crops ?", true).getBoolean();
 		
 		config.save();
 	}

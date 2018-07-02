@@ -2,16 +2,23 @@ package com.croparia.mod.Block.Crop;
 
 import java.util.Random;
 
+import com.croparia.mod.Config.CropariaConfig;
 import com.croparia.mod.Init.ItemMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.MapColor;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
 public class BlockCropMod extends BlockCrops implements IGrowable
@@ -217,4 +224,27 @@ public class BlockCropMod extends BlockCrops implements IGrowable
 	 {
 		 return EnumPlantType.Crop;
 	 }
+	 
+	 @Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		 if(CropariaConfig.enableBonemeal)
+		 {
+			 return true;
+		 }
+		 return false;
+	}
+	 
+	 @Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		 if(CropariaConfig.enableBonemeal == false)
+		 {
+			 if(playerIn.getActiveItemStack() == new ItemStack(Items.DYE, 15))
+				 {
+				 playerIn.getActiveItemStack().grow(1);
+				 return true;
+				 }
+		 }
+		 return false;
+	}
 }

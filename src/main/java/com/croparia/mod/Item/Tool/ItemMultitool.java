@@ -394,14 +394,14 @@ public class ItemMultitool extends ItemTool
     public ItemMultitool(Item.ToolMaterial material)
     {
         super(material, EFFECTIVE_ON);
-        this.damageVsEntity = ATTACK_DAMAGES[material.ordinal()];
+        this.attackDamage = ATTACK_DAMAGES[material.ordinal()];
         this.attackSpeed = ATTACK_SPEEDS[material.ordinal()];
     }
 
     public ItemMultitool(float damage, float speed, Item.ToolMaterial material)
     {
         super(material, EFFECTIVE_ON);
-        this.damageVsEntity = damage;
+        this.attackDamage = damage;
         this.attackSpeed = speed;
     }
     
@@ -415,7 +415,7 @@ public class ItemMultitool extends ItemTool
     public float getStrvVsBlock(ItemStack stack, IBlockState state)
     {
         Material material = state.getMaterial();
-        return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE && material != Material.IRON && material != Material.ANVIL && material != Material.ROCK ? super.getStrVsBlock(stack, state) : this.efficiencyOnProperMaterial;
+        return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE && material != Material.IRON && material != Material.ANVIL && material != Material.ROCK ? super.getDestroySpeed(stack, state) : this.efficiency;
     }
 
     @SuppressWarnings("incomplete-switch")

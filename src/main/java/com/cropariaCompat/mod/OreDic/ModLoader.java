@@ -19,6 +19,7 @@ public class ModLoader
 	 * Applied Energistics 2
 	 * Embers
 	 * Mekanism
+	 * Pixelmon
 	 */
 	
 	public static final boolean getAe2 = Loader.isModLoaded("appliedenergistics2");
@@ -34,4 +35,5 @@ public class ModLoader
 	public static final boolean getIC2 = Loader.isModLoaded("ic2");
 	public static final boolean getEmber = Loader.isModLoaded("embers");
 	public static final boolean getMekanism = Loader.isModLoaded("mekanism");
+	public static final boolean getPixelmon = Loader.isModLoaded("pixelmon");
 }

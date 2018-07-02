@@ -1736,7 +1736,7 @@ public class ItemMod
 
 		add(eternal_time);
 
-		if(ModLoader.getTechReborn || ModLoader.getThermalFoundation || ModLoader.getImmersive || ModLoader.getEmber)
+		if(ModLoader.getTechReborn || ModLoader.getThermalFoundation || ModLoader.getImmersive || ModLoader.getEmber || ModLoader.getPixelmon)
     	{
     		add(seed_crop_aluminium);
     		add(fruit_aluminium);

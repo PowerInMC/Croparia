@@ -932,7 +932,7 @@ public class BlockMod {
 
 			addWithItem(reward);
 			
-			if(ModLoader.getTechReborn || ModLoader.getThermalFoundation || ModLoader.getImmersive)
+			if(ModLoader.getTechReborn || ModLoader.getThermalFoundation || ModLoader.getImmersive || ModLoader.getPixelmon)
 	    	{
 	    		add(block_crop_aluminium);
 	    	}

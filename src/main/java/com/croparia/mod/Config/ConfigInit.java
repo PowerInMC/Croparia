@@ -152,4 +152,6 @@ public class ConfigInit {
    	public static int totemRate;
    	public static int nametagRate;
    	public static int lead2Rate;
+   	
+	public static boolean enableBonemeal;
 }
